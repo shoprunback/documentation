@@ -23,12 +23,12 @@ under the License.
 
 // BACKGROUND COLORS
 ////////////////////
-$nav-bg: #393939 !default;
-$examples-bg: #393939 !default;
+$nav-bg: #333c49 !default;
+$examples-bg: #333c49 !default;
 $code-bg: #292929 !default;
-$code-annotation-bg: #1c1c1c !default;
-$nav-subitem-bg: #262626 !default;
-$nav-active-bg: #2467af !default;
+$code-annotation-bg: #404e63 !default;
+$nav-subitem-bg: #333c49 !default;
+$nav-active-bg: #FFBC00 !default;
 $lang-select-border: #000 !default;
 $lang-select-bg: #222 !default;
 $lang-select-active-bg: $examples-bg !default; // feel free to change this to blue or something
@@ -42,10 +42,10 @@ $search-notice-bg: #c97a7e !default;
 
 // TEXT COLORS
 ////////////////////
-$main-text: #333 !default; // main content text color
-$nav-text: #fff !default;
-$nav-active-text: #fff !default;
-$lang-select-text: #fff !default; // color of unselected language tab text
+$main-text: #333c49 !default; // main content text color
+$nav-text: #FFBC00 !default;
+$nav-active-text: #333c49 !default;
+$lang-select-text: #FFBC00 !default; // color of unselected language tab text
 $lang-select-active-text: #fff !default; // color of selected language tab text
 $lang-select-pressed-text: #fff !default; // color of language tab text when mouse is pressed
 
