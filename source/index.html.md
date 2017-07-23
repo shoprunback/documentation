@@ -21,34 +21,32 @@ You can also get the technical documentation and test it without coding on [http
 
 # Authentication
 
-
-
-> To authorize, use this code:
+> To authorize your queries, you must provide you company API Token in the HTTP Headers like this :
 
 ```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+response = HTTParty.post(
+              endpoint,
+              body: content,
+              headers: {
+                'Content-Type' => 'application/json',
+                'Authorization' => "Token token=#{your_token}"
+              }
+            )
 ```
-
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+curl "api_endpoint"
+  -H "Authorization: Token token=<your_token>"
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> Replace `your_token` with your API key.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+ShopRunBack uses API keys to allow access to the API. 
+You can get your API key on your [retailer dashboard](http://dashboard.shoprunback.com/tokens).
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+ShopRunBack expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
+`Authorization: Token token=<your_token>`
 
 # Kittens
 
