@@ -1,55 +1,52 @@
 ---
-title: API Reference
+title: ShopRunBack API Reference
 
 language_tabs:
-  - shell
   - ruby
 
 toc_footers:
   - <a href='http://dashboard.shoprunback.com'>Sign Up for a Developer Key</a>
 
 includes:
-  - errors
 
 search: true
 ---
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome on the ShopRunBack public API, the inventor of the Return As A Service solution.
+This API provides all the endpoints for any e-commerce retailer to get all the features for a optimized return experience for its customers.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+You can also get the technical documentation and test it without coding on [https://app.swaggerhub.com/apis/Shoprunback/SRB-APP/1.0.0](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP/1.0.0).
 
 # Authentication
 
-> To authorize, use this code:
+> To authorize your queries, you must provide you company API Token in the HTTP Headers like this :
 
 ```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+response = HTTParty.post(
+              endpoint,
+              body: content,
+              headers: {
+                'Content-Type' => 'application/json',
+                'Authorization' => "Token token=#{your_token}"
+              }
+            )
 ```
-
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+curl "api_endpoint"
+  -H "Authorization: Token token=<your_token>"
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> Replace `your_token` with your API key.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+ShopRunBack uses API keys to allow access to the API.
+You can get your API key on your [retailer dashboard](http://dashboard.shoprunback.com/tokens).
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+ShopRunBack expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
+`Authorization: Token token=<your_token>`
 
 # Kittens
 
@@ -172,4 +169,3 @@ This endpoint retrieves a specific kitten.
 Parameter | Description
 --------- | -----------
 ID | The ID of the kitten to retrieve
-
