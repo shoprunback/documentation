@@ -15,7 +15,7 @@ search: true
 # Introduction
 
 Welcome on the ShopRunBack public API, the inventor of the Return As A Service solution.
-This API provides all the endpoints for any e-commerce retailer to get all the features for a optimized return experience for its customers.
+This API provides all the endpoints for any e-commerce retailer to get all the features for an optimized return experience for its customers.
 
 You can also get the technical documentation and test it without coding on [https://app.swaggerhub.com/apis/Shoprunback/SRB-APP/1.0.0](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP/1.0.0).
 
@@ -35,7 +35,7 @@ response = HTTParty.post(
 ```
 
 ```shell
-curl "api_endpoint"
+curl "<endpoint>"
   -H "Authorization: Token token=<your_token>"
 ```
 
@@ -48,72 +48,53 @@ ShopRunBack expects for the API key to be included in all API requests to the se
 
 `Authorization: Token token=<your_token>`
 
-# Kittens
+# Brand & Product catalog
 
-## Get All Kittens
+## Add a brand
+
+By default, once your retailer account is created and your company details entered, a default brand is created.
+But you can add your own brands if you have multiple brands in your catalog.
 
 ```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
+body = {
+  name: "Apple"
+}
 ```
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
+curl -X "POST" "<api_endpoint>/brands" \
+     -H "Authorization: Token token=<your_token>" \
+     -H "Content-Type: application/json; charset=utf-8" \
+     -d $'{
+  "name": "Apple"
+}'
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{
+  "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+  "name": "Apple",
+  "default": false
+}
 ```
 
-This endpoint retrieves all kittens.
+This endpoint create a new brand.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET https://dashboard.shoprunback.com/api/v1/brands`
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+Parameter | Description
+--------- | -----------
+name | Name of the brand, displayed to the customer on the return process
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+If you don't more than one brand, you don't have to create another one, the default brand is enough.
 </aside>
 
 ## Get a Specific Kitten
