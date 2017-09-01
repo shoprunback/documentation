@@ -3,6 +3,7 @@ title: ShopRunBack API Reference
 
 language_tabs:
   - ruby
+  - shell
 
 toc_footers:
   - <a href='http://dashboard.shoprunback.com'>Sign Up for a Developer Key</a>
@@ -15,7 +16,7 @@ search: true
 # Introduction
 
 Welcome on the ShopRunBack public API, the inventor of the Return As A Service solution.
-This API provides all the endpoints for any e-commerce retailer to get all the features for a optimized return experience for its customers.
+This API provides all the endpoints for any e-commerce retailer to get all the features for an optimized return experience for its customers.
 
 You can also get the technical documentation and test it without coding on [https://app.swaggerhub.com/apis/Shoprunback/SRB-APP/1.0.0](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP/1.0.0).
 
@@ -35,47 +36,99 @@ response = HTTParty.post(
 ```
 
 ```shell
-curl "api_endpoint"
+curl "<endpoint>"
   -H "Authorization: Token token=<your_token>"
 ```
 
 > Replace `your_token` with your API key.
 
-ShopRunBack uses API keys to allow access to the API. 
+ShopRunBack uses API keys to allow access to the API.
+
 You can get your API key on your [retailer dashboard](http://dashboard.shoprunback.com/tokens).
 
 ShopRunBack expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
 `Authorization: Token token=<your_token>`
 
-# Kittens
 
-## Get All Kittens
+# Catalog
+
+Once your account created and configured (follow the onboarding process for that), you must push your products catalog.
+Only product in the ShopRunBack catalog can be returned.
+
+First, create your brands if you have any and then create your products.
+
+## Create brand
+
+By default, once your retailer account is created and your company details entered, a default brand is created.
+But you can add your own brands if you have multiple brands in your catalog.
 
 ```ruby
-require 'kittn'
+body = {
+  name: "Apple"
+}
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
+HTTParty.post(
+              "https://dashboard.shoprunback.com/api/v1/brands",
+              body: body,
+              headers: {
+                'Content-Type' => 'application/json',
+                'Authorization' => "Token token=#{your_token}"
+              }
+            )
 ```
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+curl -X "POST" "https://dashboard.shoprunback.com/api/v1/brands" \
+     -H "Authorization: Token token=<your_token>" \
+     -H "Content-Type: application/json; charset=utf-8" \
+     -d $'{
+  "name": "Apple"
+}'
+
 ```
 
-```javascript
-const kittn = require('kittn');
+> The above command returns JSON structured like this:
 
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+```json
+{
+  "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+  "name": "Apple",
+  "default": false
+}
+```
+
+This endpoint create a new brand.
+
+### HTTP Request
+
+`POST https://dashboard.shoprunback.com/api/v1/brands`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+name | Name of the brand, displayed to the customer on the return process
+
+<aside class="success">
+If you don't have more than one brand, you don't have to create another one, the default brand is enough.
+</aside>
+
+## List brands
+
+```ruby
+HTTParty.get(
+              "https://dashboard.shoprunback.com/api/v1/brands",
+              headers: {
+                'Content-Type' => 'application/json',
+                'Authorization' => "Token token=#{your_token}"
+              }
+            )
+```
+
+```shell
+curl -X "GET" "https://dashboard.shoprunback.com/api/v1/brands" \
+     -H "Authorization: Token token=<your_token>" \
 ```
 
 > The above command returns JSON structured like this:
@@ -83,90 +136,119 @@ let kittens = api.kittens.get();
 ```json
 [
   {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
+    "id": "1f27f9d9-3b5c-4152-98b7-760f56967deb",
+    "name": "default",
+    "default": true,
   },
   {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+    "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+    "name": "Apple",
+    "default": false,
+  },
+  {
+    "id": "1f27f9d9-3b5c-4152-98b7-760f56967dec",
+    "name": "Samsung",
+    "default": false,
   }
 ]
 ```
 
-This endpoint retrieves all kittens.
+This endpoint lists all your brands.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET https://dashboard.shoprunback.com/api/v1/brands`
 
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
+## Create product
 
 ```ruby
-require 'kittn'
+body = {
+  "label": "Iphone 14S Blue",
+  "reference": "IPHONE 14S B",
+  "ean": "1258987561456",
+  "color": "Blue",
+  "brand_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+  "image_url": "http://www.apple.com/images/iphone-14s.jpg"
+}
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
+HTTParty.post(
+              "https://dashboard.shoprunback.com/api/v1/products",
+              body: body,
+              headers: {
+                'Content-Type' => 'application/json',
+                'Authorization' => "Token token=#{your_token}"
+              }
+            )
 ```
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
+curl -X "POST" "https://dashboard.shoprunback.com/api/v1/products" \
+     -H "Authorization: Token token=<your_token>" \
+     -H "Content-Type: application/json; charset=utf-8" \
+     -d $'{
+  "label": "Iphone 14S Blue",
+  "reference": "IPHONE 14S B",
+  "ean": "1258987561456",
+  "color": "Blue",
+  "brand_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+  "image_url": "http://www.apple.com/images/iphone-14s.jpg"
+}'
+
 ```
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
+> The above command returns the same JSON object with the id of the created product:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+  "label": "Iphone 14S Blue",
+  "reference": "IPHONE 14S B",
+  "ean": "1258987561456",
+  "color": "Blue",
+  "brand_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+  "brand_name": "Apple",
+  "image_base": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQAAAAA3bvkkAAAAAnRSTlMAAHaTzTgAAAAKSURBVHgBY2AAAAACAAFzdQEYAAAAAElFTkSuQmCC",
+  "picture_url": "http://s3.amazonaws/assets/iphone_14s.jpg"
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+This endpoint create a new product.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`POST https://dashboard.shoprunback.com/api/v1/products`
 
-### URL Parameters
+### Query Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+Parameter | Required | Description
+--------- | ----------- | --------------
+label | yes | Label of the product (ie. common name)
+reference | yes | unique reference in your catalog
+ean | no | barcode
+color | no | displayed as is on the web return process (no translation)
+brand_id | no | if you have created a brand and this product has this brand. Otherwise, the default brand is automaticaly used
+image_url | yes | public URL to the product image (JPG or PNG), to avoid imperfect cropping, use a square image
 
+<aside class="success">
+If you don't have more than one brand, you don't have to provide the brand_id.
+</aside>
+
+## List products
+
+# Order
+
+## Create order
+
+## List orders
+
+## Update orders
+
+# Return
+
+## Pre-create a return
+
+## Create a ready-to-ship return
+
+## Get a return
+
+## Update a return
