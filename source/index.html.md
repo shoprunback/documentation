@@ -18,7 +18,7 @@ search: true
 Welcome on the ShopRunBack public API, the inventor of the Return As A Service solution.
 This API provides all the endpoints for any e-commerce retailer to get all the features for an optimized return experience for its customers.
 
-You can also get the technical documentation and test it without coding on [https://app.swaggerhub.com/apis/Shoprunback/SRB-APP/1.0.0](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP/1.0.0).
+You can also get the technical documentation and test it without coding on [https://app.swaggerhub.com/apis/Shoprunback/SRB-APP](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP).
 
 # Authentication
 
@@ -424,9 +424,9 @@ Parameter | Required | Description
 --------- | ----------- | --------------
 ordered_at | yes | date of the order
 order_number | yes | the customer's order number
-customer | yes | customer informations
-items | yes | displayed as is on the web return process (no translation)
-metadata | no | additional informations about the order
+customer | yes | customer information (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
+items | yes | Array of items (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
+metadata | no | Anything you want to add to the order, this data will always be returned and never modified.
 
 ## List orders
 
@@ -629,15 +629,203 @@ Parameter | Required | Description
 --------- | ----------- | --------------
 ordered_at | yes | date of the order
 order_number | yes | the customer's order number
-customer | yes | customer informations
-items | yes | displayed as is on the web return process (no translation)
-metadata | no | additional informations about the order
+customer | yes | customer object (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
+items | yes | items' array (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
+metadata | no | Anything you want to add to the order, this data will always be returned and never modified.
 
 # Return
 
 ## Pre-create a return
 
+
 ## Create a ready-to-ship return
+
+```ruby
+body = {
+  "mode": "postal",
+  "order_id": "1f27f9d9-3b5c-4152-98b7-760f56967deaf",
+  "weight_in_grams": 3012,
+  "items": [
+    {
+      "item_id": "1f27f9d9-3b5c-4152-98b7-760f56967deat",
+      "reason_code": "doesnt_fit"
+    }
+  ],
+  "metadata": {
+    "foo": "bar"
+  },
+  "order": {
+    "ordered_at": "2017-02-03",
+    "order_number": "4548-9854",
+    "customer": {
+      "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+      "first_name": "Steve",
+      "last_name": "Jobs",
+      "email": "steve@apple.com",
+      "phone": "555-878-456",
+      "address": {
+        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "line1": "One Infinite Loop",
+        "line2": "Building B",
+        "zipcode": "95014",
+        "country_code": "US",
+        "city": "Cupertino",
+        "state": "California"
+      }
+    },
+    "metadata": {
+      "foo": "bar"
+    },
+    "items": [
+      {
+        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "name": "Iphone 14S",
+        "reference": "1234567890",
+        "price_in_cents": "1000",
+        "currency": "EUR",
+        "weight_in_grams": 1200,
+        "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        }
+      }
+    ]
+  }
+}
+
+
+HTTParty.post(
+              "https://dashboard.shoprunback.com/api/v1/shipbacks",
+              body: body,
+              headers: {
+                'Content-Type' => 'application/json',
+                'Authorization' => "Token token=#{your_token}"
+              }
+            )
+```
+
+```shell
+curl -X "POST" "https://dashboard.shoprunback.com/api/v1/shipbacks" \
+     -H "Authorization: Token token=<your_token>" \
+     -H "Content-Type: application/json; charset=utf-8" \
+     -d $'{
+  "mode": "postal",
+  "order_id": "1f27f9d9-3b5c-4152-98b7-760f56967deaf",
+  "weight_in_grams": 3012,
+  "items": [
+    {
+      "item_id": "1f27f9d9-3b5c-4152-98b7-760f56967deat",
+      "reason_code": "doesnt_fit"
+    }
+  ],
+  "metadata": {
+    "foo": "bar"
+  },
+  "order": {
+    "ordered_at": "2017-02-03",
+    "order_number": "4548-9854",
+    "customer": {
+      "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+      "first_name": "Steve",
+      "last_name": "Jobs",
+      "email": "steve@apple.com",
+      "phone": "555-878-456",
+      "address": {
+        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "line1": "One Infinite Loop",
+        "line2": "Building B",
+        "zipcode": "95014",
+        "country_code": "US",
+        "city": "Cupertino",
+        "state": "California"
+      }
+    },
+    "metadata": {
+      "foo": "bar"
+    },
+    "items": [
+      {
+        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "name": "Iphone 14S",
+        "reference": "1234567890",
+        "price_in_cents": "1000",
+        "currency": "EUR",
+        "weight_in_grams": 1200,
+        "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+      }
+    ]
+  }
+}'
+```
+
+> The above command returns the same JSON object with the id of the created order, customer and items:
+
+```json
+{
+  "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+  "mode": "postal",
+  "order_id": "1f27f9d9-3b5c-4152-98b7-760f56967deaf",
+  "weight_in_grams": 3012,
+  "items": [
+    {
+      "item_id": "1f27f9d9-3b5c-4152-98b7-760f56967deat",
+      "reason_code": "doesnt_fit"
+    }
+  ],
+  "metadata": {
+    "foo": "bar"
+  },
+  "order": {
+    "ordered_at": "2017-02-03",
+    "order_number": "4548-9854",
+    "customer": {
+      "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+      "first_name": "Steve",
+      "last_name": "Jobs",
+      "email": "steve@apple.com",
+      "phone": "555-878-456",
+      "address": {
+        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "line1": "One Infinite Loop",
+        "line2": "Building B",
+        "zipcode": "95014",
+        "country_code": "US",
+        "city": "Cupertino",
+        "state": "California"
+      }
+    },
+    "metadata": {
+      "foo": "bar"
+    },
+    "items": [
+      {
+        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "name": "Iphone 14S",
+        "reference": "1234567890",
+        "price_in_cents": "1000",
+        "currency": "EUR",
+        "weight_in_grams": 1200,
+        "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+      }
+    ]
+  }
+}
+```
+
+This endpoint create a new return.
+
+### HTTP Request
+
+`POST https://dashboard.shoprunback.com/api/v1/shipbacks`
+
+### Query Parameters
+
+Parameter | Required | Description
+--------- | ----------- | --------------
+mode | yes | date of the order
+order_id | yes | the order id
+order | yes | order being returned (see )
+weight_in_grams | yes | Weight of the return
+items | yes | Array of returned items (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
+
 
 ## Get a return
 
