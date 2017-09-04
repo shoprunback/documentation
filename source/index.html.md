@@ -235,6 +235,59 @@ If you don't have more than one brand, you don't have to provide the brand_id.
 
 ## List products
 
+```ruby
+HTTParty.get(
+              "https://dashboard.shoprunback.com/api/v1/products",
+              headers: {
+                'Content-Type' => 'application/json',
+                'Authorization' => "Token token=#{your_token}"
+              }
+            )
+```
+
+```shell
+curl -X "GET" "https://dashboard.shoprunback.com/api/v1/products" \
+     -H "Authorization: Token token=<your_token>" \
+     -H "Content-Type: application/json; charset=utf-8" \
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+    "label": "Iphone 14S Blue",
+    "reference": "IPHONE 14S B",
+    "ean": "1258987561456",
+    "color": "Blue",
+    "brand_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+    "brand_name": "Apple",
+    "image_base": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQAAAAA3bvkkAAAAAnRSTlMAAHaTzTgAAAAKSURBVHgBY2AAAAACAAFzdQEYAAAAAElFTkSuQmCC",
+    "picture_url": "http://s3.amazonaws/assets/iphone_14s.jpg"
+  },
+  {
+    "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+    "label": "Iphone 14S Red",
+    "reference": "IPHONE 14S B",
+    "ean": "1258987561456",
+    "color": "Red",
+    "brand_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+    "brand_name": "Apple",
+    "image_base": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQAAAAA3bvkkAAAAAnRSTlMAAHaTzTgAAAAKSURBVHgBY2AAAAACAAFzdQEYAAAAAElFTkSuQmCC",
+    "picture_url": "http://s3.amazonaws/assets/iphone_14s.jpg"
+  }
+]
+```
+
+This endpoint lists all your products.
+
+### HTTP Request
+
+`GET https://dashboard.shoprunback.com/api/v1/products`
+
+
 # Order
 
 ## Create order
