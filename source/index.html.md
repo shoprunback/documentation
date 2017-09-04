@@ -430,6 +430,71 @@ metadata | no | additional informations about the order
 
 ## List orders
 
+```ruby
+HTTParty.get(
+              "https://dashboard.shoprunback.com/api/v1/orders",
+              headers: {
+                'Content-Type' => 'application/json',
+                'Authorization' => "Token token=#{your_token}"
+              }
+            )
+```
+
+```shell
+curl -X "GET" "https://dashboard.shoprunback.com/api/v1/orders" \
+     -H "Authorization: Token token=<your_token>" \
+     -H "Content-Type: application/json; charset=utf-8" \
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+    "ordered_at": "2017-02-03",
+    "order_number": "4548-9854",
+    "customer": {
+      "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+      "first_name": "Steve",
+      "last_name": "Jobs",
+      "email": "steve@apple.com",
+      "phone": "555-878-456",
+      "address": {
+        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "line1": "One Infinite Loop",
+        "line2": "Building B",
+        "zipcode": "95014",
+        "country_code": "US",
+        "city": "Cupertino",
+        "state": "California"
+      }
+    },
+    "items": [
+      {
+        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "name": "Iphone 14S",
+        "reference": "1234567890",
+        "price_in_cents": "1000",
+        "currency": "EUR",
+        "weight_in_grams": 1200,
+        "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+      },
+    ]
+    "metadata": {
+      "foo": "bar"
+    }
+  }
+]
+```
+
+This endpoint lists all your orders.
+
+### HTTP Request
+
+`GET https://dashboard.shoprunback.com/api/v1/orders`
+
 ## Update orders
 
 # Return
