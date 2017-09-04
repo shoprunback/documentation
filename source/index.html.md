@@ -292,6 +292,142 @@ This endpoint lists all your products.
 
 ## Create order
 
+```ruby
+body = {
+  "ordered_at": "2017-02-03",
+  "order_number": "4548-9854",
+  "customer": {
+    "first_name": "Steve",
+    "last_name": "Jobs",
+    "email": "steve@apple.com",
+    "phone": "555-878-456",
+    "address": {
+      "line1": "One Infinite Loop",
+      "line2": "Building B",
+      "zipcode": "95014",
+      "country_code": "US",
+      "city": "Cupertino",
+      "state": "California"
+    }
+  },
+  "items": [
+    {
+      "name": "Iphone 14S",
+      "reference": "1234567890",
+      "price_in_cents": "1000",
+      "currency": "EUR",
+      "weight_in_grams": 1200,
+      "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+    },
+  ]
+  "metadata": {
+    "foo": "bar"
+  }
+}
+
+HTTParty.post(
+              "https://dashboard.shoprunback.com/api/v1/orders",
+              body: body,
+              headers: {
+                'Content-Type' => 'application/json',
+                'Authorization' => "Token token=#{your_token}"
+              }
+            )
+```
+
+```shell
+curl -X "POST" "https://dashboard.shoprunback.com/api/v1/orders" \
+     -H "Authorization: Token token=<your_token>" \
+     -H "Content-Type: application/json; charset=utf-8" \
+     -d $'{
+      "ordered_at": "2017-02-03",
+      "order_number": "4548-9854",
+      "customer": {
+        "first_name": "Steve",
+        "last_name": "Jobs",
+        "email": "steve@apple.com",
+        "phone": "555-878-456",
+        "address": {
+          "line1": "One Infinite Loop",
+          "line2": "Building B",
+          "zipcode": "95014",
+          "country_code": "US",
+          "city": "Cupertino",
+          "state": "California"
+        }
+      },
+      "items": [
+    {
+      "name": "Iphone 14S",
+      "reference": "1234567890",
+      "price_in_cents": "1000",
+      "currency": "EUR",
+      "weight_in_grams": 1200,
+      "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+    },
+  ]
+  "metadata": {
+    "foo": "bar"
+  }
+}'
+```
+
+> The above command returns the same JSON object with the id of the created order, customer and items:
+
+```json
+{
+  "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+  "ordered_at": "2017-02-03",
+  "order_number": "4548-9854",
+  "customer": {
+    "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+    "first_name": "Steve",
+    "last_name": "Jobs",
+    "email": "steve@apple.com",
+    "phone": "555-878-456",
+    "address": {
+      "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+      "line1": "One Infinite Loop",
+      "line2": "Building B",
+      "zipcode": "95014",
+      "country_code": "US",
+      "city": "Cupertino",
+      "state": "California"
+    }
+  },
+  "items": [
+    {
+      "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+      "name": "Iphone 14S",
+      "reference": "1234567890",
+      "price_in_cents": "1000",
+      "currency": "EUR",
+      "weight_in_grams": 1200,
+      "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+    },
+  ]
+  "metadata": {
+    "foo": "bar"
+  }
+}
+```
+
+This endpoint create a new order.
+
+### HTTP Request
+
+`POST https://dashboard.shoprunback.com/api/v1/orders`
+
+### Query Parameters
+
+Parameter | Required | Description
+--------- | ----------- | --------------
+ordered_at | yes | date of the order
+order_number | yes | the customer's order number
+customer | yes | customer informations
+items | yes | displayed as is on the web return process (no translation)
+metadata | no | additional informations about the order
+
 ## List orders
 
 ## Update orders
