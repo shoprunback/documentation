@@ -826,7 +826,85 @@ order | yes | order being returned (see )
 weight_in_grams | yes | Weight of the return
 items | yes | Array of returned items (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
 
-
 ## Get a return
 
+```ruby
+
+HTTParty.get( "https://dashboard.shoprunback.com/api/v1/shipbacks/#{shipback_id}",
+              headers: {
+                'Content-Type' => 'application/json',
+                'Authorization' => "Token token=#{your_token}"
+              }
+            )
+```
+
+```shell
+curl -X "GET" "https://dashboard.shoprunback.com/api/v1/shipbacks/<shipback_id>" \
+     -H "Authorization: Token token=<your_token>" \
+     -H "Content-Type: application/json; charset=utf-8" \
+```
+
+> The above command returns a shipback if it exists:
+
+```json
+{
+  "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+  "mode": "postal",
+  "order_id": "1f27f9d9-3b5c-4152-98b7-760f56967deaf",
+  "weight_in_grams": 3012,
+  "items": [
+    {
+      "item_id": "1f27f9d9-3b5c-4152-98b7-760f56967deat",
+      "reason_code": "doesnt_fit"
+    }
+  ],
+  "metadata": {
+    "foo": "bar"
+  },
+  "order": {
+    "ordered_at": "2017-02-03",
+    "order_number": "4548-9854",
+    "customer": {
+      "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+      "first_name": "Steve",
+      "last_name": "Jobs",
+      "email": "steve@apple.com",
+      "phone": "555-878-456",
+      "address": {
+        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "line1": "One Infinite Loop",
+        "line2": "Building B",
+        "zipcode": "95014",
+        "country_code": "US",
+        "city": "Cupertino",
+        "state": "California"
+      }
+    },
+    "metadata": {
+      "foo": "bar"
+    },
+    "items": [
+      {
+        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "name": "Iphone 14S",
+        "reference": "1234567890",
+        "price_in_cents": "1000",
+        "currency": "EUR",
+        "weight_in_grams": 1200,
+        "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+      }
+    ]
+  }
+}
+```
+
+This endpoint returns an existing shipback.
+
+### HTTP Request
+
+`GET https://dashboard.shoprunback.com/api/v1/shipbacks/:shipback_id`
+
+
 ## Update a return
+
+
