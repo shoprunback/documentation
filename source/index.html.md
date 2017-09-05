@@ -825,7 +825,7 @@ Parameter | Required | Description
 --------- | ----------- | --------------
 mode | yes | date of the order
 order_id | yes | the order id
-order | yes | order being returned (see )
+order | yes | order being returned (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
 weight_in_grams | yes | Weight of the return
 items | yes | Array of returned items (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
 
@@ -1092,7 +1092,7 @@ Parameter | Required | Description
 --------- | ----------- | --------------
 mode | yes | date of the order
 order_id | yes | the order id
-order | yes | order being returned (see )
+order | yes | order being returned (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
 weight_in_grams | yes | Weight of the return
 items | yes | Array of returned items (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
 
