@@ -639,9 +639,6 @@ metadata | no | Anything you want to add to the order, this data will always be 
 
 ## Pre-create a return
 
-
-## Create a ready-to-ship return
-
 ```ruby
 body = {
   "mode": "postal",
@@ -828,6 +825,8 @@ order_id | yes | the order id
 order | yes | order being returned (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
 weight_in_grams | yes | Weight of the return
 items | yes | Array of returned items (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
+
+## Create a ready-to-ship return
 
 ## Get a return
 
