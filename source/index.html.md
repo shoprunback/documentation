@@ -20,6 +20,10 @@ This API provides all the endpoints for any e-commerce retailer to get all the f
 
 You can also get the technical documentation and test it without coding on [https://app.swaggerhub.com/apis/Shoprunback/SRB-APP](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP).
 
+If you got any questions, send an email to: julien_at_shoprunback.com.
+
+For feature request, use the built in form: https://dashboard.shoprunback.com/en/features.
+
 # Authentication
 
 > To authorize your queries, you must provide you company API Token in the HTTP Headers like this :
@@ -51,14 +55,14 @@ ShopRunBack expects for the API key to be included in all API requests to the se
 `Authorization: Token token=<your_token>`
 
 
-# Catalog
+# Products catalog
 
 Once your account created and configured (follow the onboarding process for that), you must push your products catalog.
 Only product in the ShopRunBack catalog can be returned.
 
 First, create your brands if you have any and then create your products.
 
-## Create brand
+## Create a brand
 
 By default, once your retailer account is created and your company details entered, a default brand is created.
 But you can add your own brands if you have multiple brands in your catalog.
@@ -114,7 +118,7 @@ name | Name of the brand, displayed to the customer on the return process
 If you don't have more than one brand, you don't have to create another one, the default brand is enough.
 </aside>
 
-## List brands
+## List your brands
 
 ```ruby
 HTTParty.get(
@@ -159,7 +163,11 @@ This endpoint lists all your brands.
 
 `GET https://dashboard.shoprunback.com/api/v1/brands`
 
-## Create product
+## Add your products
+
+Push all your products catalog with this endpoint.
+
+The image in not mandatory but the return experience of your customer will be better with it.
 
 ```ruby
 body = {
@@ -189,9 +197,9 @@ curl -X "POST" "https://dashboard.shoprunback.com/api/v1/products" \
   "label": "Iphone 14S Blue",
   "reference": "IPHONE 14S B",
   "ean": "1258987561456",
-  "color": "Blue",
+  "weight_in_grams": 200,
   "brand_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-  "image_url": "http://www.apple.com/images/iphone-14s.jpg"
+  "picture_file_url": "http://www.apple.com/images/iphone-14s.jpg"
 }'
 
 ```
@@ -207,12 +215,11 @@ curl -X "POST" "https://dashboard.shoprunback.com/api/v1/products" \
   "color": "Blue",
   "brand_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
   "brand_name": "Apple",
-  "image_base": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQAAAAA3bvkkAAAAAnRSTlMAAHaTzTgAAAAKSURBVHgBY2AAAAACAAFzdQEYAAAAAElFTkSuQmCC",
-  "picture_url": "http://s3.amazonaws/assets/iphone_14s.jpg"
+  "weight_in_grams": 200,
+  "picture_url": "https://s3.eu-central-1.amazonaws.com/shoprunback-dev/products/484/7b4/f4-/pictures/medium.?1505912197"
 }
 ```
 
-This endpoint create a new product.
 
 ### HTTP Request
 
@@ -225,15 +232,17 @@ Parameter | Required | Description
 label | yes | Label of the product (ie. common name)
 reference | yes | unique reference in your catalog
 ean | no | barcode
+weight_in_grams | yes | weight (grams) of the product (package included)
 color | no | displayed as is on the web return process (no translation)
 brand_id | no | if you have created a brand and this product has this brand. Otherwise, the default brand is automaticaly used
-image_url | yes | public URL to the product image (JPG or PNG), to avoid imperfect cropping, use a square image
+picture_file_url | no | public URL to the product image (JPG or PNG), to avoid imperfect cropping, use a square image
+picture_file_base64 | no | if your product's image is not hosted on the internet, you can provide it with a base64 version of it
 
 <aside class="success">
 If you don't have more than one brand, you don't have to provide the brand_id.
 </aside>
 
-## List products
+## List your products
 
 ```ruby
 HTTParty.get(
@@ -246,7 +255,7 @@ HTTParty.get(
 ```
 
 ```shell
-curl -X "GET" "https://dashboard.shoprunback.com/api/v1/products" \
+curl -X "GET" "https://dashboard.shoprunback.com/api/v1/products?page=1" \
      -H "Authorization: Token token=<your_token>" \
      -H "Content-Type: application/json; charset=utf-8" \
 
@@ -255,42 +264,66 @@ curl -X "GET" "https://dashboard.shoprunback.com/api/v1/products" \
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-    "label": "Iphone 14S Blue",
-    "reference": "IPHONE 14S B",
-    "ean": "1258987561456",
-    "color": "Blue",
-    "brand_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-    "brand_name": "Apple",
-    "image_base": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQAAAAA3bvkkAAAAAnRSTlMAAHaTzTgAAAAKSURBVHgBY2AAAAACAAFzdQEYAAAAAElFTkSuQmCC",
-    "picture_url": "http://s3.amazonaws/assets/iphone_14s.jpg"
+{
+  "pagination": {
+    "current_page": 1,
+    "first_page": 1,
+    "previous_page": null,
+    "next_page": null,
+    "last_page": 1,
+    "count": 5
   },
-  {
-    "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-    "label": "Iphone 14S Red",
-    "reference": "IPHONE 14S B",
-    "ean": "1258987561456",
-    "color": "Red",
-    "brand_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-    "brand_name": "Apple",
-    "image_base": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQAAAAA3bvkkAAAAAnRSTlMAAHaTzTgAAAAKSURBVHgBY2AAAAACAAFzdQEYAAAAAElFTkSuQmCC",
-    "picture_url": "http://s3.amazonaws/assets/iphone_14s.jpg"
-  }
-]
+  "products":
+    [
+      {
+        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "label": "Iphone 14S Blue",
+        "reference": "IPHONE 14S B",
+        "ean": "1258987561456",
+        "brand_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "brand_name": "Apple",
+        "picture_url": "http://s3.amazonaws/assets/iphone_14s.jpg"
+      },
+      {...},
+      {
+        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "label": "Iphone 14S Red",
+        "reference": "IPHONE 14S B",
+        "ean": "1258987561456",
+        "brand_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "brand_name": "Apple",
+        "picture_url": "http://s3.amazonaws/assets/iphone_14s.jpg"
+      }
+    ]
+}
 ```
 
-This endpoint lists all your products.
+You can list all your products on ShopRunBack with this endpoint.
+
+The result is paginated, provide the `page` parameter to get a page (default is page 1).
 
 ### HTTP Request
 
-`GET https://dashboard.shoprunback.com/api/v1/products`
+`GET https://dashboard.shoprunback.com/api/v1/products?page=1`
 
 
 # Order
 
-## Create order
+Once your catalog is uploaded on ShopRunBack, you can plug your e-commerce website to the ShopRunBack dashboard.
+
+Only an existing order can be returned. You have 2 possibilities, depending on your desired return flow :
+
+* When a user request a return on your website, you create the corresponding order on the API and initiate the corresponding return
+* You push the order on the API directly after is processing on your website and just the redirect the customer when he/she requests a return
+
+In both cases, you will have to create the order, sooner or later.
+
+## Create an order
+
+An order has a `order_number`, a customer and a list of items.
+
+If you want to add extra data on the order, you can freely use the `metadata` attribute (a simple key/value store).
+The ShopRunBack API will always returns this data without altering it.
 
 ```ruby
 body = {
@@ -312,16 +345,12 @@ body = {
   },
   "items": [
     {
-      "name": "Iphone 14S",
-      "reference": "1234567890",
-      "price_in_cents": "1000",
-      "currency": "EUR",
-      "weight_in_grams": 1200,
       "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
     },
   ],
   "metadata": {
-    "foo": "bar"
+    "foo": "bar",
+    "bar": "foo"
   }
 }
 
@@ -359,16 +388,15 @@ curl -X "POST" "https://dashboard.shoprunback.com/api/v1/orders" \
   "items":
   [
     {
-      "name": "Iphone 14S",
-      "reference": "1234567890",
-      "price_in_cents": "1000",
-      "currency": "EUR",
-      "weight_in_grams": 1200,
       "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
     },
+    {
+      "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+    }
   ],
   "metadata": {
-    "foo": "bar"
+    "foo": "bar",
+    "bar": "foo"
   }
 }'
 ```
@@ -399,13 +427,28 @@ curl -X "POST" "https://dashboard.shoprunback.com/api/v1/orders" \
   "items": [
     {
       "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-      "name": "Iphone 14S",
-      "reference": "1234567890",
-      "price_in_cents": "1000",
-      "currency": "EUR",
-      "weight_in_grams": 1200,
-      "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+      "product": {
+        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "label": "Iphone 14S Red",
+        "reference": "IPHONE 14S B",
+        "ean": "1258987561456",
+        "brand_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "brand_name": "Apple",
+        "picture_url": "http://s3.amazonaws/assets/iphone_14s.jpg"
+      }
     },
+    {
+      "id": "1f27f9d9-3b5c-4152-98b7-760f56967dec",
+      "product": {
+        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "label": "Iphone 14S Red",
+        "reference": "IPHONE 14S B",
+        "ean": "1258987561456",
+        "brand_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "brand_name": "Apple",
+        "picture_url": "http://s3.amazonaws/assets/iphone_14s.jpg"
+      }
+    }
   ],
   "metadata": {
     "foo": "bar"
@@ -413,7 +456,6 @@ curl -X "POST" "https://dashboard.shoprunback.com/api/v1/orders" \
 }
 ```
 
-This endpoint create a new order.
 
 ### HTTP Request
 
@@ -429,11 +471,17 @@ customer | yes | customer information (see [swaggerhub documentation](https://ap
 items | yes | Array of items (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
 metadata | no | Anything you want to add to the order, this data will always be returned and never modified.
 
-## List orders
+## List all orders
+
+This endpoint lists all your paginated orders.
+
+### HTTP Request
+
+`GET https://dashboard.shoprunback.com/api/v1/orders?page=1`
 
 ```ruby
 HTTParty.get(
-              "https://dashboard.shoprunback.com/api/v1/orders",
+              "https://dashboard.shoprunback.com/api/v1/orders?page=1",
               headers: {
                 'Content-Type' => 'application/json',
                 'Authorization' => "Token token=#{your_token}"
@@ -442,7 +490,7 @@ HTTParty.get(
 ```
 
 ```shell
-curl -X "GET" "https://dashboard.shoprunback.com/api/v1/orders" \
+curl -X "GET" "https://dashboard.shoprunback.com/api/v1/orders?page=1" \
      -H "Authorization: Token token=<your_token>" \
      -H "Content-Type: application/json; charset=utf-8" \
 
@@ -451,52 +499,80 @@ curl -X "GET" "https://dashboard.shoprunback.com/api/v1/orders" \
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-    "ordered_at": "2017-02-03",
-    "order_number": "4548-9854",
-    "customer": {
-      "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-      "first_name": "Steve",
-      "last_name": "Jobs",
-      "email": "steve@apple.com",
-      "phone": "555-878-456",
-      "address": {
-        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-        "line1": "One Infinite Loop",
-        "line2": "Building B",
-        "zipcode": "95014",
-        "country_code": "US",
-        "city": "Cupertino",
-        "state": "California"
-      }
-    },
-    "items": [
+{
+  "pagination": {
+    "current_page": 1,
+    "first_page": 1,
+    "previous_page": 10,
+    "next_page": null,
+    "last_page": 1,
+    "count": 5
+  },
+  "orders":
+    [
       {
         "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-        "name": "Iphone 14S",
-        "reference": "1234567890",
-        "price_in_cents": "1000",
-        "currency": "EUR",
-        "weight_in_grams": 1200,
-        "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "ordered_at": "2017-02-03",
+        "order_number": "4548-9854",
+        "customer": {
+          "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+          "first_name": "Steve",
+          "last_name": "Jobs",
+          "email": "steve@apple.com",
+          "phone": "555-878-456",
+          "address": {
+            "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+            "line1": "One Infinite Loop",
+            "line2": "Building B",
+            "zipcode": "95014",
+            "country_code": "US",
+            "city": "Cupertino",
+            "state": "California"
+          }
+        },
+        "items": [
+          {
+            "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+            "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+            "product": {
+              "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+              "label": "Iphone 14S Red",
+              "reference": "IPHONE 14S B",
+              "ean": "1258987561456",
+              "brand_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+              "brand_name": "Apple",
+              "picture_url": "http://s3.amazonaws/assets/iphone_14s.jpg"
+            }
+          },
+        ],
+        "metadata": {
+          "foo": "bar"
+        }
       },
-    ],
-    "metadata": {
-      "foo": "bar"
-    }
-  }
-]
+      {...}
+    ]
+}
 ```
 
-This endpoint lists all your orders.
+## Update an order
+
+This endpoint updates an existing order.
+
+Warning: if a return has already been finished (ie. the return label has been downloaded), you can't update the order.
 
 ### HTTP Request
 
-`GET https://dashboard.shoprunback.com/api/v1/orders`
+`PUT https://dashboard.shoprunback.com/api/v1/orders/:order_id`
 
-## Update order
+### Query Parameters
+
+Parameter | Required | Description
+--------- | ----------- | --------------
+ordered_at | yes | date of the order
+order_number | yes | the customer's order number
+customer | yes | customer object (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
+items | yes | items' array (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
+metadata | no | Anything you want to add to the order, this data will always be returned and never modified.
 
 ```ruby
 body = {
@@ -518,11 +594,6 @@ body = {
   },
   "items": [
     {
-      "name": "Iphone 14S",
-      "reference": "1234567890",
-      "price_in_cents": "1000",
-      "currency": "EUR",
-      "weight_in_grams": 1200,
       "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
     },
   ],
@@ -565,12 +636,16 @@ curl -X "PUT" "https://dashboard.shoprunback.com/api/v1/orders/<order_id>" \
   "items":
   [
     {
-      "name": "Iphone 14S",
-      "reference": "1234567890",
-      "price_in_cents": "1000",
-      "currency": "EUR",
-      "weight_in_grams": 1200,
       "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+      "product": {
+        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "label": "Iphone 14S Red",
+        "reference": "IPHONE 14S B",
+        "ean": "1258987561456",
+        "brand_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "brand_name": "Apple",
+        "picture_url": "http://s3.amazonaws/assets/iphone_14s.jpg"
+      }
     },
   ],
   "metadata": {
@@ -604,13 +679,16 @@ curl -X "PUT" "https://dashboard.shoprunback.com/api/v1/orders/<order_id>" \
   },
   "items": [
     {
-      "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-      "name": "Iphone 14S",
-      "reference": "1234567890",
-      "price_in_cents": "1000",
-      "currency": "EUR",
-      "weight_in_grams": 1200,
       "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+      "product": {
+        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "label": "Iphone 14S Red",
+        "reference": "IPHONE 14S B",
+        "ean": "1258987561456",
+        "brand_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "brand_name": "Apple",
+        "picture_url": "http://s3.amazonaws/assets/iphone_14s.jpg"
+      }
     },
   ],
   "metadata": {
@@ -618,480 +696,7 @@ curl -X "PUT" "https://dashboard.shoprunback.com/api/v1/orders/<order_id>" \
   }
 }
 ```
-
-This endpoint updates an existing order.
-
-### HTTP Request
-
-`PUT https://dashboard.shoprunback.com/api/v1/orders/:order_id`
-
-### Query Parameters
-
-Parameter | Required | Description
---------- | ----------- | --------------
-ordered_at | yes | date of the order
-order_number | yes | the customer's order number
-customer | yes | customer object (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
-items | yes | items' array (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
-metadata | no | Anything you want to add to the order, this data will always be returned and never modified.
 
 # Return
 
-## Pre-create a return
-
-```ruby
-body = {
-  "mode": "postal",
-  "order_id": "1f27f9d9-3b5c-4152-98b7-760f56967deaf",
-  "weight_in_grams": 3012,
-  "items": [
-    {
-      "item_id": "1f27f9d9-3b5c-4152-98b7-760f56967deat",
-      "reason_code": "doesnt_fit"
-    }
-  ],
-  "metadata": {
-    "foo": "bar"
-  },
-  "order": {
-    "ordered_at": "2017-02-03",
-    "order_number": "4548-9854",
-    "customer": {
-      "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-      "first_name": "Steve",
-      "last_name": "Jobs",
-      "email": "steve@apple.com",
-      "phone": "555-878-456",
-      "address": {
-        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-        "line1": "One Infinite Loop",
-        "line2": "Building B",
-        "zipcode": "95014",
-        "country_code": "US",
-        "city": "Cupertino",
-        "state": "California"
-      }
-    },
-    "metadata": {
-      "foo": "bar"
-    },
-    "items": [
-      {
-        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-        "name": "Iphone 14S",
-        "reference": "1234567890",
-        "price_in_cents": "1000",
-        "currency": "EUR",
-        "weight_in_grams": 1200,
-        "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-        }
-      }
-    ]
-  }
-}
-
-
-HTTParty.post(
-              "https://dashboard.shoprunback.com/api/v1/shipbacks",
-              body: body,
-              headers: {
-                'Content-Type' => 'application/json',
-                'Authorization' => "Token token=#{your_token}"
-              }
-            )
-```
-
-```shell
-curl -X "POST" "https://dashboard.shoprunback.com/api/v1/shipbacks" \
-     -H "Authorization: Token token=<your_token>" \
-     -H "Content-Type: application/json; charset=utf-8" \
-     -d $'{
-"mode": "postal",
-"order_id": "1f27f9d9-3b5c-4152-98b7-760f56967deaf",
-"weight_in_grams": 3012,
-"items": [
-  {
-    "item_id": "1f27f9d9-3b5c-4152-98b7-760f56967deat",
-    "reason_code": "doesnt_fit"
-  }
-],
-"metadata": {
-  "foo": "bar"
-},
-"order": {
-  "ordered_at": "2017-02-03",
-  "order_number": "4548-9854",
-  "customer": {
-    "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-    "first_name": "Steve",
-    "last_name": "Jobs",
-    "email": "steve@apple.com",
-    "phone": "555-878-456",
-    "address": {
-      "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-      "line1": "One Infinite Loop",
-      "line2": "Building B",
-      "zipcode": "95014",
-      "country_code": "US",
-      "city": "Cupertino",
-      "state": "California"
-    }
-  },
-  "metadata": {
-    "foo": "bar"
-  },
-  "items":
-    [
-      {
-        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-        "name": "Iphone 14S",
-        "reference": "1234567890",
-        "price_in_cents": "1000",
-        "currency": "EUR",
-        "weight_in_grams": 1200,
-        "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-      }
-    ]
-  }
-}'
-```
-
-> The above command returns the same JSON object with the id of the created order, customer and items:
-
-```json
-{
-  "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-  "mode": "postal",
-  "order_id": "1f27f9d9-3b5c-4152-98b7-760f56967deaf",
-  "weight_in_grams": 3012,
-  "items": [
-    {
-      "item_id": "1f27f9d9-3b5c-4152-98b7-760f56967deat",
-      "reason_code": "doesnt_fit"
-    }
-  ],
-  "metadata": {
-    "foo": "bar"
-  },
-  "order": {
-    "ordered_at": "2017-02-03",
-    "order_number": "4548-9854",
-    "customer": {
-      "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-      "first_name": "Steve",
-      "last_name": "Jobs",
-      "email": "steve@apple.com",
-      "phone": "555-878-456",
-      "address": {
-        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-        "line1": "One Infinite Loop",
-        "line2": "Building B",
-        "zipcode": "95014",
-        "country_code": "US",
-        "city": "Cupertino",
-        "state": "California"
-      }
-    },
-    "metadata": {
-      "foo": "bar"
-    },
-    "items": [
-      {
-        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-        "name": "Iphone 14S",
-        "reference": "1234567890",
-        "price_in_cents": "1000",
-        "currency": "EUR",
-        "weight_in_grams": 1200,
-        "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-      }
-    ]
-  }
-}
-```
-
-This endpoint create a new return.
-
-### HTTP Request
-
-`POST https://dashboard.shoprunback.com/api/v1/shipbacks`
-
-### Query Parameters
-
-Parameter | Required | Description
---------- | ----------- | --------------
-mode | yes | date of the order
-order_id | yes | the order id
-order | yes | order being returned (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
-weight_in_grams | yes | Weight of the return
-items | yes | Array of returned items (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
-
-## Create a ready-to-ship return
-
-## Get a return
-
-```ruby
-
-HTTParty.get(
-              "https://dashboard.shoprunback.com/api/v1/shipbacks/#{shipback_id}",
-              headers: {
-                'Content-Type' => 'application/json',
-                'Authorization' => "Token token=#{your_token}"
-              }
-            )
-```
-
-```shell
-curl -X "GET" "https://dashboard.shoprunback.com/api/v1/shipbacks/<shipback_id>" \
-     -H "Authorization: Token token=<your_token>" \
-     -H "Content-Type: application/json; charset=utf-8" \
-```
-
-> The above command returns a shipback if it exists:
-
-```json
-{
-  "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-  "mode": "postal",
-  "order_id": "1f27f9d9-3b5c-4152-98b7-760f56967deaf",
-  "weight_in_grams": 3012,
-  "items": [
-    {
-      "item_id": "1f27f9d9-3b5c-4152-98b7-760f56967deat",
-      "reason_code": "doesnt_fit"
-    }
-  ],
-  "metadata": {
-    "foo": "bar"
-  },
-  "order": {
-    "ordered_at": "2017-02-03",
-    "order_number": "4548-9854",
-    "customer": {
-      "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-      "first_name": "Steve",
-      "last_name": "Jobs",
-      "email": "steve@apple.com",
-      "phone": "555-878-456",
-      "address": {
-        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-        "line1": "One Infinite Loop",
-        "line2": "Building B",
-        "zipcode": "95014",
-        "country_code": "US",
-        "city": "Cupertino",
-        "state": "California"
-      }
-    },
-    "metadata": {
-      "foo": "bar"
-    },
-    "items": [
-      {
-        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-        "name": "Iphone 14S",
-        "reference": "1234567890",
-        "price_in_cents": "1000",
-        "currency": "EUR",
-        "weight_in_grams": 1200,
-        "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-      }
-    ]
-  }
-}
-```
-
-This endpoint returns an existing shipback.
-
-### HTTP Request
-
-`GET https://dashboard.shoprunback.com/api/v1/shipbacks/:shipback_id`
-
-
-## Update a return
-
-```ruby
-body = {
-  "mode": "postal",
-  "order_id": "1f27f9d9-3b5c-4152-98b7-760f56967deaf",
-  "weight_in_grams": 3012,
-  "items": [
-    {
-      "item_id": "1f27f9d9-3b5c-4152-98b7-760f56967deat",
-      "reason_code": "doesnt_fit"
-    }
-  ],
-  "metadata": {
-    "foo": "bar"
-  },
-  "order": {
-    "ordered_at": "2017-02-03",
-    "order_number": "4548-9854",
-    "customer": {
-      "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-      "first_name": "Steve",
-      "last_name": "Jobs",
-      "email": "steve@apple.com",
-      "phone": "555-878-456",
-      "address": {
-        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-        "line1": "One Infinite Loop",
-        "line2": "Building B",
-        "zipcode": "95014",
-        "country_code": "US",
-        "city": "Cupertino",
-        "state": "California"
-      }
-    },
-    "metadata": {
-      "foo": "bar"
-    },
-    "items": [
-      {
-        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-        "name": "Iphone 14S",
-        "reference": "1234567890",
-        "price_in_cents": "1000",
-        "currency": "EUR",
-        "weight_in_grams": 1200,
-        "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-        }
-      }
-    ]
-  }
-}
-
-HTTParty.put(
-              "https://dashboard.shoprunback.com/api/v1/shipbacks/#{shipback_id}",
-              body: body,
-              headers: {
-                'Content-Type' => 'application/json',
-                'Authorization' => "Token token=#{your_token}"
-              }
-            )
-```
-
-```shell
-curl -X "PUT" "https://dashboard.shoprunback.com/api/v1/shipbacks/<shipback_id>" \
-     -H "Authorization: Token token=<your_token>" \
-     -H "Content-Type: application/json; charset=utf-8" \
-     -d $'{
-  "mode": "postal",
-  "order_id": "1f27f9d9-3b5c-4152-98b7-760f56967deaf",
-  "weight_in_grams": 3012,
-  "items": [
-    {
-      "item_id": "1f27f9d9-3b5c-4152-98b7-760f56967deat",
-      "reason_code": "doesnt_fit"
-    }
-  ],
-  "metadata": {
-    "foo": "bar"
-  },
-  "order": {
-    "ordered_at": "2017-02-03",
-    "order_number": "4548-9854",
-    "customer": {
-      "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-      "first_name": "Steve",
-      "last_name": "Jobs",
-      "email": "steve@apple.com",
-      "phone": "555-878-456",
-      "address": {
-        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-        "line1": "One Infinite Loop",
-        "line2": "Building B",
-        "zipcode": "95014",
-        "country_code": "US",
-        "city": "Cupertino",
-        "state": "California"
-      }
-    },
-    "metadata": {
-      "foo": "bar"
-    },
-    "items": [
-      {
-        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-        "name": "Iphone 14S",
-        "reference": "1234567890",
-        "price_in_cents": "1000",
-        "currency": "EUR",
-        "weight_in_grams": 1200,
-        "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-      }
-    ]
-  }
-}'
-```
-
-> The above command returns the same JSON object with the updated return:
-
-```json
-{
-  "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-  "mode": "postal",
-  "order_id": "1f27f9d9-3b5c-4152-98b7-760f56967deaf",
-  "weight_in_grams": 3012,
-  "items": [
-    {
-      "item_id": "1f27f9d9-3b5c-4152-98b7-760f56967deat",
-      "reason_code": "doesnt_fit"
-    }
-  ],
-  "metadata": {
-    "foo": "bar"
-  },
-  "order": {
-    "ordered_at": "2017-02-03",
-    "order_number": "4548-9854",
-    "customer": {
-      "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-      "first_name": "Steve",
-      "last_name": "Jobs",
-      "email": "steve@apple.com",
-      "phone": "555-878-456",
-      "address": {
-        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-        "line1": "One Infinite Loop",
-        "line2": "Building B",
-        "zipcode": "95014",
-        "country_code": "US",
-        "city": "Cupertino",
-        "state": "California"
-      }
-    },
-    "metadata": {
-      "foo": "bar"
-    },
-    "items": [
-      {
-        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-        "name": "Iphone 14S",
-        "reference": "1234567890",
-        "price_in_cents": "1000",
-        "currency": "EUR",
-        "weight_in_grams": 1200,
-        "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-      }
-    ]
-  }
-}
-```
-
-This endpoint updates an existing order.
-
-### HTTP Request
-
-`PUT https://dashboard.shoprunback.com/api/v1/shipbacks/:shipback_id`
-
-### Query Parameters
-
-Parameter | Required | Description
---------- | ----------- | --------------
-mode | yes | date of the order
-order_id | yes | the order id
-order | yes | order being returned (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
-weight_in_grams | yes | Weight of the return
-items | yes | Array of returned items (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
-
+stay tuned
