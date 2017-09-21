@@ -231,7 +231,11 @@
 <p>Welcome on the ShopRunBack public API, the inventor of the Return As A Service solution.
 This API provides all the endpoints for any e-commerce retailer to get all the features for an optimized return experience for its customers.</p>
 
-<p>You can also get the technical documentation and test it without coding on <a href="https://app.swaggerhub.com/apis/Shoprunback/SRB-APP/1.0.0">https://app.swaggerhub.com/apis/Shoprunback/SRB-APP/1.0.0</a>.</p>
+<p>You can also get the technical documentation and test it without coding on <a href="https://app.swaggerhub.com/apis/Shoprunback/SRB-APP">https://app.swaggerhub.com/apis/Shoprunback/SRB-APP</a>.</p>
+
+<p>If you got any questions, send an email to: julien_at_shoprunback.com.</p>
+
+<p>For feature request, use the built in form: https://dashboard.shoprunback.com/en/features.</p>
 
 <h1 id="authentication">Authentication</h1>
 
@@ -261,14 +265,14 @@ This API provides all the endpoints for any e-commerce retailer to get all the f
 
 <p><code class="prettyprint">Authorization: Token token=&lt;your_token&gt;</code></p>
 
-<h1 id="catalog">Catalog</h1>
+<h1 id="products-catalog">Products catalog</h1>
 
 <p>Once your account created and configured (follow the onboarding process for that), you must push your products catalog.
 Only product in the ShopRunBack catalog can be returned.</p>
 
 <p>First, create your brands if you have any and then create your products.</p>
 
-<h2 id="create-brand">Create brand</h2>
+<h2 id="create-a-brand">Create a brand</h2>
 
 <p>By default, once your retailer account is created and your company details entered, a default brand is created.
 But you can add your own brands if you have multiple brands in your catalog.</p>
@@ -325,7 +329,7 @@ But you can add your own brands if you have multiple brands in your catalog.</p>
 If you don&rsquo;t have more than one brand, you don&rsquo;t have to create another one, the default brand is enough.
 </aside>
 
-<h2 id="list-brands">List brands</h2>
+<h2 id="list-your-brands">List your brands</h2>
 <pre class="highlight ruby tab-ruby"><code><span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
               <span class="s2">"https://dashboard.shoprunback.com/api/v1/brands"</span><span class="p">,</span>
               <span class="ss">headers: </span><span class="p">{</span>
@@ -363,7 +367,11 @@ If you don&rsquo;t have more than one brand, you don&rsquo;t have to create anot
 
 <p><code class="prettyprint">GET https://dashboard.shoprunback.com/api/v1/brands</code></p>
 
-<h2 id="create-product">Create product</h2>
+<h2 id="add-your-products">Add your products</h2>
+
+<p>Push all your products catalog with this endpoint.</p>
+
+<p>The image in not mandatory but the return experience of your customer will be better with it.</p>
 <pre class="highlight ruby tab-ruby"><code><span class="n">body</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"label"</span><span class="p">:</span> <span class="s2">"Iphone 14S Blue"</span><span class="p">,</span>
   <span class="s2">"reference"</span><span class="p">:</span> <span class="s2">"IPHONE 14S B"</span><span class="p">,</span>
@@ -388,9 +396,9 @@ If you don&rsquo;t have more than one brand, you don&rsquo;t have to create anot
   "label": "Iphone 14S Blue",
   "reference": "IPHONE 14S B",
   "ean": "1258987561456",
-  "color": "Blue",
+  "weight_in_grams": 200,
   "brand_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-  "image_url": "http://www.apple.com/images/iphone-14s.jpg"
+  "picture_file_url": "http://www.apple.com/images/iphone-14s.jpg"
 }'</span>
 
 </code></pre>
@@ -405,12 +413,10 @@ If you don&rsquo;t have more than one brand, you don&rsquo;t have to create anot
   </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blue"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"brand_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"brand_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"image_base"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQAAAAA3bvkkAAAAAnRSTlMAAHaTzTgAAAAKSURBVHgBY2AAAAACAAFzdQEYAAAAAElFTkSuQmCC"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"picture_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://s3.amazonaws/assets/iphone_14s.jpg"</span><span class="w">
+  </span><span class="s2">"weight_in_grams"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"picture_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.eu-central-1.amazonaws.com/shoprunback-dev/products/484/7b4/f4-/pictures/medium.?1505912197"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint create a new product.</p>
-
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">POST https://dashboard.shoprunback.com/api/v1/products</code></p>
@@ -440,6 +446,11 @@ If you don&rsquo;t have more than one brand, you don&rsquo;t have to create anot
 <td>barcode</td>
 </tr>
 <tr>
+<td>weight_in_grams</td>
+<td>yes</td>
+<td>weight (grams) of the product (package included)</td>
+</tr>
+<tr>
 <td>color</td>
 <td>no</td>
 <td>displayed as is on the web return process (no translation)</td>
@@ -450,9 +461,14 @@ If you don&rsquo;t have more than one brand, you don&rsquo;t have to create anot
 <td>if you have created a brand and this product has this brand. Otherwise, the default brand is automaticaly used</td>
 </tr>
 <tr>
-<td>image_url</td>
-<td>yes</td>
+<td>picture_file_url</td>
+<td>no</td>
 <td>public URL to the product image (JPG or PNG), to avoid imperfect cropping, use a square image</td>
+</tr>
+<tr>
+<td>picture_file_base64</td>
+<td>no</td>
+<td>if your product&rsquo;s image is not hosted on the internet, you can provide it with a base64 version of it</td>
 </tr>
 </tbody></table>
 
@@ -460,25 +476,488 @@ If you don&rsquo;t have more than one brand, you don&rsquo;t have to create anot
 If you don&rsquo;t have more than one brand, you don&rsquo;t have to provide the brand_id.
 </aside>
 
-<h2 id="list-products">List products</h2>
+<h2 id="list-your-products">List your products</h2>
+<pre class="highlight ruby tab-ruby"><code><span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+              <span class="s2">"https://dashboard.shoprunback.com/api/v1/products"</span><span class="p">,</span>
+              <span class="ss">headers: </span><span class="p">{</span>
+                <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+                <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Token token=</span><span class="si">#{</span><span class="n">your_token</span><span class="si">}</span><span class="s2">"</span>
+              <span class="p">}</span>
+            <span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://dashboard.shoprunback.com/api/v1/products?page=1"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: Token token=&lt;your_token&gt;"</span> <span class="se">\</span>
+     -H <span class="s2">"Content-Type: application/json; charset=utf-8"</span> <span class="se">\</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"previous_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"next_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"products"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Iphone 14S Blue"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IPHONE 14S B"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ean"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1258987561456"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"brand_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"brand_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"picture_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://s3.amazonaws/assets/iphone_14s.jpg"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Iphone 14S Red"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IPHONE 14S B"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ean"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1258987561456"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"brand_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"brand_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"picture_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://s3.amazonaws/assets/iphone_14s.jpg"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>You can list all your products on ShopRunBack with this endpoint.</p>
+
+<p>The result is paginated, provide the <code class="prettyprint">page</code> parameter to get a page (default is page 1).</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://dashboard.shoprunback.com/api/v1/products?page=1</code></p>
 
 <h1 id="order">Order</h1>
 
-<h2 id="create-order">Create order</h2>
+<p>Once your catalog is uploaded on ShopRunBack, you can plug your e-commerce website to the ShopRunBack dashboard.</p>
 
-<h2 id="list-orders">List orders</h2>
+<p>Only an existing order can be returned. You have 2 possibilities, depending on your desired return flow :</p>
 
-<h2 id="update-orders">Update orders</h2>
+<ul>
+<li>When a user request a return on your website, you create the corresponding order on the API and initiate the corresponding return</li>
+<li>You push the order on the API directly after is processing on your website and just the redirect the customer when he/she requests a return</li>
+</ul>
 
+<p>In both cases, you will have to create the order, sooner or later.</p>
+
+<h2 id="create-an-order">Create an order</h2>
+
+<p>An order has a <code class="prettyprint">order_number</code>, a customer and a list of items.</p>
+
+<p>If you want to add extra data on the order, you can freely use the <code class="prettyprint">metadata</code> attribute (a simple key/value store).
+The ShopRunBack API will always returns this data without altering it.</p>
+<pre class="highlight ruby tab-ruby"><code><span class="n">body</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"ordered_at"</span><span class="p">:</span> <span class="s2">"2017-02-03"</span><span class="p">,</span>
+  <span class="s2">"order_number"</span><span class="p">:</span> <span class="s2">"4548-9854"</span><span class="p">,</span>
+  <span class="s2">"customer"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"first_name"</span><span class="p">:</span> <span class="s2">"Steve"</span><span class="p">,</span>
+    <span class="s2">"last_name"</span><span class="p">:</span> <span class="s2">"Jobs"</span><span class="p">,</span>
+    <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"steve@apple.com"</span><span class="p">,</span>
+    <span class="s2">"phone"</span><span class="p">:</span> <span class="s2">"555-878-456"</span><span class="p">,</span>
+    <span class="s2">"address"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"line1"</span><span class="p">:</span> <span class="s2">"One Infinite Loop"</span><span class="p">,</span>
+      <span class="s2">"line2"</span><span class="p">:</span> <span class="s2">"Building B"</span><span class="p">,</span>
+      <span class="s2">"zipcode"</span><span class="p">:</span> <span class="s2">"95014"</span><span class="p">,</span>
+      <span class="s2">"country_code"</span><span class="p">:</span> <span class="s2">"US"</span><span class="p">,</span>
+      <span class="s2">"city"</span><span class="p">:</span> <span class="s2">"Cupertino"</span><span class="p">,</span>
+      <span class="s2">"state"</span><span class="p">:</span> <span class="s2">"California"</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">"items"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">"product_id"</span><span class="p">:</span> <span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">],</span>
+  <span class="s2">"metadata"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"foo"</span><span class="p">:</span> <span class="s2">"bar"</span><span class="p">,</span>
+    <span class="s2">"bar"</span><span class="p">:</span> <span class="s2">"foo"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+              <span class="s2">"https://dashboard.shoprunback.com/api/v1/orders"</span><span class="p">,</span>
+              <span class="ss">body: </span><span class="n">body</span><span class="p">,</span>
+              <span class="ss">headers: </span><span class="p">{</span>
+                <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+                <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Token token=</span><span class="si">#{</span><span class="n">your_token</span><span class="si">}</span><span class="s2">"</span>
+              <span class="p">}</span>
+            <span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://dashboard.shoprunback.com/api/v1/orders"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: Token token=&lt;your_token&gt;"</span> <span class="se">\</span>
+     -H <span class="s2">"Content-Type: application/json; charset=utf-8"</span> <span class="se">\</span>
+     -d <span class="s1">$'{
+  "ordered_at": "2017-02-03",
+  "order_number": "4548-9854",
+  "customer": {
+    "first_name": "Steve",
+    "last_name": "Jobs",
+    "email": "steve@apple.com",
+    "phone": "555-878-456",
+    "address": {
+      "line1": "One Infinite Loop",
+      "line2": "Building B",
+      "zipcode": "95014",
+      "country_code": "US",
+      "city": "Cupertino",
+      "state": "California"
+    }
+  },
+  "items":
+  [
+    {
+      "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+    },
+    {
+      "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+    }
+  ],
+  "metadata": {
+    "foo": "bar",
+    "bar": "foo"
+  }
+}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns the same JSON object with the id of the created order, customer and items:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ordered_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-03"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4548-9854"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Steve"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jobs"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"steve@apple.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-878-456"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One Infinite Loop"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"line2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Building B"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"zipcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"95014"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cupertino"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"California"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Iphone 14S Red"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IPHONE 14S B"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ean"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1258987561456"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"brand_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"brand_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"picture_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://s3.amazonaws/assets/iphone_14s.jpg"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dec"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Iphone 14S Red"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IPHONE 14S B"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ean"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1258987561456"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"brand_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"brand_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"picture_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://s3.amazonaws/assets/iphone_14s.jpg"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"foo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://dashboard.shoprunback.com/api/v1/orders</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ordered_at</td>
+<td>yes</td>
+<td>date of the order</td>
+</tr>
+<tr>
+<td>order_number</td>
+<td>yes</td>
+<td>the customer&rsquo;s order number</td>
+</tr>
+<tr>
+<td>customer</td>
+<td>yes</td>
+<td>customer information (see <a href="https://app.swaggerhub.com/apis/Shoprunback/SRB-APP">swaggerhub documentation</a> for details)</td>
+</tr>
+<tr>
+<td>items</td>
+<td>yes</td>
+<td>Array of items (see <a href="https://app.swaggerhub.com/apis/Shoprunback/SRB-APP">swaggerhub documentation</a> for details)</td>
+</tr>
+<tr>
+<td>metadata</td>
+<td>no</td>
+<td>Anything you want to add to the order, this data will always be returned and never modified.</td>
+</tr>
+</tbody></table>
+
+<h2 id="list-all-orders">List all orders</h2>
+
+<p>This endpoint lists all your paginated orders.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://dashboard.shoprunback.com/api/v1/orders?page=1</code></p>
+<pre class="highlight ruby tab-ruby"><code><span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+              <span class="s2">"https://dashboard.shoprunback.com/api/v1/orders?page=1"</span><span class="p">,</span>
+              <span class="ss">headers: </span><span class="p">{</span>
+                <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+                <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Token token=</span><span class="si">#{</span><span class="n">your_token</span><span class="si">}</span><span class="s2">"</span>
+              <span class="p">}</span>
+            <span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://dashboard.shoprunback.com/api/v1/orders?page=1"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: Token token=&lt;your_token&gt;"</span> <span class="se">\</span>
+     -H <span class="s2">"Content-Type: application/json; charset=utf-8"</span> <span class="se">\</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"previous_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"next_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"orders"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ordered_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-03"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4548-9854"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Steve"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jobs"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"steve@apple.com"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-878-456"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One Infinite Loop"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"line2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Building B"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"zipcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"95014"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cupertino"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"California"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Iphone 14S Red"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IPHONE 14S B"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"ean"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1258987561456"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"brand_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"brand_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"picture_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://s3.amazonaws/assets/iphone_14s.jpg"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"foo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id="update-an-order">Update an order</h2>
+
+<p>This endpoint updates an existing order.</p>
+
+<p>Warning: if a return has already been finished (ie. the return label has been downloaded), you can&rsquo;t update the order.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT https://dashboard.shoprunback.com/api/v1/orders/:order_id</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ordered_at</td>
+<td>yes</td>
+<td>date of the order</td>
+</tr>
+<tr>
+<td>order_number</td>
+<td>yes</td>
+<td>the customer&rsquo;s order number</td>
+</tr>
+<tr>
+<td>customer</td>
+<td>yes</td>
+<td>customer object (see <a href="https://app.swaggerhub.com/apis/Shoprunback/SRB-APP">swaggerhub documentation</a> for details)</td>
+</tr>
+<tr>
+<td>items</td>
+<td>yes</td>
+<td>items&rsquo; array (see <a href="https://app.swaggerhub.com/apis/Shoprunback/SRB-APP">swaggerhub documentation</a> for details)</td>
+</tr>
+<tr>
+<td>metadata</td>
+<td>no</td>
+<td>Anything you want to add to the order, this data will always be returned and never modified.</td>
+</tr>
+</tbody></table>
+<pre class="highlight ruby tab-ruby"><code><span class="n">body</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"ordered_at"</span><span class="p">:</span> <span class="s2">"2017-02-03"</span><span class="p">,</span>
+  <span class="s2">"order_number"</span><span class="p">:</span> <span class="s2">"4548-9854"</span><span class="p">,</span>
+  <span class="s2">"customer"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"first_name"</span><span class="p">:</span> <span class="s2">"Steve"</span><span class="p">,</span>
+    <span class="s2">"last_name"</span><span class="p">:</span> <span class="s2">"Jobs"</span><span class="p">,</span>
+    <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"steve@apple.com"</span><span class="p">,</span>
+    <span class="s2">"phone"</span><span class="p">:</span> <span class="s2">"555-878-456"</span><span class="p">,</span>
+    <span class="s2">"address"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"line1"</span><span class="p">:</span> <span class="s2">"One Infinite Loop"</span><span class="p">,</span>
+      <span class="s2">"line2"</span><span class="p">:</span> <span class="s2">"Building B"</span><span class="p">,</span>
+      <span class="s2">"zipcode"</span><span class="p">:</span> <span class="s2">"95014"</span><span class="p">,</span>
+      <span class="s2">"country_code"</span><span class="p">:</span> <span class="s2">"US"</span><span class="p">,</span>
+      <span class="s2">"city"</span><span class="p">:</span> <span class="s2">"Cupertino"</span><span class="p">,</span>
+      <span class="s2">"state"</span><span class="p">:</span> <span class="s2">"California"</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">"items"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">"product_id"</span><span class="p">:</span> <span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">],</span>
+  <span class="s2">"metadata"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"foo"</span><span class="p">:</span> <span class="s2">"bar"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
+              <span class="s2">"https://dashboard.shoprunback.com/api/v1/orders/</span><span class="si">#{</span><span class="n">order_id</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+              <span class="ss">body: </span><span class="n">body</span><span class="p">,</span>
+              <span class="ss">headers: </span><span class="p">{</span>
+                <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+                <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Token token=</span><span class="si">#{</span><span class="n">your_token</span><span class="si">}</span><span class="s2">"</span>
+              <span class="p">}</span>
+            <span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X <span class="s2">"PUT"</span> <span class="s2">"https://dashboard.shoprunback.com/api/v1/orders/&lt;order_id&gt;"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: Token token=&lt;your_token&gt;"</span> <span class="se">\</span>
+     -H <span class="s2">"Content-Type: application/json; charset=utf-8"</span> <span class="se">\</span>
+     -d <span class="s1">$'{
+  "ordered_at": "2017-02-03",
+  "order_number": "4548-9854",
+  "customer": {
+    "first_name": "Steve",
+    "last_name": "Jobs",
+    "email": "steve@apple.com",
+    "phone": "555-878-456",
+    "address": {
+      "line1": "One Infinite Loop",
+      "line2": "Building B",
+      "zipcode": "95014",
+      "country_code": "US",
+      "city": "Cupertino",
+      "state": "California"
+    }
+  },
+  "items":
+  [
+    {
+      "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+      "product": {
+        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "label": "Iphone 14S Red",
+        "reference": "IPHONE 14S B",
+        "ean": "1258987561456",
+        "brand_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
+        "brand_name": "Apple",
+        "picture_url": "http://s3.amazonaws/assets/iphone_14s.jpg"
+      }
+    },
+  ],
+  "metadata": {
+    "foo": "bar"
+  }
+}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns the same JSON object with the updated order, customer or items:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ordered_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-03"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4548-9854"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Steve"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jobs"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"steve@apple.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-878-456"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One Infinite Loop"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"line2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Building B"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"zipcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"95014"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cupertino"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"California"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Iphone 14S Red"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IPHONE 14S B"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ean"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1258987561456"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"brand_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"brand_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"picture_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://s3.amazonaws/assets/iphone_14s.jpg"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"foo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <h1 id="return">Return</h1>
 
-<h2 id="pre-create-a-return">Pre-create a return</h2>
-
-<h2 id="create-a-ready-to-ship-return">Create a ready-to-ship return</h2>
-
-<h2 id="get-a-return">Get a return</h2>
-
-<h2 id="update-a-return">Update a return</h2>
+<p>stay tuned</p>
 
       </div>
       <div class="dark-box">
