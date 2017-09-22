@@ -200,7 +200,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;ruby&quot;,&quot;shell&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;php&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -210,8 +210,9 @@
     <div class="tocify-wrapper">
       <img src="images/logo.png" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="ruby">ruby</a>
               <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="ruby">ruby</a>
+              <a href="#" data-language-name="php">php</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -252,6 +253,39 @@ This API provides all the endpoints for any e-commerce retailer to get all the f
             <span class="p">)</span>
 </code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"&lt;endpoint&gt;"</span>
   -H <span class="s2">"Authorization: Token token=&lt;your_token&gt;"</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="err">&lt;</span>% php
+// Get cURL resource
+$ch = curl_init();
+
+// Set url
+curl_setopt($ch, CURLOPT_URL, endpoint);
+
+// Set method
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+
+// Set options
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+// Set headers
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+  "Content-Type: application/json; charset=utf-8",
+  "Authorization: Token token=<span class="nt">&lt;your</span><span class="na">_token</span><span class="nt">&gt;</span>",
+ ]
+);
+
+// Send the request <span class="err">&amp;</span> save response to $resp
+$resp = curl_exec($ch);
+
+if(!$resp) {
+  die('Error: "' . curl_error($ch) . '" - Code: ' . curl_errno($ch));
+} else {
+  echo "Response HTTP Status Code : " . curl_getinfo($ch, CURLINFO_HTTP_CODE);
+  echo "\nResponse HTTP Body : " . $resp;
+}
+
+// Close request to clear up some resources
+curl_close($ch);
+?&gt;
 </code></pre>
 <blockquote>
 <p>Replace <code class="prettyprint">your_token</code> with your API key.</p>
@@ -277,7 +311,8 @@ Only product in the ShopRunBack catalog can be returned.</p>
 <p>By default, once your retailer account is created and your company details entered, a default brand is created.
 But you can add your own brands if you have multiple brands in your catalog.</p>
 <pre class="highlight ruby tab-ruby"><code><span class="n">body</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="ss">name: </span><span class="s2">"Apple"</span>
+  <span class="ss">name: </span><span class="s2">"Apple"</span><span class="p">,</span>
+  <span class="ss">reference: </span><span class="s2">"apple"</span>
 <span class="p">}</span>
 
 <span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
@@ -292,8 +327,53 @@ But you can add your own brands if you have multiple brands in your catalog.</p>
      -H <span class="s2">"Authorization: Token token=&lt;your_token&gt;"</span> <span class="se">\</span>
      -H <span class="s2">"Content-Type: application/json; charset=utf-8"</span> <span class="se">\</span>
      -d <span class="s1">$'{
-  "name": "Apple"
+  "name": "Apple",
+  "reference": "apple"
 }'</span>
+
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="c1">// Get cURL resource
+</span><span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="c1">// Set url
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://dashboard.shoprunback.com/api/v1/brands'</span><span class="p">);</span>
+
+<span class="c1">// Set method
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_CUSTOMREQUEST</span><span class="p">,</span> <span class="s1">'POST'</span><span class="p">);</span>
+
+<span class="c1">// Set options
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// Set headers
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="p">[</span>
+  <span class="s2">"Authorization: Token token=&lt;your token&gt;"</span><span class="p">,</span>
+  <span class="s2">"Content-Type: application/json; charset=utf-8"</span><span class="p">,</span>
+ <span class="p">]</span>
+<span class="p">);</span>
+<span class="c1">// Create body
+</span><span class="nv">$json_array</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"Apple"</span><span class="p">,</span>
+            <span class="s2">"reference"</span> <span class="o">=&gt;</span> <span class="s2">"apple"</span>
+        <span class="p">];</span>
+<span class="nv">$body</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$json_array</span><span class="p">);</span>
+
+<span class="c1">// Set body
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_POST</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$body</span><span class="p">);</span>
+
+<span class="c1">// Send the request &amp; save response to $resp
+</span><span class="nv">$resp</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+
+<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$resp</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">die</span><span class="p">(</span><span class="s1">'Error: "'</span> <span class="o">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$ch</span><span class="p">)</span> <span class="o">.</span> <span class="s1">'" - Code: '</span> <span class="o">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$ch</span><span class="p">));</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">"Response HTTP Status Code : "</span> <span class="o">.</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+  <span class="k">echo</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">Response HTTP Body : "</span> <span class="o">.</span> <span class="nv">$resp</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Close request to clear up some resources
+</span><span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
 
 </code></pre>
 <blockquote>
@@ -302,6 +382,7 @@ But you can add your own brands if you have multiple brands in your catalog.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apple"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -316,12 +397,19 @@ But you can add your own brands if you have multiple brands in your catalog.</p>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>name</td>
+<td><strong>name</strong></td>
+<td>yes</td>
 <td>Name of the brand, displayed to the customer on the return process</td>
+</tr>
+<tr>
+<td><strong>reference</strong></td>
+<td>yes</td>
+<td>Unique reference of the brand (if you don&rsquo;t have any, use the name)</td>
 </tr>
 </tbody></table>
 
@@ -339,6 +427,41 @@ If you don&rsquo;t have more than one brand, you don&rsquo;t have to create anot
             <span class="p">)</span>
 </code></pre><pre class="highlight shell tab-shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://dashboard.shoprunback.com/api/v1/brands"</span> <span class="se">\</span>
      -H <span class="s2">"Authorization: Token token=&lt;your_token&gt;"</span> <span class="se">\</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// Get cURL resource
+</span><span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="c1">// Set url
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://dashboard.shoprunback.com/api/v1/brands'</span><span class="p">);</span>
+
+<span class="c1">// Set method
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_CUSTOMREQUEST</span><span class="p">,</span> <span class="s1">'GET'</span><span class="p">);</span>
+
+<span class="c1">// Set options
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// Set headers
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="p">[</span>
+  <span class="s2">"Authorization: Token token=&lt;your_token&gt;"</span><span class="p">,</span>
+ <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Send the request &amp; save response to $resp
+</span><span class="nv">$resp</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+
+<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$resp</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">die</span><span class="p">(</span><span class="s1">'Error: "'</span> <span class="o">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$ch</span><span class="p">)</span> <span class="o">.</span> <span class="s1">'" - Code: '</span> <span class="o">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$ch</span><span class="p">));</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">"Response HTTP Status Code : "</span> <span class="o">.</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+  <span class="k">echo</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">Response HTTP Body : "</span> <span class="o">.</span> <span class="nv">$resp</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Close request to clear up some resources
+</span><span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span>
+
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -347,16 +470,19 @@ If you don&rsquo;t have more than one brand, you don&rsquo;t have to create anot
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967deb"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apple"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dec"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samsung"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"samsung"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -376,7 +502,7 @@ If you don&rsquo;t have more than one brand, you don&rsquo;t have to create anot
   <span class="s2">"label"</span><span class="p">:</span> <span class="s2">"Iphone 14S Blue"</span><span class="p">,</span>
   <span class="s2">"reference"</span><span class="p">:</span> <span class="s2">"IPHONE 14S B"</span><span class="p">,</span>
   <span class="s2">"ean"</span><span class="p">:</span> <span class="s2">"1258987561456"</span><span class="p">,</span>
-  <span class="s2">"color"</span><span class="p">:</span> <span class="s2">"Blue"</span><span class="p">,</span>
+  <span class="s2">"weight_grams"</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
   <span class="s2">"brand_id"</span><span class="p">:</span> <span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span>
   <span class="s2">"image_url"</span><span class="p">:</span> <span class="s2">"http://www.apple.com/images/iphone-14s.jpg"</span>
 <span class="p">}</span>
@@ -396,11 +522,65 @@ If you don&rsquo;t have more than one brand, you don&rsquo;t have to create anot
   "label": "Iphone 14S Blue",
   "reference": "IPHONE 14S B",
   "ean": "1258987561456",
-  "weight_in_grams": 200,
+  "weight_grams": 200,
   "brand_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
   "picture_file_url": "http://www.apple.com/images/iphone-14s.jpg"
 }'</span>
 
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// Get cURL resource
+</span><span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="c1">// Set url
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://dashboard.shoprunback.com/api/v1/products'</span><span class="p">);</span>
+
+<span class="c1">// Set method
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_CUSTOMREQUEST</span><span class="p">,</span> <span class="s1">'POST'</span><span class="p">);</span>
+
+<span class="c1">// Set options
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// Set headers
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="p">[</span>
+  <span class="s2">"Authorization: Token token=&lt;your token&gt;"</span><span class="p">,</span>
+  <span class="s2">"Content-Type: application/json; charset=utf-8"</span><span class="p">,</span>
+ <span class="p">]</span>
+<span class="p">);</span>
+<span class="c1">// Create body
+</span><span class="nv">$json_array</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">"reference"</span> <span class="o">=&gt;</span> <span class="s2">"IPHONE 14S B"</span><span class="p">,</span>
+            <span class="s2">"id"</span> <span class="o">=&gt;</span> <span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span>
+            <span class="s2">"picture_url"</span> <span class="o">=&gt;</span> <span class="s2">"https://s3.eu-central-1.amazonaws.com/shoprunback-dev/products/484/7b4/f4-/pictures/medium.?1505912197"</span><span class="p">,</span>
+            <span class="s2">"label"</span> <span class="o">=&gt;</span> <span class="s2">"Iphone 14S Blue"</span><span class="p">,</span>
+            <span class="s2">"weight_grams"</span> <span class="o">=&gt;</span> <span class="mi">200</span><span class="p">,</span>
+            <span class="s2">"brand"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s2">"id"</span> <span class="o">=&gt;</span> <span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span>
+                <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"Apple"</span><span class="p">,</span>
+                <span class="s2">"reference"</span> <span class="o">=&gt;</span> <span class="s2">"apple"</span>
+            <span class="p">],</span>
+            <span class="s2">"ean"</span> <span class="o">=&gt;</span> <span class="s2">"1258987561456"</span>
+        <span class="p">];</span>
+<span class="nv">$body</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$json_array</span><span class="p">);</span>
+
+<span class="c1">// Set body
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_POST</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$body</span><span class="p">);</span>
+
+<span class="c1">// Send the request &amp; save response to $resp
+</span><span class="nv">$resp</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+
+<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$resp</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">die</span><span class="p">(</span><span class="s1">'Error: "'</span> <span class="o">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$ch</span><span class="p">)</span> <span class="o">.</span> <span class="s1">'" - Code: '</span> <span class="o">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$ch</span><span class="p">));</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">"Response HTTP Status Code : "</span> <span class="o">.</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+  <span class="k">echo</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">Response HTTP Body : "</span> <span class="o">.</span> <span class="nv">$resp</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Close request to clear up some resources
+</span><span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span>
 </code></pre>
 <blockquote>
 <p>The above command returns the same JSON object with the id of the created product:</p>
@@ -410,11 +590,13 @@ If you don&rsquo;t have more than one brand, you don&rsquo;t have to create anot
   </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Iphone 14S Blue"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IPHONE 14S B"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"ean"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1258987561456"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blue"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"brand_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"brand_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"weight_in_grams"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"picture_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.eu-central-1.amazonaws.com/shoprunback-dev/products/484/7b4/f4-/pictures/medium.?1505912197"</span><span class="w">
+  </span><span class="s2">"weight_grams"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"picture_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.eu-central-1.amazonaws.com/shoprunback-dev/products/484/7b4/f4-/pictures/medium.?1505912197"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apple"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
@@ -431,29 +613,24 @@ If you don&rsquo;t have more than one brand, you don&rsquo;t have to create anot
 </tr>
 </thead><tbody>
 <tr>
-<td>label</td>
+<td><strong>label</strong></td>
 <td>yes</td>
 <td>Label of the product (ie. common name)</td>
 </tr>
 <tr>
-<td>reference</td>
+<td><strong>reference</strong></td>
 <td>yes</td>
 <td>unique reference in your catalog</td>
+</tr>
+<tr>
+<td><strong>weight_grams</strong></td>
+<td>yes</td>
+<td>weight (grams) of the product (package included)</td>
 </tr>
 <tr>
 <td>ean</td>
 <td>no</td>
 <td>barcode</td>
-</tr>
-<tr>
-<td>weight_in_grams</td>
-<td>yes</td>
-<td>weight (grams) of the product (package included)</td>
-</tr>
-<tr>
-<td>color</td>
-<td>no</td>
-<td>displayed as is on the web return process (no translation)</td>
 </tr>
 <tr>
 <td>brand_id</td>
@@ -476,6 +653,173 @@ If you don&rsquo;t have more than one brand, you don&rsquo;t have to create anot
 If you don&rsquo;t have more than one brand, you don&rsquo;t have to provide the brand_id.
 </aside>
 
+<h2 id="create-a-product-with-its-brand">Create a product with its brand</h2>
+
+<p>You can create your product directly with the brand object embedded.</p>
+
+<p>If 2 products have the same brand&rsquo;s <code class="prettyprint">reference</code>, only one brand object is created.</p>
+
+<p>The image in not mandatory but the return experience of your customer will be better with it.</p>
+<pre class="highlight ruby tab-ruby"><code><span class="n">body</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"label"</span><span class="p">:</span> <span class="s2">"Iphone 14S Blue"</span><span class="p">,</span>
+  <span class="s2">"reference"</span><span class="p">:</span> <span class="s2">"IPHONE 14S B"</span><span class="p">,</span>
+  <span class="s2">"ean"</span><span class="p">:</span> <span class="s2">"1258987561456"</span><span class="p">,</span>
+  <span class="s2">"brand"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Apple"</span><span class="p">,</span>
+    <span class="s2">"reference"</span><span class="p">:</span> <span class="s2">"apple"</span>
+  <span class="p">},</span>
+  <span class="s2">"image_url"</span><span class="p">:</span> <span class="s2">"http://www.apple.com/images/iphone-14s.jpg"</span>
+<span class="p">}</span>
+
+<span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+              <span class="s2">"https://dashboard.shoprunback.com/api/v1/products"</span><span class="p">,</span>
+              <span class="ss">body: </span><span class="n">body</span><span class="p">,</span>
+              <span class="ss">headers: </span><span class="p">{</span>
+                <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+                <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Token token=</span><span class="si">#{</span><span class="n">your_token</span><span class="si">}</span><span class="s2">"</span>
+              <span class="p">}</span>
+            <span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://dashboard.shoprunback.com/api/v1/products"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: Token token=&lt;your_token&gt;"</span> <span class="se">\</span>
+     -H <span class="s2">"Content-Type: application/json; charset=utf-8"</span> <span class="se">\</span>
+     -d <span class="s1">$'{
+  "label": "Iphone 14S Blue",
+  "reference": "IPHONE 14S B",
+  "ean": "1258987561456",
+  "weight_in_grams": 200,
+  "brand": {
+    "name": "Apple",
+    "reference": "apple"
+  },
+  "picture_file_url": "http://www.apple.com/images/iphone-14s.jpg"
+}'</span>
+
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// Get cURL resource
+</span><span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="c1">// Set url
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'http://localhost:3000/api/v1/products'</span><span class="p">);</span>
+
+<span class="c1">// Set method
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_CUSTOMREQUEST</span><span class="p">,</span> <span class="s1">'POST'</span><span class="p">);</span>
+
+<span class="c1">// Set options
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// Set headers
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="p">[</span>
+  <span class="s2">"Authorization: Token token=&lt;your token&gt;"</span><span class="p">,</span>
+  <span class="s2">"Content-Type: application/json; charset=utf-8"</span><span class="p">,</span>
+ <span class="p">]</span>
+<span class="p">);</span>
+<span class="c1">// Create body
+</span><span class="nv">$json_array</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">"reference"</span> <span class="o">=&gt;</span> <span class="s2">"IPHONE 14S B"</span><span class="p">,</span>
+            <span class="s2">"id"</span> <span class="o">=&gt;</span> <span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span>
+            <span class="s2">"picture_url"</span> <span class="o">=&gt;</span> <span class="s2">"https://s3.eu-central-1.amazonaws.com/shoprunback-dev/products/484/7b4/f4-/pictures/medium.?1505912197"</span><span class="p">,</span>
+            <span class="s2">"label"</span> <span class="o">=&gt;</span> <span class="s2">"Iphone 14S Blue"</span><span class="p">,</span>
+            <span class="s2">"brand"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s2">"id"</span> <span class="o">=&gt;</span> <span class="s2">"20d0be72-a191-4eb8-af22-9dd4c3e65fe8"</span><span class="p">,</span>
+                <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"Apple"</span><span class="p">,</span>
+                <span class="s2">"reference"</span> <span class="o">=&gt;</span> <span class="s2">"apple"</span>
+            <span class="p">],</span>
+            <span class="s2">"weight_grams"</span> <span class="o">=&gt;</span> <span class="mi">200</span><span class="p">,</span>
+            <span class="s2">"ean"</span> <span class="o">=&gt;</span> <span class="s2">"1258987561456"</span>
+        <span class="p">];</span>
+<span class="nv">$body</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$json_array</span><span class="p">);</span>
+
+<span class="c1">// Set body
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_POST</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$body</span><span class="p">);</span>
+
+<span class="c1">// Send the request &amp; save response to $resp
+</span><span class="nv">$resp</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+
+<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$resp</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">die</span><span class="p">(</span><span class="s1">'Error: "'</span> <span class="o">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$ch</span><span class="p">)</span> <span class="o">.</span> <span class="s1">'" - Code: '</span> <span class="o">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$ch</span><span class="p">));</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">"Response HTTP Status Code : "</span> <span class="o">.</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+  <span class="k">echo</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">Response HTTP Body : "</span> <span class="o">.</span> <span class="nv">$resp</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Close request to clear up some resources
+</span><span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns the same JSON object with the id of the created product:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Iphone 14S Blue"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IPHONE 14S B"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ean"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1258987561456"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20d0be72-a191-4eb8-af22-9dd4c3e65fe8"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apple"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"weight_grams"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"picture_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.eu-central-1.amazonaws.com/shoprunback-dev/products/484/7b4/f4-/pictures/medium.?1505912197"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://dashboard.shoprunback.com/api/v1/products</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>label</strong></td>
+<td>yes</td>
+<td>Label of the product (ie. common name)</td>
+</tr>
+<tr>
+<td><strong>reference</strong></td>
+<td>yes</td>
+<td>unique reference in your catalog</td>
+</tr>
+<tr>
+<td><strong>weight_grams</strong></td>
+<td>yes</td>
+<td>weight (grams) of the product (package included)</td>
+</tr>
+<tr>
+<td>ean</td>
+<td>no</td>
+<td>barcode</td>
+</tr>
+<tr>
+<td>color</td>
+<td>no</td>
+<td>displayed as is on the web return process (no translation)</td>
+</tr>
+<tr>
+<td>brand</td>
+<td>no</td>
+<td>the brand object with all its required attributes</td>
+</tr>
+<tr>
+<td>picture_file_url</td>
+<td>no</td>
+<td>public URL to the product image (JPG or PNG), to avoid imperfect cropping, use a square image</td>
+</tr>
+<tr>
+<td>picture_file_base64</td>
+<td>no</td>
+<td>if your product&rsquo;s image is not hosted on the internet, you can provide it with a base64 version of it</td>
+</tr>
+</tbody></table>
+
 <h2 id="list-your-products">List your products</h2>
 <pre class="highlight ruby tab-ruby"><code><span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
               <span class="s2">"https://dashboard.shoprunback.com/api/v1/products"</span><span class="p">,</span>
@@ -488,6 +832,40 @@ If you don&rsquo;t have more than one brand, you don&rsquo;t have to provide the
      -H <span class="s2">"Authorization: Token token=&lt;your_token&gt;"</span> <span class="se">\</span>
      -H <span class="s2">"Content-Type: application/json; charset=utf-8"</span> <span class="se">\</span>
 
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// Get cURL resource
+</span><span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="c1">// Set url
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://dashboard.shoprunback.com/api/v1/products?page=1'</span><span class="p">);</span>
+
+<span class="c1">// Set method
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_CUSTOMREQUEST</span><span class="p">,</span> <span class="s1">'GET'</span><span class="p">);</span>
+
+<span class="c1">// Set options
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// Set headers
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="p">[</span>
+  <span class="s2">"Authorization: Token token=&lt;your token&gt;"</span><span class="p">,</span>
+ <span class="p">]</span>
+<span class="p">);</span>
+
+
+<span class="c1">// Send the request &amp; save response to $resp
+</span><span class="nv">$resp</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+
+<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$resp</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">die</span><span class="p">(</span><span class="s1">'Error: "'</span> <span class="o">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$ch</span><span class="p">)</span> <span class="o">.</span> <span class="s1">'" - Code: '</span> <span class="o">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$ch</span><span class="p">));</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">"Response HTTP Status Code : "</span> <span class="o">.</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+  <span class="k">echo</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">Response HTTP Body : "</span> <span class="o">.</span> <span class="nv">$resp</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Close request to clear up some resources
+</span><span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -508,8 +886,11 @@ If you don&rsquo;t have more than one brand, you don&rsquo;t have to provide the
         </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Iphone 14S Blue"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IPHONE 14S B"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"ean"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1258987561456"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"brand_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"brand_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20d0be72-a191-4eb8-af22-9dd4c3e65fe8"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apple"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
         </span><span class="s2">"picture_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://s3.amazonaws/assets/iphone_14s.jpg"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
@@ -518,8 +899,11 @@ If you don&rsquo;t have more than one brand, you don&rsquo;t have to provide the
         </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Iphone 14S Red"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IPHONE 14S B"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"ean"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1258987561456"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"brand_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"brand_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20d0be72-a191-4eb8-af22-9dd4c3e65fe8"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apple"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
         </span><span class="s2">"picture_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://s3.amazonaws/assets/iphone_14s.jpg"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -622,6 +1006,74 @@ The ShopRunBack API will always returns this data without altering it.</p>
     "bar": "foo"
   }
 }'</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// Get cURL resource
+</span><span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="c1">// Set url
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://dashboard.shoprunback.com/api/v1/orders'</span><span class="p">);</span>
+
+<span class="c1">// Set method
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_CUSTOMREQUEST</span><span class="p">,</span> <span class="s1">'POST'</span><span class="p">);</span>
+
+<span class="c1">// Set options
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// Set headers
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="p">[</span>
+  <span class="s2">"Authorization: Token token=&lt;your token&gt;"</span><span class="p">,</span>
+  <span class="s2">"Content-Type: application/json; charset=utf-8"</span><span class="p">,</span>
+ <span class="p">]</span>
+<span class="p">);</span>
+<span class="c1">// Create body
+</span><span class="nv">$json_array</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">"order_number"</span> <span class="o">=&gt;</span> <span class="s2">"4548-9854"</span><span class="p">,</span>
+            <span class="s2">"metadata"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s2">"foo"</span> <span class="o">=&gt;</span> <span class="s2">"bar"</span><span class="p">,</span>
+                <span class="s2">"bar"</span> <span class="o">=&gt;</span> <span class="s2">"foo"</span>
+            <span class="p">],</span>
+            <span class="s2">"customer"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s2">"email"</span> <span class="o">=&gt;</span> <span class="s2">"steve@apple.com"</span><span class="p">,</span>
+                <span class="s2">"phone"</span> <span class="o">=&gt;</span> <span class="s2">"555-878-456"</span><span class="p">,</span>
+                <span class="s2">"last_name"</span> <span class="o">=&gt;</span> <span class="s2">"Jobs"</span><span class="p">,</span>
+                <span class="s2">"first_name"</span> <span class="o">=&gt;</span> <span class="s2">"Steve"</span><span class="p">,</span>
+                <span class="s2">"address"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                    <span class="s2">"country_code"</span> <span class="o">=&gt;</span> <span class="s2">"US"</span><span class="p">,</span>
+                    <span class="s2">"line2"</span> <span class="o">=&gt;</span> <span class="s2">"Building B"</span><span class="p">,</span>
+                    <span class="s2">"state"</span> <span class="o">=&gt;</span> <span class="s2">"California"</span><span class="p">,</span>
+                    <span class="s2">"line1"</span> <span class="o">=&gt;</span> <span class="s2">"One Infinite Loop"</span><span class="p">,</span>
+                    <span class="s2">"zipcode"</span> <span class="o">=&gt;</span> <span class="s2">"95014"</span><span class="p">,</span>
+                    <span class="s2">"city"</span> <span class="o">=&gt;</span> <span class="s2">"Cupertino"</span>
+                <span class="p">]</span>
+            <span class="p">],</span>
+            <span class="s2">"items"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="p">[</span>
+                    <span class="s2">"product_id"</span> <span class="o">=&gt;</span> <span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span>
+                <span class="p">]</span>
+            <span class="p">],</span>
+            <span class="s2">"ordered_at"</span> <span class="o">=&gt;</span> <span class="s2">"2017-02-03"</span>
+        <span class="p">];</span>
+<span class="nv">$body</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$json_array</span><span class="p">);</span>
+
+<span class="c1">// Set body
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_POST</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$body</span><span class="p">);</span>
+
+<span class="c1">// Send the request &amp; save response to $resp
+</span><span class="nv">$resp</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+
+<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$resp</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">die</span><span class="p">(</span><span class="s1">'Error: "'</span> <span class="o">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$ch</span><span class="p">)</span> <span class="o">.</span> <span class="s1">'" - Code: '</span> <span class="o">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$ch</span><span class="p">));</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">"Response HTTP Status Code : "</span> <span class="o">.</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+  <span class="k">echo</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">Response HTTP Body : "</span> <span class="o">.</span> <span class="nv">$resp</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Close request to clear up some resources
+</span><span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span>
 </code></pre>
 <blockquote>
 <p>The above command returns the same JSON object with the id of the created order, customer and items:</p>
@@ -691,22 +1143,22 @@ The ShopRunBack API will always returns this data without altering it.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>ordered_at</td>
+<td><strong>ordered_at</strong></td>
 <td>yes</td>
 <td>date of the order</td>
 </tr>
 <tr>
-<td>order_number</td>
+<td><strong>order_number</strong></td>
 <td>yes</td>
 <td>the customer&rsquo;s order number</td>
 </tr>
 <tr>
-<td>customer</td>
+<td><strong>customer</strong></td>
 <td>yes</td>
 <td>customer information (see <a href="https://app.swaggerhub.com/apis/Shoprunback/SRB-APP">swaggerhub documentation</a> for details)</td>
 </tr>
 <tr>
-<td>items</td>
+<td><strong>items</strong></td>
 <td>yes</td>
 <td>Array of items (see <a href="https://app.swaggerhub.com/apis/Shoprunback/SRB-APP">swaggerhub documentation</a> for details)</td>
 </tr>
@@ -962,8 +1414,9 @@ The ShopRunBack API will always returns this data without altering it.</p>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="ruby">ruby</a>
                 <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="ruby">ruby</a>
+                <a href="#" data-language-name="php">php</a>
           </div>
       </div>
     </div>
