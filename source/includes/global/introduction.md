@@ -14,3 +14,7 @@ Depending on your use of the products provided by ShopRunBack, you can find the 
 * Retailer dashboard: [click here](/dashboard.html) (in progress)
 * PHP Library: [click here](/php.html) (in progress)
 * Mobile inventory application for retailers: [click here](/inventory.html) (in progress)
+
+For further details about ShopRunBack, please contact us at: support _at_ shoprunback.com .
+
+For technical support, please contact us at: dev _at_ shoprunback.com .
