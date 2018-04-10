@@ -9,10 +9,7 @@ toc_footers:
   - <a href='https://s3.amazonaws.com/srb-public/prestashop/shoprunback-prestashop.zip'>Download the module</a>
 
 includes:
-  - prestashop/introduction
-  - prestashop/versions
-  - prestashop/download
-  - prestashop/install
+  - inventory/introduction
 
 search: false
 ---
