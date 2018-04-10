@@ -1,0 +1,18 @@
+<h1 id="documentation">Documentation</h1>
+
+<p>Welcome on the ShopRunBack&rsquo;s Documentation.</p>
+
+<p>ShopRunBack is the inventor of the Return As A Service solution.</p>
+
+<p>Depending on your use of the products provided by ShopRunBack, you can find the appropriate documentation:</p>
+
+<ul>
+<li>Prestashop website: <a href="../../prestashop.html">click here</a> (in progress)</li>
+<li>Magento (1.0+) website: <a href="../../magento1.html">click here</a> (not yet supported)</li>
+<li>Magento (2.0+) website: <a href="../../magento2.html">click here</a> (not yet supported)</li>
+<li>Shopify website: <a href="../../shopify.html">click here</a> (not yet supported)</li>
+<li>ShopRunBack REST API: <a href="../../api.html">click here</a></li>
+<li>Retailer dashboard: <a href="../../dashboard.html">click here</a> (in progress)</li>
+<li>PHP Library: <a href="../../php.html">click here</a> (in progress)</li>
+<li>Mobile inventory application for retailers: <a href="../../inventory.html">click here</a> (in progress)</li>
+</ul>
