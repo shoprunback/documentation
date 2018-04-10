@@ -1,4 +1,4 @@
-[Go back to the main documentation](/)
+[Go back to the main documentation](./)
 
 # ShopRunBack's Prestashop Module
 
