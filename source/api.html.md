@@ -17,6 +17,7 @@ includes:
   - api/catalog/product
   - api/order
   - api/shipback
+  - api/webhooks
 
 resources:
   - account
