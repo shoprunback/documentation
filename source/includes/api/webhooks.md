@@ -6,7 +6,7 @@ Basically, a webhook is a JSON Object send by HTTP (POST) to an URL you have set
 
 The server expect a 200 response (`HTTP OK`) when posting the webhook, otherwise it is marked as not received successfully on the dashboard.
 
-[Go to the webhooks dashboard](https://staging.dashboard.shoprunback.com/en/webhooks).
+[Go to the webhooks dashboard](https://dashboard.shoprunback.com/en/webhooks).
 
 
 ## List
