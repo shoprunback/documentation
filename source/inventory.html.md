@@ -13,6 +13,7 @@ includes:
   - inventory/list
   - inventory/scan
   - inventory/account
+  - inventory/troubleshooting
 
 search: false
 ---
