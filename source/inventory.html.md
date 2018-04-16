@@ -12,6 +12,7 @@ includes:
   - inventory/login
   - inventory/list
   - inventory/scan
+  - inventory/account
 
 search: false
 ---

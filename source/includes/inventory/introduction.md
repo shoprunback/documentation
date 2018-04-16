@@ -10,4 +10,4 @@ It allows you to track your incoming parcels.
 
 Screenshots below are all made using an iPhone 6. The interface is the same for both platforms.
 
-For any questions please send an email to : leo_at_shoprunback.com
+If you have any question please send an email to : leo_at_shoprunback.com
