@@ -1,6 +1,6 @@
 # Scan parcels
 
-Scan a parcel, when it is recognized you should hear a single beep (play it [here](https://clyp.it/irpoec3u))
+Scan a parcel, when it is recognized you should hear a single beep (preview it [here](https://clyp.it/irpoec3u))
 
 ![img_6f777ce7d176-1](images/scan.jpeg)
 
