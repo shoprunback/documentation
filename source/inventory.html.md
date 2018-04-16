@@ -1,8 +1,5 @@
 ---
-title: ShopRunBack Documentation for the prestashop addon
-
-language_tabs:
-  - php: PHP
+title: ShopRunBack Documentation for the inventory application
 
 toc_footers:
   - <a href='http://dashboard.shoprunback.com'>Sign Up for a Developer Key</a>
