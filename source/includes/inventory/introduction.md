@@ -6,6 +6,8 @@ The inventory app is a mobile app (iOS and Android) to process your incoming inv
 
 It is available in English and French.
 
-It allows you to scan incoming parcels so that you can reimburse/exchange your customers even faster.
+It allows you to track your incoming parcels.
+
+Screenshots below are all made using an iPhone 6. The interface is the same for both platforms.
 
 For any questions please send an email to : leo_at_shoprunback.com

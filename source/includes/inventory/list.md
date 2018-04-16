@@ -1,4 +1,4 @@
-# Expected parcels
+# Incoming parcels
 
 This displays your warehouse's incoming parcels.
 
