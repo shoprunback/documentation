@@ -1,7 +1,6 @@
 # Authentication
 
-
-In order to authentify yourself on the application, you need to visit this [website](https://google.fr). This generates a QRCode that contains a token that expires after 24 hours.
+In order to authentify yourself on the application, you need to visit this [website](https://google.fr). It will generate a QRCode that contains a token set to expire after 24 hours.
 
 <aside class="notice">
   You can only login with a QRCode
