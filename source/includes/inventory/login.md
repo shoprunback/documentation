@@ -9,10 +9,10 @@ In order to authentify yourself on the application, you need to visit this [webs
 
 Once you have obtained a QRCode, scan it with the application.
 
-![image 1](images/login.png)
+![login](images/login.png)
 
 If the token is valid you should be authentified and redirected to the application's home.
 
 If not, a red banner saying **USER NOT FOUND** will appear briefly. If that happens, just go back to [https://google.fr](https://google.fr) and regenerate a QRCode.
 
-![image 2](images/login-error.png)
+![login-error](images/login-error.png)
