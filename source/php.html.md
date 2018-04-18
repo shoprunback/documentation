@@ -9,6 +9,12 @@ toc_footers:
 
 includes:
   - php/introduction
+  - php/authentication
+  - php/elements
+  - php/elements/account
+  - php/elements/brand
+  - php/elements/product
+  - php/elements/order
 
 search: false
 ---
