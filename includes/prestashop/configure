@@ -1,0 +1,28 @@
+<h1 id="configure-the-module">Configure the module</h1>
+
+<h2 id="connect-my-shoprunback-account-to-the-module">Connect my ShopRunBack account to the module</h2>
+
+<p>To share your data with ShopRunBack, you must take the <a href="https://dashboard.shoprunback.com/fr/tokens">authentication token of your ShopRunBack account</a>.</p>
+
+<p>Copy it and go back to your website.</p>
+
+<p>Click on the &ldquo;ShopRunBack&rdquo; tab in the left menu, go to &ldquo;Configuration&rdquo;, paste your token in the &ldquo;API Token&rdquo; field and save your configuration.</p>
+
+<p>Now, you can share your data with your ShopRunBack account!</p>
+
+<h2 id="synchronize-your-data">Synchronize your data!</h2>
+
+<p>After configuring your account, we recommend you to directly synchronize all your brands, products and orders.</p>
+
+<h2 id="environment">Environment</h2>
+
+<aside class="warning">
+  Be careful about which environment is set in your configuration!
+</aside>
+
+<p>There are 2 modes:</p>
+
+<ul>
+<li>Sandbox: It is a <b>test</b> environment. The data on this environment is reset every monday.</li>
+<li>Production: It is where your customers&rsquo; return demands are made. <b>This is real data</b>!</li>
+</ul>

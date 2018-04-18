@@ -229,29 +229,129 @@
 
 <p>Welcome on the documentation for the ShopRunBack module for Prestashop.</p>
 
+<p>This module will help you to manage your returns with ShopRunBack while staying on your own site.</p>
+
+<p>If you have any question, please send an email to: tech_at_shoprunback.com</p>
+
           <h1 id="supported-versions">Supported versions</h1>
 
 <p>The module is compatible with all versions starting from 1.6.0.9.</p>
 
 <p>If your version is below, please update your Prestashop before.</p>
 
-          <h1 id="download">Download</h1>
-
-<p><a href="https://s3.amazonaws.com/srb-public/prestashop/shoprunback-prestashop.zip">Click here</a> to download the module.</p>
-
           <h1 id="install-the-module">Install the module</h1>
 
-<h2 id="todo">TODO</h2>
+<h2 id="create-your-own-shoprunback-account">Create your own ShopRunBack account</h2>
 
-<p>TODO</p>
+<p>First of all, you must create your own ShopRunBack account <a href="https://dashboard.shoprunback.com">here</a>.</p>
 
-<h2 id="todo">TODO</h2>
+<h2 id="download-the-module">Download the module</h2>
 
-<p>TODO</p>
+<p><a href="images/prestashop/shoprunback-prestashop.zip">Click here</a> to download the module.</p>
 
-<h2 id="todo">TODO</h2>
+<h2 id="install-on-your-site">Install on your site</h2>
 
-<p>TODO</p>
+<p>Then, go to the back-office of your website, then go to modules.</p>
+
+<p>Click on &ldquo;Add a new module&rdquo;, select the .zip you just downloaded and click on &ldquo;Upload this module&rdquo;.</p>
+
+          <h1 id="configure-the-module">Configure the module</h1>
+
+<h2 id="connect-my-shoprunback-account-to-the-module">Connect my ShopRunBack account to the module</h2>
+
+<p>To share your data with ShopRunBack, you must take the <a href="https://dashboard.shoprunback.com/fr/tokens">authentication token of your ShopRunBack account</a>.</p>
+
+<p>Copy it and go back to your website.</p>
+
+<p>Click on the &ldquo;ShopRunBack&rdquo; tab in the left menu, go to &ldquo;Configuration&rdquo;, paste your token in the &ldquo;API Token&rdquo; field and save your configuration.</p>
+
+<p>Now, you can share your data with your ShopRunBack account!</p>
+
+<h2 id="synchronize-your-data">Synchronize your data!</h2>
+
+<p>After configuring your account, we recommend you to directly synchronize all your brands, products and orders.</p>
+
+<h2 id="environment">Environment</h2>
+
+<aside class="warning">
+  Be careful about which environment is set in your configuration!
+</aside>
+
+<p>There are 2 modes:</p>
+
+<ul>
+<li>Sandbox: It is a <b>test</b> environment. The data on this environment is reset every monday.</li>
+<li>Production: It is where your customers&rsquo; return demands are made. <b>This is real data</b>!</li>
+</ul>
+
+          <h1 id="use-the-module">Use the module</h1>
+
+<h2 id="synchronize-your-data">Synchronize your data</h2>
+
+<p>The ShopRunBack tab summarizes your returns, products, brands and orders, and allows you to synchronize them with ShopRunBack.</p>
+
+<p>On each tab, you can see your data and can synchronize each of them at any time, or all at once.</p>
+
+<p>You must always have your data synchronized with ShopRunBack to avoid any discrepancies.</p>
+
+<h2 id="what-is-automatically-synchronized">What is automatically synchronized?</h2>
+
+<p>For instance, some of your data is automatically synchronized after some actions:</p>
+
+<ul>
+<li>Product
+
+<ul>
+<li>When you create a product</li>
+<li>When you edit a product</li>
+<li>When you delete a product</li>
+</ul></li>
+<li>Order
+
+<ul>
+<li>When you or a customer create a product</li>
+<li>When the status of an order changes</li>
+</ul></li>
+<li>Return
+
+<ul>
+<li>When a return is modified on ShopRunBack</li>
+</ul></li>
+</ul>
+
+<aside class="warning">
+  You still need to manually synchronize the brands.
+</aside>
+
+<aside class="warning">
+  If you delete a product that has already been ordered, even just once, it cannot be deleted on ShopRunBack&rsquo;s database.
+</aside>
+
+<aside class="warning">
+  When you create a product on your website, you must fill the following fields:
+
+  <ul>
+    <li>Label</li>
+    <li>Reference</li>
+    <li>Weight</li>
+  </ul>
+</aside>
+
+<h2 id="how-does-my-customers-create-a-return-demand">How does my customers create a return demand?</h2>
+
+<p>Any customer can create a return demand once an order is at least &ldquo;Shipped&rdquo;.</p>
+
+<p>They then have a button to create a return demand on the details of the order.</p>
+
+<p>This button redirects them to the ShopRunBack&rsquo;s form to fill their demand.</p>
+
+<h2 id="how-can-i-know-if-anything-went-wrong">How can I know if anything went wrong?</h2>
+
+<p>We log most of the module&rsquo;s actions on your log system.</p>
+
+<p>To access it, just go to your back-office, and, in the left menu, go to &ldquo;Advanced parameters&rdquo; &gt; &ldquo;Logs&rdquo;.</p>
+
+<p>All our logs have their message beginning with &ldquo;[ShopRunBack]&rdquo; so you can filter them easily.</p>
 
       </div>
       <div class="dark-box">

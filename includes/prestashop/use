@@ -1,0 +1,68 @@
+<h1 id="use-the-module">Use the module</h1>
+
+<h2 id="synchronize-your-data">Synchronize your data</h2>
+
+<p>The ShopRunBack tab summarizes your returns, products, brands and orders, and allows you to synchronize them with ShopRunBack.</p>
+
+<p>On each tab, you can see your data and can synchronize each of them at any time, or all at once.</p>
+
+<p>You must always have your data synchronized with ShopRunBack to avoid any discrepancies.</p>
+
+<h2 id="what-is-automatically-synchronized">What is automatically synchronized?</h2>
+
+<p>For instance, some of your data is automatically synchronized after some actions:</p>
+
+<ul>
+<li>Product
+
+<ul>
+<li>When you create a product</li>
+<li>When you edit a product</li>
+<li>When you delete a product</li>
+</ul></li>
+<li>Order
+
+<ul>
+<li>When you or a customer create a product</li>
+<li>When the status of an order changes</li>
+</ul></li>
+<li>Return
+
+<ul>
+<li>When a return is modified on ShopRunBack</li>
+</ul></li>
+</ul>
+
+<aside class="warning">
+  You still need to manually synchronize the brands.
+</aside>
+
+<aside class="warning">
+  If you delete a product that has already been ordered, even just once, it cannot be deleted on ShopRunBack&rsquo;s database.
+</aside>
+
+<aside class="warning">
+  When you create a product on your website, you must fill the following fields:
+
+  <ul>
+    <li>Label</li>
+    <li>Reference</li>
+    <li>Weight</li>
+  </ul>
+</aside>
+
+<h2 id="how-does-my-customers-create-a-return-demand">How does my customers create a return demand?</h2>
+
+<p>Any customer can create a return demand once an order is at least &ldquo;Shipped&rdquo;.</p>
+
+<p>They then have a button to create a return demand on the details of the order.</p>
+
+<p>This button redirects them to the ShopRunBack&rsquo;s form to fill their demand.</p>
+
+<h2 id="how-can-i-know-if-anything-went-wrong">How can I know if anything went wrong?</h2>
+
+<p>We log most of the module&rsquo;s actions on your log system.</p>
+
+<p>To access it, just go to your back-office, and, in the left menu, go to &ldquo;Advanced parameters&rdquo; &gt; &ldquo;Logs&rdquo;.</p>
+
+<p>All our logs have their message beginning with &ldquo;[ShopRunBack]&rdquo; so you can filter them easily.</p>

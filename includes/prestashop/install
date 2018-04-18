@@ -1,13 +1,15 @@
 <h1 id="install-the-module">Install the module</h1>
 
-<h2 id="todo">TODO</h2>
+<h2 id="create-your-own-shoprunback-account">Create your own ShopRunBack account</h2>
 
-<p>TODO</p>
+<p>First of all, you must create your own ShopRunBack account <a href="https://dashboard.shoprunback.com">here</a>.</p>
 
-<h2 id="todo">TODO</h2>
+<h2 id="download-the-module">Download the module</h2>
 
-<p>TODO</p>
+<p><a href="../../images/prestashop/shoprunback-prestashop.zip">Click here</a> to download the module.</p>
 
-<h2 id="todo">TODO</h2>
+<h2 id="install-on-your-site">Install on your site</h2>
 
-<p>TODO</p>
+<p>Then, go to the back-office of your website, then go to modules.</p>
+
+<p>Click on &ldquo;Add a new module&rdquo;, select the .zip you just downloaded and click on &ldquo;Upload this module&rdquo;.</p>
