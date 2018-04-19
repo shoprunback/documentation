@@ -44,7 +44,7 @@ For instance, some of your data is automatically synchronized after some actions
 
 It is currently available in English (GB and US) and French.
 
-## How does my customers create a return request?
+## How do my customers create a return request?
 
 Any customer can create a return request once an order is at least `Shipped`.
 

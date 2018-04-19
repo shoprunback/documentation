@@ -50,6 +50,6 @@ Select the .zip you just downloaded.
 
 <img src="../../images/prestashop/ps_modules-select-zip.png" />
 
-The module is now installed. You can now click on `Configure` to direclty go to the module configuration page.
+The module is now installed. You can now click on `Configure` to directly go to the module configuration page.
 
 <img src="../../images/prestashop/ps1.7.2.5_modules-module-uploaded.png" />

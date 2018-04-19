@@ -2,7 +2,7 @@
 
 ## Connect my ShopRunBack account to the module
 
-To share your data with ShopRunBack, you must take the [authentication token of your ShopRunBack account](https://dashboard.shoprunback.com/fr/tokens).
+To share your data with ShopRunBack, you must use the [authentication token of your ShopRunBack account](https://dashboard.shoprunback.com/fr/tokens).
 
 Copy it and go back to your website.
 
