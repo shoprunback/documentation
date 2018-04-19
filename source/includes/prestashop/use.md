@@ -40,6 +40,10 @@ For instance, some of your data is automatically synchronized after some actions
   </ul>
 </aside>
 
+## Which language can I use?
+
+It is currently available in English (GB and US) and French.
+
 ## How does my customers create a return request?
 
 Any customer can create a return request once an order is at least `Shipped`.
@@ -67,7 +71,3 @@ To access it, just go to your back-office, and, in the left menu, go to `Advance
 | <img src="../../images/prestashop/ps1.6.0.9_left-menu-logs.png" /> | <img src="../../images/prestashop/ps1.7.2.5_left-menu-logs.png" /> |
 
 All our logs have their message beginning with `[ShopRunBack]` so you can filter them easily.
-
-## Which language can I use?
-
-It is currently available in English (GB and US) and French.
