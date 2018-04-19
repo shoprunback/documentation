@@ -12,44 +12,44 @@ First of all, you must create your own ShopRunBack account [here](https://dashbo
 
 ### 1.6 version
 
-Go to the back-office of your website, then go to modules.
+Go to the back-office of your website, then go to `Modules`.
 
-<img src="../../images/prestashop/ps1.6.0.9_left-menu-modules.png" />
+![Modules tab in the left menu in PrestaShop 1.6.0.9](http:../../images/prestashop/ps1.6.0.9_left-menu-modules.png)
 
 Click on `Add a new module`.
 
-<img src="../../images/prestashop/ps1.6.0.9_modules-add-module.png" />
+![Add a module in PrestaShop 1.6.0.9](http:../../images/prestashop/ps1.6.0.9_modules-add-module.png)
 
 Click on `Choose a file`.
 
-<img src="../../images/prestashop/ps1.6.0.9_modules-select-module.png" />
+![Select a module in PrestaShop 1.6.0.9](http:../../images/prestashop/ps1.6.0.9_modules-select-module.png)
 
 Select the .zip you just downloaded.
 
-<img src="../../images/prestashop/ps_modules-select-zip.png" />
+![Select the zip](http:../../images/prestashop/ps_modules-select-zip.png)
 
 Click on `Upload this module`.
 
-<img src="../../images/prestashop/ps1.6.0.9_modules-upload-module.png" />
+![Upload the module in PrestaShop 1.6.0.9](http:../../images/prestashop/ps1.6.0.9_modules-upload-module.png)
 
 Find the ShopRunBack module and click on `Install`.
 
-<img src="../../images/prestashop/ps1.6.0.9_modules-install-srb.png" />
+![Install the module in PrestaShop 1.6.0.9](http:../../images/prestashop/ps1.6.0.9_modules-install-srb.png)
 
 ### 1.7 version
 
-Go to the back-office of your website, then go to modules.
+Go to the back-office of your website, then go to `Modules`.
 
-<img src="../../images/prestashop/ps1.7.2.5_left-menu-modules.png" />
+![Modules tab in the left menu in PrestaShop 1.7.2.5](http:../../images/prestashop/ps1.7.2.5_left-menu-modules.png)
 
 Click on `Upload a module`.
 
-<img src="../../images/prestashop/ps1.7.2.5_modules-add-module.png" />
+![Add a module in PrestaShop 1.7.2.5](http:../../images/prestashop/ps1.7.2.5_modules-add-module.png)
 
 Select the .zip you just downloaded.
 
-<img src="../../images/prestashop/ps_modules-select-zip.png" />
+![Select the zip](http:../../images/prestashop/ps_modules-select-zip.png)
 
 The module is now installed. You can now click on `Configure` to directly go to the module configuration page.
 
-<img src="../../images/prestashop/ps1.7.2.5_modules-module-uploaded.png" />
+![After having installed a module in PrestaShop 1.7.2.5](http:../../images/prestashop/ps1.7.2.5_modules-module-uploaded.png)
