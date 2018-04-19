@@ -1,14 +1,21 @@
 # Scan parcels
 
-Scan a parcel, when it is recognized you should hear a single beep (preview it [here](https://clyp.it/irpoec3u))
+As a retailer, you want to know that you have correctly received every return your customers make.
 
-![scan](images/scan.png)
+Instead of having to verify on some tracking website, you can scan the parcels yourself and immediately know your return count. It will also help you to sort parcels and put them back in your inventory as we provide you with a picture.
 
-If the parcel is found on our server, you will see a green screen with the barcode you just scanned
-as well as hearing a "success" beep (preview it [here](https://clyp.it/kpwe1iog))
+To scan a parcel, simply align your barcode (code128, QR code and more) with the red line.
 
-![scan-success](images/scan-success.png)
+![scan](images/inventory/scan.png)
 
-If not, you will see a red screen with **PARCEL NOT FOUND** as well as hearing two short beeps (preview it [here](https://clyp.it/e405lxrp))
+Once the barcode is read, if the parcel is identified as one of yours, we update its tracking to **relocated**. Your customer will also be notified that his return has reached its destination. On your end this means you can reimburse/exchange your customer's order quickly.
 
-![scan-error](images/scan-error.png)
+
+![scan-success](images/inventory/scan-success.png)
+
+
+Sometimes in logistics, some parcels are misplaced and you might receive something that is not destined for you. When this happens, we will immediately be notified. This is a very rare case and it should not occur, we will shortly contact you if this happens to you.
+
+
+![scan-error](images/inventory/scan-error.png)
+
