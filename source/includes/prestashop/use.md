@@ -40,18 +40,34 @@ For instance, some of your data is automatically synchronized after some actions
   </ul>
 </aside>
 
-## How does my customers create a return demand?
+## How does my customers create a return request?
 
-Any customer can create a return demand once an order is at least "Shipped".
+Any customer can create a return request once an order is at least `Shipped`.
 
-They then have a button to create a return demand on the details of the order.
+They then have a button to create a return request on the details of the order.
 
-This button redirects them to the ShopRunBack's form to fill their demand.
+### 1.6 version
+
+<img src="../../images/prestashop/ps1.6.0.9_order-detail-return-request.png" />
+
+### 1.7 version
+
+<img src="../../images/prestashop/ps1.7.2.5_order-detail-return-request.png" />
+
+This button redirects them to the ShopRunBack's form to fill their request.
 
 ## How can I know if anything went wrong?
 
 We log most of the module's actions on your log system.
 
-To access it, just go to your back-office, and, in the left menu, go to "Advanced parameters" > "Logs".
+To access it, just go to your back-office, and, in the left menu, go to `Advanced parameters` > `Logs`.
 
-All our logs have their message beginning with "[ShopRunBack]" so you can filter them easily.
+| 1.6 | 1.7 |
+|-|-|
+| <img src="../../images/prestashop/ps1.6.0.9_left-menu-logs.png" /> | <img src="../../images/prestashop/ps1.7.2.5_left-menu-logs.png" /> |
+
+All our logs have their message beginning with `[ShopRunBack]` so you can filter them easily.
+
+## Which language can I use?
+
+It is currently available in English (GB and US) and French.
