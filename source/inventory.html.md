@@ -10,7 +10,7 @@ includes:
   - inventory/list
   - inventory/scan
   - inventory/account
-  - inventory/troubleshooting
+  - inventory/requirements
 
 search: false
 ---
