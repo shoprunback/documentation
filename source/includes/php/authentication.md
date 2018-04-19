@@ -1,6 +1,6 @@
 # Authentication
 
-To use the API, you will need to be authenticated, which can be done with the RestClient.
+To use the API, you must be authenticated, which can be done with the class RestClient.
 
 ```php
 <?php

@@ -9,6 +9,7 @@ toc_footers:
 
 includes:
   - php/introduction
+  - php/download
   - php/authentication
   - php/elements
   - php/elements/account
