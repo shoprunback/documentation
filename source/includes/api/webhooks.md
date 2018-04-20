@@ -21,7 +21,7 @@ The server expect a 200 response (`HTTP OK`) when posting the webhook, otherwise
 | returneditem.missing     | Sent when a returned item is marked as missing by an operator |
 | returneditem.relocated   | Sent when a returned item is relocated to the retailer's warehouse |
 | returneditem.transiting  | Sent when a returned item is transitting |
-| shipback.paid            | Sent when a shipback is registered (the customer has paid or validated is free return) and the customer can download its voucher and label |
+| shipback.registered            | Sent when a shipback is registered (the customer has paid or validated is free return) and the customer can download its voucher and label |
 | shipback.relocated       | Sent when all the returned item's of a shipback are relocated to the retailer's warehouse |
 | shipback.transiting      | Sent when all returned item's of a shipback are transiting |
 | sponsoring.created       | Sent when a new sponsoring rule has been created |
