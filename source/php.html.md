@@ -12,10 +12,22 @@ includes:
   - php/download
   - php/authentication
   - php/elements
-  - php/elements/account
-  - php/elements/brand
-  - php/elements/product
-  - php/elements/order
+  - php/apiElements
+  - php/apiElements/account
+  - php/apiElements/brand
+  - php/apiElements/company
+  - php/apiElements/product
+  - php/apiElements/order
+  - php/apiElements/shipback
+  - php/apiElements/warehouse
+  - php/notApiElements
+  - php/notApiElements/address
+  - php/notApiElements/customer
+  - php/notApiElements/item
+  - php/notApiElements/returnedItem
+  - php/useElement
+  - php/restClient
+  - php/errors
 
 search: false
 ---

@@ -1,4 +1,4 @@
-## Order
+### Order
 
 > Initialize
 
@@ -23,7 +23,7 @@ All **orders have an array of items**.
 
 If **the customer has asked to return** some of the items, then **the order is linked to a shipback**. The **returned items in this shipback** is an **array containing many items from the original order** (those the customer wants to return).
 
-### Parameters
+#### Parameters
 
 > Create a Order
 
@@ -64,7 +64,7 @@ Parameter | Required | Type | Description | Tips
 **shipback_id** | X | **String** | The id of the shipback linked to this order | Can't be set on creation
 **shipback** | X | **Shipback** | The shipback linked to this order | Can't be set on creation
 
-### API operations
+#### API operations
 
 > Get all Orders (paginated)
 

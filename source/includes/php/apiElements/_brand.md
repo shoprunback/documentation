@@ -1,4 +1,4 @@
-## Brand
+### Brand
 
 > Initialize
 
@@ -21,7 +21,7 @@ The class Brand represents a brand.
 
 All your **products are linked to a brand**. If you **forgot to link** a product to a brand, it is **then automatically linked to the default** brand.
 
-### Parameters
+#### Parameters
 
 > Create a Brand
 
@@ -34,19 +34,19 @@ require 'path/to/lib/shoprunback-php/init.php';
 $brand = new \Shoprunback\Elements\Brand();
 
 // Mandatory to create a new brand
-$brand->label = 'My super brand';
+$brand->name = 'My super brand';
 $brand->reference = 'my-super-brand';
 
 // Now we can save the brand!
 $brand->save();
 ```
 
-Parameter | Required to create | Description
--|-|-
-**name** | yes | Name of the brand, displayed to the customer on the return process
-**reference** | yes | Unique reference of the brand (if you don't have any, use the name)
+Parameter | Required to create | Type | Description
+-|-|-|-
+**name** | Yes | **String** | Name of the brand, displayed to the customer on the return process
+**reference** | Yes | **String** | Unique reference of the brand (if you don't have any, use the name)
 
-### API operations
+#### API operations
 
 > Get all Brands (paginated)
 
@@ -79,7 +79,7 @@ require 'path/to/lib/shoprunback-php/init.php';
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
 $brand = \Shoprunback\Elements\Brand::retrieve('1f27f9d9-3b5c-4152-98b7-760f56967dea');
-$brand->label = 'New label';
+$brand->name = 'New name';
 $brand->save();
 ```
 

@@ -1,4 +1,4 @@
-## Product
+### Product
 
 > Initialize
 
@@ -21,7 +21,7 @@ The class Product represents a product.
 
 All your **products are linked to a brand**. If you **forgot to link** a product to a brand, it is **then automatically linked to the default** brand.
 
-### Parameters
+#### Parameters
 
 > Create a Product
 
@@ -81,7 +81,7 @@ Parameter | Required | Type | Description | Tips
 **brand_id** | No | **String** | ID of one of your already registered brands | Don't use it at the same time as **brand**
 **brand** | No | **Brand** | An unregistered **Brand** | Don't use it at the same time as **brand_id**
 
-### API operations
+#### API operations
 
 > Get all Products (paginated)
 

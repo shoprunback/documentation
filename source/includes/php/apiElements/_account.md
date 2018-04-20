@@ -1,8 +1,8 @@
-## Account
+### Account
 
 The class Account represents your account.
 
-### Parameters
+#### Parameters
 
 > Get its account
 
@@ -23,14 +23,14 @@ require 'path/to/lib/shoprunback-php/init.php';
 $account = \Shoprunback\Elements\Account::getOwn();
 ```
 
-Parameter | Description
--|-
-**first_name** | Your first name
-**last_name** | Your last name
-**email** | Your email
-**auth_token** | Your authentication token, required to do almost all API calls
+Parameter | Type | Description
+-|-|-
+**first_name** | **String** | Your first name
+**last_name** | **String** | Your last name
+**email** | **String** | Your email
+**auth_token** | **String** | Your authentication token, required to do almost all API calls
 
-### API operations
+#### API operations
 
 > Update its account
 
@@ -48,7 +48,7 @@ $account->save();
 Operation | Enabled
 -|-
 **Get all (paginated)** | No
-**Get one** | Yes, own only
+**Get one** | Yes, **own only**
 **Create** | No
 **Update** | Yes
 **Delete** | No
