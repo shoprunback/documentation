@@ -1,6 +1,6 @@
 # RestResponse
 
-> Get a successful RestResponse
+> Get a Success
 
 ```php
 <?php
@@ -21,7 +21,7 @@ $response->getCode(); // Returns the HTTP code
 $response->getBody(); // Returns the result of the API call (Here it returns the product with the id '1f27f9d9-3b5c-4152-98b7-760f56967dea')
 ```
 
-> Get a failed RestResponse
+> Get a Failure
 
 ```php
 <?php
@@ -43,11 +43,9 @@ try {
 
 The RestResponse contains the **response of an API call**.
 
-The **successful RestResponses** are **managed in the library**. If you **meet a case where you need to directly use a successful RestResponse**, please **send an email** to tech_at_shoprunback.com.
-
 Parameter | Type | Description | Special
 -|-|-|-
 **code** | **INT** | The HTTP code returned |
-**body** | **Object** | The result of a succesful query | **Cannot be filled if errors is set**
-**errors** | **Object** | The result of a failed query | **Cannot be filled if body is set**
+**body** | **Object** | The result of a succesful query | **Only on Success**
+**errors** | **Object** | The result of a failed query | **Only on Failure**
 

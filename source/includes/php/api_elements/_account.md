@@ -1,25 +1,23 @@
 ### Account
 
-The class Account represents your account.
+The class Account represents your ShopRunBack account.
 
 #### Parameters
 
-> Get its account
+> Get your account
 
 ```php
 <?php
-// With a use statement
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
+// With a use statement
 use \Shoprunback\Elements\Account;
 
 $account = Account::getOwn();
 
 // Without a use statement
-require 'path/to/lib/shoprunback-php/init.php';
-
 $account = \Shoprunback\Elements\Account::getOwn();
 ```
 
@@ -32,11 +30,11 @@ Parameter | Type | Description
 
 #### API operations
 
-> Update its account
+> Update your account
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
@@ -48,7 +46,7 @@ $account->save();
 Operation | Enabled
 -|-
 **Get all (paginated)** | No
-**Get one** | Yes, **own only**
+**Get one** | Yes, **for your Account only**
 **Create** | No
 **Update** | Yes
 **Delete** | No

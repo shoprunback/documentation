@@ -23,13 +23,17 @@ To **create a Shipback**, you **must have at least one Warehouse** created on yo
 
 All **shipbacks have an array of returned items** and are **linked to an order**. They also have an **array of quotes given by the logistics service** (see Quotes for more info) and a **size set by the customer after the shipback was created**.
 
-The **returned items** are inevitably an **array of ReturnedItems composed of Items from the linked order**.
+The **returned_items** are an **array of ReturnedItems composed of Items from the linked order**.
 
-The **quotes** is an **array of Quotes**, meaning the **available modes to do a return**, with their price, state and locations.
+The **quotes** is an **array of Quotes**, meaning the **available modes to do a return**, with their price, state and their related data.
 
 The **customer** is the customer that **has initially made the linked order**.
 
 The **company** is the company **owning the items the customer bought** in the linked order.
+
+<aside class="warning">
+You <b>need to have</b> at least <b>one Warehouse to create a Shipback</b>.
+</aside>
 
 #### Parameters
 

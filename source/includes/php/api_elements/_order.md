@@ -4,16 +4,14 @@
 
 ```php
 <?php
-// With a use statement
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
+// With a use statement
 use \Shoprunback\Elements\Order;
 
 $order = new Order();
 
 // Without a use statement
-require 'path/to/lib/shoprunback-php/init.php';
-
 $order = new \Shoprunback\Elements\Order();
 ```
 
@@ -25,11 +23,11 @@ If **the customer has asked to return** some of the items, then **the order is l
 
 #### Parameters
 
-> Create a Order
+> Create an Order
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
@@ -40,12 +38,11 @@ $order->order_number = '4548-9854';
 
 
 // Mandatory nested elements
+// The mandatory nested elements must be filled with the required parameters.
 
-// The customer must be filled with the required parameters.
 // Please read the doc showing how to correctly create a Customer.
 $order->customer = new \Shoprunback\Elements\Customer();
 
-// Each item must be filled with the required parameters.
 // Please read the doc showing how to correctly create a Item.
 $order->items = [];
 $order->items[] = new \Shoprunback\Elements\Item();
@@ -70,43 +67,43 @@ Parameter | Required | Type | Description | Tips
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
 $orders = \Shoprunback\Elements\Order::all();
 ```
 
-> Get one Order
+> Get an Order
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
 $order = \Shoprunback\Elements\Order::retrieve('1f27f9d9-3b5c-4152-98b7-760f56967deav');
 ```
 
-> Delete a Order
+> Delete an Order
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
 // Get the order and remove it later in the code
 $order = \Shoprunback\Elements\Order::retrieve('1f27f9d9-3b5c-4152-98b7-760f56967deav');
 
-// Delete a order by an instance
+// Delete an order by an instance
 $order->remove();
 
 // --
 // OR
 // --
 
-// Delete a order directly
+// Delete an order directly
 \Shoprunback\Elements\Order::delete('1f27f9d9-3b5c-4152-98b7-760f56967deav');
 ```
 

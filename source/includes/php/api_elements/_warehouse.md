@@ -17,9 +17,11 @@ require 'path/to/lib/shoprunback-php/init.php';
 $warehouse = new \Shoprunback\Elements\Warehouse();
 ```
 
-The class Warehouse represents a warehouse the products will pass by to be returned to the trader.
+The class Warehouse represents the destination of the items that will be returned to you.
 
-You **need to have** at least **one Warehouse to create a shipback**.
+<aside class="warning">
+You <b>need to have</b> at least <b>one Warehouse to create a Shipback</b>.
+</aside>
 
 #### Parameters
 

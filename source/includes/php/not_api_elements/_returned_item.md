@@ -1,6 +1,6 @@
 ### ReturnedItem
 
-> Get a ReturnedItem
+> Get ReturnedItems
 
 ```php
 <?php
@@ -8,7 +8,7 @@ require 'path/to/lib/shoprunback-php/init.php';
 
 $shipback = \Shoprunback\Elements\Shipback::retrieve('1f27f9d9-3b5c-4152-98b7-760f56967dea');
 
-$returnedItem = $shipback->returned_items[0];
+$returnedItem = $shipback->returned_items;
 ```
 
 The class ReturnedItem represents an item a customer ordered and wants to return.

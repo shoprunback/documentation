@@ -17,9 +17,11 @@ require 'path/to/lib/shoprunback-php/init.php';
 $product = new \Shoprunback\Elements\Product();
 ```
 
-The class Product represents a product.
+The class Product represents a product your company is selling. **Do not confuse it with** an **Item**.
 
 All your **products are linked to a brand**. If you **forgot to link** a product to a brand, it is **then automatically linked to the default** brand.
+
+An **Order has Items**, and **each Item is linked to one Product**.
 
 #### Parameters
 
@@ -41,17 +43,17 @@ $product->weight_grams = 100;
 
 // Mandatory nested elements
 
-// If you want to link your product to an existing Brand
-// Set the ID of your already registered brand
+// If you want to link your product to an existing Brand, set the ID of your already registered brand
 $product->brand_id = '1f27f9d9-3b5c-4152-98b7-760f56967dea';
 
 // If you want to link your product to a new Brand
-// The brand must then be filled with the required parameters.
-// Please read the doc showing how to correctly create a Brand.
 $product->brand = new \Shoprunback\Elements\Brand();
 
+// The brand must then be filled with the required parameters.
+// Please read the doc showing how to correctly create a Brand.
+
 // --------------------------------------------------------------------------------------
-// For the nested elements, you must always either set brand_id or brand, but never both!
+// To link a Brand, you must always either set brand_id or brand, but never both!
 // --------------------------------------------------------------------------------------
 
 
@@ -60,6 +62,7 @@ $product->ean = '1258987561456';
 $product->width_mm = 100;
 $product->length_mm = 100;
 $product->height_mm = 100;
+
 // For the picture, please use ONLY ONE of those two parameters, not both at the same time
 $product->picture_file_base64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQAAAAA3bvkkAAAAAnRSTlMAAHaTzTgAAAAKSURBVHgBY2AAAAACAAFzdQEYAAAAAElFTkSuQmCC';
 $product->picture_file_url = 'http://shoprunback.com/wp-content/themes/shoprunback/images/logo-menu.png';
@@ -80,8 +83,8 @@ Parameter | Required | Type | Description | Tips
 **height_mm** | No | **String** | Height of the product | In millimeters
 **picture_file_base64** | No | **String** | The cover image encoded in base64 | Don't use it at the same time as **picture_file_url**
 **picture_file_url** | No | **String** | URL of the product's picture | Don't use it at the same time as **picture_file_base64**
-**brand_id** | No | **String** | ID of one of your already registered brands | When **saving a new Product**, don't use it at the same time as **brand**
-**brand** | No | **Brand** | The **Brand** linked to this Product | When **saving a new Product**, don't use it at the same time as **brand_id**
+**brand_id** | No | **String** | ID of one of your already registered brands | When **saving a new Product**, **use brand_id** if you want **to link to an existing Brand** and **don't fill brand**
+**brand** | No | **Brand** | The **Brand** linked to this Product | When **saving a new Product**, **use brand** if you want **to link to a new Brand** and **don't fill brand_id**
 
 #### API operations
 

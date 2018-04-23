@@ -4,22 +4,24 @@
 
 ```php
 <?php
-// With a use statement
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
+\Shoprunback\RestClient::getClient()->setToken('yourApiToken');
+
+// With a use statement
 use \Shoprunback\Elements\Brand;
 
 $brand = new Brand();
 
 // Without a use statement
-require 'path/to/lib/shoprunback-php/init.php';
-
 $brand = new \Shoprunback\Elements\Brand();
 ```
 
-The class Brand represents a brand.
+The class Brand represents a group of Products. You can create and delete Brands and add or remove Products from your Brands.
 
-All your **products are linked to a brand**. If you **forgot to link** a product to a brand, it is **then automatically linked to the default** brand.
+**Once your retailer account is created and your company details entered**, a **default brand is created**.
+
+All your **Products are linked to a Brand**. If you **forget to link** a product to a brand, it is **then automatically linked to the default** brand.
 
 #### Parameters
 
@@ -27,7 +29,7 @@ All your **products are linked to a brand**. If you **forgot to link** a product
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
@@ -45,6 +47,9 @@ Parameter | Required to create | Type | Description | Tips
 -|-|-|-|-
 **name** | Yes | **String** | Name of the brand, displayed to the customer on the return process
 **reference** | Yes | **String** | Unique reference of the brand | Use only lowercase letters and replace spaces by -
+**default** | No | **Boolean** | Is this the default company brand? | Only 1 per company
+**created_at** | No | **DateTime** | The creation date of this Brand
+**updated_at** | No | **DateTime** | The date of this Brand's last update
 
 #### API operations
 
@@ -52,18 +57,18 @@ Parameter | Required to create | Type | Description | Tips
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
 $brands = \Shoprunback\Elements\Brand::all();
 ```
 
-> Get one Brand
+> Get a Brand
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
@@ -74,7 +79,7 @@ $brand = \Shoprunback\Elements\Brand::retrieve('1f27f9d9-3b5c-4152-98b7-760f5696
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
@@ -87,7 +92,7 @@ $brand->save();
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 

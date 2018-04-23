@@ -15,12 +15,12 @@ define('REST_CLIENT', $restClient);
 
 **Accepts: GET ; POST ; PUT ; DELETE**
 
-The RestClient is used to configure the API calls.
+The RestClient is used to execute the API calls.
 
-It is a Singleton, so you need to use `$restClient = RestClient::getClient()` to use it.
+It is a **Singleton**, so you need to use `$restClient = RestClient::getClient()` to use it.
 
 <aside class="warning">
-  Since it is a Singleton, it is highly recommended to declare it in a variable or a constant so you can use it everywhere ->
+  Since it is a Singleton, it is highly recommended to <b>declare it in a variable or a constant</b> so you can use it everywhere
 </aside>
 
 You can **set a specific URL target** for the API calls with `setApiBaseUrl()`. This URL should be **https://dashboard.shoprunback.com** by default and **https://sandbox.dashboard.shoprunback.com** for the sandbox.
