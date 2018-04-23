@@ -11,11 +11,6 @@ In both cases, you will have to create the order, sooner or later.
 
 ## Create an order
 
-An order has a `order_number`, a customer and a list of items.
-
-If you want to add extra data on the order, you can freely use the `metadata` attribute (a simple key/value store).
-The ShopRunBack API will always returns this data without altering it.
-
 ```ruby
 body = {
   "ordered_at": "2017-02-03",
@@ -94,76 +89,46 @@ curl -X "POST" "https://dashboard.shoprunback.com/api/v1/orders" \
 
 ```php
 <?php
+// Load the library
+require 'path/to/lib/shoprunback-php/init.php';
 
-// Get cURL resource
-$ch = curl_init();
+// Set your token
+\Shoprunback\RestClient::getClient()->setToken('your_token');
 
-// Set url
-curl_setopt($ch, CURLOPT_URL, 'https://dashboard.shoprunback.com/api/v1/orders');
+// Create an Address for the Customer
+$address = new \Shoprunback\Elements\Address();
+$address->country_code = 'US';
+$address->line2 = 'Building B';
+$address->state = 'California';
+$address->line1 = 'One Infinite Loop';
+$address->zipcode = '95014';
+$address->city = 'Cupertino';
 
-// Set method
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+// Create a Customer for the Order
+$customer = new \Shoprunback\Elements\Customer();
+$customer->email = 'steve@apple.com';
+$customer->phone = '555-878-456';
+$customer->first_name = 'Steve';
+$customer->last_name = 'Jobs';
+$customer->address = $address;
 
-// Set options
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+// Create an array of Items ordered by the Customer
+$item = new \Shoprunback\Elements\Item();
+$item->product_id = '1f27f9d9-3b5c-4152-98b7-760f56967dea';
+$items = [$item];
 
-// Set headers
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-  "Authorization: Token token=<your token>",
-  "Content-Type: application/json; charset=utf-8",
- ]
-);
-// Create body
-$json_array = [
-            "order_number" => "4548-9854",
-            "metadata" => [
-                "foo" => "bar",
-                "bar" => "foo"
-            ],
-            "customer" => [
-                "email" => "steve@apple.com",
-                "phone" => "555-878-456",
-                "last_name" => "Jobs",
-                "first_name" => "Steve",
-                "address" => [
-                    "country_code" => "US",
-                    "line2" => "Building B",
-                    "state" => "California",
-                    "line1" => "One Infinite Loop",
-                    "zipcode" => "95014",
-                    "city" => "Cupertino"
-                ]
-            ],
-            "items" => [
-                [
-                    "product_id" => "1f27f9d9-3b5c-4152-98b7-760f56967dea"
-                ]
-            ],
-            "ordered_at" => "2017-02-03"
-        ];
-$body = json_encode($json_array);
+// Create an Order
+$order = new \Shoprunback\Elements\Order();
+$order->order_number = '4548-9854';
+$order->customer = $customer;
+$order->items = $items;
+$order->ordered_at = '2017-02-03';
 
-// Set body
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
-
-// Send the request & save response to $resp
-$resp = curl_exec($ch);
-
-if(!$resp) {
-  die('Error: "' . curl_error($ch) . '" - Code: ' . curl_errno($ch));
-} else {
-  echo "Response HTTP Status Code : " . curl_getinfo($ch, CURLINFO_HTTP_CODE);
-  echo "\nResponse HTTP Body : " . $resp;
-}
-
-// Close request to clear up some resources
-curl_close($ch);
-
-?>
+// We save the Order
+$order->save();
 ```
 
-> The above command returns the same JSON object with the id of the created order, customer and items:
+> The above command (except for PHP) returns the same JSON object with the id of the created order, customer and items:
 
 ```json
 {
@@ -217,6 +182,11 @@ curl_close($ch);
   }
 }
 ```
+
+An order has a `order_number`, a customer and a list of items.
+
+If you want to add extra data on the order, you can freely use the `metadata` attribute (a simple key/value store).
+The ShopRunBack API will always returns this data without altering it.
 
 
 ### HTTP Request
@@ -305,7 +275,26 @@ curl -X "GET" "https://dashboard.shoprunback.com/api/v1/orders?page=1" \
 
 ```
 
-> The above command returns JSON structured like this:
+```php
+<?php
+// Load the library
+require 'path/to/lib/shoprunback-php/init.php';
+
+// Set your token
+\Shoprunback\RestClient::getClient()->setToken('your_token');
+
+// Get all your orders
+$orders = \Shoprunback\Elements\Order::all();
+
+try {
+  $orders[0]; // Returns the Order with the index 0 (if it exists)
+  $orders[1]; // Returns the Order with the index 1 (if it exists)
+} catch (\Shoprunback\Error\ElementIndexDoesntExists $e) {
+  // If it doesn't exist, it returns an Exception
+}
+```
+
+> The above command (except for PHP) returns JSON structured like this:
 
 ```json
 {
@@ -362,195 +351,3 @@ curl -X "GET" "https://dashboard.shoprunback.com/api/v1/orders?page=1" \
     ]
 }
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Update an order
-
-This endpoint updates an existing order.
-
-Warning: if a return has already been finished (ie. the return label has been downloaded), you can't update the order.
-
-### HTTP Request
-
-`PUT https://dashboard.shoprunback.com/api/v1/orders/:order_id`
-
-### Query Parameters
-
-Parameter | Required | Description
---------- | ----------- | --------------
-ordered_at | yes | date of the order
-order_number | yes | the customer's order number
-customer | yes | customer object (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
-items | yes | items' array (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
-metadata | no | Anything you want to add to the order, this data will always be returned and never modified.
-
-```ruby
-body = {
-  "ordered_at": "2017-02-03",
-  "order_number": "4548-9854",
-  "customer": {
-    "first_name": "Steve",
-    "last_name": "Jobs",
-    "email": "steve@apple.com",
-    "phone": "555-878-456",
-    "address": {
-      "line1": "One Infinite Loop",
-      "line2": "Building B",
-      "zipcode": "95014",
-      "country_code": "US",
-      "city": "Cupertino",
-      "state": "California"
-    }
-  },
-  "items": [
-    {
-      "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-    },
-  ],
-  "metadata": {
-    "foo": "bar"
-  }
-}
-
-HTTParty.put(
-              "https://dashboard.shoprunback.com/api/v1/orders/#{order_id}",
-              body: body,
-              headers: {
-                'Content-Type' => 'application/json',
-                'Authorization' => "Token token=#{your_token}"
-              }
-            )
-```
-
-```shell
-curl -X "PUT" "https://dashboard.shoprunback.com/api/v1/orders/<order_id>" \
-     -H "Authorization: Token token=<your_token>" \
-     -H "Content-Type: application/json; charset=utf-8" \
-     -d $'{
-  "ordered_at": "2017-02-03",
-  "order_number": "4548-9854",
-  "customer": {
-    "first_name": "Steve",
-    "last_name": "Jobs",
-    "email": "steve@apple.com",
-    "phone": "555-878-456",
-    "address": {
-      "line1": "One Infinite Loop",
-      "line2": "Building B",
-      "zipcode": "95014",
-      "country_code": "US",
-      "city": "Cupertino",
-      "state": "California"
-    }
-  },
-  "items":
-  [
-    {
-      "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-      "product": {
-        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-        "label": "Iphone 14S Red",
-        "reference": "IPHONE 14S B",
-        "ean": "1258987561456",
-        "brand_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-        "brand_name": "Apple",
-        "picture_url": "http://s3.amazonaws/assets/iphone_14s.jpg"
-      }
-    },
-  ],
-  "metadata": {
-    "foo": "bar"
-  }
-}'
-```
-
-> The above command returns the same JSON object with the updated order, customer or items:
-
-```json
-{
-  "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-  "ordered_at": "2017-02-03",
-  "order_number": "4548-9854",
-  "customer": {
-    "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-    "first_name": "Steve",
-    "last_name": "Jobs",
-    "email": "steve@apple.com",
-    "phone": "555-878-456",
-    "address": {
-      "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-      "line1": "One Infinite Loop",
-      "line2": "Building B",
-      "zipcode": "95014",
-      "country_code": "US",
-      "city": "Cupertino",
-      "state": "California"
-    }
-  },
-  "items": [
-    {
-      "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-      "product": {
-        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-        "label": "Iphone 14S Red",
-        "reference": "IPHONE 14S B",
-        "ean": "1258987561456",
-        "brand_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-        "brand_name": "Apple",
-        "picture_url": "http://s3.amazonaws/assets/iphone_14s.jpg"
-      }
-    },
-  ],
-  "metadata": {
-    "foo": "bar"
-  }
-}
-```
-
-

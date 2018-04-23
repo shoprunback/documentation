@@ -21,38 +21,15 @@ curl "<endpoint>"
 ```php
 
 <?php
-// Get cURL resource
-$ch = curl_init();
+// Load the library
+require 'path/to/lib/shoprunback-php/init.php';
 
-// Set url
-curl_setopt($ch, CURLOPT_URL, endpoint);
+// Set your token
+\Shoprunback\RestClient::getClient()->setToken('your_token');
 
-// Set method
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-
-// Set options
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-// Set headers
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-  "Content-Type: application/json; charset=utf-8",
-  "Authorization: Token token=<your_token>",
- ]
-);
-
-// Send the request & save response to $resp
-$resp = curl_exec($ch);
-
-if(!$resp) {
-  die('Error: "' . curl_error($ch) . '" - Code: ' . curl_errno($ch));
-} else {
-  echo "Response HTTP Status Code : " . curl_getinfo($ch, CURLINFO_HTTP_CODE);
-  echo "\nResponse HTTP Body : " . $resp;
-}
-
-// Close request to clear up some resources
-curl_close($ch);
-?>
+// Here your token is already set
+// You can check if your token is correct by loading your ShopRunBack account
+$account = \Shoprunback\Elements\Account::getOwn();
 ```
 
 > Replace `your_token` with your API key.
