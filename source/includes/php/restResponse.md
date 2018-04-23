@@ -43,7 +43,7 @@ try {
 
 The RestResponse contains the **response of an API call**.
 
-The **successful RestResponses** are **managed in the library**. If you **meet a case where you need to use it** directly, please **send an email** to tech_at_shoprunback.com.
+The **successful RestResponses** are **managed in the library**. If you **meet a case where you need to directly use a successful RestResponse**, please **send an email** to tech_at_shoprunback.com.
 
 Parameter | Type | Description | Special
 -|-|-|-
