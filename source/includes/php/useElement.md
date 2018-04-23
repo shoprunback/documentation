@@ -53,12 +53,26 @@ $product->brand = new \Shoprunback\Elements\Brand();
 
 var_dump($product->getAllAttributes()); // Prints 'label', 'custom' and 'brand' with their values
 var_dump($product->getApiAttributes()); // Prints 'label' and 'brand' with their values
-var_dump($product->getApiAttributesKeys()); // Prints ['label', 'brand']
 ```
 
 To get all the attributes of an Element including the nested Elements, you can use `$element->getAllAttributes()`.
 
 To get only the attributes an Element will use for an API call, you can use `$element->getApiAttributes()`.
+
+> Get all keys an Element accepts
+
+```php
+<?php
+require 'path/to/lib/shoprunback-php/init.php';
+
+\Shoprunback\RestClient::getClient()->setToken('yourApiToken');
+
+$product = new \Shoprunback\Elements\Product();
+
+var_dump($product->getApiAttributesKeys()); // Prints all attributes a Product will accept before doing an API call
+```
+
+You can list all the attributes an Element accepts when making an API call with `$product->getApiAttributesKeys()`.
 
 ## Use the elements with my objects
 
