@@ -15,11 +15,12 @@ The class ReturnedItem represents an item a customer ordered and wants to return
 
 A **Shipback owns an array of ReturnedItems**.
 
-A **ReturnedItems** is **linked to an Item coming from the Order linked to the Shipback**.
+A **ReturnedItems** is **linked to an Item**. **This Item is one of the Items of the Order linked to the Shipback**.
 
 #### Parameters
 
 Parameter | Type | Description
 -|-|-
 **item_id** | **String** | The id of the linked Item
+**item** | **Item** | The linked Item
 **reason_code** | **Enum: doesnt_fit, quality, damaged, wrong, incorrect, delay, reconsider** | The reason why the item is returned ordered
