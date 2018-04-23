@@ -13,6 +13,8 @@ $restClient->setToken('yourApiToken');
 define('REST_CLIENT', $restClient);
 ```
 
+**Accepts: GET ; POST ; PUT ; DELETE**
+
 The RestClient is used to configure the API calls.
 
 It is a Singleton, so you need to use `$restClient = RestClient::getClient()` to use it.

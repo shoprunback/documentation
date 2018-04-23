@@ -27,7 +27,9 @@ includes:
   - php/notApiElements/returnedItem
   - php/useElement
   - php/restClient
+  - php/restResponse
   - php/errors
+  - php/logs
 
 search: false
 ---
