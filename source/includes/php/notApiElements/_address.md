@@ -21,7 +21,7 @@ $address = new \Shoprunback\Elements\Address();
 
 The class **Address** represents an address. It **can belong to** a **Company**, a **Customer** or a **Warehouse**.
 
-**Address** has **no endpoint**, but is **necessary to create an order**. For this end, an **Address has mandatory and facultative attributes**.
+**Address** has **no endpoint**, but is **necessary to create a Warehouse or a Customer**. For this end, an **Address has mandatory and facultative attributes**.
 
 #### Parameters
 
