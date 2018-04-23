@@ -49,9 +49,9 @@ require 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
-$account = \Shoprunback\Elements\Account::getOwn();
-$account->first_name = 'Martin';
-$account->save();
+$company = \Shoprunback\Elements\Company::getOwn();
+$company->name = 'ShopRunBack';
+$company->save();
 ```
 
 Operation | Enabled
