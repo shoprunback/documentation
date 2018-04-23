@@ -41,10 +41,10 @@ $brand->reference = 'my-super-brand';
 $brand->save();
 ```
 
-Parameter | Required to create | Type | Description
--|-|-|-
+Parameter | Required to create | Type | Description | Tips
+-|-|-|-|-
 **name** | Yes | **String** | Name of the brand, displayed to the customer on the return process
-**reference** | Yes | **String** | Unique reference of the brand (if you don't have any, use the name)
+**reference** | Yes | **String** | Unique reference of the brand | Use only lowercase letters and replace spaces by -
 
 #### API operations
 
