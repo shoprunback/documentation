@@ -17,7 +17,7 @@ require 'path/to/lib/shoprunback-php/init.php';
 $order = new \Shoprunback\Elements\Order();
 ```
 
-The class Order represents an order made by a customer. For instance, the customer hasn't claimed yet a shipback.
+The class Order represents an **order made by a customer**. For instance, the customer **may not have claimed a shipback yet**.
 
 All **orders have an array of items**.
 
