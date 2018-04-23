@@ -38,20 +38,11 @@ $product->label = 'My super product';
 $product->reference = 'my-super-product';
 $product->weight_grams = 100;
 
-// Optional
-$product->ean = '1258987561456';
-$product->width_mm = 100;
-$product->length_mm = 100;
-$product->height_mm = 100;
-// For the picture, please use ONLY ONE of those two parameters, not both at the same time
-$product->picture_file_base64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQAAAAA3bvkkAAAAAnRSTlMAAHaTzTgAAAAKSURBVHgBY2AAAAACAAFzdQEYAAAAAElFTkSuQmCC';
-$product->picture_file_url = 'http://shoprunback.com/wp-content/themes/shoprunback/images/logo-menu.png';
-
 
 // Mandatory nested elements
 
 // If you want to link your product to an existing Brand
-// The ID of one of your already registered brands
+// Set the ID of your already registered brand
 $product->brand_id = '1f27f9d9-3b5c-4152-98b7-760f56967dea';
 
 // If you want to link your product to a new Brand
@@ -62,6 +53,17 @@ $product->brand = new \Shoprunback\Elements\Brand();
 // --------------------------------------------------------------------------------------
 // For the nested elements, you must always either set brand_id or brand, but never both!
 // --------------------------------------------------------------------------------------
+
+
+// Optional
+$product->ean = '1258987561456';
+$product->width_mm = 100;
+$product->length_mm = 100;
+$product->height_mm = 100;
+// For the picture, please use ONLY ONE of those two parameters, not both at the same time
+$product->picture_file_base64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQAAAAA3bvkkAAAAAnRSTlMAAHaTzTgAAAAKSURBVHgBY2AAAAACAAFzdQEYAAAAAElFTkSuQmCC';
+$product->picture_file_url = 'http://shoprunback.com/wp-content/themes/shoprunback/images/logo-menu.png';
+
 
 // Now we can save the product!
 $product->save();
@@ -78,8 +80,8 @@ Parameter | Required | Type | Description | Tips
 **height_mm** | No | **String** | Height of the product | In millimeters
 **picture_file_base64** | No | **String** | The cover image encoded in base64 | Don't use it at the same time as **picture_file_url**
 **picture_file_url** | No | **String** | URL of the product's picture | Don't use it at the same time as **picture_file_base64**
-**brand_id** | No | **String** | ID of one of your already registered brands | Don't use it at the same time as **brand**
-**brand** | No | **Brand** | An unregistered **Brand** | Don't use it at the same time as **brand_id**
+**brand_id** | No | **String** | ID of one of your already registered brands | When **saving a new Product**, don't use it at the same time as **brand**
+**brand** | No | **Brand** | The **Brand** linked to this Product | When **saving a new Product**, don't use it at the same time as **brand_id**
 
 #### API operations
 
