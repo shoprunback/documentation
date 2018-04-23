@@ -25,6 +25,6 @@ It is a **Singleton**, so you need to use `$restClient = RestClient::getClient()
 
 You can **set a specific URL target** for the API calls with `setApiBaseUrl()`. This URL should be **https://dashboard.shoprunback.com** by default and **https://sandbox.dashboard.shoprunback.com** for the sandbox.
 
-You can **set the token of a user** with `setToken()`. Most of the API calls need an authentication to be done.
+You can **set the token of a user** with `setToken()`. Most of the API calls need you to be authentified to be done.
 
 You can also **set environment variables** called `SHOPRUNBACK_URL` and `SHOPRUNBACK_TOKEN` to automatically load them.

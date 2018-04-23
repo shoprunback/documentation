@@ -46,7 +46,7 @@ $account->save();
 Operation | Enabled
 -|-
 **Get all (paginated)** | No
-**Get one** | Yes, **for your Account only**
+**Get one** | Yes, **for your account only**
 **Create** | No
 **Update** | Yes
 **Delete** | No

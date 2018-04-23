@@ -23,13 +23,13 @@ To **create a Shipback**, you **must have at least one Warehouse** created on yo
 
 All **shipbacks have an array of returned items** and are **linked to an order**. They also have an **array of quotes given by the logistics service** (see Quotes for more info) and a **size set by the customer after the shipback was created**.
 
-The **returned_items** are an **array of ReturnedItems composed of Items from the linked order**.
+The **returned items** is an **array containing the selected items from the original order**.
 
-The **quotes** is an **array of Quotes**, meaning the **available modes to do a return**, with their price, state and their related data.
+The **quotes** is an **array of Quotes**, meaning the **available modes of transportation for the return**, with their price, state and their related data.
 
 The **customer** is the customer that **has initially made the linked order**.
 
-The **company** is the company **owning the items the customer bought** in the linked order.
+The **company** is the company **that owns the products inside the items the customer bought** in the linked order.
 
 <aside class="warning">
 You <b>need to have</b> at least <b>one Warehouse to create a Shipback</b>.
@@ -65,18 +65,18 @@ $shipback->save();
 Parameter | Required to create | Type | Description | Tips
 -|-|-|-|-
 **order_id** | Yes | **String** | Id of the order linked to this shipback | **When you create a shipback, ONLY SET THIS ATTRIBUTE**
-**rma** | X | **String** | Return merchandise authorization. If set, a barcode of the RMA is printed at the top of the return voucher |
-**mode** | X | **Enum: postal; drop-off; line-haul; direct** | The mode the client want to return its items by |
-**weight_in_grams** | X | **INT** | Weight defined by the retailer | **In grams**
+**rma** | No | **String** | Return merchandise authorization. If set, a barcode of the RMA is printed at the top of the return voucher |
+**mode** | No | **Enum: postal; drop-off; line-haul; direct** | The mode the client want to return its items by |
+**weight_in_grams** | No | **INT** | Weight defined by the retailer | **In grams**
 **computed_weight_in_grams** | X | **INT** | Sum of the returned items plus a wrapping factor | **In grams**
-**created_at** | X | **DateTime** | Date of the creation of the shipback |
-**public_url** | X | **String** | The URL where the user can check and fill its return request |
-**returned_items** | X | **Array of ReturnedItems** | The items the user wants to return | **Contains only ReturnedItems**
-**order** | X | **Order** | Order linked to this shipback |
-**company_id** | X | **String** | Id of the company concerned by the shipback |
-**company** | X | **Company** | Company concerned by the shipback |
-**size** | X | **Jigsize** | The size selected for the shipback |
-**quotes** | X | **Array of Quotes** | The quotes the shipback can use to be returned | **Contains only Quotes**
+**created_at** | No | **DateTime** | Date of the creation of the shipback |
+**public_url** | No | **String** | The URL where the user can check and fill its return request |
+**returned_items** | No | **Array of ReturnedItems** | The items the user wants to return | **Contains only ReturnedItems**
+**order** | No | **Order** | Order linked to this shipback |
+**company_id** | No | **String** | Id of the company concerned by the shipback |
+**company** | No | **Company** | Company concerned by the shipback |
+**size** | No | **Jigsize** | The size selected for the shipback |
+**quotes** | No | **Array of Quotes** | The quotes the shipback can use to be returned | **Contains only Quotes**
 
 #### API operations
 

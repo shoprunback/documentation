@@ -17,11 +17,9 @@ $customer = new Customer();
 $customer = new \Shoprunback\Elements\Customer();
 ```
 
-The class Customer represents a customer, a **final client** that can **make orders and return them**.
+The class Customer represents one of your customers.
 
 **Customer** has **no endpoint**, but is **necessary to create an Order or a Shipback**. For this end, a **Customer has mandatory and facultative attributes**.
-
-A **Customer** has an **Address**.
 
 #### Parameters
 
@@ -58,5 +56,5 @@ Parameter | Required to create | Type | Description | Tips
 **last_name** | Yes | **String** | The last name of a customer
 **email** | Yes | **String** | The email of a customer
 **phone** | Yes | **String** | The phone number of a customer
-**address** | Yes | **Address** | The Address of a customer
+**address** | Yes | **Address** | The Address of a customer | See Address for more information
 **locale** | No | **String** | The language used for the customer | Default: the locale language set in your company parameters

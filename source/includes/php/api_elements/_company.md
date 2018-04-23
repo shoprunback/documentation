@@ -23,10 +23,10 @@ $company = \Shoprunback\Elements\Company::getOwn();
 
 Parameter | Type | Description
 -|-|-
-**name** | **String** | Your company's name
+**name** | **String** | Your company's name (mandatory to create a company)
 **slug** | **String** | Your company's slug
 **address1** | **String** | Your company's address
-**address2** | **String** | Optional informations (floor, digicode...) your company's address
+**address2** | **String** | Optional informations (floor, code...)
 **zipcode** | **String** | Your company's zipcode
 **state** | **String** | Your company's state
 **country_code** | **String** | Your company's country code
@@ -34,7 +34,7 @@ Parameter | Type | Description
 **website_url** | **String** | Your company's website URL
 **phone_number** | **String** | Your company's public phone number
 **logo_url** | **String** | Your company's logo's URL
-**reasons** | **Array of Reasons** | The reasons of returns your company accepts (**'doesnt_fit'** ; **'quality'** ; **'damaged'** ; **'wrong'** ; **'incorrect'** ; **'delay'** ; **'reconsider'**)
+**reasons** | **Array of Reasons** | The retur reasons your company accepts (**'doesnt_fit'** ; **'quality'** ; **'damaged'** ; **'wrong'** ; **'incorrect'** ; **'delay'** ; **'reconsider'**)
 
 
 #### API operations
@@ -55,7 +55,7 @@ $company->save();
 Operation | Enabled
 -|-
 **Get all (paginated)** | No
-**Get one** | Yes, **own only**
+**Get one** | Yes, **your company only**
 **Create** | No
 **Update** | Yes
 **Delete** | No

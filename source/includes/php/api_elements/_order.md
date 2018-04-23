@@ -15,11 +15,11 @@ $order = new Order();
 $order = new \Shoprunback\Elements\Order();
 ```
 
-The class Order represents an **order made by a customer**. For instance, the customer **may not have claimed a shipback yet**.
+The class Order represents an online **order made by one of your customers**.
 
 All **orders have an array of items**.
 
-If **the customer has asked to return** some of the items, then **the order is linked to a shipback**. The **returned items in this shipback** is an **array containing many items from the original order** (those the customer wants to return).
+If **the customer has asked to return** some of the items, then **the order is linked to a shipback**.
 
 #### Parameters
 
@@ -55,7 +55,7 @@ Parameter | Required | Type | Description | Tips
 -|-|-|-|-
 **order_number** | Yes | **String** | The unique identifier linked to the order, displayed to the customer on the return process |
 **customer** | Yes | **Customer** | The Customer that has made this order |
-**ordered_at** | Yes | **Date (Y-m-d)** | The date when the order has been created |
+**ordered_at** | No | **Date (Y-m-d)** | The date when the order has been created |
 **items** | Yes | **Array of Items** | The items the customer ordered |
 **created_at** | X | **Datetime** | The date when the order has been created in the ShopRunBack's database | Can't be set on creation
 **shipback_id** | X | **String** | The id of the shipback linked to this order | Can't be set on creation

@@ -15,7 +15,7 @@ The class ReturnedItem represents an item a customer ordered and wants to return
 
 A **Shipback owns an array of ReturnedItems**.
 
-A **ReturnedItems** is **linked to an Item**. **This Item is one of the Items of the Order linked to the Shipback**.
+A **ReturnedItems** is **linked to an Item**.
 
 #### Parameters
 

@@ -32,7 +32,7 @@ You can get the original values of an Element whenever you want by getting the `
 If you want to reset an element with its original values, use `$element->refresh()` (makes an API call)
 
 <aside class="warning">
-When the <b>element is saved</b>, the <b>origValues</b> will be <b>filled with the new values!</b>
+When the <b>element is saved</b>, the <b>origValues</b> will be <b>updated with the new values!</b>
 </aside>
 
 ## Get different attributes
@@ -265,7 +265,7 @@ require_once 'path/to/lib/shoprunback-php/init.php';
 \Shoprunback\Elements\Product::canGetAll(); // Check if you can get many elements at once
 ```
 
-You can **check if an element can do an API call** with `canRetrieve()`,`canCreate()`, `canGetAll()`, `canUpdate()`, `canDelete()`
+You can **check if an element can do an API call** with `canRetrieve()`,`canCreate()`, `canUpdate()`, `canDelete()`, `canGetAll()`
 
 ## Get the element name
 
@@ -283,7 +283,7 @@ require_once 'path/to/lib/shoprunback-php/init.php';
 \Shoprunback\Elements\Warehouse::getElementName(); // Returns 'warehouse'
 ```
 
-To easily **get** the **lowercase name of an element**, you can use those methods
+To easily **get** the **lowercase name of an element**, you can use those methods.
 
 > Get a nested element with its name
 
@@ -299,4 +299,4 @@ $brandName = \Shoprunback\Elements\Brand::getElementName(); // $brandName = 'bra
 $product->$brandName; // $product->brand
 ```
 
-This way, you can easily **get the attribute name for a nested Element**. It can be **useful in recursive functions or logs**
+This way, you can easily **get the attribute name for a nested Element**. It can be **useful in recursive functions or logs**.

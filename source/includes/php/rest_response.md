@@ -1,6 +1,6 @@
 # RestResponse
 
-> Get a Success
+> Success
 
 ```php
 <?php
@@ -21,7 +21,7 @@ $response->getCode(); // Returns the HTTP code
 $response->getBody(); // Returns the result of the API call (Here it returns the product with the id '1f27f9d9-3b5c-4152-98b7-760f56967dea')
 ```
 
-> Get a Failure
+> Failure
 
 ```php
 <?php
