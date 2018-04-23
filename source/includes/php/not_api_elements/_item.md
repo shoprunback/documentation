@@ -4,18 +4,16 @@
 
 ```php
 <?php
-// With a use statement
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
+// With a use statement
 use \Shoprunback\Elements\Item;
 
 $item = new Item();
 
 // Without a use statement
-require 'path/to/lib/shoprunback-php/init.php';
-
 $item = new \Shoprunback\Elements\Item();
 ```
 
@@ -31,7 +29,7 @@ An **Item** is **linked to a Product**.
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 $order = new \Shoprunback\Elements\Order();
 

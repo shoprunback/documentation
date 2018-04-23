@@ -4,7 +4,7 @@
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 $shipback = \Shoprunback\Elements\Shipback::retrieve('1f27f9d9-3b5c-4152-98b7-760f56967dea');
 

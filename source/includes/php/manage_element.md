@@ -6,7 +6,7 @@
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
@@ -41,7 +41,7 @@ When the <b>element is saved</b>, the <b>origValues</b> will be <b>filled with t
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
@@ -63,7 +63,7 @@ To get only the attributes an Element will use for an API call, you can use `$el
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
@@ -80,7 +80,7 @@ You can list all the attributes an Element accepts when making an API call with 
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 use \Shoprunback\Elements\Product as libProduct;
 
@@ -127,7 +127,7 @@ $myProduct->save();
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 use \Shoprunback\Elements\Product as libProduct;
 
@@ -181,7 +181,7 @@ You can **either use the library independantly of your classes or extend the lib
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
@@ -204,7 +204,7 @@ $retrievedProduct->isPersisted(); // true
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
@@ -225,7 +225,7 @@ $product->isKeyDirty('label'); // true
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
@@ -255,7 +255,7 @@ A **key present in the** `$element->getApiAttributesKeys()` that **hasn't a** `_
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 // All those methods return true or false
 \Shoprunback\Elements\Product::canRetrieve(); // Check if you can get one element
@@ -273,7 +273,7 @@ You can **check if an element can do an API call** with `canRetrieve()`,`canCrea
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\Elements\Product::getElementName(); // Returns 'product'
 \Shoprunback\Elements\Brand::getElementName(); // Returns 'brand'
@@ -289,7 +289,7 @@ To easily **get** the **lowercase name of an element**, you can use those method
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 $product = \Shoprunback\Elements\Product::retrieve('1f27f9d9-3b5c-4152-98b7-760f56967dea');
 $productName = $product::getElementName(); // $productName = 'product'

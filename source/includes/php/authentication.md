@@ -2,7 +2,7 @@
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 // We highly recommend you to write this line at the very beginning of your code, so the token is set for all future API call
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');

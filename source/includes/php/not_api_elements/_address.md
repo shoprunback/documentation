@@ -5,7 +5,7 @@
 ```php
 <?php
 // With a use statement
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
@@ -14,7 +14,7 @@ use \Shoprunback\Elements\Address;
 $address = new Address();
 
 // Without a use statement
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 $address = new \Shoprunback\Elements\Address();
 ```
@@ -29,7 +29,7 @@ The class **Address** represents a postal address. It **can belong to** a **Comp
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 $address = new \Shoprunback\Elements\Address();
 

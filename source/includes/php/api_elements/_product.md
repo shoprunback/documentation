@@ -4,16 +4,16 @@
 
 ```php
 <?php
-// With a use statement
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
+\Shoprunback\RestClient::getClient()->setToken('yourApiToken');
+
+// With a use statement
 use \Shoprunback\Elements\Product;
 
 $product = new Product();
 
 // Without a use statement
-require 'path/to/lib/shoprunback-php/init.php';
-
 $product = new \Shoprunback\Elements\Product();
 ```
 
@@ -29,7 +29,7 @@ An **Order has Items**, and **each Item is linked to one Product**.
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
@@ -92,7 +92,7 @@ Parameter | Required | Type | Description | Tips
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
@@ -103,7 +103,7 @@ $products = \Shoprunback\Elements\Product::all();
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
@@ -114,7 +114,7 @@ $product = \Shoprunback\Elements\Product::retrieve('1f27f9d9-3b5c-4152-98b7-760f
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
@@ -127,7 +127,7 @@ $product->save();
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 

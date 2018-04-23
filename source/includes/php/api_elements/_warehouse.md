@@ -4,16 +4,16 @@
 
 ```php
 <?php
-// With a use statement
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
+
+\Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
 use \Shoprunback\Elements\Warehouse;
 
+// With a use statement
 $warehouse = new Warehouse();
 
 // Without a use statement
-require 'path/to/lib/shoprunback-php/init.php';
-
 $warehouse = new \Shoprunback\Elements\Warehouse();
 ```
 
@@ -29,7 +29,7 @@ You <b>need to have</b> at least <b>one Warehouse to create a Shipback</b>.
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
@@ -55,7 +55,7 @@ Parameter | Required to create | Type | Description
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
@@ -66,7 +66,7 @@ $warehouses = \Shoprunback\Elements\Warehouse::all();
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 

@@ -4,18 +4,16 @@
 
 ```php
 <?php
-// With a use statement
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
+// With a use statement
 use \Shoprunback\Elements\Customer;
 
 $customer = new Customer();
 
 // Without a use statement
-require 'path/to/lib/shoprunback-php/init.php';
-
 $customer = new \Shoprunback\Elements\Customer();
 ```
 
@@ -31,7 +29,7 @@ A **Customer** has an **Address**.
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 $customer = new \Shoprunback\Elements\Customer();
 

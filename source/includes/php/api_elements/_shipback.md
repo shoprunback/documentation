@@ -4,16 +4,16 @@
 
 ```php
 <?php
-// With a use statement
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
+\Shoprunback\RestClient::getClient()->setToken('yourApiToken');
+
+// With a use statement
 use \Shoprunback\Elements\Shipback;
 
 $shipback = new Shipback();
 
 // Without a use statement
-require 'path/to/lib/shoprunback-php/init.php';
-
 $shipback = new \Shoprunback\Elements\Shipback();
 ```
 
@@ -41,7 +41,7 @@ You <b>need to have</b> at least <b>one Warehouse to create a Shipback</b>.
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
@@ -54,9 +54,9 @@ $shipback->order_id = '1f27f9d9-3b5c-4152-98b7-760f56967deav';
 // To create a shipback, you must only set an order_id. All the other attributes are created by ShopRunBack.
 // ---------------------------------------------------------------------------------------------------------
 
-// ---------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------
 // To create a shipback, you must have at least one Warehouse created on your account!
-// ---------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------
 
 // Now we can save the shipback!
 $shipback->save();
@@ -84,7 +84,7 @@ Parameter | Required to create | Type | Description | Tips
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
@@ -95,7 +95,7 @@ $shipbacks = \Shoprunback\Elements\Shipback::all();
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
@@ -106,7 +106,7 @@ $shipback = \Shoprunback\Elements\Shipback::retrieve('1f27f9d9-3b5c-4152-98b7-76
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 

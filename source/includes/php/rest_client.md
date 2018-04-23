@@ -4,7 +4,7 @@
 
 ```php
 <?php
-require 'path/to/lib/shoprunback-php/init.php';
+require_once 'path/to/lib/shoprunback-php/init.php';
 
 $restClient = \Shoprunback\RestClient::getClient();
 $restClient->setApiBaseUrl('https://dashboard.shoprunback.com');
