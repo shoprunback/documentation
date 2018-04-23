@@ -19,13 +19,13 @@ $shipback = new \Shoprunback\Elements\Shipback();
 
 The class Shipback represents a return request made by a customer.
 
-To **create a Shipback**, you **must have at least one warehouse** created on your account.
+To **create a Shipback**, you **must have at least one Warehouse** created on your account.
 
 All **shipbacks have an array of returned items** and are **linked to an order**. They also have an **array of quotes given by the logistics service** (see Quotes for more info) and a **size set by the customer after the shipback was created**.
 
-The **returned items** are inevitably an **array of Items composed of items from the linked order**.
+The **returned items** are inevitably an **array of ReturnedItems composed of Items from the linked order**.
 
-The **quotes** are the **available modes to do a return**, with their price, state and locations.
+The **quotes** is an **array of Quotes**, meaning the **available modes to do a return**, with their price, state and locations.
 
 The **customer** is the customer that **has initially made the linked order**.
 
@@ -67,10 +67,10 @@ Parameter | Required to create | Type | Description | Tips
 **computed_weight_in_grams** | X | **INT** | Sum of the returned items plus a wrapping factor | **In grams**
 **created_at** | X | **DateTime** | Date of the creation of the shipback |
 **public_url** | X | **String** | The URL where the user can check and fill its return request |
-**returned_items** | X | **Array of Items** | The items the user wants to return | **Contains only Items**
+**returned_items** | X | **Array of ReturnedItems** | The items the user wants to return | **Contains only ReturnedItems**
 **order** | X | **Order** | Order linked to this shipback |
-**company_id** | X | **String** | Id of the company owning the shipback |
-**company** | X | **Company** | Company owning the shipback |
+**company_id** | X | **String** | Id of the company concerned by the shipback |
+**company** | X | **Company** | Company concerned by the shipback |
 **size** | X | **Jigsize** | The size selected for the shipback |
 **quotes** | X | **Array of Quotes** | The quotes the shipback can use to be returned | **Contains only Quotes**
 
