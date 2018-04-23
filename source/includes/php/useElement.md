@@ -101,17 +101,21 @@ class myProduct
     $product->reference = $this->reference;
     $product->weight_in_grams = $this->weight_in_grams;
 
+    //[...]
+    // Add all params to $product
+    //[...]
+
     return $product;
   }
 
   public function save()
   {
-    // Code...
+    // [...]
 
     $libProduct = $this->generateLibProduct();
     $libProduct->save();
 
-    // Code...
+    // [...]
   }
 }
 
@@ -135,6 +139,10 @@ class myProduct extends libProduct
     $this->reference = $params['reference'];
     $this->weight_in_grams = $params['weight_in_grams'];
 
+    //[...]
+    // Add all params to $product
+    //[...]
+
     if ($params['id']) {
       parent::__construct($params['id']);
     } else {
@@ -142,12 +150,12 @@ class myProduct extends libProduct
     }
   }
 
-  // Be careful not to overwrite the functions of the parent class
+  // Be careful not to overwrite the functions of the parent class!
   public function saveProduct()
   {
     // Code...
 
-    $this->save(); // save() is a function of the parent class
+    $this->save(); // save() is a function of the parent class, don't overwrite it!
 
     // Code...
   }
@@ -229,9 +237,9 @@ $product->isDirtyKey('label'); // true
 var_dump($product->getDirtyKeys()); // Prints ['label']
 ```
 
-To know **if an element is new**, you can use `$element->isPersisted()`.
+To know **if an Element is new**, you can use `$element->isPersisted()`. If it **returns true**, then the Element is **not new**.
 
-You can **check if an element is new or has at least one parameter changed** with `$element->isDirty()`.
+You can **check if an Element is new or has at least one parameter changed** with `$element->isDirty()`.
 
 You can know **which keys have been changed** with `$element->getDirtyKeys()`.
 
@@ -243,7 +251,7 @@ A **key present in the** `$element->getApiAttributesKeys()` that **hasn't a** `_
 
 ## Which API calls can it do ?
 
-> Check which API calls an element can or cannot do
+> Check which API calls an Element can or cannot do
 
 ```php
 <?php
@@ -284,7 +292,7 @@ To easily **get** the **lowercase name of an element**, you can use those method
 require 'path/to/lib/shoprunback-php/init.php';
 
 $product = \Shoprunback\Elements\Product::retrieve('1f27f9d9-3b5c-4152-98b7-760f56967dea');
-$productName = $product::getElementName(); // $productName = 'product';
+$productName = $product::getElementName(); // $productName = 'product'
 
 $brandName = \Shoprunback\Elements\Brand::getElementName(); // $brandName = 'brand'
 
