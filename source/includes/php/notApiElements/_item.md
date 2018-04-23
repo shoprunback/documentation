@@ -19,7 +19,7 @@ require 'path/to/lib/shoprunback-php/init.php';
 $item = new \Shoprunback\Elements\Item();
 ```
 
-The class Item represents a product a customer ordered with additionnal parameters specific to the order.
+The class Item represents a **product a customer ordered with additionnal parameters** specific to the order.
 
 An **Order owns an array of Items**.
 
@@ -42,7 +42,7 @@ $item = new \Shoprunback\Elements\Item();
 // Mandatory attributes
 $item->product_id = $product->id;
 $item->label = 'My item label'; // You can also set the product's label: $product->label
-$item->reference = 'My item reference'; // You can also set the product's reference: $product->reference
+$item->reference = 'my-item-reference'; // You can also set the product's reference: $product->reference
 $item->price_cents = 1000;
 
 // Optional attributes
@@ -55,10 +55,10 @@ $order->items = [$item];
 Parameter | Type | Description | Tips
 -|-|-|-
 **label** | **String** | The label of the item | You can set the label of the product in the customer language
-**reference** | **String** | Reference of the item |
+**reference** | **String** | Reference of the item | You can use the product's reference. If you don't, use only lowercase letters and replace spaces by -
 **barcode** | **String** | If set, the barcode will be printed next to the corresponding item in the return voucher | The printed barcode is a CODE 128
 **price_cents** | **INT** | The price of the item
 **currency** | **String** | Currency used | Default: **eur**
 **created_at** | **DateTime** | The item's creation date
 **product_id** | **String** | The id of the linked Product | **When you create an Item, ONLY SET THE PRODUCT_ID**
-**product** | **Product** | The Product ordered | **When you create an Item, ONLY SET THE PRODUCT_ID**
+**product** | **Product** | The linked Product | **When you create an Item, ONLY SET THE PRODUCT_ID**
