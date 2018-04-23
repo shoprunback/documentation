@@ -29,9 +29,9 @@ try {
 }
 ```
 
-When trying to **retrieve all datas of an element** with an API call, you will actually **get a page of the 10 first elements** (by default) of your company.
+When trying to **retrieve all datas of an element** with an API call, you will actually **get a page of the first elements** of your company (10 by default).
 
-You **can** then **get any of the 10 elements**.
+You **can** then **get any of those elements**.
 
 If you **try to get** for example **the 12th element**, the **variable will load the corresponding page and be refreshed**, meaning you will have **a page of 10 elements, from the 11th to the 20th**, so it can return you the 12th element.
 
