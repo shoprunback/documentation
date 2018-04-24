@@ -40,18 +40,34 @@ For instance, some of your data is automatically synchronized after some actions
   </ul>
 </aside>
 
-## How does my customers create a return demand?
+## Which language can I use?
 
-Any customer can create a return demand once an order is at least "Shipped".
+It is currently available in English (GB and US) and French.
 
-They then have a button to create a return demand on the details of the order.
+## How do my customers create a return request?
 
-This button redirects them to the ShopRunBack's form to fill their demand.
+Any customer can create a return request once an order is at least `Shipped`.
+
+They then have a button to create a return request on the details of the order.
+
+### 1.6 version
+
+![Order detail in front-office in PrestaShop 1.6.0.9](http:../../images/prestashop/ps1.6.0.9_order-detail-return-request.png)
+
+### 1.7 version
+
+![Order detail in front-office in PrestaShop 1.7.2.5](http:../../images/prestashop/ps1.7.2.5_order-detail-return-request.png)
+
+This button redirects them to the ShopRunBack's form to fill their request.
 
 ## How can I know if anything went wrong?
 
 We log most of the module's actions on your log system.
 
-To access it, just go to your back-office, and, in the left menu, go to "Advanced parameters" > "Logs".
+To access it, just go to your back-office, and, in the left menu, go to `Advanced parameters` > `Logs`.
 
-All our logs have their message beginning with "[ShopRunBack]" so you can filter them easily.
+| 1.6 | 1.7 |
+|-|-|
+| ![Logs tab in left-menu in PrestaShop 1.6.0.9](http:../../images/prestashop/ps1.6.0.9_left-menu-logs.png) | ![Logs tab in left-menu in PrestaShop 1.7.2.5](http:../../images/prestashop/ps1.7.2.5_left-menu-logs.png) |
+
+All our logs have their message beginning with `[ShopRunBack]` so you can filter them easily.
