@@ -1,0 +1,111 @@
+<h1 id="errors">Errors</h1>
+
+<blockquote>
+<p>Catch an Error from the library</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$product</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'a wrong ID'</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Shoprunback\Error\Error</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Here you can manage the error
+</span><span class="p">}</span>
+</code></pre>
+<p>To prevent errors to crash your application, you must catch the exceptions.</p>
+
+<p>All the errors the library can return inherit from the class <strong>\Shoprunback\Error\Error</strong>.</p>
+
+<h4 id="parameters">Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Specific to</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>message</strong></td>
+<td><strong>String</strong></td>
+<td>The mandatory message for an Exception</td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong>response</strong></td>
+<td><strong>RestResponse</strong></td>
+<td>The response from the server explaining why the call failed</td>
+<td><strong>RestClientError</strong></td>
+</tr>
+</tbody></table>
+
+<h2 id="error-types">Error types</h2>
+
+<blockquote>
+<p>Use a RestClientError</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$product</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'a wrong ID'</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Shoprunback\Error\Error</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">is_a</span><span class="p">(</span><span class="nv">$e</span><span class="p">,</span> <span class="nx">\Shoprunback\Error\RestClientError</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$restResponse</span> <span class="o">=</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">response</span><span class="p">;</span>
+    <span class="c1">// Then, see how to use a RestResponse
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Class name</th>
+<th>Event</th>
+<th>Special</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>ElementCannotBeCreated</strong></td>
+<td>When an element doesn&rsquo;t have a POST endpoint (ex: Account)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ElementCannotBeUpdated</strong></td>
+<td>When an element doesn&rsquo;t have a PUT endpoint (ex: Order)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ElementCannotGetAll</strong></td>
+<td>When an element doesn&rsquo;t have a GET endpoint to get all Elements (ex: Account)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ElementIndexDoesntExists</strong></td>
+<td>When you try to get the nth element and there are less than n element</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NotFoundError</strong></td>
+<td>When you try to get or update an element but the given ID or reference doesn&rsquo;t exist</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>RestClientError</strong></td>
+<td>When an error occured while trying to make an API call (token not set, server unreachable&hellip;)</td>
+<td>Has a <strong>response</strong> parameter containing a <strong>RestResponse</strong></td>
+</tr>
+<tr>
+<td><strong>UnknownApiToken</strong></td>
+<td>(Not yet implemented)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>UnknownElement</strong></td>
+<td>When the library checks if an object is an Element and doesn&rsquo;t find any appropriate class</td>
+<td></td>
+</tr>
+</tbody></table>

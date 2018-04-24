@@ -2,17 +2,43 @@
 
 <h2 id="connect-my-shoprunback-account-to-the-module">Connect my ShopRunBack account to the module</h2>
 
-<p>To share your data with ShopRunBack, you must take the <a href="https://dashboard.shoprunback.com/fr/tokens">authentication token of your ShopRunBack account</a>.</p>
+<p>To share your data with ShopRunBack, you must use the <a href="https://dashboard.shoprunback.com/tokens">authentication token of your ShopRunBack account</a>.</p>
 
 <p>Copy it and go back to your website.</p>
 
-<p>Click on the &ldquo;ShopRunBack&rdquo; tab in the left menu, go to &ldquo;Configuration&rdquo;, paste your token in the &ldquo;API Token&rdquo; field and save your configuration.</p>
+<p>Click on the <code class="prettyprint">ShopRunBack</code> tab in the left menu.</p>
+
+<table><thead>
+<tr>
+<th>1.6</th>
+<th>1.7</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>!<img src="/images/prestashop/ps1.6.0.9_left-menu-srb.png" alt="ShopRunBack tab in the left menu for PrestaShop 1.6.0.9" /></td>
+<td><img src="/images/prestashop/ps1.7.2.5_left-menu-srb.png" alt="ShopRunBack tab in the left menu for PrestaShop 1.7.2.5" /></td>
+</tr>
+</tbody></table>
+
+<p>Go to <code class="prettyprint">Configuration</code>.</p>
+
+<p><img src="/images/prestashop/ps_srb-returns-goto-configuration.png" alt="Go to the configuration tab in the ShopRunBack module" /></p>
+
+<p>Paste your token in the <code class="prettyprint">API Token</code> field and save your configuration.</p>
+
+<p><img src="/images/prestashop/ps_srb-configuration-save-token.png" alt="Save the ShopRunBack token" /></p>
 
 <p>Now, you can share your data with your ShopRunBack account!</p>
 
 <h2 id="synchronize-your-data">Synchronize your data!</h2>
 
 <p>After configuring your account, we recommend you to directly synchronize all your brands, products and orders.</p>
+
+<p><img src="/images/prestashop/ps_srb-brands-sync-all.png" alt="Synchronize all brands" /></p>
+
+<p><img src="/images/prestashop/ps_srb-products-sync-all.png" alt="Synchronize all products" /></p>
+
+<p><img src="/images/prestashop/ps_srb-orders-sync-all.png" alt="Synchronize all orders" /></p>
 
 <h2 id="environment">Environment</h2>
 
@@ -23,6 +49,8 @@
 <p>There are 2 modes:</p>
 
 <ul>
-<li>Sandbox: It is a <b>test</b> environment. The data on this environment is reset every monday.</li>
-<li>Production: It is where your customers&rsquo; return demands are made. <b>This is real data</b>!</li>
+<li>Sandbox: It is a <strong>test</strong> environment. The data on this environment is reset every monday.</li>
+<li>Production: It is where your customers&rsquo; return requests are made. <strong>This is real data!</strong></li>
 </ul>
+
+<p><img src="/images/prestashop/ps_srb-configuration-environments.png" alt="Where to find ShopRunBack in the left menu" /></p>

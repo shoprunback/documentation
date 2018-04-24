@@ -235,7 +235,7 @@
 
           <h1 id="supported-versions">Supported versions</h1>
 
-<p>The module is compatible with all versions starting from 1.6.0.9.</p>
+<p>The module is compatible with all versions starting from <code class="prettyprint">1.6.0.9</code>.</p>
 
 <p>If your version is below, please update your Prestashop before.</p>
 
@@ -251,25 +251,91 @@
 
 <h2 id="install-on-your-site">Install on your site</h2>
 
-<p>Then, go to the back-office of your website, then go to modules.</p>
+<h3 id="1-6-version">1.6 version</h3>
 
-<p>Click on &ldquo;Add a new module&rdquo;, select the .zip you just downloaded and click on &ldquo;Upload this module&rdquo;.</p>
+<p>Go to the back-office of your website, then go to <code class="prettyprint">Modules</code>.</p>
+
+<p><img src="images/prestashop/ps1.6.0.9_left-menu-modules.png" alt="Modules tab in the left menu in PrestaShop 1.6.0.9" /></p>
+
+<p>Click on <code class="prettyprint">Add a new module</code>.</p>
+
+<p><img src="images/prestashop/ps1.6.0.9_modules-add-module.png" alt="Add a module in PrestaShop 1.6.0.9" /></p>
+
+<p>Click on <code class="prettyprint">Choose a file</code>.</p>
+
+<p><img src="images/prestashop/ps1.6.0.9_modules-select-module.png" alt="Select a module in PrestaShop 1.6.0.9" /></p>
+
+<p>Select the .zip you just downloaded.</p>
+
+<p><img src="images/prestashop/ps_modules-select-zip.png" alt="Select the zip" /></p>
+
+<p>Click on <code class="prettyprint">Upload this module</code>.</p>
+
+<p><img src="images/prestashop/ps1.6.0.9_modules-upload-module.png" alt="Upload the module in PrestaShop 1.6.0.9" /></p>
+
+<p>Find the ShopRunBack module and click on <code class="prettyprint">Install</code>.</p>
+
+<p><img src="images/prestashop/ps1.6.0.9_modules-install-srb.png" alt="Install the module in PrestaShop 1.6.0.9" /></p>
+
+<h3 id="1-7-version">1.7 version</h3>
+
+<p>Go to the back-office of your website, then go to <code class="prettyprint">Modules</code>.</p>
+
+<p><img src="images/prestashop/ps1.7.2.5_left-menu-modules.png" alt="Modules tab in the left menu in PrestaShop 1.7.2.5" /></p>
+
+<p>Click on <code class="prettyprint">Upload a module</code>.</p>
+
+<p><img src="images/prestashop/ps1.7.2.5_modules-add-module.png" alt="Add a module in PrestaShop 1.7.2.5" /></p>
+
+<p>Select the .zip you just downloaded.</p>
+
+<p><img src="images/prestashop/ps_modules-select-zip.png" alt="Select the zip" /></p>
+
+<p>The module is now installed. You can now click on <code class="prettyprint">Configure</code> to directly go to the module configuration page.</p>
+
+<p><img src="images/prestashop/ps1.7.2.5_modules-module-uploaded.png" alt="After having installed a module in PrestaShop 1.7.2.5" /></p>
 
           <h1 id="configure-the-module">Configure the module</h1>
 
 <h2 id="connect-my-shoprunback-account-to-the-module">Connect my ShopRunBack account to the module</h2>
 
-<p>To share your data with ShopRunBack, you must take the <a href="https://dashboard.shoprunback.com/fr/tokens">authentication token of your ShopRunBack account</a>.</p>
+<p>To share your data with ShopRunBack, you must use the <a href="https://dashboard.shoprunback.com/tokens">authentication token of your ShopRunBack account</a>.</p>
 
 <p>Copy it and go back to your website.</p>
 
-<p>Click on the &ldquo;ShopRunBack&rdquo; tab in the left menu, go to &ldquo;Configuration&rdquo;, paste your token in the &ldquo;API Token&rdquo; field and save your configuration.</p>
+<p>Click on the <code class="prettyprint">ShopRunBack</code> tab in the left menu.</p>
+
+<table><thead>
+<tr>
+<th>1.6</th>
+<th>1.7</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>!<img src="images/prestashop/ps1.6.0.9_left-menu-srb.png" alt="ShopRunBack tab in the left menu for PrestaShop 1.6.0.9" /></td>
+<td><img src="images/prestashop/ps1.7.2.5_left-menu-srb.png" alt="ShopRunBack tab in the left menu for PrestaShop 1.7.2.5" /></td>
+</tr>
+</tbody></table>
+
+<p>Go to <code class="prettyprint">Configuration</code>.</p>
+
+<p><img src="images/prestashop/ps_srb-returns-goto-configuration.png" alt="Go to the configuration tab in the ShopRunBack module" /></p>
+
+<p>Paste your token in the <code class="prettyprint">API Token</code> field and save your configuration.</p>
+
+<p><img src="images/prestashop/ps_srb-configuration-save-token.png" alt="Save the ShopRunBack token" /></p>
 
 <p>Now, you can share your data with your ShopRunBack account!</p>
 
 <h2 id="synchronize-your-data">Synchronize your data!</h2>
 
 <p>After configuring your account, we recommend you to directly synchronize all your brands, products and orders.</p>
+
+<p><img src="images/prestashop/ps_srb-brands-sync-all.png" alt="Synchronize all brands" /></p>
+
+<p><img src="images/prestashop/ps_srb-products-sync-all.png" alt="Synchronize all products" /></p>
+
+<p><img src="images/prestashop/ps_srb-orders-sync-all.png" alt="Synchronize all orders" /></p>
 
 <h2 id="environment">Environment</h2>
 
@@ -280,9 +346,11 @@
 <p>There are 2 modes:</p>
 
 <ul>
-<li>Sandbox: It is a <b>test</b> environment. The data on this environment is reset every monday.</li>
-<li>Production: It is where your customers&rsquo; return demands are made. <b>This is real data</b>!</li>
+<li>Sandbox: It is a <strong>test</strong> environment. The data on this environment is reset every monday.</li>
+<li>Production: It is where your customers&rsquo; return requests are made. <strong>This is real data!</strong></li>
 </ul>
+
+<p><img src="images/prestashop/ps_srb-configuration-environments.png" alt="Where to find ShopRunBack in the left menu" /></p>
 
           <h1 id="use-the-module">Use the module</h1>
 
@@ -337,21 +405,45 @@
   </ul>
 </aside>
 
-<h2 id="how-does-my-customers-create-a-return-demand">How does my customers create a return demand?</h2>
+<h2 id="which-language-can-i-use">Which language can I use?</h2>
 
-<p>Any customer can create a return demand once an order is at least &ldquo;Shipped&rdquo;.</p>
+<p>It is currently available in English (GB and US) and French.</p>
 
-<p>They then have a button to create a return demand on the details of the order.</p>
+<h2 id="how-do-my-customers-create-a-return-request">How do my customers create a return request?</h2>
 
-<p>This button redirects them to the ShopRunBack&rsquo;s form to fill their demand.</p>
+<p>Any customer can create a return request once an order is at least <code class="prettyprint">Shipped</code>.</p>
+
+<p>They then have a button to create a return request on the details of the order.</p>
+
+<h3 id="1-6-version">1.6 version</h3>
+
+<p><img src="images/prestashop/ps1.6.0.9_order-detail-return-request.png" alt="Order detail in front-office in PrestaShop 1.6.0.9" /></p>
+
+<h3 id="1-7-version">1.7 version</h3>
+
+<p><img src="images/prestashop/ps1.7.2.5_order-detail-return-request.png" alt="Order detail in front-office in PrestaShop 1.7.2.5" /></p>
+
+<p>This button redirects them to the ShopRunBack&rsquo;s form to fill their request.</p>
 
 <h2 id="how-can-i-know-if-anything-went-wrong">How can I know if anything went wrong?</h2>
 
 <p>We log most of the module&rsquo;s actions on your log system.</p>
 
-<p>To access it, just go to your back-office, and, in the left menu, go to &ldquo;Advanced parameters&rdquo; &gt; &ldquo;Logs&rdquo;.</p>
+<p>To access it, just go to your back-office, and, in the left menu, go to <code class="prettyprint">Advanced parameters</code> &gt; <code class="prettyprint">Logs</code>.</p>
 
-<p>All our logs have their message beginning with &ldquo;[ShopRunBack]&rdquo; so you can filter them easily.</p>
+<table><thead>
+<tr>
+<th>1.6</th>
+<th>1.7</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><img src="images/prestashop/ps1.6.0.9_left-menu-logs.png" alt="Logs tab in left-menu in PrestaShop 1.6.0.9" /></td>
+<td><img src="images/prestashop/ps1.7.2.5_left-menu-logs.png" alt="Logs tab in left-menu in PrestaShop 1.7.2.5" /></td>
+</tr>
+</tbody></table>
+
+<p>All our logs have their message beginning with <code class="prettyprint">[ShopRunBack]</code> so you can filter them easily.</p>
 
       </div>
       <div class="dark-box">

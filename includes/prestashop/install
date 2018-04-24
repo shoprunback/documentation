@@ -10,6 +10,46 @@
 
 <h2 id="install-on-your-site">Install on your site</h2>
 
-<p>Then, go to the back-office of your website, then go to modules.</p>
+<h3 id="1-6-version">1.6 version</h3>
 
-<p>Click on &ldquo;Add a new module&rdquo;, select the .zip you just downloaded and click on &ldquo;Upload this module&rdquo;.</p>
+<p>Go to the back-office of your website, then go to <code class="prettyprint">Modules</code>.</p>
+
+<p><img src="/images/prestashop/ps1.6.0.9_left-menu-modules.png" alt="Modules tab in the left menu in PrestaShop 1.6.0.9" /></p>
+
+<p>Click on <code class="prettyprint">Add a new module</code>.</p>
+
+<p><img src="/images/prestashop/ps1.6.0.9_modules-add-module.png" alt="Add a module in PrestaShop 1.6.0.9" /></p>
+
+<p>Click on <code class="prettyprint">Choose a file</code>.</p>
+
+<p><img src="/images/prestashop/ps1.6.0.9_modules-select-module.png" alt="Select a module in PrestaShop 1.6.0.9" /></p>
+
+<p>Select the .zip you just downloaded.</p>
+
+<p><img src="/images/prestashop/ps_modules-select-zip.png" alt="Select the zip" /></p>
+
+<p>Click on <code class="prettyprint">Upload this module</code>.</p>
+
+<p><img src="/images/prestashop/ps1.6.0.9_modules-upload-module.png" alt="Upload the module in PrestaShop 1.6.0.9" /></p>
+
+<p>Find the ShopRunBack module and click on <code class="prettyprint">Install</code>.</p>
+
+<p><img src="/images/prestashop/ps1.6.0.9_modules-install-srb.png" alt="Install the module in PrestaShop 1.6.0.9" /></p>
+
+<h3 id="1-7-version">1.7 version</h3>
+
+<p>Go to the back-office of your website, then go to <code class="prettyprint">Modules</code>.</p>
+
+<p><img src="/images/prestashop/ps1.7.2.5_left-menu-modules.png" alt="Modules tab in the left menu in PrestaShop 1.7.2.5" /></p>
+
+<p>Click on <code class="prettyprint">Upload a module</code>.</p>
+
+<p><img src="/images/prestashop/ps1.7.2.5_modules-add-module.png" alt="Add a module in PrestaShop 1.7.2.5" /></p>
+
+<p>Select the .zip you just downloaded.</p>
+
+<p><img src="/images/prestashop/ps_modules-select-zip.png" alt="Select the zip" /></p>
+
+<p>The module is now installed. You can now click on <code class="prettyprint">Configure</code> to directly go to the module configuration page.</p>
+
+<p><img src="/images/prestashop/ps1.7.2.5_modules-module-uploaded.png" alt="After having installed a module in PrestaShop 1.7.2.5" /></p>

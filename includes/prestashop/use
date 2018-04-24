@@ -51,18 +51,42 @@
   </ul>
 </aside>
 
-<h2 id="how-does-my-customers-create-a-return-demand">How does my customers create a return demand?</h2>
+<h2 id="which-language-can-i-use">Which language can I use?</h2>
 
-<p>Any customer can create a return demand once an order is at least &ldquo;Shipped&rdquo;.</p>
+<p>It is currently available in English (GB and US) and French.</p>
 
-<p>They then have a button to create a return demand on the details of the order.</p>
+<h2 id="how-do-my-customers-create-a-return-request">How do my customers create a return request?</h2>
 
-<p>This button redirects them to the ShopRunBack&rsquo;s form to fill their demand.</p>
+<p>Any customer can create a return request once an order is at least <code class="prettyprint">Shipped</code>.</p>
+
+<p>They then have a button to create a return request on the details of the order.</p>
+
+<h3 id="1-6-version">1.6 version</h3>
+
+<p><img src="/images/prestashop/ps1.6.0.9_order-detail-return-request.png" alt="Order detail in front-office in PrestaShop 1.6.0.9" /></p>
+
+<h3 id="1-7-version">1.7 version</h3>
+
+<p><img src="/images/prestashop/ps1.7.2.5_order-detail-return-request.png" alt="Order detail in front-office in PrestaShop 1.7.2.5" /></p>
+
+<p>This button redirects them to the ShopRunBack&rsquo;s form to fill their request.</p>
 
 <h2 id="how-can-i-know-if-anything-went-wrong">How can I know if anything went wrong?</h2>
 
 <p>We log most of the module&rsquo;s actions on your log system.</p>
 
-<p>To access it, just go to your back-office, and, in the left menu, go to &ldquo;Advanced parameters&rdquo; &gt; &ldquo;Logs&rdquo;.</p>
+<p>To access it, just go to your back-office, and, in the left menu, go to <code class="prettyprint">Advanced parameters</code> &gt; <code class="prettyprint">Logs</code>.</p>
 
-<p>All our logs have their message beginning with &ldquo;[ShopRunBack]&rdquo; so you can filter them easily.</p>
+<table><thead>
+<tr>
+<th>1.6</th>
+<th>1.7</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><img src="/images/prestashop/ps1.6.0.9_left-menu-logs.png" alt="Logs tab in left-menu in PrestaShop 1.6.0.9" /></td>
+<td><img src="/images/prestashop/ps1.7.2.5_left-menu-logs.png" alt="Logs tab in left-menu in PrestaShop 1.7.2.5" /></td>
+</tr>
+</tbody></table>
+
+<p>All our logs have their message beginning with <code class="prettyprint">[ShopRunBack]</code> so you can filter them easily.</p>

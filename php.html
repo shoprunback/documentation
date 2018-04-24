@@ -226,7 +226,2074 @@
 
 <h1 id="php-library">PHP Library</h1>
 
-<p>(Redaction in progress)</p>
+<p>Welcome to the ShopRunBack public PHP library.</p>
+
+<p>This library will help you use the <a href="https://shoprunback.github.io/documentation/api.html">ShopRunBack API</a> easily in your PHP application.</p>
+
+<p>It is used in our <a href="https://shoprunback.github.io/documentation/prestashop.html">PrestaShop module</a>.</p>
+
+<p>If you have any question, please send an email to: tech_at_shoprunback.com</p>
+
+          <h1 id="install">Install</h1>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+</code></pre>
+<p><a href="images/shoprunback-php/shoprunback-php.zip">Click here</a> to download the library.</p>
+
+<p>Then, unzip the .zip and move the folder into your project.</p>
+
+<p>Finally, to load the library, you need to load it with <code class="prettyprint">require_once &#39;path/to/lib/shoprunback-php/init.php&#39;;</code></p>
+
+          <h1 id="authentication">Authentication</h1>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="c1">// We highly recommend you to write this line at the very beginning of your code, so the token is set for all future API call
+</span><span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+</code></pre>
+<p>To use the API, you must be authenticated with your API token, which can be done with the class RestClient.</p>
+
+<p>You need to set your API token in the RestClient with <code class="prettyprint">\Shoprunback\RestClient::getClient()-&gt;setToken(&#39;yourApiToken&#39;);</code>, and then you will have access to all your data.</p>
+
+<aside class="warning">
+The authentication token is <b>unique</b> for each Account and <b>gives access to all your data</b>, <b>be careful not to share it</b>!
+</aside>
+
+          <h1 id="elements">Elements</h1>
+
+<p>The elements are all the <strong>classes you can manipulate to display, edit or delete your personal data</strong>.</p>
+
+<p>All the mandatory Elements required to create and manage a Shipback are implemented.</p>
+
+<p><strong>Some</strong> of these elements <strong>do not have an endpoint. Those who don&rsquo;t are nested Elements</strong>.</p>
+
+          <h2 id="elements-with-an-endpoint">Elements with an endpoint</h2>
+
+          <h3 id="account">Account</h3>
+
+<p>The class Account represents your ShopRunBack account.</p>
+
+<h4 id="parameters">Parameters</h4>
+
+<blockquote>
+<p>Get your account</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="c1">// With a use statement
+</span><span class="k">use</span> <span class="nx">\Shoprunback\Elements\Account</span><span class="p">;</span>
+
+<span class="nv">$account</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">getOwn</span><span class="p">();</span>
+
+<span class="c1">// Without a use statement
+</span><span class="nv">$account</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Account</span><span class="o">::</span><span class="na">getOwn</span><span class="p">();</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>first_name</strong></td>
+<td><strong>String</strong></td>
+<td>Your first name</td>
+</tr>
+<tr>
+<td><strong>last_name</strong></td>
+<td><strong>String</strong></td>
+<td>Your last name</td>
+</tr>
+<tr>
+<td><strong>email</strong></td>
+<td><strong>String</strong></td>
+<td>Your email</td>
+</tr>
+<tr>
+<td><strong>auth_token</strong></td>
+<td><strong>String</strong></td>
+<td>Your authentication token, required to do almost all API calls</td>
+</tr>
+</tbody></table>
+
+<h4 id="api-operations">API operations</h4>
+
+<blockquote>
+<p>Update your account</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$account</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Account</span><span class="o">::</span><span class="na">getOwn</span><span class="p">();</span>
+<span class="nv">$account</span><span class="o">-&gt;</span><span class="na">first_name</span> <span class="o">=</span> <span class="s1">'Martin'</span><span class="p">;</span>
+<span class="nv">$account</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Operation</th>
+<th>Enabled</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Get all (paginated)</strong></td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Get one</strong></td>
+<td>Yes, <strong>for your account only</strong></td>
+</tr>
+<tr>
+<td><strong>Create</strong></td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Update</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Delete</strong></td>
+<td>No</td>
+</tr>
+</tbody></table>
+
+          <h3 id="brand">Brand</h3>
+
+<blockquote>
+<p>Initialize</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="c1">// With a use statement
+</span><span class="k">use</span> <span class="nx">\Shoprunback\Elements\Brand</span><span class="p">;</span>
+
+<span class="nv">$brand</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Brand</span><span class="p">();</span>
+
+<span class="c1">// Without a use statement
+</span><span class="nv">$brand</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Brand</span><span class="p">();</span>
+</code></pre>
+<p>The class Brand represents the brand you&rsquo;re selling. Products belongs to a brand. You can create and delete Brands and add or remove Products from your Brands.</p>
+
+<p><strong>Once your retailer account is created and your company details entered</strong>, a <strong>default brand is created</strong>.</p>
+
+<p>All your <strong>Products are linked to a Brand</strong>. If you <strong>forget to link</strong> a product to a brand, it is <strong>then automatically linked to the default</strong> brand.</p>
+
+<h4 id="parameters">Parameters</h4>
+
+<blockquote>
+<p>Create a Brand</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$brand</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Brand</span><span class="p">();</span>
+
+<span class="c1">// Mandatory to create a new brand
+</span><span class="nv">$brand</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s1">'My super brand'</span><span class="p">;</span>
+<span class="nv">$brand</span><span class="o">-&gt;</span><span class="na">reference</span> <span class="o">=</span> <span class="s1">'my-super-brand'</span><span class="p">;</span>
+
+<span class="c1">// Now we can save the brand!
+</span><span class="nv">$brand</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required to create</th>
+<th>Type</th>
+<th>Description</th>
+<th>Tips</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>name</strong></td>
+<td>Yes</td>
+<td><strong>String</strong></td>
+<td>Name of the brand, displayed to the customer on the return process</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>reference</strong></td>
+<td>Yes</td>
+<td><strong>String</strong></td>
+<td>Unique reference of the brand</td>
+<td>Use only lowercase letters and no spaces</td>
+</tr>
+</tbody></table>
+
+<h4 id="api-operations">API operations</h4>
+
+<blockquote>
+<p>Get all Brands (paginated)</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$brands</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Brand</span><span class="o">::</span><span class="na">all</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>Get a Brand</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$brand</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Brand</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Update a Brand</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$brand</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Brand</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
+<span class="nv">$brand</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s1">'New name'</span><span class="p">;</span>
+<span class="nv">$brand</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>Delete a Brand</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="c1">// Get the brand and remove it later in the code
+</span><span class="nv">$brand</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Brand</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
+
+<span class="c1">// Delete a brand by an instance
+</span><span class="nv">$brand</span><span class="o">-&gt;</span><span class="na">remove</span><span class="p">();</span>
+
+<span class="c1">// --
+// OR
+// --
+</span>
+<span class="c1">// Delete a brand directly
+</span><span class="nx">\Shoprunback\Elements\Brand</span><span class="o">::</span><span class="na">delete</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Operation</th>
+<th>Enabled</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Get all (paginated)</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Get one</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Create</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Update</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Delete</strong></td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+
+          <h3 id="company">Company</h3>
+
+<p>The class Company contains the informations about your company.</p>
+
+<h4 id="parameters">Parameters</h4>
+
+<blockquote>
+<p>Get its company</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="c1">// With a use statement
+</span><span class="k">use</span> <span class="nx">\Shoprunback\Elements\Company</span><span class="p">;</span>
+
+<span class="nv">$company</span> <span class="o">=</span> <span class="nx">Company</span><span class="o">::</span><span class="na">getOwn</span><span class="p">();</span>
+
+<span class="c1">// Without a use statement
+</span><span class="nv">$company</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Company</span><span class="o">::</span><span class="na">getOwn</span><span class="p">();</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>String</strong></td>
+<td>Your company&rsquo;s name (mandatory to create a company)</td>
+</tr>
+<tr>
+<td><strong>slug</strong></td>
+<td><strong>String</strong></td>
+<td>Your company&rsquo;s slug</td>
+</tr>
+<tr>
+<td><strong>address1</strong></td>
+<td><strong>String</strong></td>
+<td>Your company&rsquo;s address</td>
+</tr>
+<tr>
+<td><strong>address2</strong></td>
+<td><strong>String</strong></td>
+<td>Optional informations (floor, code&hellip;)</td>
+</tr>
+<tr>
+<td><strong>zipcode</strong></td>
+<td><strong>String</strong></td>
+<td>Your company&rsquo;s zipcode</td>
+</tr>
+<tr>
+<td><strong>state</strong></td>
+<td><strong>String</strong></td>
+<td>Your company&rsquo;s state</td>
+</tr>
+<tr>
+<td><strong>country_code</strong></td>
+<td><strong>String</strong></td>
+<td>Your company&rsquo;s country code</td>
+</tr>
+<tr>
+<td><strong>contact_email</strong></td>
+<td><strong>String</strong></td>
+<td>Your company&rsquo;s contact email</td>
+</tr>
+<tr>
+<td><strong>website_url</strong></td>
+<td><strong>String</strong></td>
+<td>Your company&rsquo;s website URL</td>
+</tr>
+<tr>
+<td><strong>phone_number</strong></td>
+<td><strong>String</strong></td>
+<td>Your company&rsquo;s public phone number</td>
+</tr>
+<tr>
+<td><strong>logo_url</strong></td>
+<td><strong>String</strong></td>
+<td>Your company&rsquo;s logo&rsquo;s URL</td>
+</tr>
+<tr>
+<td><strong>reasons</strong></td>
+<td><strong>Array of Reasons</strong></td>
+<td>The retur reasons your company accepts (<strong>&lsquo;doesnt_fit&rsquo;</strong> ; <strong>&lsquo;quality&rsquo;</strong> ; <strong>&lsquo;damaged&rsquo;</strong> ; <strong>&lsquo;wrong&rsquo;</strong> ; <strong>&lsquo;incorrect&rsquo;</strong> ; <strong>&lsquo;delay&rsquo;</strong> ; <strong>&lsquo;reconsider&rsquo;</strong>)</td>
+</tr>
+</tbody></table>
+
+<h4 id="api-operations">API operations</h4>
+
+<blockquote>
+<p>Update your company</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$company</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Company</span><span class="o">::</span><span class="na">getOwn</span><span class="p">();</span>
+<span class="nv">$company</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s1">'ShopRunBack'</span><span class="p">;</span>
+<span class="nv">$company</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Operation</th>
+<th>Enabled</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Get all (paginated)</strong></td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Get one</strong></td>
+<td>Yes, <strong>your company only</strong></td>
+</tr>
+<tr>
+<td><strong>Create</strong></td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Update</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Delete</strong></td>
+<td>No</td>
+</tr>
+</tbody></table>
+
+          <h3 id="product">Product</h3>
+
+<blockquote>
+<p>Initialize</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="c1">// With a use statement
+</span><span class="k">use</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="p">;</span>
+
+<span class="nv">$product</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Product</span><span class="p">();</span>
+
+<span class="c1">// Without a use statement
+</span><span class="nv">$product</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="p">();</span>
+</code></pre>
+<p>The class Product represents a product your company is selling. <strong>Do not confuse it with</strong> an <strong>Item</strong>.</p>
+
+<p>All your <strong>products are linked to a brand</strong>. If you <strong>forget to link</strong> a product to a brand, it is <strong>then automatically linked to the default</strong> brand.</p>
+
+<p>An <strong>Order has Items</strong>, and <strong>each Item is linked to one Product</strong>.</p>
+
+<h4 id="parameters">Parameters</h4>
+
+<blockquote>
+<p>Create a Product</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$product</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="p">();</span>
+
+<span class="c1">// Mandatory to create a new product
+</span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">label</span> <span class="o">=</span> <span class="s1">'My super product'</span><span class="p">;</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">reference</span> <span class="o">=</span> <span class="s1">'my-super-product'</span><span class="p">;</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">weight_grams</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+
+
+<span class="c1">// Mandatory nested elements
+</span>
+<span class="c1">// If you want to link your product to an existing Brand, set the ID of your already registered brand
+</span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">brand_id</span> <span class="o">=</span> <span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">;</span>
+
+<span class="c1">// If you want to link your product to a new Brand
+</span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">brand</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Brand</span><span class="p">();</span>
+
+<span class="c1">// The brand must then be filled with the required parameters.
+// Please read the documentation above showing how to correctly create a Brand.
+</span>
+<span class="c1">// --------------------------------------------------------------------------------------
+// To link a Brand, you must always either set brand_id or brand, but never both!
+// --------------------------------------------------------------------------------------
+</span>
+
+<span class="c1">// Optional
+</span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">ean</span> <span class="o">=</span> <span class="s1">'1258987561456'</span><span class="p">;</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">width_mm</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">length_mm</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">height_mm</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+
+<span class="c1">// For the picture, please use ONLY ONE of those two parameters, not both at the same time
+</span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">picture_file_base64</span> <span class="o">=</span> <span class="s1">'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQAAAAA3bvkkAAAAAnRSTlMAAHaTzTgAAAAKSURBVHgBY2AAAAACAAFzdQEYAAAAAElFTkSuQmCC'</span><span class="p">;</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">picture_file_url</span> <span class="o">=</span> <span class="s1">'http://shoprunback.com/wp-content/themes/shoprunback/images/logo-menu.png'</span><span class="p">;</span>
+
+
+<span class="c1">// Now you can save the product
+</span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+<th>Tips</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>label</strong></td>
+<td>Yes</td>
+<td><strong>String</strong></td>
+<td>Label of the product, displayed to the customer on the return process</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>reference</strong></td>
+<td>Yes</td>
+<td><strong>String</strong></td>
+<td>Unique reference of the product</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>weight_grams</strong></td>
+<td>Yes</td>
+<td><strong>INT</strong></td>
+<td>Weight of the product</td>
+<td>In grams</td>
+</tr>
+<tr>
+<td><strong>ean</strong></td>
+<td>No</td>
+<td><strong>String</strong></td>
+<td>EAN of the product</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>width_mm</strong></td>
+<td>No</td>
+<td><strong>INT</strong></td>
+<td>Width of the product</td>
+<td>In millimeters</td>
+</tr>
+<tr>
+<td><strong>length_mm</strong></td>
+<td>No</td>
+<td><strong>INT</strong></td>
+<td>Length of the product</td>
+<td>In millimeters</td>
+</tr>
+<tr>
+<td><strong>height_mm</strong></td>
+<td>No</td>
+<td><strong>String</strong></td>
+<td>Height of the product</td>
+<td>In millimeters</td>
+</tr>
+<tr>
+<td><strong>picture_file_base64</strong></td>
+<td>No</td>
+<td><strong>String</strong></td>
+<td>The cover image encoded in base64</td>
+<td>Don&rsquo;t use it at the same time as <strong>picture_file_url</strong></td>
+</tr>
+<tr>
+<td><strong>picture_file_url</strong></td>
+<td>No</td>
+<td><strong>String</strong></td>
+<td>URL of the product&rsquo;s picture</td>
+<td>Don&rsquo;t use it at the same time as <strong>picture_file_base64</strong></td>
+</tr>
+<tr>
+<td><strong>brand_id</strong></td>
+<td>No</td>
+<td><strong>String</strong></td>
+<td>ID of one of your preregistered brands</td>
+<td>When <strong>saving a new Product</strong>, <strong>use brand_id</strong> if you want <strong>to link to an existing Brand</strong> and <strong>don&rsquo;t fill brand</strong></td>
+</tr>
+<tr>
+<td><strong>brand</strong></td>
+<td>No</td>
+<td><strong>Brand</strong></td>
+<td>The <strong>Brand</strong> linked to this Product</td>
+<td>When <strong>saving a new Product</strong>, <strong>use brand</strong> if you want <strong>to link to a new Brand</strong> and <strong>don&rsquo;t fill brand_id</strong></td>
+</tr>
+</tbody></table>
+
+<h4 id="api-operations">API operations</h4>
+
+<blockquote>
+<p>Get all Products (paginated)</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$products</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">all</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>Get one Product</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$product</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Update a Product</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$product</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">label</span> <span class="o">=</span> <span class="s1">'New label'</span><span class="p">;</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>Delete a Product</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="c1">// Get the product and remove it later in the code
+</span><span class="nv">$product</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
+
+<span class="c1">// Delete a product by an instance
+</span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">remove</span><span class="p">();</span>
+
+<span class="c1">// --
+// OR
+// --
+</span>
+<span class="c1">// Delete a product directly
+</span><span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">delete</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Operation</th>
+<th>Enabled</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Get all (paginated)</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Get one</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Create</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Update</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Delete</strong></td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+
+          <h3 id="order">Order</h3>
+
+<blockquote>
+<p>Initialize</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="c1">// With a use statement
+</span><span class="k">use</span> <span class="nx">\Shoprunback\Elements\Order</span><span class="p">;</span>
+
+<span class="nv">$order</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Order</span><span class="p">();</span>
+
+<span class="c1">// Without a use statement
+</span><span class="nv">$order</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Order</span><span class="p">();</span>
+</code></pre>
+<p>The class Order represents an online <strong>order made by one of your customers</strong>.</p>
+
+<p>All <strong>orders have an array of items</strong>.</p>
+
+<p>If <strong>the customer has asked to return</strong> some of the items, then <strong>the order is linked to a shipback</strong>.</p>
+
+<h4 id="parameters">Parameters</h4>
+
+<blockquote>
+<p>Create an Order</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$order</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Order</span><span class="p">();</span>
+
+<span class="c1">// Mandatory to create a new order
+</span><span class="nv">$order</span><span class="o">-&gt;</span><span class="na">order_number</span> <span class="o">=</span> <span class="s1">'4548-9854'</span><span class="p">;</span>
+
+
+<span class="c1">// Mandatory nested elements
+// The mandatory nested elements must be filled with the required parameters.
+</span>
+<span class="c1">// Please read the doc showing how to correctly create a Customer.
+</span><span class="nv">$order</span><span class="o">-&gt;</span><span class="na">customer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Customer</span><span class="p">();</span>
+
+<span class="c1">// Please read the doc showing how to correctly create a Item.
+</span><span class="nv">$order</span><span class="o">-&gt;</span><span class="na">items</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="nv">$order</span><span class="o">-&gt;</span><span class="na">items</span><span class="p">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Item</span><span class="p">();</span>
+
+<span class="c1">// Now we can save the order!
+</span><span class="nv">$order</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+<th>Tips</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>order_number</strong></td>
+<td>Yes</td>
+<td><strong>String</strong></td>
+<td>The unique identifier linked to the order, displayed to the customer on the return process</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>customer</strong></td>
+<td>Yes</td>
+<td><strong>Customer</strong></td>
+<td>The Customer that has made this order</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ordered_at</strong></td>
+<td>No</td>
+<td><strong>Date (Y-m-d)</strong></td>
+<td>The date when the order has been created</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>items</strong></td>
+<td>Yes</td>
+<td><strong>Array of Items</strong></td>
+<td>The items the customer ordered</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>created_at</strong></td>
+<td>X</td>
+<td><strong>Datetime</strong></td>
+<td>The date when the order has been created in the ShopRunBack&rsquo;s database</td>
+<td>Can&rsquo;t be set on creation</td>
+</tr>
+<tr>
+<td><strong>shipback_id</strong></td>
+<td>X</td>
+<td><strong>String</strong></td>
+<td>The id of the shipback linked to this order</td>
+<td>Can&rsquo;t be set on creation</td>
+</tr>
+<tr>
+<td><strong>shipback</strong></td>
+<td>X</td>
+<td><strong>Shipback</strong></td>
+<td>The shipback linked to this order</td>
+<td>Can&rsquo;t be set on creation</td>
+</tr>
+</tbody></table>
+
+<h4 id="api-operations">API operations</h4>
+
+<blockquote>
+<p>Get all Orders (paginated)</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$orders</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Order</span><span class="o">::</span><span class="na">all</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>Get an Order</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$order</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Order</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967deav'</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Delete an Order</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="c1">// Get the order and remove it later in the code
+</span><span class="nv">$order</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Order</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967deav'</span><span class="p">);</span>
+
+<span class="c1">// Delete an order by an instance
+</span><span class="nv">$order</span><span class="o">-&gt;</span><span class="na">remove</span><span class="p">();</span>
+
+<span class="c1">// --
+// OR
+// --
+</span>
+<span class="c1">// Delete an order directly
+</span><span class="nx">\Shoprunback\Elements\Order</span><span class="o">::</span><span class="na">delete</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967deav'</span><span class="p">);</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Operation</th>
+<th>Enabled</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Get all (paginated)</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Get one</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Create</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Update</strong></td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Delete</strong></td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+
+          <h3 id="shipback">Shipback</h3>
+
+<blockquote>
+<p>Initialize</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="c1">// With a use statement
+</span><span class="k">use</span> <span class="nx">\Shoprunback\Elements\Shipback</span><span class="p">;</span>
+
+<span class="nv">$shipback</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Shipback</span><span class="p">();</span>
+
+<span class="c1">// Without a use statement
+</span><span class="nv">$shipback</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Shipback</span><span class="p">();</span>
+</code></pre>
+<p>The class Shipback represents a return request made by a customer.</p>
+
+<p>To <strong>create a Shipback</strong>, you <strong>must have at least one Warehouse</strong> created on your account.</p>
+
+<p>All <strong>shipbacks have an array of returned items</strong> and are <strong>linked to an order</strong>. They also have an <strong>array of quotes given by the logistics service</strong> (see Quotes for more info) and a <strong>size set by the customer after the shipback was created</strong>.</p>
+
+<p>The <strong>returned items</strong> is an <strong>array containing the selected items from the original order</strong>.</p>
+
+<p>The <strong>quotes</strong> is an <strong>array of Quotes</strong>, meaning the <strong>available modes of transportation for the return</strong>, with their price, state and their related data.</p>
+
+<p>The <strong>customer</strong> is the customer that <strong>has initially made the linked order</strong>.</p>
+
+<p>The <strong>company</strong> is the company <strong>that owns the products inside the items the customer bought</strong> in the linked order.</p>
+
+<aside class="warning">
+You <b>need to have</b> at least <b>one Warehouse to create a Shipback</b>.
+</aside>
+
+<h4 id="parameters">Parameters</h4>
+
+<blockquote>
+<p>Create a Shipback</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$shipback</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Shipback</span><span class="p">();</span>
+
+<span class="c1">// Mandatory attributes
+</span><span class="nv">$shipback</span><span class="o">-&gt;</span><span class="na">order_id</span> <span class="o">=</span> <span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967deav'</span><span class="p">;</span>
+
+<span class="c1">// ---------------------------------------------------------------------------------------------------------
+// To create a shipback, you must only set an order_id. All the other attributes are created by ShopRunBack.
+// ---------------------------------------------------------------------------------------------------------
+</span>
+<span class="c1">// -----------------------------------------------------------------------------------
+// To create a shipback, you must have at least one Warehouse created on your account!
+// -----------------------------------------------------------------------------------
+</span>
+<span class="c1">// Now we can save the shipback!
+</span><span class="nv">$shipback</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required to create</th>
+<th>Type</th>
+<th>Description</th>
+<th>Tips</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>order_id</strong></td>
+<td>Yes</td>
+<td><strong>String</strong></td>
+<td>Id of the order linked to this shipback</td>
+<td><strong>When you create a shipback, ONLY SET THIS ATTRIBUTE</strong></td>
+</tr>
+<tr>
+<td><strong>rma</strong></td>
+<td>No</td>
+<td><strong>String</strong></td>
+<td>Return merchandise authorization. If set, a barcode of the RMA is printed at the top of the return voucher</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>mode</strong></td>
+<td>No</td>
+<td><strong>Enum: postal; drop-off; line-haul; direct</strong></td>
+<td>The mode the client want to return its items by</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>weight_in_grams</strong></td>
+<td>No</td>
+<td><strong>INT</strong></td>
+<td>Weight defined by the retailer</td>
+<td><strong>In grams</strong></td>
+</tr>
+<tr>
+<td><strong>computed_weight_in_grams</strong></td>
+<td>X</td>
+<td><strong>INT</strong></td>
+<td>Sum of the returned items plus a wrapping factor</td>
+<td><strong>In grams</strong></td>
+</tr>
+<tr>
+<td><strong>created_at</strong></td>
+<td>No</td>
+<td><strong>DateTime</strong></td>
+<td>Date of the creation of the shipback</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>public_url</strong></td>
+<td>No</td>
+<td><strong>String</strong></td>
+<td>The URL where the user can check and fill its return request</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>returned_items</strong></td>
+<td>No</td>
+<td><strong>Array of ReturnedItems</strong></td>
+<td>The items the user wants to return</td>
+<td><strong>Contains only ReturnedItems</strong></td>
+</tr>
+<tr>
+<td><strong>order</strong></td>
+<td>No</td>
+<td><strong>Order</strong></td>
+<td>Order linked to this shipback</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>company_id</strong></td>
+<td>No</td>
+<td><strong>String</strong></td>
+<td>Id of the company concerned by the shipback</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>company</strong></td>
+<td>No</td>
+<td><strong>Company</strong></td>
+<td>Company concerned by the shipback</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>size</strong></td>
+<td>No</td>
+<td><strong>Jigsize</strong></td>
+<td>The size selected for the shipback</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>quotes</strong></td>
+<td>No</td>
+<td><strong>Array of Quotes</strong></td>
+<td>The quotes the shipback can use to be returned</td>
+<td><strong>Contains only Quotes</strong></td>
+</tr>
+</tbody></table>
+
+<h4 id="api-operations">API operations</h4>
+
+<blockquote>
+<p>Get all Shipbacks (paginated)</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$shipbacks</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Shipback</span><span class="o">::</span><span class="na">all</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>Get one Shipback</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$shipback</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Shipback</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967deav'</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Delete a Shipback</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="c1">// Get the shipback and remove it later in the code
+</span><span class="nv">$shipback</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Shipback</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967deav'</span><span class="p">);</span>
+
+<span class="c1">// Delete a shipback by an instance
+</span><span class="nv">$shipback</span><span class="o">-&gt;</span><span class="na">remove</span><span class="p">();</span>
+
+<span class="c1">// --
+// OR
+// --
+</span>
+<span class="c1">// Delete a shipback directly
+</span><span class="nx">\Shoprunback\Elements\Shipback</span><span class="o">::</span><span class="na">delete</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967deav'</span><span class="p">);</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Operation</th>
+<th>Enabled</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Get all (paginated)</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Get one</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Create</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Update</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Delete</strong></td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+
+          <h3 id="warehouse">Warehouse</h3>
+
+<blockquote>
+<p>Initialize</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="k">use</span> <span class="nx">\Shoprunback\Elements\Warehouse</span><span class="p">;</span>
+
+<span class="c1">// With a use statement
+</span><span class="nv">$warehouse</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Warehouse</span><span class="p">();</span>
+
+<span class="c1">// Without a use statement
+</span><span class="nv">$warehouse</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Warehouse</span><span class="p">();</span>
+</code></pre>
+<p>The class Warehouse represents the destination of the items that will be returned to you.</p>
+
+<aside class="warning">
+You <b>need to have</b> at least <b>one Warehouse to create a Shipback</b>.
+</aside>
+
+<h4 id="parameters">Parameters</h4>
+
+<blockquote>
+<p>Create a Warehouse</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$warehouse</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Warehouse</span><span class="p">();</span>
+
+<span class="c1">// Mandatory to create a new warehouse
+</span><span class="nv">$warehouse</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s1">'My warehouse'</span><span class="p">;</span>
+<span class="nv">$warehouse</span><span class="o">-&gt;</span><span class="na">reference</span> <span class="o">=</span> <span class="s1">'my-warehouse'</span><span class="p">;</span>
+
+<span class="c1">// Now we can save the warehouse!
+</span><span class="nv">$warehouse</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required to create</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>name</strong></td>
+<td>Yes</td>
+<td><strong>String</strong></td>
+<td>Name of the warehouse, displayed to the customer on the return process</td>
+</tr>
+<tr>
+<td><strong>reference</strong></td>
+<td>Yes</td>
+<td><strong>String</strong></td>
+<td>Unique reference of the warehouse (if you don&rsquo;t have any, use the name)</td>
+</tr>
+<tr>
+<td><strong>address</strong></td>
+<td>Yes</td>
+<td><strong>Address</strong></td>
+<td>Address of the warehouse</td>
+</tr>
+</tbody></table>
+
+<h4 id="api-operations">API operations</h4>
+
+<blockquote>
+<p>Get all Warehouses (paginated)</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$warehouses</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Warehouse</span><span class="o">::</span><span class="na">all</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>Get one Warehouse</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$warehouse</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Warehouse</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Operation</th>
+<th>Enabled</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Get all (paginated)</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Get one</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Create</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Update</strong></td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Delete</strong></td>
+<td>No</td>
+</tr>
+</tbody></table>
+
+          <h2 id="elements-without-an-endpoint">Elements without an endpoint</h2>
+
+          <h3 id="address">Address</h3>
+
+<blockquote>
+<p>Initialize</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="c1">// With a use statement
+</span><span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="k">use</span> <span class="nx">\Shoprunback\Elements\Address</span><span class="p">;</span>
+
+<span class="nv">$address</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Address</span><span class="p">();</span>
+
+<span class="c1">// Without a use statement
+</span><span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nv">$address</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Address</span><span class="p">();</span>
+</code></pre>
+<p>The class <strong>Address</strong> represents a postal address. It <strong>can belong to</strong> a <strong>Company</strong>, a <strong>Customer</strong> or a <strong>Warehouse</strong>.</p>
+
+<p><strong>Address</strong> has <strong>no endpoint</strong>, but is <strong>necessary to create a Warehouse or a Customer</strong>. For this end, an <strong>Address has mandatory and facultative attributes</strong>.</p>
+
+<h4 id="parameters">Parameters</h4>
+
+<blockquote>
+<p>Create an Address</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nv">$address</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Address</span><span class="p">();</span>
+
+<span class="c1">// Mandatory attributes
+</span><span class="nv">$address</span><span class="o">-&gt;</span><span class="na">line1</span> <span class="o">=</span> <span class="s1">'42, Noodle Boulevard'</span><span class="p">;</span>
+<span class="nv">$address</span><span class="o">-&gt;</span><span class="na">country_code</span> <span class="o">=</span> <span class="s1">'FR'</span><span class="p">;</span>
+<span class="nv">$address</span><span class="o">-&gt;</span><span class="na">city</span> <span class="o">=</span> <span class="s1">'Paris'</span><span class="p">;</span>
+
+<span class="c1">// Optional attributes
+</span><span class="nv">$address</span><span class="o">-&gt;</span><span class="na">line2</span> <span class="o">=</span> <span class="s1">'103 first floor'</span><span class="p">;</span>
+<span class="nv">$address</span><span class="o">-&gt;</span><span class="na">zipcode</span> <span class="o">=</span> <span class="s1">'75001'</span><span class="p">;</span>
+
+<span class="c1">// We then attribute the Address to an appropriate element
+</span><span class="nv">$customer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Customer</span><span class="p">();</span>
+<span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">address</span> <span class="o">=</span> <span class="nv">$address</span><span class="p">;</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required to create</th>
+<th>Type</th>
+<th>Description</th>
+<th>Tips</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>line1</strong></td>
+<td>Yes</td>
+<td><strong>String</strong></td>
+<td>The first part of your address</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>country_code</strong></td>
+<td>Yes</td>
+<td><strong>String</strong></td>
+<td>The ISO code of your country</td>
+<td>The format is ISO 3166-1 alpha-2</td>
+</tr>
+<tr>
+<td><strong>city</strong></td>
+<td>Yes</td>
+<td><strong>String</strong></td>
+<td>The city where your address is</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>line2</strong></td>
+<td>No</td>
+<td><strong>String</strong></td>
+<td>The second part of your address</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>zipcode</strong></td>
+<td>No</td>
+<td><strong>String</strong></td>
+<td>Your zipcode</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>state</strong></td>
+<td>No</td>
+<td><strong>String</strong></td>
+<td>Your state if your country has states</td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h3 id="customer">Customer</h3>
+
+<blockquote>
+<p>Initialize</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="c1">// With a use statement
+</span><span class="k">use</span> <span class="nx">\Shoprunback\Elements\Customer</span><span class="p">;</span>
+
+<span class="nv">$customer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Customer</span><span class="p">();</span>
+
+<span class="c1">// Without a use statement
+</span><span class="nv">$customer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Customer</span><span class="p">();</span>
+</code></pre>
+<p>The class Customer represents one of your customers.</p>
+
+<p><strong>Customer</strong> has <strong>no endpoint</strong>, but is <strong>necessary to create an Order or a Shipback</strong>. For this end, a <strong>Customer has mandatory and facultative attributes</strong>.</p>
+
+<h4 id="parameters">Parameters</h4>
+
+<blockquote>
+<p>Create a Customer</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nv">$customer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Customer</span><span class="p">();</span>
+
+<span class="c1">// Mandatory attributes
+</span><span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">first_name</span> <span class="o">=</span> <span class="s1">'Jean'</span><span class="p">;</span>
+<span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">last_name</span> <span class="o">=</span> <span class="s1">'Dupont'</span><span class="p">;</span>
+<span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">email</span> <span class="o">=</span> <span class="s1">'jeandupont@gmail.com'</span><span class="p">;</span>
+<span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">phone</span> <span class="o">=</span> <span class="s1">'0612345789'</span><span class="p">;</span>
+
+<span class="c1">// Mandatory nested elements
+// The Address must then be filled with the required parameters.
+// Please read the doc showing how to correctly create an Address.
+</span><span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">address</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Address</span><span class="p">();</span>
+
+<span class="c1">// Optional attributes
+</span><span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">locale</span> <span class="o">=</span> <span class="s1">'fr'</span><span class="p">;</span>
+
+<span class="c1">// We then attribute the Customer to an appropriate element
+</span><span class="nv">$order</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Order</span><span class="p">();</span>
+<span class="nv">$order</span><span class="o">-&gt;</span><span class="na">customer</span> <span class="o">=</span> <span class="nv">$customer</span><span class="p">;</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required to create</th>
+<th>Type</th>
+<th>Description</th>
+<th>Tips</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>first_name</strong></td>
+<td>Yes</td>
+<td><strong>String</strong></td>
+<td>The first name of a customer</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>last_name</strong></td>
+<td>Yes</td>
+<td><strong>String</strong></td>
+<td>The last name of a customer</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>email</strong></td>
+<td>Yes</td>
+<td><strong>String</strong></td>
+<td>The email of a customer</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>phone</strong></td>
+<td>Yes</td>
+<td><strong>String</strong></td>
+<td>The phone number of a customer</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>address</strong></td>
+<td>Yes</td>
+<td><strong>Address</strong></td>
+<td>The Address of a customer</td>
+<td>See Address for more information</td>
+</tr>
+<tr>
+<td><strong>locale</strong></td>
+<td>No</td>
+<td><strong>String</strong></td>
+<td>The language used for the customer</td>
+<td>Default: the locale language set in your company parameters</td>
+</tr>
+</tbody></table>
+
+          <h3 id="item">Item</h3>
+
+<blockquote>
+<p>Initialize</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="c1">// With a use statement
+</span><span class="k">use</span> <span class="nx">\Shoprunback\Elements\Item</span><span class="p">;</span>
+
+<span class="nv">$item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Item</span><span class="p">();</span>
+
+<span class="c1">// Without a use statement
+</span><span class="nv">$item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Item</span><span class="p">();</span>
+</code></pre>
+<p>The class Item represents a <strong>product a customer ordered with additionnal parameters</strong> specific to the order.</p>
+
+<p>An <strong>Order owns an array of Items</strong>.</p>
+
+<p>An <strong>Item</strong> is <strong>linked to a Product</strong>.</p>
+
+<h4 id="parameters">Parameters</h4>
+
+<blockquote>
+<p>Create an Item</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nv">$order</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Order</span><span class="p">();</span>
+
+<span class="nv">$product</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
+
+<span class="nv">$item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Item</span><span class="p">();</span>
+
+<span class="c1">// Mandatory attributes
+</span><span class="nv">$item</span><span class="o">-&gt;</span><span class="na">product_id</span> <span class="o">=</span> <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>
+<span class="nv">$item</span><span class="o">-&gt;</span><span class="na">label</span> <span class="o">=</span> <span class="s1">'My item label'</span><span class="p">;</span> <span class="c1">// You can also set the product's label: $product-&gt;label
+</span><span class="nv">$item</span><span class="o">-&gt;</span><span class="na">reference</span> <span class="o">=</span> <span class="s1">'my-item-reference'</span><span class="p">;</span> <span class="c1">// You can also set the product's reference: $product-&gt;reference
+</span><span class="nv">$item</span><span class="o">-&gt;</span><span class="na">price_cents</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+
+<span class="c1">// Optional attributes
+</span><span class="nv">$item</span><span class="o">-&gt;</span><span class="na">barcode</span> <span class="o">=</span> <span class="s1">'9782700507089'</span><span class="p">;</span>
+<span class="nv">$item</span><span class="o">-&gt;</span><span class="na">currency</span> <span class="o">=</span> <span class="s1">'eur'</span><span class="p">;</span>
+
+<span class="nv">$order</span><span class="o">-&gt;</span><span class="na">items</span> <span class="o">=</span> <span class="p">[</span><span class="nv">$item</span><span class="p">];</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Tips</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>label</strong></td>
+<td><strong>String</strong></td>
+<td>The label of the item</td>
+<td>You can set the label of the product in the customer language</td>
+</tr>
+<tr>
+<td><strong>reference</strong></td>
+<td><strong>String</strong></td>
+<td>Reference of the item</td>
+<td>You can use the product&rsquo;s reference. If you don&rsquo;t, use only lowercase letters and replace spaces by -</td>
+</tr>
+<tr>
+<td><strong>barcode</strong></td>
+<td><strong>String</strong></td>
+<td>If set, the barcode will be printed next to the corresponding item in the return voucher</td>
+<td>The printed barcode is a CODE 128</td>
+</tr>
+<tr>
+<td><strong>price_cents</strong></td>
+<td><strong>INT</strong></td>
+<td>The price of the item</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>currency</strong></td>
+<td><strong>String</strong></td>
+<td>Currency used</td>
+<td>Default: <strong>eur</strong></td>
+</tr>
+<tr>
+<td><strong>created_at</strong></td>
+<td><strong>DateTime</strong></td>
+<td>The item&rsquo;s creation date</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>product_id</strong></td>
+<td><strong>String</strong></td>
+<td>The id of the linked Product</td>
+<td><strong>When you create an Item, ONLY SET THE PRODUCT_ID</strong></td>
+</tr>
+<tr>
+<td><strong>product</strong></td>
+<td><strong>Product</strong></td>
+<td>The linked Product</td>
+<td><strong>When you create an Item, ONLY SET THE PRODUCT_ID</strong></td>
+</tr>
+</tbody></table>
+
+          <h3 id="returneditem">ReturnedItem</h3>
+
+<blockquote>
+<p>Get ReturnedItems</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nv">$shipback</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Shipback</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
+
+<span class="nv">$returnedItem</span> <span class="o">=</span> <span class="nv">$shipback</span><span class="o">-&gt;</span><span class="na">returned_items</span><span class="p">;</span>
+</code></pre>
+<p>The class ReturnedItem represents an item a customer ordered and wants to return.</p>
+
+<p>A <strong>Shipback owns an array of ReturnedItems</strong>.</p>
+
+<p>A <strong>ReturnedItems</strong> is <strong>linked to an Item</strong>.</p>
+
+<h4 id="parameters">Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>item_id</strong></td>
+<td><strong>String</strong></td>
+<td>The id of the linked Item</td>
+</tr>
+<tr>
+<td><strong>item</strong></td>
+<td><strong>Item</strong></td>
+<td>The linked Item</td>
+</tr>
+<tr>
+<td><strong>reason_code</strong></td>
+<td><strong>Enum: doesnt_fit, quality, damaged, wrong, incorrect, delay, reconsider</strong></td>
+<td>The reason why the item is returned ordered</td>
+</tr>
+</tbody></table>
+
+          <h1 id="manage-a-single-element">Manage a single Element</h1>
+
+<h2 id="original-values">Original values</h2>
+
+<blockquote>
+<p>Get original values</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$product</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">label</span><span class="p">;</span> <span class="c1">// Prints: 'My label'
+</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">label</span> <span class="o">=</span> <span class="s1">'New label'</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">label</span><span class="p">;</span> <span class="c1">// Prints: 'New label'
+</span>
+<span class="k">echo</span> <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">_origValues</span><span class="o">-&gt;</span><span class="na">label</span><span class="p">;</span> <span class="c1">// Prints 'My label'
+</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">refresh</span><span class="p">();</span>
+
+<span class="k">echo</span> <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">label</span><span class="p">;</span> <span class="c1">// Prints 'My label'
+</span></code></pre>
+<p>You can get the original values of an Element whenever you want by getting the <code class="prettyprint">_origValues</code> attribute.</p>
+
+<p><strong>Never edit the</strong> <code class="prettyprint">_origValues</code>, they are the current value on the server.</p>
+
+<p>If you want to reset an element with its original values, use <code class="prettyprint">$element-&gt;refresh()</code> (makes an API call)</p>
+
+<aside class="warning">
+When the <b>element is saved</b>, the <b>origValues</b> will be <b>updated with the new values!</b>
+</aside>
+
+<h2 id="get-different-attributes">Get different attributes</h2>
+
+<blockquote>
+<p>Different ways to get important attributes</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$product</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="p">();</span>
+
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">label</span> <span class="o">=</span> <span class="s1">'My label'</span><span class="p">;</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">custom</span> <span class="o">=</span> <span class="s1">'My custom param'</span><span class="p">;</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">brand</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Brand</span><span class="p">();</span>
+
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">getAllAttributes</span><span class="p">();</span> <span class="c1">// Returns 'label', 'custom' and 'brand' with their values
+</span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">getApiAttributes</span><span class="p">();</span> <span class="c1">// Returns 'label' and 'brand' with their values
+</span></code></pre>
+<p>To get all the attributes of an Element including the nested Elements, you can use <code class="prettyprint">$element-&gt;getAllAttributes()</code>.</p>
+
+<p>To get only the attributes an Element will use for an API call, you can use <code class="prettyprint">$element-&gt;getApiAttributes()</code>.</p>
+
+<blockquote>
+<p>Get all keys an Element accepts</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$product</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="p">();</span>
+
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">getApiAttributesKeys</span><span class="p">();</span> <span class="c1">// Returns all attributes a Product will accept before doing an API call
+</span></code></pre>
+<p>You can list all the attributes an Element accepts when making an API call with <code class="prettyprint">$product-&gt;getApiAttributesKeys()</code>.</p>
+
+<h2 id="use-the-elements-with-my-objects">Use the elements with my objects</h2>
+
+<blockquote>
+<p>Separate my own classes and the library&rsquo;s classes</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">\Shoprunback\Elements\Product</span> <span class="k">as</span> <span class="nx">libProduct</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">myProduct</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">label</span> <span class="o">=</span> <span class="s1">'My label'</span><span class="p">;</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">reference</span> <span class="o">=</span> <span class="s1">'my-label'</span><span class="p">;</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">weight_in_grams</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">generateLibProduct</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="nv">$product</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">libProduct</span><span class="p">();</span>
+
+    <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">label</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">label</span><span class="p">;</span>
+    <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">reference</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">reference</span><span class="p">;</span>
+    <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">weight_in_grams</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">weight_in_grams</span><span class="p">;</span>
+
+    <span class="c1">//[...]
+</span>    <span class="c1">// Add all params to $product
+</span>    <span class="c1">//[...]
+</span>
+    <span class="k">return</span> <span class="nv">$product</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">save</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="c1">// [...]
+</span>
+    <span class="nv">$libProduct</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">generateLibProduct</span><span class="p">();</span>
+    <span class="nv">$libProduct</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+
+    <span class="c1">// [...]
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$myProduct</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">myProduct</span><span class="p">();</span>
+<span class="nv">$myProduct</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>Extend the library&rsquo;s classes</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">\Shoprunback\Elements\Product</span> <span class="k">as</span> <span class="nx">libProduct</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">myProduct</span> <span class="k">extends</span> <span class="nx">libProduct</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$params</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">label</span> <span class="o">=</span> <span class="nv">$params</span><span class="p">[</span><span class="s1">'label'</span><span class="p">];</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">reference</span> <span class="o">=</span> <span class="nv">$params</span><span class="p">[</span><span class="s1">'reference'</span><span class="p">];</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">weight_in_grams</span> <span class="o">=</span> <span class="nv">$params</span><span class="p">[</span><span class="s1">'weight_in_grams'</span><span class="p">];</span>
+
+    <span class="c1">//[...]
+</span>    <span class="c1">// Add all params to $product
+</span>    <span class="c1">//[...]
+</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$params</span><span class="p">[</span><span class="s1">'id'</span><span class="p">])</span> <span class="p">{</span>
+      <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$params</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Be careful not to overwrite the functions of the parent class!
+</span>  <span class="k">public</span> <span class="k">function</span> <span class="nf">saveProduct</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="c1">// Code...
+</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span> <span class="c1">// save() is a function of the parent class, don't overwrite it!
+</span>
+    <span class="c1">// Code...
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">'label'</span> <span class="o">=&gt;</span> <span class="s1">'My label'</span><span class="p">,</span>
+  <span class="s1">'reference'</span> <span class="o">=&gt;</span> <span class="s1">'my-label'</span><span class="p">,</span>
+  <span class="s1">'weight_in_grams'</span> <span class="o">=&gt;</span> <span class="mi">1000</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="nv">$myProduct</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">myProduct</span><span class="p">(</span><span class="nv">$params</span><span class="p">);</span>
+<span class="nv">$myProduct</span><span class="o">-&gt;</span><span class="na">saveProduct</span><span class="p">();</span>
+</code></pre>
+<p>You can <strong>either use the library independantly of your classes or extend the library&rsquo;s classes</strong></p>
+
+<p><strong>If you use inheritance</strong>, be <strong>careful not to overwrite the parent functions</strong>. Instead, <strong>use functions including the parent function</strong>.</p>
+
+<h2 id="check-changed-fields">Check changed fields</h2>
+
+<blockquote>
+<p>Check if an Element is a new one or not</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$product</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="p">();</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">isPersisted</span><span class="p">();</span> <span class="c1">// false
+</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">label</span> <span class="o">=</span> <span class="s1">'New label'</span><span class="p">;</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">reference</span> <span class="o">=</span> <span class="s1">'new-label'</span><span class="p">;</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">weight_in_grams</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">isPersisted</span><span class="p">();</span> <span class="c1">// false
+</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">isPersisted</span><span class="p">();</span> <span class="c1">// true
+</span>
+<span class="nv">$retrievedProduct</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
+<span class="nv">$retrievedProduct</span><span class="o">-&gt;</span><span class="na">isPersisted</span><span class="p">();</span> <span class="c1">// true
+</span></code></pre>
+<blockquote>
+<p>Check changed fields in a existing Product</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$product</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
+
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">isDirty</span><span class="p">();</span> <span class="c1">// false
+</span><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">getDirtyKeys</span><span class="p">());</span> <span class="c1">// Prints []
+</span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">isKeyDirty</span><span class="p">(</span><span class="s1">'label'</span><span class="p">);</span> <span class="c1">// false
+</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">label</span> <span class="o">=</span> <span class="s1">'New label'</span><span class="p">;</span>
+
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">isDirty</span><span class="p">();</span> <span class="c1">// true
+</span><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">getDirtyKeys</span><span class="p">());</span> <span class="c1">// Prints ['label']
+</span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">isKeyDirty</span><span class="p">(</span><span class="s1">'label'</span><span class="p">);</span> <span class="c1">// true
+</span></code></pre>
+<blockquote>
+<p>Check changed fields in a new Product</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$product</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="p">();</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">isDirty</span><span class="p">();</span> <span class="c1">// true
+</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">label</span> <span class="o">=</span> <span class="s1">'My label'</span><span class="p">;</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">isDirtyKey</span><span class="p">(</span><span class="s1">'label'</span><span class="p">);</span> <span class="c1">// true
+</span><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">getDirtyKeys</span><span class="p">());</span> <span class="c1">// Prints ['label']
+</span></code></pre>
+<p>To know <strong>if an Element is new</strong>, you can use <code class="prettyprint">$element-&gt;isPersisted()</code>. If it <strong>returns true</strong>, then the Element is <strong>not new</strong>.</p>
+
+<p>You can <strong>check if an Element is new or has at least one parameter changed</strong> with <code class="prettyprint">$element-&gt;isDirty()</code>.</p>
+
+<p>You can know <strong>which keys have been changed</strong> with <code class="prettyprint">$element-&gt;getDirtyKeys()</code>.</p>
+
+<p>You can also check <strong>if a precise key has changed</strong> with <code class="prettyprint">$element-&gt;isDirtyKey($key)</code>.</p>
+
+<p>When you try to <strong>update an existing Element</strong>, it will <strong>only send the attributes that has been changed</strong>.</p>
+
+<p>A <strong>key present in the</strong> <code class="prettyprint">$element-&gt;getApiAttributesKeys()</code> that <strong>hasn&rsquo;t a</strong> <code class="prettyprint">_origValues</code> is <strong>considered changed</strong> (ex: when you create a new Product and add a label).</p>
+
+<h2 id="which-api-calls-can-it-do">Which API calls can it do ?</h2>
+
+<blockquote>
+<p>Check which API calls an Element can or cannot do</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="c1">// All those methods return true or false
+</span><span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">canRetrieve</span><span class="p">();</span> <span class="c1">// Check if you can get one element
+</span><span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">canCreate</span><span class="p">();</span> <span class="c1">// Check if you can save a new element
+</span><span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">canUpdate</span><span class="p">();</span> <span class="c1">// Check if you can update an existing element
+</span><span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">canDelete</span><span class="p">();</span> <span class="c1">// Check if you can delete an element
+</span><span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">canGetAll</span><span class="p">();</span> <span class="c1">// Check if you can get many elements at once
+</span></code></pre>
+<p>You can <strong>check if an element can do an API call</strong> with <code class="prettyprint">canRetrieve()</code>,<code class="prettyprint">canCreate()</code>, <code class="prettyprint">canUpdate()</code>, <code class="prettyprint">canDelete()</code>, <code class="prettyprint">canGetAll()</code></p>
+
+<h2 id="get-the-element-name">Get the element name</h2>
+
+<blockquote>
+<p>Get the element name</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">getElementName</span><span class="p">();</span> <span class="c1">// Returns 'product'
+</span><span class="nx">\Shoprunback\Elements\Brand</span><span class="o">::</span><span class="na">getElementName</span><span class="p">();</span> <span class="c1">// Returns 'brand'
+</span><span class="nx">\Shoprunback\Elements\Order</span><span class="o">::</span><span class="na">getElementName</span><span class="p">();</span> <span class="c1">// Returns 'order'
+</span><span class="nx">\Shoprunback\Elements\Shipback</span><span class="o">::</span><span class="na">getElementName</span><span class="p">();</span> <span class="c1">// Returns 'shipback'
+</span><span class="nx">\Shoprunback\Elements\Item</span><span class="o">::</span><span class="na">getElementName</span><span class="p">();</span> <span class="c1">// Returns 'item'
+</span><span class="nx">\Shoprunback\Elements\Warehouse</span><span class="o">::</span><span class="na">getElementName</span><span class="p">();</span> <span class="c1">// Returns 'warehouse'
+</span></code></pre>
+<p>To easily <strong>get</strong> the <strong>lowercase name of an element</strong>, you can use those methods.</p>
+
+<blockquote>
+<p>Get a nested element with its name</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nv">$product</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
+<span class="nv">$productName</span> <span class="o">=</span> <span class="nv">$product</span><span class="o">::</span><span class="na">getElementName</span><span class="p">();</span> <span class="c1">// $productName = 'product'
+</span>
+<span class="nv">$brandName</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Brand</span><span class="o">::</span><span class="na">getElementName</span><span class="p">();</span> <span class="c1">// $brandName = 'brand'
+</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="nv">$brandName</span><span class="p">;</span> <span class="c1">// $product-&gt;brand
+</span></code></pre>
+<p>This way, you can easily <strong>get the attribute name for a nested Element</strong>. It can be <strong>useful in recursive functions or logs</strong>.</p>
+
+          <h1 id="restclient">RestClient</h1>
+
+<blockquote>
+<p>Use the RestClient globally</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nv">$restClient</span> <span class="o">=</span> <span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">();</span>
+<span class="nv">$restClient</span><span class="o">-&gt;</span><span class="na">setApiBaseUrl</span><span class="p">(</span><span class="s1">'https://dashboard.shoprunback.com'</span><span class="p">);</span>
+<span class="nv">$restClient</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nb">define</span><span class="p">(</span><span class="s1">'REST_CLIENT'</span><span class="p">,</span> <span class="nv">$restClient</span><span class="p">);</span>
+</code></pre>
+<p><strong>Accepts: GET ; POST ; PUT ; DELETE</strong></p>
+
+<p>The RestClient is used to execute the API calls.</p>
+
+<p>It is a <strong>Singleton</strong>, so you need to use <code class="prettyprint">$restClient = RestClient::getClient()</code> to use it.</p>
+
+<aside class="warning">
+  Since it is a Singleton, it is highly recommended to <b>declare it in a variable or a constant</b> so you can use it everywhere
+</aside>
+
+<p>You can <strong>set a specific URL target</strong> for the API calls with <code class="prettyprint">setApiBaseUrl()</code>. This URL should be <strong>https://dashboard.shoprunback.com</strong> by default and <strong>https://sandbox.dashboard.shoprunback.com</strong> for the sandbox.</p>
+
+<p>You can <strong>set the token of a user</strong> with <code class="prettyprint">setToken()</code>. Most of the API calls need you to be authentified to be done.</p>
+
+<p>You can also <strong>set environment variables</strong> called <code class="prettyprint">SHOPRUNBACK_URL</code> and <code class="prettyprint">SHOPRUNBACK_TOKEN</code> to automatically load them.</p>
+
+          <h1 id="restresponse">RestResponse</h1>
+
+<blockquote>
+<p>Success</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$restClient</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
+    <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">showEndpoint</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">),</span>
+    <span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">GET</span>
+  <span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">RestClientError</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getCode</span><span class="p">();</span> <span class="c1">// Returns the HTTP code
+</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span> <span class="c1">// Returns the result of the API call (Here it returns the product with the id '1f27f9d9-3b5c-4152-98b7-760f56967dea')
+</span></code></pre>
+<blockquote>
+<p>Failure</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$product</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'a wrong ID'</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Shoprunback\Error\Error</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">is_a</span><span class="p">(</span><span class="nv">$e</span><span class="p">,</span> <span class="nx">\Shoprunback\Error\RestClientError</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">response</span><span class="p">;</span>
+
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getCode</span><span class="p">();</span> <span class="c1">// Returns the HTTP code
+</span>    <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getErrors</span><span class="p">();</span> <span class="c1">// Returns the errors
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<p>The RestResponse contains the <strong>response of an API call</strong>.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Special</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>code</strong></td>
+<td><strong>INT</strong></td>
+<td>The HTTP code returned</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>body</strong></td>
+<td><strong>Object</strong></td>
+<td>The result of a succesful query</td>
+<td><strong>Only on Success</strong></td>
+</tr>
+<tr>
+<td><strong>errors</strong></td>
+<td><strong>Object</strong></td>
+<td>The result of a failed query</td>
+<td><strong>Only on Failure</strong></td>
+</tr>
+</tbody></table>
+
+          <h1 id="errors">Errors</h1>
+
+<blockquote>
+<p>Catch an Error from the library</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$product</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'a wrong ID'</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Shoprunback\Error\Error</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Here you can manage the error
+</span><span class="p">}</span>
+</code></pre>
+<p>To prevent errors to crash your application, you must catch the exceptions.</p>
+
+<p>All the errors the library can return inherit from the class <strong>\Shoprunback\Error\Error</strong>.</p>
+
+<h4 id="parameters">Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Specific to</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>message</strong></td>
+<td><strong>String</strong></td>
+<td>The mandatory message for an Exception</td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong>response</strong></td>
+<td><strong>RestResponse</strong></td>
+<td>The response from the server explaining why the call failed</td>
+<td><strong>RestClientError</strong></td>
+</tr>
+</tbody></table>
+
+<h2 id="error-types">Error types</h2>
+
+<blockquote>
+<p>Use a RestClientError</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$product</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'a wrong ID'</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Shoprunback\Error\Error</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">is_a</span><span class="p">(</span><span class="nv">$e</span><span class="p">,</span> <span class="nx">\Shoprunback\Error\RestClientError</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$restResponse</span> <span class="o">=</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">response</span><span class="p">;</span>
+    <span class="c1">// Then, see how to use a RestResponse
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Class name</th>
+<th>Event</th>
+<th>Special</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>ElementCannotBeCreated</strong></td>
+<td>When an element doesn&rsquo;t have a POST endpoint (ex: Account)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ElementCannotBeUpdated</strong></td>
+<td>When an element doesn&rsquo;t have a PUT endpoint (ex: Order)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ElementCannotGetAll</strong></td>
+<td>When an element doesn&rsquo;t have a GET endpoint to get all Elements (ex: Account)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ElementIndexDoesntExists</strong></td>
+<td>When you try to get the nth element and there are less than n element</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NotFoundError</strong></td>
+<td>When you try to get or update an element but the given ID or reference doesn&rsquo;t exist</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>RestClientError</strong></td>
+<td>When an error occured while trying to make an API call (token not set, server unreachable&hellip;)</td>
+<td>Has a <strong>response</strong> parameter containing a <strong>RestResponse</strong></td>
+</tr>
+<tr>
+<td><strong>UnknownApiToken</strong></td>
+<td>(Not yet implemented)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>UnknownElement</strong></td>
+<td>When the library checks if an object is an Element and doesn&rsquo;t find any appropriate class</td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="logs">Logs</h1>
+
+<p>Most actions of the library are logged.</p>
+
+<p>You can check all those logs in <code class="prettyprint">/path/to/lib/shoprunback-php/logs</code>.</p>
 
       </div>
       <div class="dark-box">

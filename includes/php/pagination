@@ -1,0 +1,39 @@
+<h1 id="managing-the-all-api-call">Managing the -All- API call</h1>
+
+<blockquote>
+<p>Use the result of a Product::All()</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="c1">// ----------------------------------------------------------------
+// For this example, we will imagine we have 15 products registered
+// ----------------------------------------------------------------
+</span>
+<span class="nv">$products</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">all</span><span class="p">();</span> <span class="c1">// Here $products contains the 10 first products of your company
+</span>
+<span class="nv">$products</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="c1">// Returns the product with the index 0, the first product of the list
+</span><span class="nv">$products</span><span class="p">[</span><span class="mi">9</span><span class="p">];</span> <span class="c1">// Returns the product with the index 9, the 10th product of the list
+</span>
+<span class="nv">$products</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span> <span class="c1">// Refreshes the var with the second page of products, and returns the product with the index 10, the 11th product of the list
+</span><span class="nv">$products</span><span class="p">[</span><span class="mi">11</span><span class="p">];</span> <span class="c1">// Returns the product with the index 11, the 12th product of the list
+</span>
+<span class="nv">$products</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="c1">// Refreshes the var with the first page of product, and returns the product with the index 0, the first product of the list
+</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$products</span><span class="p">[</span><span class="mi">15</span><span class="p">];</span> <span class="c1">// Since there is only 15 products, there is no product with the index 15 or more, so it will return an error
+</span><span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Shoprunback\Error\ElementIndexDoesntExists</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre>
+<p>When trying to <strong>retrieve all datas of an element</strong> with an API call, you will actually <strong>get a page of the first elements</strong> of your company (10 by default).</p>
+
+<p>You <strong>can</strong> then <strong>get any of those elements</strong>.</p>
+
+<p>If you <strong>try to get</strong> for example <strong>the 12th element</strong>, the <strong>variable will load the corresponding page and be refreshed</strong>, meaning you will have <strong>a page of 10 elements, from the 11th to the 20th</strong>, so it can return you the 12th element.</p>
+
+<p>This way, you <strong>have access to all your elements without loading them all</strong> from the ShopRunBack&rsquo;s database and <strong>without having to calculate or specify the page you need</strong> to load to get the correct index.</p>
+
+<p>But <strong>if you have</strong> for example <strong>30 elements</strong> and <strong>try to get the 32th</strong>, you will have a <strong>ElementIndexDoesntExists error</strong>.</p>

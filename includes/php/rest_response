@@ -1,0 +1,70 @@
+<h1 id="restresponse">RestResponse</h1>
+
+<blockquote>
+<p>Success</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$restClient</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
+    <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">showEndpoint</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">),</span>
+    <span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">GET</span>
+  <span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">RestClientError</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getCode</span><span class="p">();</span> <span class="c1">// Returns the HTTP code
+</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span> <span class="c1">// Returns the result of the API call (Here it returns the product with the id '1f27f9d9-3b5c-4152-98b7-760f56967dea')
+</span></code></pre>
+<blockquote>
+<p>Failure</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$product</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'a wrong ID'</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Shoprunback\Error\Error</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">is_a</span><span class="p">(</span><span class="nv">$e</span><span class="p">,</span> <span class="nx">\Shoprunback\Error\RestClientError</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">response</span><span class="p">;</span>
+
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getCode</span><span class="p">();</span> <span class="c1">// Returns the HTTP code
+</span>    <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getErrors</span><span class="p">();</span> <span class="c1">// Returns the errors
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<p>The RestResponse contains the <strong>response of an API call</strong>.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Special</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>code</strong></td>
+<td><strong>INT</strong></td>
+<td>The HTTP code returned</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>body</strong></td>
+<td><strong>Object</strong></td>
+<td>The result of a succesful query</td>
+<td><strong>Only on Success</strong></td>
+</tr>
+<tr>
+<td><strong>errors</strong></td>
+<td><strong>Object</strong></td>
+<td>The result of a failed query</td>
+<td><strong>Only on Failure</strong></td>
+</tr>
+</tbody></table>

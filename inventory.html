@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>ShopRunBack Documentation for the prestashop addon</title>
+    <title>ShopRunBack Documentation for the inventory application</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -200,7 +200,7 @@
       <script src="javascripts/all_nosearch.js"></script>
   </head>
 
-  <body class="inventory" data-languages="[&quot;php&quot;]">
+  <body class="inventory" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -209,14 +209,10 @@
     </a>
     <div class="tocify-wrapper">
       <img src="images/logo.png" alt="Logo" />
-        <div class="lang-selector">
-              <a href="#" data-language-name="php">PHP</a>
-        </div>
       <div id="toc">
       </div>
         <ul class="toc-footer">
             <li><a href='http://dashboard.shoprunback.com'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://s3.amazonaws.com/srb-public/prestashop/shoprunback-prestashop.zip'>Download the module</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -227,13 +223,141 @@
 
 <h1 id="inventory-app-for-retailers">Inventory App for retailers</h1>
 
-<p>(Redaction in progress)</p>
+<p>The inventory app is a mobile app (iOS and Android) to manage your warehouse&rsquo;s incoming inventory.</p>
+
+<p>As a retailer, it is a long and hard process to identify and sort every incoming parcels. With this app, you&rsquo;re only a download away from having an easy-to-use and reliable incoming inventory management application.</p>
+
+<p>With this application, you will be able to see what&rsquo;s coming to your local warehouse, giving you a head&rsquo;s up when there are a lot of parcels to process.</p>
+
+<p>You&rsquo;ll also be able to scan your incoming parcels. By doing so, you will set a definitive tracking for the parcel and we will be able to notify your customer that you have received the package he returned. With the scan, we update the position of the items and you have a clear knowledge of your total number of returns.</p>
+
+<p>And of course your customers will be happier, knowing their package has been correctly returned!</p>
+
+<p>We recommend you to use this application as it is part of our technologic ecosystem. By using it, you provide us with useful data we can use to better our services and provide you with even more awesome features like this one.</p>
+
+<p>It is currently available in English and French.</p>
+
+<p>You can download the application here :</p>
+
+<ul>
+<li>TODO Lien pour DL l&#39;app <a href="http://google.fr">iOS</a></li>
+<li>TODO Lien pour DL l&#39;app <a href="http://google.fr">Android</a></li>
+</ul>
+
+<p>If you have any question please send an email to: <code class="prettyprint">tech_at_shoprunback.com</code></p>
+
+          <h1 id="authentication">Authentication</h1>
+
+<p>First of all, in order to use the application you need an account on ShopRunBack, you can <a href="https://dashboard.shoprunback.com">create one here</a>.</p>
+
+<p>If you already have an account, open this <a href="https://google.fr">TODO link</a> in your web browser. It will generate a QRCode that contains a unique token set to expire after 24 hours.</p>
+
+<aside class="notice">
+  You can only login with a generated QRCode.
+</aside>
+
+<p>Once you have obtained a QRCode, scan it with the application.</p>
+
+<p><img src="images/inventory/login.png" alt="login" /></p>
+
+<p>If the token is valid you should be authentified and redirected to the application&rsquo;s home.</p>
+
+<p>If not, a red banner saying <strong>AUTHENTICATION FAILED</strong> will appear briefly.</p>
+
+<p>//TODO CHANGE IMAGE</p>
+
+<p><img src="images/inventory/login-error.png" alt="login-error" /></p>
+
+<p>If that happens, just go back to <a href="https://google.fr">TODO https://google.fr</a> and regenerate a QRCode.</p>
+
+          <h1 id="incoming-parcels">Incoming parcels</h1>
+
+<p>For every return made by your customers, a parcel is created with the returned objects. This parcel travels back to you through our logistics network. Once it is on the final step of its transit, we update your incoming inventory with the necessary information to identify it.</p>
+
+<p>This will help you not to be overloaded with parcels as you will be able to be prepared for any kind of traffic that comes through your warehouse.</p>
+
+<p>On the application, this translates into a list with each incoming parcel.</p>
+
+<p>Each line has the parcel&rsquo;s item&rsquo;s picture, its order number and its EAN.</p>
+
+<p>Everytime you go on this tab, we refresh the data for you, but you can refresh manually by pulling down on the list.</p>
+
+<p><img src="images/inventory/list.png" alt="list" /></p>
+
+          <h1 id="scan-parcels">Scan parcels</h1>
+
+<p>As a retailer, you want to know that you have correctly received every return your customers make.</p>
+
+<p>Instead of having to verify on some tracking website, you can scan the parcels yourself and immediately know your return count. It will also help you to sort parcels and put them back in your inventory as we provide you with a picture of the item inside.</p>
+
+<p>To scan a parcel, simply align your barcode (code128, QR and <a href="#barcode-types">more</a>) with the red line.</p>
+
+<p><img src="images/inventory/scan.png" alt="scan" /></p>
+
+<p>Once the barcode is read, if the parcel is identified as one of yours, we update its tracking to <strong>relocated</strong>. Your customer will also be notified that his return has reached its destination. On your end this means you can reimburse/exchange your customer&rsquo;s order quickly.</p>
+
+<p><img src="images/inventory/scan-success.png" alt="scan-success" /></p>
+
+<p>Sometimes in logistics, some parcels are misplaced and you might receive something that is not destined for you. When this happens, we will immediately be notified. This is a rare case and it should not occur, we will shortly contact you if this happens to you.</p>
+
+<p><img src="images/inventory/scan-error.png" alt="scan-error" /></p>
+
+          <h1 id="account">Account</h1>
+
+<p>Verify easily that you are connected with the right account on the application aswell as logging out of the application when you are done scanning your parcels.</p>
+
+<aside class="warning">
+  Your account is yours only. Do not share it with anyone.
+</aside>
+
+<p><img src="images/inventory/account.png" alt="account" /></p>
+
+          <h1 id="requirements">Requirements</h1>
+
+<h3 id="minimum-version">Minimum version</h3>
+
+<table><thead>
+<tr>
+<th>System</th>
+<th>Version</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>iOS</strong></td>
+<td>9.0</td>
+</tr>
+<tr>
+<td><strong>Android</strong></td>
+<td>Jelly Bean</td>
+</tr>
+</tbody></table>
+
+<h3 id="internet">Internet</h3>
+
+<p>Make sure you are always connected to the internet. If you are not in a stable environment you might see this banner on your screen. Try and reconnect to the Wifi or make sure you are in 3G/4G zone in order to resume your operations.</p>
+
+<p><img src="images/inventory/no-internet.png" alt="account" /></p>
+
+<h3 id="barcode-types">Barcode types</h3>
+
+<ul>
+<li>aztec</li>
+<li>code128</li>
+<li>code39</li>
+<li>code39mod43</li>
+<li>code93</li>
+<li>ean13 (iOS converts upca barcodes to ean13 by adding a leading 0)</li>
+<li>ean8</li>
+<li>pdf417</li>
+<li>qr</li>
+<li>upce</li>
+<li>interleaved2of5 (when available)</li>
+<li>itf14 (when available)</li>
+<li>datamatrix (when available)</li>
+</ul>
 
       </div>
       <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="php">PHP</a>
-          </div>
       </div>
     </div>
   </body>

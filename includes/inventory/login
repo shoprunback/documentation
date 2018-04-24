@@ -1,0 +1,23 @@
+<h1 id="authentication">Authentication</h1>
+
+<p>First of all, in order to use the application you need an account on ShopRunBack, you can <a href="https://dashboard.shoprunback.com">create one here</a>.</p>
+
+<p>If you already have an account, open this <a href="https://google.fr">TODO link</a> in your web browser. It will generate a QRCode that contains a unique token set to expire after 24 hours.</p>
+
+<aside class="notice">
+  You can only login with a generated QRCode.
+</aside>
+
+<p>Once you have obtained a QRCode, scan it with the application.</p>
+
+<p><img src="/images/inventory/login.png" alt="login" /></p>
+
+<p>If the token is valid you should be authentified and redirected to the application&rsquo;s home.</p>
+
+<p>If not, a red banner saying <strong>AUTHENTICATION FAILED</strong> will appear briefly.</p>
+
+<p>//TODO CHANGE IMAGE</p>
+
+<p><img src="/images/inventory/login-error.png" alt="login-error" /></p>
+
+<p>If that happens, just go back to <a href="https://google.fr">TODO https://google.fr</a> and regenerate a QRCode.</p>

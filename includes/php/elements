@@ -1,0 +1,7 @@
+<h1 id="elements">Elements</h1>
+
+<p>The elements are all the <strong>classes you can manipulate to display, edit or delete your personal data</strong>.</p>
+
+<p>All the mandatory Elements required to create and manage a Shipback are implemented.</p>
+
+<p><strong>Some</strong> of these elements <strong>do not have an endpoint. Those who don&rsquo;t are nested Elements</strong>.</p>

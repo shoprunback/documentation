@@ -1,0 +1,29 @@
+<h1 id="restclient">RestClient</h1>
+
+<blockquote>
+<p>Use the RestClient globally</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nv">$restClient</span> <span class="o">=</span> <span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">();</span>
+<span class="nv">$restClient</span><span class="o">-&gt;</span><span class="na">setApiBaseUrl</span><span class="p">(</span><span class="s1">'https://dashboard.shoprunback.com'</span><span class="p">);</span>
+<span class="nv">$restClient</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nb">define</span><span class="p">(</span><span class="s1">'REST_CLIENT'</span><span class="p">,</span> <span class="nv">$restClient</span><span class="p">);</span>
+</code></pre>
+<p><strong>Accepts: GET ; POST ; PUT ; DELETE</strong></p>
+
+<p>The RestClient is used to execute the API calls.</p>
+
+<p>It is a <strong>Singleton</strong>, so you need to use <code class="prettyprint">$restClient = RestClient::getClient()</code> to use it.</p>
+
+<aside class="warning">
+  Since it is a Singleton, it is highly recommended to <b>declare it in a variable or a constant</b> so you can use it everywhere
+</aside>
+
+<p>You can <strong>set a specific URL target</strong> for the API calls with <code class="prettyprint">setApiBaseUrl()</code>. This URL should be <strong>https://dashboard.shoprunback.com</strong> by default and <strong>https://sandbox.dashboard.shoprunback.com</strong> for the sandbox.</p>
+
+<p>You can <strong>set the token of a user</strong> with <code class="prettyprint">setToken()</code>. Most of the API calls need you to be authentified to be done.</p>
+
+<p>You can also <strong>set environment variables</strong> called <code class="prettyprint">SHOPRUNBACK_URL</code> and <code class="prettyprint">SHOPRUNBACK_TOKEN</code> to automatically load them.</p>

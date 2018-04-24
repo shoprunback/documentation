@@ -2,4 +2,10 @@
 
 <h1 id="php-library">PHP Library</h1>
 
-<p>(Redaction in progress)</p>
+<p>Welcome to the ShopRunBack public PHP library.</p>
+
+<p>This library will help you use the <a href="https://shoprunback.github.io/documentation/api.html">ShopRunBack API</a> easily in your PHP application.</p>
+
+<p>It is used in our <a href="https://shoprunback.github.io/documentation/prestashop.html">PrestaShop module</a>.</p>
+
+<p>If you have any question, please send an email to: tech_at_shoprunback.com</p>

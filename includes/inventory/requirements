@@ -1,0 +1,43 @@
+<h1 id="requirements">Requirements</h1>
+
+<h3 id="minimum-version">Minimum version</h3>
+
+<table><thead>
+<tr>
+<th>System</th>
+<th>Version</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>iOS</strong></td>
+<td>9.0</td>
+</tr>
+<tr>
+<td><strong>Android</strong></td>
+<td>Jelly Bean</td>
+</tr>
+</tbody></table>
+
+<h3 id="internet">Internet</h3>
+
+<p>Make sure you are always connected to the internet. If you are not in a stable environment you might see this banner on your screen. Try and reconnect to the Wifi or make sure you are in 3G/4G zone in order to resume your operations.</p>
+
+<p><img src="/images/inventory/no-internet.png" alt="account" /></p>
+
+<h3 id="barcode-types">Barcode types</h3>
+
+<ul>
+<li>aztec</li>
+<li>code128</li>
+<li>code39</li>
+<li>code39mod43</li>
+<li>code93</li>
+<li>ean13 (iOS converts upca barcodes to ean13 by adding a leading 0)</li>
+<li>ean8</li>
+<li>pdf417</li>
+<li>qr</li>
+<li>upce</li>
+<li>interleaved2of5 (when available)</li>
+<li>itf14 (when available)</li>
+<li>datamatrix (when available)</li>
+</ul>

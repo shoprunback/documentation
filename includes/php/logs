@@ -1,0 +1,5 @@
+<h1 id="logs">Logs</h1>
+
+<p>Most actions of the library are logged.</p>
+
+<p>You can check all those logs in <code class="prettyprint">/path/to/lib/shoprunback-php/logs</code>.</p>

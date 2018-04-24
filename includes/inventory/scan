@@ -1,0 +1,17 @@
+<h1 id="scan-parcels">Scan parcels</h1>
+
+<p>As a retailer, you want to know that you have correctly received every return your customers make.</p>
+
+<p>Instead of having to verify on some tracking website, you can scan the parcels yourself and immediately know your return count. It will also help you to sort parcels and put them back in your inventory as we provide you with a picture of the item inside.</p>
+
+<p>To scan a parcel, simply align your barcode (code128, QR and <a href="#barcode-types">more</a>) with the red line.</p>
+
+<p><img src="/images/inventory/scan.png" alt="scan" /></p>
+
+<p>Once the barcode is read, if the parcel is identified as one of yours, we update its tracking to <strong>relocated</strong>. Your customer will also be notified that his return has reached its destination. On your end this means you can reimburse/exchange your customer&rsquo;s order quickly.</p>
+
+<p><img src="/images/inventory/scan-success.png" alt="scan-success" /></p>
+
+<p>Sometimes in logistics, some parcels are misplaced and you might receive something that is not destined for you. When this happens, we will immediately be notified. This is a rare case and it should not occur, we will shortly contact you if this happens to you.</p>
+
+<p><img src="/images/inventory/scan-error.png" alt="scan-error" /></p>

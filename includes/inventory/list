@@ -1,0 +1,13 @@
+<h1 id="incoming-parcels">Incoming parcels</h1>
+
+<p>For every return made by your customers, a parcel is created with the returned objects. This parcel travels back to you through our logistics network. Once it is on the final step of its transit, we update your incoming inventory with the necessary information to identify it.</p>
+
+<p>This will help you not to be overloaded with parcels as you will be able to be prepared for any kind of traffic that comes through your warehouse.</p>
+
+<p>On the application, this translates into a list with each incoming parcel.</p>
+
+<p>Each line has the parcel&rsquo;s item&rsquo;s picture, its order number and its EAN.</p>
+
+<p>Everytime you go on this tab, we refresh the data for you, but you can refresh manually by pulling down on the list.</p>
+
+<p><img src="/images/inventory/list.png" alt="list" /></p>
