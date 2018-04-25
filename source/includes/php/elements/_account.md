@@ -13,7 +13,7 @@ require_once 'path/to/lib/shoprunback-php/init.php';
 $account = \Shoprunback\Elements\Account::getOwn();
 ```
 
-#### API operations
+#### API Methods
 
 > Update your account
 
@@ -28,7 +28,7 @@ $account->first_name = 'Martin';
 $account->save();
 ```
 
-Operation | Enabled
+Method | Enabled
 -|-
 **Get all (paginated)** | No
 **Get one** | Yes, **for your account only**

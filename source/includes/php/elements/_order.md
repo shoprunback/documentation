@@ -43,7 +43,7 @@ $order->items[] = new \Shoprunback\Elements\Item();
 $order->save();
 ```
 
-#### API operations
+#### API Methods
 
 > Get all Orders (paginated)
 
@@ -75,21 +75,10 @@ require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
-// Get the order and remove it later in the code
-$order = \Shoprunback\Elements\Order::retrieve('1f27f9d9-3b5c-4152-98b7-760f56967deav');
-
-// Delete an order by an instance
-$order->remove();
-
-// --
-// OR
-// --
-
-// Delete an order directly
 \Shoprunback\Elements\Order::delete('1f27f9d9-3b5c-4152-98b7-760f56967deav');
 ```
 
-Operation | Enabled
+Method | Enabled
 -|-
 **Get all (paginated)** | Yes
 **Get one** | Yes

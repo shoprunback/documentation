@@ -35,7 +35,7 @@ $warehouse->reference = 'my-warehouse';
 $warehouse->save();
 ```
 
-#### API operations
+#### API Methods
 
 > Get all Warehouses (paginated)
 
@@ -59,7 +59,7 @@ require_once 'path/to/lib/shoprunback-php/init.php';
 $warehouse = \Shoprunback\Elements\Warehouse::retrieve('1f27f9d9-3b5c-4152-98b7-760f56967dea');
 ```
 
-Operation | Enabled
+Method | Enabled
 -|-
 **Get all (paginated)** | Yes
 **Get one** | Yes

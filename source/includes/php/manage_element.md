@@ -75,6 +75,31 @@ If you want to reset an element with its original values, use `refresh` (makes a
 When the <b>element is saved</b>, the <b>origValues</b> will be <b>updated with the new values!</b>
 </aside>
 
+## How to delete an Element
+
+> Remove an Element by an instance
+
+```php
+require_once 'path/to/lib/shoprunback-php/init.php';
+
+\Shoprunback\RestClient::getClient()->setToken('yourApiToken');
+
+$brand = \Shoprunback\Elements\Brand::retrieve('1f27f9d9-3b5c-4152-98b7-760f56967dea');
+$brand->remove();
+```
+
+> Remove an Element directly with its ID
+
+```php
+require_once 'path/to/lib/shoprunback-php/init.php';
+
+\Shoprunback\RestClient::getClient()->setToken('yourApiToken');
+
+\Shoprunback\Elements\Brand::delete('1f27f9d9-3b5c-4152-98b7-760f56967dea');
+```
+
+You **can** either **delete an Element by an instance with** `remove` **or directly with its ID with** `delete`.
+
 ## Get different attributes
 
 > Different ways to get important attributes
@@ -253,13 +278,13 @@ require_once 'path/to/lib/shoprunback-php/init.php';
 $product = \Shoprunback\Elements\Product::retrieve('1f27f9d9-3b5c-4152-98b7-760f56967dea');
 
 $product->isDirty(); // false
-var_dump($product->getDirtyKeys()); // Prints []
+$product->getDirtyKeys(); // Returns []
 $product->isKeyDirty('label'); // false
 
 $product->label = 'New label';
 
 $product->isDirty(); // true
-var_dump($product->getDirtyKeys()); // Prints ['label']
+$product->getDirtyKeys(); // Returns ['label']
 $product->isKeyDirty('label'); // true
 ```
 
@@ -276,7 +301,7 @@ $product->isDirty(); // true
 
 $product->label = 'My label';
 $product->isDirtyKey('label'); // true
-var_dump($product->getDirtyKeys()); // Prints ['label']
+$product->getDirtyKeys(); // Returns ['label']
 ```
 
 To know **if an Element is new**, you can use `isPersisted`. If it **returns true**, then the Element is **not new**.

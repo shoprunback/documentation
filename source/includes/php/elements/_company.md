@@ -13,7 +13,7 @@ $company = \Shoprunback\Elements\Company::getOwn();
 
 The class Company contains the informations about your company.
 
-#### API operations
+#### API Methods
 
 > Update your company
 
@@ -28,7 +28,7 @@ $company->name = 'ShopRunBack';
 $company->save();
 ```
 
-Operation | Enabled
+Method | Enabled
 -|-
 **Get all (paginated)** | No
 **Get one** | Yes, **your company only**

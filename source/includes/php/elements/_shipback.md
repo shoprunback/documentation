@@ -52,7 +52,7 @@ $shipback->order_id = '1f27f9d9-3b5c-4152-98b7-760f56967deav';
 $shipback->save();
 ```
 
-#### API operations
+#### API Methods
 
 > Get all Shipbacks (paginated)
 
@@ -84,21 +84,10 @@ require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
-// Get the shipback and remove it later in the code
-$shipback = \Shoprunback\Elements\Shipback::retrieve('1f27f9d9-3b5c-4152-98b7-760f56967deav');
-
-// Delete a shipback by an instance
-$shipback->remove();
-
-// --
-// OR
-// --
-
-// Delete a shipback directly
 \Shoprunback\Elements\Shipback::delete('1f27f9d9-3b5c-4152-98b7-760f56967deav');
 ```
 
-Operation | Enabled
+Method | Enabled
 -|-
 **Get all (paginated)** | Yes
 **Get one** | Yes

@@ -63,7 +63,7 @@ $product->picture_file_url = 'http://shoprunback.com/wp-content/themes/shoprunba
 $product->save();
 ```
 
-#### API operations
+#### API Methods
 
 > Get all Products (paginated)
 
@@ -108,21 +108,10 @@ require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
-// Get the product and remove it later in the code
-$product = \Shoprunback\Elements\Product::retrieve('1f27f9d9-3b5c-4152-98b7-760f56967dea');
-
-// Delete a product by an instance
-$product->remove();
-
-// --
-// OR
-// --
-
-// Delete a product directly
 \Shoprunback\Elements\Product::delete('1f27f9d9-3b5c-4152-98b7-760f56967dea');
 ```
 
-Operation | Enabled
+Method | Enabled
 -|-
 **Get all (paginated)** | Yes
 **Get one** | Yes

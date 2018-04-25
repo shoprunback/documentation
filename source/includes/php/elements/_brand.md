@@ -33,7 +33,7 @@ $brand->reference = 'my-super-brand';
 $brand->save();
 ```
 
-#### API operations
+#### API Methods
 
 > Get all Brands (paginated)
 
@@ -78,21 +78,10 @@ require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
-// Get the brand and remove it later in the code
-$brand = \Shoprunback\Elements\Brand::retrieve('1f27f9d9-3b5c-4152-98b7-760f56967dea');
-
-// Delete a brand by an instance
-$brand->remove();
-
-// --
-// OR
-// --
-
-// Delete a brand directly
 \Shoprunback\Elements\Brand::delete('1f27f9d9-3b5c-4152-98b7-760f56967dea');
 ```
 
-Operation | Enabled
+Method | Enabled
 -|-
 **Get all (paginated)** | Yes
 **Get one** | Yes
