@@ -11,7 +11,6 @@ toc_footers:
 
 includes:
   - api/introduction
-  - api/php
   - api/authentication
   - api/catalog
   - api/catalog/brand

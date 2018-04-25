@@ -12,4 +12,6 @@ You can also get the swagger documentation on [https://app.swaggerhub.com/apis/S
 
 For feature request, use the built in form: [https://dashboard.shoprunback.com/features](https://dashboard.shoprunback.com/features)
 
+If you are coding in PHP, you can use our [PHP library](https://shoprunback.github.io/documentation/php.html).
+
 If you got any questions, send an email to: julien_at_shoprunback.com.
