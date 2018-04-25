@@ -13,7 +13,7 @@ $customer = new \Shoprunback\Elements\Customer();
 
 The class Customer represents one of your customers.
 
-**Customer is necessary to create an Order or a Shipback**. For this end, a **Customer has mandatory and facultative attributes**.
+**Customer is necessary to create an Order or a Shipback**.
 
 > Create a Customer
 
