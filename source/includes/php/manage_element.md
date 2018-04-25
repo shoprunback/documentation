@@ -1,8 +1,8 @@
 # Manage a single Element
 
-## Use the library's class
+## Use the library's classes
 
-> Calling the class with or without use
+> Calling the class with a use statement
 
 ```php
 <?php
@@ -10,12 +10,19 @@ require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
-// With a use statement (to lighten the code)
 use \Shoprunback\Elements\Product as LibProduct;
 
 $product = new LibProduct();
+```
 
-// Without a use statement (for files calling the class rarely)
+> Calling the class without a use statement
+
+```php
+<?php
+require_once 'path/to/lib/shoprunback-php/init.php';
+
+\Shoprunback\RestClient::getClient()->setToken('yourApiToken');
+
 $product = new \Shoprunback\Elements\Product();
 ```
 
