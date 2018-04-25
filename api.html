@@ -1685,6 +1685,42 @@ curl -X <span class="s2">"POST"</span> <span class="s2">"https://dashboard.shopr
 
 <p>You can set your Wehbook URL on the dashboard, in the <a href="https://dashboard.shoprunback.com/webhooks/edit">section Developers &gt; Webhooks</a>.</p>
 
+<h2 id="signature">Signature</h2>
+
+<p>We include a signature in each webhooks sent by ShopRunBack in the <code class="prettyprint">Shoprunback-Signature</code> header.</p>
+
+<h3 id="define-your-secret"> Define your secret</h3>
+
+<p>You can change the secret (the default one is empty) on your dashaboard: <a href="https://dashboard.shoprunback.com/webhooks/edit">section Developers &gt; Webhooks</a>.</p>
+
+<h3 id="verify-the-signature">Verify the signature</h3>
+<pre class="highlight ruby tab-ruby"><code>  <span class="n">digest</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">Digest</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'sha256'</span><span class="p">)</span>
+  <span class="n">secret</span> <span class="o">=</span> <span class="s2">"your secret"</span> <span class="c1"># empty string if not set</span>
+  <span class="n">payload</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">body</span><span class="p">.</span><span class="nf">read</span>
+
+  <span class="c1"># verification</span>
+  <span class="no">OpenSSL</span><span class="o">::</span><span class="no">HMAC</span><span class="p">.</span><span class="nf">hexdigest</span><span class="p">(</span><span class="n">digest</span><span class="p">,</span> <span class="n">secret</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span> <span class="o">==</span> <span class="n">request</span><span class="p">.</span><span class="nf">env</span><span class="p">[</span><span class="s1">'HTTP_SHOPRUNBACK_SIGNATURE'</span><span class="p">]</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+  <span class="nv">$secret</span> <span class="o">=</span> <span class="s2">"your secret"</span><span class="p">;</span> <span class="c1">// empty string if not set
+</span>  <span class="nv">$payload</span> <span class="o">=</span> <span class="o">@</span><span class="nb">file_get_contents</span><span class="p">(</span><span class="s1">'php://input'</span><span class="p">);</span>
+
+  <span class="c1">// verification
+</span>  <span class="nb">hash_hmac</span> <span class="p">(</span><span class="s1">'sha-256'</span><span class="p">,</span> <span class="nv">$body</span> <span class="p">,</span> <span class="nv">$secret</span><span class="p">)</span> <span class="o">==</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'HTTP_STRIPE_SIGNATURE'</span><span class="p">];</span>
+
+<span class="cp">?&gt;</span>
+</code></pre>
+<p>ShopRunBack generates signatures using a hash-based message authentication code (HMAC) with SHA-256. </p>
+
+<p>To verify this signature:</p>
+
+<ol>
+<li>Get the signature in the <code class="prettyprint">Shoprunback-Signature</code> header</li>
+<li>Compare the header value with HMAC (SHA-256) of the request body</li>
+</ol>
+
+<p>The two signature must be the same otherwise you can reject this webhook.</p>
+
 <h2 id="volume">Volume</h2>
 
 <p>The volume of webhooks increase with the amount of shipbacks ShopRunBack will handle for you.</p>
