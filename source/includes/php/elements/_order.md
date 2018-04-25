@@ -1,4 +1,4 @@
-### Order
+## Order
 
 > Initialize
 
@@ -6,12 +6,6 @@
 <?php
 require_once 'path/to/lib/shoprunback-php/init.php';
 
-// With a use statement
-use \Shoprunback\Elements\Order;
-
-$order = new Order();
-
-// Without a use statement
 $order = new \Shoprunback\Elements\Order();
 ```
 
@@ -20,8 +14,6 @@ The class Order represents an online **order made by one of your customers**.
 All **orders have an array of items**.
 
 If **the customer has asked to return** some of the items, then **the order is linked to a shipback**.
-
-#### Parameters
 
 > Create an Order
 
@@ -50,16 +42,6 @@ $order->items[] = new \Shoprunback\Elements\Item();
 // Now we can save the order!
 $order->save();
 ```
-
-Parameter | Required | Type | Description | Tips
--|-|-|-|-
-**order_number** | Yes | **String** | The unique identifier linked to the order, displayed to the customer on the return process |
-**customer** | Yes | **Customer** | The Customer that has made this order |
-**ordered_at** | No | **Date (Y-m-d)** | The date when the order has been created |
-**items** | Yes | **Array of Items** | The items the customer ordered |
-**created_at** | X | **Datetime** | The date when the order has been created in the ShopRunBack's database | Can't be set on creation
-**shipback_id** | X | **String** | The id of the shipback linked to this order | Can't be set on creation
-**shipback** | X | **Shipback** | The shipback linked to this order | Can't be set on creation
 
 #### API operations
 

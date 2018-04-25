@@ -1,4 +1,4 @@
-### Brand
+## Brand
 
 > Initialize
 
@@ -8,22 +8,12 @@ require_once 'path/to/lib/shoprunback-php/init.php';
 
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
-// With a use statement
-use \Shoprunback\Elements\Brand;
-
-$brand = new Brand();
-
-// Without a use statement
 $brand = new \Shoprunback\Elements\Brand();
 ```
 
 The class Brand represents the brand you're selling. Products belongs to a brand. You can create and delete Brands and add or remove Products from your Brands.
 
-**Once your retailer account is created and your company details entered**, a **default brand is created**.
-
-All your **Products are linked to a Brand**. If you **forget to link** a product to a brand, it is **then automatically linked to the default** brand.
-
-#### Parameters
+All your **Products are linked to a Brand**.
 
 > Create a Brand
 
@@ -42,11 +32,6 @@ $brand->reference = 'my-super-brand';
 // Now we can save the brand!
 $brand->save();
 ```
-
-Parameter | Required to create | Type | Description | Tips
--|-|-|-|-
-**name** | Yes | **String** | Name of the brand, displayed to the customer on the return process
-**reference** | Yes | **String** | Unique reference of the brand | Use only lowercase letters and no spaces
 
 #### API operations
 
