@@ -131,6 +131,8 @@ We include a signature in each webhooks sent by ShopRunBack in the `Shoprunback-
 
 You can change the secret (the default one is empty) on your dashboard: [section Developers > Webhooks](https://dashboard.shoprunback.com/webhooks/edit).
 
+Use a random string with high entropy with, by example, the following command: `ruby -rsecurerandom -e 'puts SecureRandom.hex(20)'` in your terminal.
+
 ### Verify the signature
 
 ```ruby
