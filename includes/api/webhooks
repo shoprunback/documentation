@@ -155,7 +155,9 @@
 
 <h3 id="define-your-secret"> Define your secret</h3>
 
-<p>You can change the secret (the default one is empty) on your dashaboard: <a href="https://dashboard.shoprunback.com/webhooks/edit">section Developers &gt; Webhooks</a>.</p>
+<p>You can change the secret (the default one is empty) on your dashboard: <a href="https://dashboard.shoprunback.com/webhooks/edit">section Developers &gt; Webhooks</a>.</p>
+
+<p>Use a random string with high entropy with, by example, the following command: <code class="prettyprint">ruby -rsecurerandom -e &#39;puts SecureRandom.hex(20)&#39;</code> in your terminal.</p>
 
 <h3 id="verify-the-signature">Verify the signature</h3>
 <pre class="highlight ruby tab-ruby"><code>  <span class="n">digest</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">Digest</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'sha256'</span><span class="p">)</span>
