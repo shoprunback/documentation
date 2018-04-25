@@ -123,6 +123,46 @@ If you want to protect this endpoint, you can :
 
 You can set your Wehbook URL on the dashboard, in the [section Developers > Webhooks](https://dashboard.shoprunback.com/webhooks/edit).
 
+## Signature
+
+We include a signature in each webhooks sent by ShopRunBack in the `Shoprunback-Signature` header.
+
+### Define your secret
+
+You can change the secret (the default one is empty) on your dashaboard: [section Developers > Webhooks](https://dashboard.shoprunback.com/webhooks/edit).
+
+### Verify the signature
+
+```ruby
+  digest = OpenSSL::Digest.new('sha256')
+  secret = "your secret" # empty string if not set
+  payload = request.body.read
+  
+  # verification
+  OpenSSL::HMAC.hexdigest(digest, secret, payload) == request.env['HTTP_SHOPRUNBACK_SIGNATURE']
+```
+
+```php
+<?php
+ 
+  $secret = "your secret"; // empty string if not set
+  $payload = @file_get_contents('php://input');
+  
+  // verification
+  hash_hmac ('sha-256', $body , $secret) == $_SERVER['HTTP_STRIPE_SIGNATURE'];
+
+?>
+```
+
+ShopRunBack generates signatures using a hash-based message authentication code (HMAC) with SHA-256. 
+
+To verify this signature:
+
+1. Get the signature in the `Shoprunback-Signature` header
+2. Compare the header value with HMAC (SHA-256) of the request body
+
+The two signature must be the same otherwise you can reject this webhook.
+
 ## Volume
 
 The volume of webhooks increase with the amount of shipbacks ShopRunBack will handle for you.
