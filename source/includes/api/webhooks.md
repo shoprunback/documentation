@@ -129,7 +129,7 @@ We include a signature in each webhooks sent by ShopRunBack in the `Shoprunback-
 
 ### Define your secret
 
-You can change the secret (the default one is empty) on your dashaboard: [section Developers > Webhooks](https://dashboard.shoprunback.com/webhooks/edit).
+You can change the secret (the default one is empty) on your dashboard: [section Developers > Webhooks](https://dashboard.shoprunback.com/webhooks/edit).
 
 ### Verify the signature
 
