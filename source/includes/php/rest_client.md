@@ -17,7 +17,7 @@ define('REST_CLIENT', $restClient);
 
 The RestClient is used to execute the API calls.
 
-It is a **Singleton**, so you need to use `$restClient = RestClient::getClient()` to use it.
+It is a **Singleton**, so you need to use `getClient` to use it.
 
 <aside class="warning">
   Since it is a Singleton, it is highly recommended to <b>declare it in a variable or a constant</b> so you can use it everywhere

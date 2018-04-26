@@ -1,1 +1,0 @@
-## Elements without an endpoint

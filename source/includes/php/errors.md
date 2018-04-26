@@ -17,7 +17,7 @@ try {
 
 To prevent errors to crash your application, you must catch the exceptions.
 
-All the errors the library can return inherit from the class **\Shoprunback\Error\Error**.
+All the errors the library can return inherit from the class `\Shoprunback\Error\Error`.
 
 #### Parameters
 
