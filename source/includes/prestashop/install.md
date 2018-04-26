@@ -6,7 +6,7 @@ First of all, you must create your own ShopRunBack account [here](https://dashbo
 
 ## Download the module
 
-[Click here](../../images/prestashop/shoprunback-prestashop.zip) to download the module.
+[Click here](../../images/prestashop/shoprunback-prestashop-1.0.1.zip) to download the module.
 
 ## Install on your site
 
