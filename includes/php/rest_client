@@ -16,7 +16,7 @@
 
 <p>The RestClient is used to execute the API calls.</p>
 
-<p>It is a <strong>Singleton</strong>, so you need to use <code class="prettyprint">$restClient = RestClient::getClient()</code> to use it.</p>
+<p>It is a <strong>Singleton</strong>, so you need to use <code class="prettyprint">getClient</code> to use it.</p>
 
 <aside class="warning">
   Since it is a Singleton, it is highly recommended to <b>declare it in a variable or a constant</b> so you can use it everywhere

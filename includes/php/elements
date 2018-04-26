@@ -4,4 +4,6 @@
 
 <p>All the mandatory Elements required to create and manage a Shipback are implemented.</p>
 
-<p><strong>Some</strong> of these elements <strong>do not have an endpoint. Those who don&rsquo;t are nested Elements</strong>.</p>
+<aside class="notice">
+To know what attributes each Element has, please read the documentation about our <a href="https://shoprunback.github.io/documentation/api.html" target="blank">REST API</a>.
+</aside>

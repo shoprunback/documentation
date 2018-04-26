@@ -1,5 +1,35 @@
 <h1 id="manage-a-single-element">Manage a single Element</h1>
 
+<h2 id="use-the-librarys-classes">Use the library&rsquo;s classes</h2>
+
+<blockquote>
+<p>Calling the class with a use statement</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="k">use</span> <span class="nx">\Shoprunback\Elements\Product</span> <span class="k">as</span> <span class="nx">LibProduct</span><span class="p">;</span>
+
+<span class="nv">$product</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">LibProduct</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>Calling the class without a use statement</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$product</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="p">();</span>
+</code></pre>
+<p>You can either <strong>call the class directly with its namespace</strong> or write a <strong>use statement</strong> so you can <strong>access it with the class name</strong> only.</p>
+
+<p>We recommend you to <strong>use the use statement for your classes</strong> needing one of the library&rsquo;s classes, since you will often call them.</p>
+
+<p>For <strong>files calling the library&rsquo;s classes rarely</strong>, you can use the <strong>direct call with the namespace</strong>.</p>
+
 <h2 id="original-values">Original values</h2>
 
 <blockquote>
@@ -23,16 +53,47 @@
 <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">refresh</span><span class="p">();</span>
 
 <span class="k">echo</span> <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">label</span><span class="p">;</span> <span class="c1">// Prints 'My label'
+</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">label</span> <span class="o">=</span> <span class="s1">'New label'</span><span class="p">;</span>
+
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+
+<span class="k">echo</span> <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">_origValues</span><span class="o">-&gt;</span><span class="na">label</span><span class="p">;</span> <span class="c1">// Prints 'New label'
 </span></code></pre>
 <p>You can get the original values of an Element whenever you want by getting the <code class="prettyprint">_origValues</code> attribute.</p>
 
-<p><strong>Never edit the</strong> <code class="prettyprint">_origValues</code>, they are the current value on the server.</p>
+<aside class="warning">
+<b>Never edit the</b> `_origValues`, they are the current value on the server.
+</aside>
 
-<p>If you want to reset an element with its original values, use <code class="prettyprint">$element-&gt;refresh()</code> (makes an API call)</p>
+<p>If you want to reset an element with its original values, use <code class="prettyprint">refresh</code> (makes an API call)</p>
 
 <aside class="warning">
 When the <b>element is saved</b>, the <b>origValues</b> will be <b>updated with the new values!</b>
 </aside>
+
+<h2 id="how-to-delete-an-element">How to delete an Element</h2>
+
+<blockquote>
+<p>Remove an Element by an instance</p>
+</blockquote>
+<pre class="highlight php tab-php"><code>require_once 'path/to/lib/shoprunback-php/init.php';
+
+\Shoprunback\RestClient::getClient()-&gt;setToken('yourApiToken');
+
+$brand = \Shoprunback\Elements\Brand::retrieve('1f27f9d9-3b5c-4152-98b7-760f56967dea');
+$brand-&gt;remove();
+</code></pre>
+<blockquote>
+<p>Remove an Element directly with its ID</p>
+</blockquote>
+<pre class="highlight php tab-php"><code>require_once 'path/to/lib/shoprunback-php/init.php';
+
+\Shoprunback\RestClient::getClient()-&gt;setToken('yourApiToken');
+
+\Shoprunback\Elements\Brand::delete('1f27f9d9-3b5c-4152-98b7-760f56967dea');
+</code></pre>
+<p>You <strong>can</strong> either <strong>delete an Element by an instance with</strong> <code class="prettyprint">remove</code> <strong>or directly with its ID with</strong> <code class="prettyprint">delete</code>.</p>
 
 <h2 id="get-different-attributes">Get different attributes</h2>
 
@@ -53,9 +114,9 @@ When the <b>element is saved</b>, the <b>origValues</b> will be <b>updated with 
 <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">getAllAttributes</span><span class="p">();</span> <span class="c1">// Returns 'label', 'custom' and 'brand' with their values
 </span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">getApiAttributes</span><span class="p">();</span> <span class="c1">// Returns 'label' and 'brand' with their values
 </span></code></pre>
-<p>To get all the attributes of an Element including the nested Elements, you can use <code class="prettyprint">$element-&gt;getAllAttributes()</code>.</p>
+<p>To get <strong>all the attributes of an Element including the nested Elements</strong>, you can use <code class="prettyprint">getAllAttributes</code>.</p>
 
-<p>To get only the attributes an Element will use for an API call, you can use <code class="prettyprint">$element-&gt;getApiAttributes()</code>.</p>
+<p>To get <strong>only the attributes an Element will use for an API call</strong>, you can use <code class="prettyprint">getApiAttributes</code>.</p>
 
 <blockquote>
 <p>Get all keys an Element accepts</p>
@@ -69,7 +130,7 @@ When the <b>element is saved</b>, the <b>origValues</b> will be <b>updated with 
 
 <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">getApiAttributesKeys</span><span class="p">();</span> <span class="c1">// Returns all attributes a Product will accept before doing an API call
 </span></code></pre>
-<p>You can list all the attributes an Element accepts when making an API call with <code class="prettyprint">$product-&gt;getApiAttributesKeys()</code>.</p>
+<p>You can <strong>list all the attributes an Element accepts when making an API call</strong> with <code class="prettyprint">getApiAttributesKeys</code>.</p>
 
 <h2 id="use-the-elements-with-my-objects">Use the elements with my objects</h2>
 
@@ -139,7 +200,7 @@ When the <b>element is saved</b>, the <b>origValues</b> will be <b>updated with 
 </span>    <span class="c1">// Add all params to $product
 </span>    <span class="c1">//[...]
 </span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$params</span><span class="p">[</span><span class="s1">'id'</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$params</span><span class="p">[</span><span class="s1">'id'</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nb">is_null</span><span class="p">(</span><span class="nv">$params</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]))</span> <span class="p">{</span>
       <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$params</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
       <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">();</span>
@@ -168,7 +229,9 @@ When the <b>element is saved</b>, the <b>origValues</b> will be <b>updated with 
 </code></pre>
 <p>You can <strong>either use the library independantly of your classes or extend the library&rsquo;s classes</strong></p>
 
-<p><strong>If you use inheritance</strong>, be <strong>careful not to overwrite the parent functions</strong>. Instead, <strong>use functions including the parent function</strong>.</p>
+<aside class="warning">
+<b>If you use inheritance</b>, be <b>careful not to overwrite the parent functions</b>. Instead, <b>use functions including the parent function</b>.
+</aside>
 
 <h2 id="check-changed-fields">Check changed fields</h2>
 
@@ -205,13 +268,13 @@ When the <b>element is saved</b>, the <b>origValues</b> will be <b>updated with 
 <span class="nv">$product</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
 
 <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">isDirty</span><span class="p">();</span> <span class="c1">// false
-</span><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">getDirtyKeys</span><span class="p">());</span> <span class="c1">// Prints []
+</span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">getDirtyKeys</span><span class="p">();</span> <span class="c1">// Returns []
 </span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">isKeyDirty</span><span class="p">(</span><span class="s1">'label'</span><span class="p">);</span> <span class="c1">// false
 </span>
 <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">label</span> <span class="o">=</span> <span class="s1">'New label'</span><span class="p">;</span>
 
 <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">isDirty</span><span class="p">();</span> <span class="c1">// true
-</span><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">getDirtyKeys</span><span class="p">());</span> <span class="c1">// Prints ['label']
+</span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">getDirtyKeys</span><span class="p">();</span> <span class="c1">// Returns ['label']
 </span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">isKeyDirty</span><span class="p">(</span><span class="s1">'label'</span><span class="p">);</span> <span class="c1">// true
 </span></code></pre>
 <blockquote>
@@ -227,19 +290,19 @@ When the <b>element is saved</b>, the <b>origValues</b> will be <b>updated with 
 </span>
 <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">label</span> <span class="o">=</span> <span class="s1">'My label'</span><span class="p">;</span>
 <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">isDirtyKey</span><span class="p">(</span><span class="s1">'label'</span><span class="p">);</span> <span class="c1">// true
-</span><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">getDirtyKeys</span><span class="p">());</span> <span class="c1">// Prints ['label']
+</span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">getDirtyKeys</span><span class="p">();</span> <span class="c1">// Returns ['label']
 </span></code></pre>
-<p>To know <strong>if an Element is new</strong>, you can use <code class="prettyprint">$element-&gt;isPersisted()</code>. If it <strong>returns true</strong>, then the Element is <strong>not new</strong>.</p>
+<p>To know <strong>if an Element is new</strong>, you can use <code class="prettyprint">isPersisted</code>. If it <strong>returns true</strong>, then the Element is <strong>not new</strong>.</p>
 
-<p>You can <strong>check if an Element is new or has at least one parameter changed</strong> with <code class="prettyprint">$element-&gt;isDirty()</code>.</p>
+<p>You can <strong>check if an Element is new or has at least one parameter changed</strong> with <code class="prettyprint">isDirty</code>.</p>
 
-<p>You can know <strong>which keys have been changed</strong> with <code class="prettyprint">$element-&gt;getDirtyKeys()</code>.</p>
+<p>You can know <strong>which keys have been changed</strong> with <code class="prettyprint">getDirtyKeys</code>.</p>
 
-<p>You can also check <strong>if a precise key has changed</strong> with <code class="prettyprint">$element-&gt;isDirtyKey($key)</code>.</p>
+<p>You can also check <strong>if a precise key has changed</strong> with <code class="prettyprint">isDirtyKey</code>.</p>
 
 <p>When you try to <strong>update an existing Element</strong>, it will <strong>only send the attributes that has been changed</strong>.</p>
 
-<p>A <strong>key present in the</strong> <code class="prettyprint">$element-&gt;getApiAttributesKeys()</code> that <strong>hasn&rsquo;t a</strong> <code class="prettyprint">_origValues</code> is <strong>considered changed</strong> (ex: when you create a new Product and add a label).</p>
+<p>A <strong>key present in the</strong> <code class="prettyprint">getApiAttributesKeys</code> that <strong>hasn&rsquo;t a</strong> <code class="prettyprint">_origValues</code> is <strong>considered changed</strong> (ex: when you create a new Product and add a label).</p>
 
 <h2 id="which-api-calls-can-it-do">Which API calls can it do ?</h2>
 
@@ -266,11 +329,12 @@ When the <b>element is saved</b>, the <b>origValues</b> will be <b>updated with 
 <pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 <span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
 
-<span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">getElementName</span><span class="p">();</span> <span class="c1">// Returns 'product'
+<span class="nx">\Shoprunback\Elements\Address</span><span class="o">::</span><span class="na">getElementName</span><span class="p">();</span> <span class="c1">// Returns 'address'
 </span><span class="nx">\Shoprunback\Elements\Brand</span><span class="o">::</span><span class="na">getElementName</span><span class="p">();</span> <span class="c1">// Returns 'brand'
-</span><span class="nx">\Shoprunback\Elements\Order</span><span class="o">::</span><span class="na">getElementName</span><span class="p">();</span> <span class="c1">// Returns 'order'
-</span><span class="nx">\Shoprunback\Elements\Shipback</span><span class="o">::</span><span class="na">getElementName</span><span class="p">();</span> <span class="c1">// Returns 'shipback'
 </span><span class="nx">\Shoprunback\Elements\Item</span><span class="o">::</span><span class="na">getElementName</span><span class="p">();</span> <span class="c1">// Returns 'item'
+</span><span class="nx">\Shoprunback\Elements\Order</span><span class="o">::</span><span class="na">getElementName</span><span class="p">();</span> <span class="c1">// Returns 'order'
+</span><span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">getElementName</span><span class="p">();</span> <span class="c1">// Returns 'product'
+</span><span class="nx">\Shoprunback\Elements\Shipback</span><span class="o">::</span><span class="na">getElementName</span><span class="p">();</span> <span class="c1">// Returns 'shipback'
 </span><span class="nx">\Shoprunback\Elements\Warehouse</span><span class="o">::</span><span class="na">getElementName</span><span class="p">();</span> <span class="c1">// Returns 'warehouse'
 </span></code></pre>
 <p>To easily <strong>get</strong> the <strong>lowercase name of an element</strong>, you can use those methods.</p>
@@ -282,8 +346,7 @@ When the <b>element is saved</b>, the <b>origValues</b> will be <b>updated with 
 <span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
 
 <span class="nv">$product</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
-<span class="nv">$productName</span> <span class="o">=</span> <span class="nv">$product</span><span class="o">::</span><span class="na">getElementName</span><span class="p">();</span> <span class="c1">// $productName = 'product'
-</span>
+
 <span class="nv">$brandName</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Brand</span><span class="o">::</span><span class="na">getElementName</span><span class="p">();</span> <span class="c1">// $brandName = 'brand'
 </span>
 <span class="nv">$product</span><span class="o">-&gt;</span><span class="nv">$brandName</span><span class="p">;</span> <span class="c1">// $product-&gt;brand

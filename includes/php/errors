@@ -16,7 +16,7 @@
 </code></pre>
 <p>To prevent errors to crash your application, you must catch the exceptions.</p>
 
-<p>All the errors the library can return inherit from the class <strong>\Shoprunback\Error\Error</strong>.</p>
+<p>All the errors the library can return inherit from the class <code class="prettyprint">\Shoprunback\Error\Error</code>.</p>
 
 <h4 id="parameters">Parameters</h4>
 

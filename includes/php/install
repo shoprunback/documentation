@@ -6,4 +6,4 @@
 
 <p>Then, unzip the .zip and move the folder into your project.</p>
 
-<p>Finally, to load the library, you need to load it with <code class="prettyprint">require_once &#39;path/to/lib/shoprunback-php/init.php&#39;;</code></p>
+<p>Finally, to load the library, you need to load it with a <code class="prettyprint">require_once</code>.</p>
