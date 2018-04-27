@@ -334,13 +334,6 @@ require 'path/to/lib/shoprunback-php/init.php';
 
 // Get all your products
 $products = \Shoprunback\Elements\Product::all();
-
-try {
-  $products[0]; // Returns the Product with the index 0 (if it exists)
-  $products[1]; // Returns the Product with the index 1 (if it exists)
-} catch (\Shoprunback\Error\ElementIndexDoesntExists $e) {
-  // If it doesn't exist, it returns an Exception
-}
 ```
 
 > The above command (except for PHP) returns JSON structured like this:
