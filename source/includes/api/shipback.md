@@ -174,12 +174,12 @@ $shipback->order_id = $order->id;
 $shipback->save();
 ```
 
-You can create the order and the corresponding shipback in 2 sequential API calls without parsing the first response by using your own references.
+You can create the order and its corresponding shipback in 2 sequential API calls without parsing the first response by using your own references.
 
 First, create the order with an _order_number_ and the items.
 You don't have to push all the items in the initial order if you already know which items are going to be returned, just push them and not the others. You must provide item references if you want to avoid the parsing of the response. An item reference should be unique per order.
 
-Second, create the corresponding shipback attached to your _order_number_ by giving the _item_reference_ and the reason of the return.
+Second, create the corresponding shipback attached to your _order_number_ by giving the item's _reference_ and the reason of the return.
 
-If the customer details of the shipback are not provided, the same details of the order's customer are copied.
+If the customer details of the shipback are not provided, the order's customer is copied and used for the shipback.
 

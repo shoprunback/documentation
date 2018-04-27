@@ -4,8 +4,8 @@ Once your catalog is uploaded on ShopRunBack, you can plug your e-commerce websi
 
 Only an existing order can be returned. You have 2 possibilities, depending on your desired return flow :
 
-* When a user request a return on your website, you create the corresponding order on the API and initiate the corresponding return
-* You push the order on the API directly after is processing on your website and just the redirect the customer when he/she requests a return
+* When a user request a return on your website, you create the corresponding order on the API and initiate the corresponding return.
+* You push the order on the API directly after it is processed on your website and just redirect the customer when he/she requests a return.
 
 In both cases, you will have to create the order, sooner or later.
 
@@ -186,7 +186,7 @@ $order->save();
 An order has a `order_number`, a customer and a list of items.
 
 If you want to add extra data on the order, you can freely use the `metadata` attribute (a simple key/value store).
-The ShopRunBack API will always returns this data without altering it.
+The ShopRunBack API will always return this data without altering it.
 
 
 ### HTTP Request

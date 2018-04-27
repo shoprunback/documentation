@@ -14,4 +14,4 @@ For feature request, use the built in form: [https://dashboard.shoprunback.com/f
 
 If you are coding in PHP, you can use our [PHP library](https://shoprunback.github.io/documentation/php.html).
 
-If you got any questions, send an email to: julien_at_shoprunback.com.
+If you got any questions, send an email to: tech_at_shoprunback.com.

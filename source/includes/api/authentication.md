@@ -1,6 +1,6 @@
 # Authentication
 
-> To authorize your queries, you must provide you company API Token in the HTTP Headers like this :
+> To authorize your queries, you must provide your company API Token in the HTTP Headers like this :
 
 ```ruby
 response = HTTParty.post(

@@ -75,7 +75,7 @@ $product->save();
 }
 ```
 
-Push all your products catalog with this endpoint.
+Push all your products' catalog with this endpoint.
 
 The image in not mandatory but the return experience of your customer will be better with it.
 
@@ -97,7 +97,7 @@ picture_file_url | no | public URL to the product image (JPG or PNG), to avoid i
 picture_file_base64 | no | if your product's image is not hosted on the internet, you can provide it with a base64 version of it
 
 <aside class="success">
-If you don't have more than one brand, you don't have to provide the brand_id.
+If you only have one brand, you don't have to provide the brand_id.
 </aside>
 
 
@@ -382,7 +382,7 @@ $products = \Shoprunback\Elements\Product::all();
 
 You can list all your products on ShopRunBack with this endpoint.
 
-The result is paginated, provide the `page` parameter to get a page (default is page 1).
+The result is paginated, provide the `page` parameter to get a specific page (default is page 1).
 
 ### HTTP Request
 
