@@ -1,0 +1,27 @@
+<h1 id="php-library-to-ease-the-usage-of-the-api-of-shoprunback">PHP library to ease the usage of the API of ShopRunBack</h1>
+
+<p>To use, simply put the whole folder into your libraries folder and require the init.php file.</p>
+
+<p>Next, you can call all the objects by calling the objects with their namespace (or by using <code class="prettyprint">use</code>). Sample: <code class="prettyprint">use Shoprunback\\Elements\\User;</code></p>
+
+<p>To run tests, go in your command line, then go to the root folder and execute this line:</p>
+<pre class="highlight plaintext"><code>
+If you want to run a precise test:
+
+```phpunit path/to/FileTest.php```
+
+If you want to run your tests on a local environment, copy the ```phpunit.xml``` into a new file, set your custom vars and run:
+
+```phpunit -c my_phpunit_file.xml```
+
+# PHP Versions Compability
+
+Doc: https://www.sitepoint.com/quick-intro-phpcompatibility-standard-for-phpcs-are-you-php7-ready/
+
+To test if the code respect writing standards and is compatible with various PHP versions, run
+
+```vendor/bin/phpcs --ignore=/vendor/ --standard=PHPCompatibility --extensions=php --runtime-set testVersion &lt;version_to_check&gt; &lt;path_to_test&gt;```
+
+## Example:
+```vendor/bin/phpcs --ignore=/vendor/ --standard=PHPCompatibility --extensions=php --runtime-set testVersion 7.2 ./tests/```
+</code></pre>

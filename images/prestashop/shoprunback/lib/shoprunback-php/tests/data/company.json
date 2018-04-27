@@ -1,0 +1,14 @@
+{
+  "id":"1234",
+  "name":"Test Company",
+  "slug":"test-company",
+  "address1":"12 rue du test",
+  "address2":"42",
+  "zipcode":"12345",
+  "state":"",
+  "country_code":"FR",
+  "contact_email":"test@example.com",
+  "website_url":"www.example.com",
+  "phone_number":"0612345789",
+  "logo_url":"path/to/img"
+}

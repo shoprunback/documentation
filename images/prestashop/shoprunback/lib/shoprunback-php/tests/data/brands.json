@@ -1,0 +1,12 @@
+[
+  {
+    "id":"1234",
+    "name":"Test Brand",
+    "reference":"test-brand"
+  },
+  {
+    "id":"5432",
+    "name":"Test Brand",
+    "reference":"test-brand"
+  }
+]

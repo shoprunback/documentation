@@ -1,0 +1,14 @@
+{
+  "config": {
+    "vendor-dir": "lib"
+  },
+  "require": {
+    "shoprunback-php": "@dev"
+  },
+  "repositories":[
+    {
+      "type": "git",
+      "url": "https://github.com/shoprunback/shoprunback-php.git"
+    }
+  ]
+}

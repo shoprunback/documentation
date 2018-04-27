@@ -1,0 +1,44 @@
+[
+  {
+    "id":"1234",
+    "label":"Test Product",
+    "reference":"test-product",
+    "ean":"73513537",
+    "weight_grams":2000,
+    "width_mm":100,
+    "length_mm":100,
+    "height_mm":100,
+    "brand_id":"1234",
+    "brand": {
+      "id":"1234",
+      "name":"Test Brand",
+      "reference":"test-brand"
+    },
+    "picture_file_base64":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQAAAAA3bvkkAAAAAnRSTlMAAHaTzTgAAAAKSURBVHgBY2AAAAACAAFzdQEYAAAAAElFTkSuQmCC",
+    "picture_file_url":"path/to/file.png",
+    "created_at":"2018-02-22T16:17:46.435+02:0",
+    "updated_at":"2018-02-22T16:17:46.435+02:0",
+    "picture_url":"path/to/file.png"
+  },
+  {
+    "id":"5678",
+    "label":"Test Product",
+    "reference":"test-product",
+    "ean":"73513537",
+    "weight_grams":2000,
+    "width_mm":100,
+    "length_mm":100,
+    "height_mm":100,
+    "brand_id":"1234",
+    "brand": {
+      "id":"1234",
+      "name":"Test Brand",
+      "reference":"test-brand"
+    },
+    "picture_file_base64":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQAAAAA3bvkkAAAAAnRSTlMAAHaTzTgAAAAKSURBVHgBY2AAAAACAAFzdQEYAAAAAElFTkSuQmCC",
+    "picture_file_url":"path/to/file.png",
+    "created_at":"2018-02-22T16:17:46.435+02:0",
+    "updated_at":"2018-02-22T16:17:46.435+02:0",
+    "picture_url":"path/to/file.png"
+  }
+]

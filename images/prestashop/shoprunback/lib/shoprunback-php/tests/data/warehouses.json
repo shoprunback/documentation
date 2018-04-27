@@ -1,0 +1,24 @@
+[
+  {
+    "id":"1234",
+    "name":"Test Warehouse",
+    "reference":"test-warehouse",
+    "address":{
+      "id":"1234",
+      "line1":"Test address",
+      "country_code":"TE",
+      "city":"Test"
+    }
+  },
+  {
+    "id":"2345",
+    "name":"Test Warehouse",
+    "reference":"test-warehouse",
+    "address":{
+      "id":"1234",
+      "line1":"Test address",
+      "country_code":"TE",
+      "city":"Test"
+    }
+  }
+]
