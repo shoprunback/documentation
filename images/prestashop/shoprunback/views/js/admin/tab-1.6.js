@@ -1,1 +1,0 @@
-document.addEventListener("DOMContentLoaded",function(){for(var n=document.getElementsByClassName("icon-AdminShoprunback"),e=0;e<n.length;e++)n[e].classList.add("icon-exchange")});
