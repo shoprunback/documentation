@@ -1544,70 +1544,6 @@ curl -X <span class="s2">"POST"</span> <span class="s2">"https://dashboard.shopr
 
 <p><a href="https://dashboard.shoprunback.com/en/webhooks">Go to the webhooks dashboard</a>.</p>
 
-<h2 id="list">List</h2>
-
-<table><thead>
-<tr>
-<th>Webhook name</th>
-<th>Trigger</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>collaborator.created</td>
-<td>Sent when a collaborator creates its account</td>
-</tr>
-<tr>
-<td>collaborator.invited</td>
-<td>Sent when a manager invite a collaborator</td>
-</tr>
-<tr>
-<td>product.created</td>
-<td>Sent when a product is created in the catalogue</td>
-</tr>
-<tr>
-<td>relocation.created</td>
-<td>Sent when a new relocation rule has been created</td>
-</tr>
-<tr>
-<td>returneditem.missing</td>
-<td>Sent when a returned item is marked as missing by an operator</td>
-</tr>
-<tr>
-<td>returneditem.relocated</td>
-<td>Sent when a returned item is relocated to the retailer&rsquo;s warehouse</td>
-</tr>
-<tr>
-<td>returneditem.transiting</td>
-<td>Sent when a returned item is transitting</td>
-</tr>
-<tr>
-<td>shipback.paid</td>
-<td>Sent when a shipback is registered (the customer has paid or validated is free return) and the customer can download its voucher and label</td>
-</tr>
-<tr>
-<td>shipback.relocated</td>
-<td>Sent when all the returned item&rsquo;s of a shipback are relocated to the retailer&rsquo;s warehouse</td>
-</tr>
-<tr>
-<td>shipback.transiting</td>
-<td>Sent when all returned item&rsquo;s of a shipback are transiting</td>
-</tr>
-<tr>
-<td>sponsoring.created</td>
-<td>Sent when a new sponsoring rule has been created</td>
-</tr>
-<tr>
-<td>warehouse.created</td>
-<td>Sent when a new warehouse is added to the company</td>
-</tr>
-</tbody></table>
-
-<p><aside class="notice">
-  If you want to track a specific event and you don&rsquo;t find the appropriate webhooks above, please contact julien <em>at</em> shoprunback <em>dot</em> com.</p>
-
-<p>If accurate, the webhook can be added to the platform in the next release.
-</aside></p>
-
 <h2 id="data-sent">Data sent</h2>
 <pre class="highlight ruby tab-ruby"><code>  <span class="c1"># Example of JSON sent:</span>
   <span class="p">{</span>
@@ -1654,6 +1590,331 @@ curl -X <span class="s2">"POST"</span> <span class="s2">"https://dashboard.shopr
 <li>the object triggering the webhook as a JSON in the <code class="prettyprint">data</code> attribute.</li>
 </ul>
 
+<p><aside class="notice">
+  If you want to track a specific event and you don&rsquo;t find the appropriate webhooks above, please contact julien <em>at</em> shoprunback <em>dot</em> com.</p>
+
+<p>If accurate, the webhook can be added to the platform in the next release.
+</aside></p>
+
+<h3 id="collaborator">Collaborator</h3>
+<pre class="highlight ruby tab-ruby"><code><span class="c1"># Example of JSON sent:</span>
+  <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
+    <span class="s2">"event"</span><span class="p">:</span> <span class="s2">"collaborator.invited"</span><span class="p">,</span>
+    <span class="s2">"created_at"</span><span class="p">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
+    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"id"</span> <span class="p">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
+      <span class="s2">"email"</span> <span class="p">:</span> <span class="s2">"tim@apple.com"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+  <span class="c1">// Example of JSON sent:
+</span>  <span class="p">{</span>
+    <span class="s2">"id"</span><span class="o">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
+    <span class="s2">"event"</span><span class="o">:</span> <span class="s2">"collaborator.invited"</span><span class="p">,</span>
+    <span class="s2">"created_at"</span><span class="o">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
+    <span class="s2">"data"</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">"id"</span> <span class="o">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
+      <span class="s2">"email"</span> <span class="o">:</span> <span class="s2">"tim@apple.com"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+</code></pre>
+<table><thead>
+<tr>
+<th>Webhook name</th>
+<th>Trigger</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>collaborator.created</td>
+<td>Sent when a collaborator creates its account</td>
+</tr>
+<tr>
+<td>collaborator.invited</td>
+<td>Sent when a manager invite a collaborator</td>
+</tr>
+</tbody></table>
+
+<h3 id="product">Product</h3>
+<pre class="highlight ruby tab-ruby"><code><span class="c1"># Example of JSON sent:</span>
+  <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
+    <span class="s2">"event"</span><span class="p">:</span> <span class="s2">"product.created"</span><span class="p">,</span>
+    <span class="s2">"created_at"</span><span class="p">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
+    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"id"</span> <span class="p">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
+      <span class="s2">"label"</span> <span class="p">:</span> <span class="s2">"Iphone 12S - Blue"</span><span class="p">,</span>
+      <span class="s2">"reference"</span><span class="p">:</span> <span class="s2">"IPHONE-12S"</span><span class="p">,</span>
+      <span class="s2">"ean"</span><span class="p">:</span> <span class="s2">"1237492402485"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+  <span class="c1">// Example of JSON sent:
+</span>  <span class="p">{</span>
+    <span class="s2">"id"</span><span class="o">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
+    <span class="s2">"event"</span><span class="o">:</span> <span class="s2">"product.created"</span><span class="p">,</span>
+    <span class="s2">"created_at"</span><span class="o">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
+    <span class="s2">"data"</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">"id"</span> <span class="o">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
+      <span class="s2">"label"</span> <span class="o">:</span> <span class="s2">"Iphone 12S - Blue"</span><span class="p">,</span>
+      <span class="s2">"reference"</span><span class="o">:</span> <span class="s2">"IPHONE-12S"</span><span class="p">,</span>
+      <span class="s2">"ean"</span><span class="o">:</span> <span class="s2">"1237492402485"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+</code></pre>
+<table><thead>
+<tr>
+<th>Webhook name</th>
+<th>Trigger</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product.created</td>
+<td>Sent when a product is created in the catalogue</td>
+</tr>
+</tbody></table>
+
+<h3 id="relocation">Relocation</h3>
+<pre class="highlight ruby tab-ruby"><code><span class="c1"># Example of JSON sent:</span>
+  <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
+    <span class="s2">"event"</span><span class="p">:</span> <span class="s2">"relocation.created"</span><span class="p">,</span>
+    <span class="s2">"created_at"</span><span class="p">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
+    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"id"</span> <span class="p">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
+      <span class="s2">"country_code"</span> <span class="p">:</span> <span class="s2">"FR"</span><span class="p">,</span>
+      <span class="s2">"reason_code"</span> <span class="p">:</span> <span class="s2">"damaged"</span><span class="p">,</span>
+      <span class="s2">"warehoused_id"</span> <span class="p">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c699"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+  <span class="c1">// Example of JSON sent:
+</span>  <span class="p">{</span>
+    <span class="s2">"id"</span><span class="o">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
+    <span class="s2">"event"</span><span class="o">:</span> <span class="s2">"relocation.created"</span><span class="p">,</span>
+    <span class="s2">"created_at"</span><span class="o">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
+    <span class="s2">"data"</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">"id"</span> <span class="o">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
+      <span class="s2">"country_code"</span> <span class="o">:</span> <span class="s2">"FR"</span><span class="p">,</span>
+      <span class="s2">"reason_code"</span> <span class="o">:</span> <span class="s2">"damaged"</span><span class="p">,</span>
+      <span class="s2">"warehoused_id"</span> <span class="o">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c699"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+</code></pre>
+<table><thead>
+<tr>
+<th>Webhook name</th>
+<th>Trigger</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>relocation.created</td>
+<td>Sent when a new relocation rule has been created</td>
+</tr>
+</tbody></table>
+
+<h3 id="returned-item">Returned Item</h3>
+<pre class="highlight ruby tab-ruby"><code><span class="c1"># Example of JSON sent:</span>
+  <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
+    <span class="s2">"event"</span><span class="p">:</span> <span class="s2">"returneditem.relocated"</span><span class="p">,</span>
+    <span class="s2">"created_at"</span><span class="p">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
+    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"id"</span> <span class="p">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
+      <span class="s2">"reason_code"</span> <span class="p">:</span> <span class="s2">"damaged"</span><span class="p">,</span>
+      <span class="s2">"item"</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"id"</span> <span class="p">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c600"</span><span class="p">,</span>
+        <span class="s2">"barcode"</span><span class="p">:</span> <span class="s2">"12149837489"</span><span class="p">,</span>
+        <span class="s2">"label"</span><span class="p">:</span> <span class="s2">"Iphone 12S - Blue"</span><span class="p">,</span>
+        <span class="s2">"reference"</span><span class="p">:</span> <span class="s2">"IPHONE-12S"</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+  <span class="c1">// Example of JSON sent:
+</span>  <span class="p">{</span>
+    <span class="s2">"id"</span><span class="o">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
+    <span class="s2">"event"</span><span class="o">:</span> <span class="s2">"returneditem.relocated"</span><span class="p">,</span>
+    <span class="s2">"created_at"</span><span class="o">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
+    <span class="s2">"data"</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">"id"</span> <span class="o">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
+      <span class="s2">"reason_code"</span> <span class="o">:</span> <span class="s2">"damaged"</span><span class="p">,</span>
+      <span class="s2">"item"</span> <span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"id"</span> <span class="o">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c600"</span><span class="p">,</span>
+        <span class="s2">"barcode"</span><span class="o">:</span> <span class="s2">"12149837489"</span><span class="p">,</span>
+        <span class="s2">"label"</span><span class="o">:</span> <span class="s2">"Iphone 12S - Blue"</span><span class="p">,</span>
+        <span class="s2">"reference"</span><span class="o">:</span> <span class="s2">"IPHONE-12S"</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+</code></pre>
+<table><thead>
+<tr>
+<th>Webhook name</th>
+<th>Trigger</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>returneditem.missing</td>
+<td>Sent when a returned item is marked as missing by an operator</td>
+</tr>
+<tr>
+<td>returneditem.relocated</td>
+<td>Sent when a returned item is relocated to the retailer&rsquo;s warehouse</td>
+</tr>
+<tr>
+<td>returneditem.transiting</td>
+<td>Sent when a returned item is transitting</td>
+</tr>
+</tbody></table>
+
+<h3 id="shipback">Shipback</h3>
+<pre class="highlight ruby tab-ruby"><code><span class="c1"># Example of JSON sent:</span>
+  <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
+    <span class="s2">"event"</span><span class="p">:</span> <span class="s2">"shipback.registered"</span><span class="p">,</span>
+    <span class="s2">"created_at"</span><span class="p">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
+    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"id"</span> <span class="p">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
+      <span class="s2">"rma"</span> <span class="p">:</span> <span class="s2">"123"</span><span class="p">,</span>
+      <span class="p">(.</span><span class="nf">.</span><span class="o">.</span><span class="p">)</span> <span class="c1"># additionnal data for specific event</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+  <span class="c1">// Example of JSON sent:
+</span>  <span class="p">{</span>
+    <span class="s2">"id"</span><span class="o">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
+    <span class="s2">"event"</span><span class="o">:</span> <span class="s2">"shipback.registered"</span><span class="p">,</span>
+    <span class="s2">"created_at"</span><span class="o">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
+    <span class="s2">"data"</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">"id"</span> <span class="o">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
+      <span class="s2">"rma"</span> <span class="o">:</span> <span class="s2">"123"</span><span class="p">,</span>
+      <span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="c1">// additionnal data for specific event
+</span>    <span class="p">}</span>
+  <span class="p">}</span>
+
+</code></pre>
+<table><thead>
+<tr>
+<th>Webhook name</th>
+<th>Trigger</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>shipback.registered</td>
+<td>Sent when a shipback is registered (the customer has paid or validated is free return) and the customer can download its voucher and label</td>
+</tr>
+<tr>
+<td>shipback.paid</td>
+<td>cf shipback.registered (will be deleted soon)</td>
+</tr>
+<tr>
+<td>shipback.relocated</td>
+<td>Sent when all the returned item&rsquo;s of a shipback are relocated to the retailer&rsquo;s warehouse</td>
+</tr>
+<tr>
+<td>shipback.transiting</td>
+<td>Sent when all returned item&rsquo;s of a shipback are transiting</td>
+</tr>
+</tbody></table>
+
+<h3 id="sponsoring">Sponsoring</h3>
+<pre class="highlight ruby tab-ruby"><code><span class="c1"># Example of JSON sent:</span>
+  <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
+    <span class="s2">"event"</span><span class="p">:</span> <span class="s2">"sponsoring.created"</span><span class="p">,</span>
+    <span class="s2">"created_at"</span><span class="p">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
+    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"id"</span> <span class="p">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
+      <span class="s2">"percentage"</span><span class="p">:</span> <span class="s2">"100"</span><span class="p">,</span>
+      <span class="s2">"country_code"</span><span class="p">:</span> <span class="s2">"FR"</span><span class="p">,</span>
+      <span class="s2">"reason_code"</span><span class="p">:</span> <span class="s2">"damaged"</span><span class="p">,</span>
+      <span class="s2">"merchant_fee_min"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+      <span class="s2">"merchant_fee_max"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+      <span class="s2">"customer_fee_min"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"customer_fee_max"</span><span class="p">:</span> <span class="n">null</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+  <span class="c1">// Example of JSON sent:
+</span>  <span class="p">{</span>
+    <span class="s2">"id"</span><span class="o">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
+    <span class="s2">"event"</span><span class="o">:</span> <span class="s2">"sponsoring.created"</span><span class="p">,</span>
+    <span class="s2">"created_at"</span><span class="o">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
+    <span class="s2">"data"</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">"id"</span> <span class="o">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
+      <span class="s2">"percentage"</span><span class="o">:</span> <span class="s2">"100"</span><span class="p">,</span>
+      <span class="s2">"country_code"</span><span class="o">:</span> <span class="s2">"FR"</span><span class="p">,</span>
+      <span class="s2">"reason_code"</span><span class="o">:</span> <span class="s2">"damaged"</span><span class="p">,</span>
+      <span class="s2">"merchant_fee_min"</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+      <span class="s2">"merchant_fee_max"</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+      <span class="s2">"customer_fee_min"</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="s2">"customer_fee_max"</span><span class="o">:</span> <span class="kc">null</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+</code></pre>
+<table><thead>
+<tr>
+<th>Webhook name</th>
+<th>Trigger</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sponsoring.created</td>
+<td>Sent when a new sponsoring rule has been created</td>
+</tr>
+</tbody></table>
+
+<h3 id="warehouse">Warehouse</h3>
+<pre class="highlight ruby tab-ruby"><code><span class="c1"># Example of JSON sent:</span>
+  <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
+    <span class="s2">"event"</span><span class="p">:</span> <span class="s2">"warehouse.created"</span><span class="p">,</span>
+    <span class="s2">"created_at"</span><span class="p">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
+    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"id"</span> <span class="p">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
+      <span class="s2">"reference"</span><span class="p">:</span> <span class="s2">"APPLE01"</span><span class="p">,</span>
+      <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Apple store Paris"</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+  <span class="c1">// Example of JSON sent:
+</span>  <span class="p">{</span>
+    <span class="s2">"id"</span><span class="o">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
+    <span class="s2">"event"</span><span class="o">:</span> <span class="s2">"warehouse.created"</span><span class="p">,</span>
+    <span class="s2">"created_at"</span><span class="o">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
+    <span class="s2">"data"</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">"id"</span> <span class="o">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
+      <span class="s2">"reference"</span><span class="o">:</span> <span class="s2">"APPLE01"</span><span class="p">,</span>
+      <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"Apple store Paris"</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+</code></pre>
+<table><thead>
+<tr>
+<th>Webhook name</th>
+<th>Trigger</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>warehouse.created</td>
+<td>Sent when a new warehouse is added to the company</td>
+</tr>
+</tbody></table>
+
 <h2 id="set-the-url">Set the URL</h2>
 <pre class="highlight ruby tab-ruby"><code>
   <span class="c1"># in a Rake base application controller</span>
@@ -1679,8 +1940,9 @@ curl -X <span class="s2">"POST"</span> <span class="s2">"https://dashboard.shopr
 <p>If you want to protect this endpoint, you can :</p>
 
 <ul>
-<li>setup a basic authentication and provide the login and passoword in the URL (<code class="prettyprint">http://&lt;login&gt;:&lt;password&gt;@host.com</code>)</li>
+<li>setup a basic authentication and provide the login and password in the URL (<code class="prettyprint">http://&lt;login&gt;:&lt;password&gt;@host.com</code>)</li>
 <li>verify the value of a specific URL parameter and provide it in the webhook URL (<code class="prettyprint">http://host.com?shoprunback=topsecret</code>)</li>
+<li>Use the build-in HMAC signature without altering the URL (see below)</li>
 </ul>
 
 <p>You can set your Wehbook URL on the dashboard, in the <a href="https://dashboard.shoprunback.com/webhooks/edit">section Developers &gt; Webhooks</a>.</p>
@@ -1689,7 +1951,7 @@ curl -X <span class="s2">"POST"</span> <span class="s2">"https://dashboard.shopr
 
 <p>We include a signature in each webhooks sent by ShopRunBack in the <code class="prettyprint">Shoprunback-Signature</code> header.</p>
 
-<h3 id="define-your-secret"> Define your secret</h3>
+<h3 id="define-your-secret">Define your secret</h3>
 
 <p>You can change the secret (the default one is empty) on your dashboard: <a href="https://dashboard.shoprunback.com/webhooks/edit">section Developers &gt; Webhooks</a>.</p>
 
@@ -1700,19 +1962,25 @@ curl -X <span class="s2">"POST"</span> <span class="s2">"https://dashboard.shopr
   <span class="n">secret</span> <span class="o">=</span> <span class="s2">"your secret"</span> <span class="c1"># empty string if not set</span>
   <span class="n">payload</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">body</span><span class="p">.</span><span class="nf">read</span>
 
+  <span class="c1"># signature</span>
+  <span class="n">hmac</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">HMAC</span><span class="p">.</span><span class="nf">hexdigest</span><span class="p">(</span><span class="n">digest</span><span class="p">,</span> <span class="n">secret</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+
   <span class="c1"># verification</span>
-  <span class="no">OpenSSL</span><span class="o">::</span><span class="no">HMAC</span><span class="p">.</span><span class="nf">hexdigest</span><span class="p">(</span><span class="n">digest</span><span class="p">,</span> <span class="n">secret</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span> <span class="o">==</span> <span class="n">request</span><span class="p">.</span><span class="nf">env</span><span class="p">[</span><span class="s1">'HTTP_SHOPRUNBACK_SIGNATURE'</span><span class="p">]</span>
+  <span class="n">hmac</span> <span class="o">==</span> <span class="n">request</span><span class="p">.</span><span class="nf">env</span><span class="p">[</span><span class="s1">'HTTP_SHOPRUNBACK_SIGNATURE'</span><span class="p">]</span>
 </code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 
   <span class="nv">$secret</span> <span class="o">=</span> <span class="s2">"your secret"</span><span class="p">;</span> <span class="c1">// empty string if not set
 </span>  <span class="nv">$payload</span> <span class="o">=</span> <span class="o">@</span><span class="nb">file_get_contents</span><span class="p">(</span><span class="s1">'php://input'</span><span class="p">);</span>
 
+  <span class="c1">// signature
+</span>  <span class="nv">$hmac</span> <span class="o">=</span> <span class="nb">hash_hmac</span> <span class="p">(</span><span class="s1">'sha-256'</span><span class="p">,</span> <span class="nv">$body</span> <span class="p">,</span> <span class="nv">$secret</span><span class="p">)</span>
+
   <span class="c1">// verification
-</span>  <span class="nb">hash_hmac</span> <span class="p">(</span><span class="s1">'sha-256'</span><span class="p">,</span> <span class="nv">$body</span> <span class="p">,</span> <span class="nv">$secret</span><span class="p">)</span> <span class="o">==</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'HTTP_STRIPE_SIGNATURE'</span><span class="p">];</span>
+</span>  <span class="nv">$hmac</span> <span class="o">==</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'HTTP_STRIPE_SIGNATURE'</span><span class="p">];</span>
 
 <span class="cp">?&gt;</span>
 </code></pre>
-<p>ShopRunBack generates signatures using a hash-based message authentication code (HMAC) with SHA-256. </p>
+<p>ShopRunBack generates signatures using a hash-based message authentication code (HMAC) with SHA-256.</p>
 
 <p>To verify this signature:</p>
 
