@@ -9,30 +9,6 @@ The server expect a 200 response (`HTTP OK`) when posting the webhook, otherwise
 [Go to the webhooks dashboard](https://dashboard.shoprunback.com/en/webhooks).
 
 
-## List
-
-
-| Webhook name | Trigger |
-|--------------|---------|
-| collaborator.created     | Sent when a collaborator creates its account |
-| collaborator.invited     | Sent when a manager invite a collaborator |
-| product.created          | Sent when a product is created in the catalogue |
-| relocation.created       | Sent when a new relocation rule has been created |
-| returneditem.missing     | Sent when a returned item is marked as missing by an operator |
-| returneditem.relocated   | Sent when a returned item is relocated to the retailer's warehouse |
-| returneditem.transiting  | Sent when a returned item is transitting |
-| shipback.paid            | Sent when a shipback is registered (the customer has paid or validated is free return) and the customer can download its voucher and label |
-| shipback.relocated       | Sent when all the returned item's of a shipback are relocated to the retailer's warehouse |
-| shipback.transiting      | Sent when all returned item's of a shipback are transiting |
-| sponsoring.created       | Sent when a new sponsoring rule has been created |
-| warehouse.created        | Sent when a new warehouse is added to the company |
-
- <aside class="notice">
-  If you want to track a specific event and you don't find the appropriate webhooks above, please contact julien _at_ shoprunback _dot_ com.
-
-  If accurate, the webhook can be added to the platform in the next release.
-</aside>
-
 ## Data sent
 
 
@@ -87,6 +63,299 @@ All webhooks has the same caracteristics; this is a JSON Object with the attribu
 * the date of the event which is also the date of creation of the webhook: `created_at`
 * the object triggering the webhook as a JSON in the `data` attribute.
 
+ <aside class="notice">
+  If you want to track a specific event and you don't find the appropriate webhooks above, please contact julien _at_ shoprunback _dot_ com.
+
+  If accurate, the webhook can be added to the platform in the next release.
+</aside>
+
+### Collaborator
+
+```ruby
+# Example of JSON sent:
+  {
+    "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
+    "event": "collaborator.invited",
+    "created_at": "2018-02-20 16:54:22 +0100",
+    "data": {
+      "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
+      "email" : "tim@apple.com"
+    }
+  }
+
+```
+```php
+<?php
+  // Example of JSON sent:
+  {
+    "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
+    "event": "collaborator.invited",
+    "created_at": "2018-02-20 16:54:22 +0100",
+    "data": {
+      "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
+      "email" : "tim@apple.com"
+    }
+  }
+
+```
+
+| Webhook name | Trigger |
+|--------------|---------|
+| collaborator.created     | Sent when a collaborator creates its account |
+| collaborator.invited     | Sent when a manager invite a collaborator |
+
+### Product
+
+```ruby
+# Example of JSON sent:
+  {
+    "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
+    "event": "product.created",
+    "created_at": "2018-02-20 16:54:22 +0100",
+    "data": {
+      "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
+      "label" : "Iphone 12S - Blue",
+      "reference": "IPHONE-12S",
+      "ean": "1237492402485"
+    }
+  }
+
+```
+```php
+<?php
+  // Example of JSON sent:
+  {
+    "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
+    "event": "product.created",
+    "created_at": "2018-02-20 16:54:22 +0100",
+    "data": {
+      "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
+      "label" : "Iphone 12S - Blue",
+      "reference": "IPHONE-12S",
+      "ean": "1237492402485"
+    }
+  }
+
+```
+
+| Webhook name | Trigger |
+|--------------|---------|
+| product.created          | Sent when a product is created in the catalogue |
+
+### Relocation
+
+```ruby
+# Example of JSON sent:
+  {
+    "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
+    "event": "relocation.created",
+    "created_at": "2018-02-20 16:54:22 +0100",
+    "data": {
+      "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
+      "country_code" : "FR",
+      "reason_code" : "damaged",
+      "warehoused_id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c699"
+    }
+  }
+
+```
+
+```php
+<?php
+  // Example of JSON sent:
+  {
+    "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
+    "event": "relocation.created",
+    "created_at": "2018-02-20 16:54:22 +0100",
+    "data": {
+      "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
+      "country_code" : "FR",
+      "reason_code" : "damaged",
+      "warehoused_id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c699"
+    }
+  }
+
+```
+
+| Webhook name | Trigger |
+|--------------|---------|
+| relocation.created       | Sent when a new relocation rule has been created |
+
+### Returned Item
+
+
+```ruby
+# Example of JSON sent:
+  {
+    "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
+    "event": "returneditem.relocated",
+    "created_at": "2018-02-20 16:54:22 +0100",
+    "data": {
+      "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
+      "reason_code" : "damaged",
+      "item" : {
+        "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c600",
+        "barcode": "12149837489",
+        "label": "Iphone 12S - Blue",
+        "reference": "IPHONE-12S"
+      }
+    }
+  }
+
+```
+
+```php
+<?php
+  // Example of JSON sent:
+  {
+    "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
+    "event": "returneditem.relocated",
+    "created_at": "2018-02-20 16:54:22 +0100",
+    "data": {
+      "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
+      "reason_code" : "damaged",
+      "item" : {
+        "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c600",
+        "barcode": "12149837489",
+        "label": "Iphone 12S - Blue",
+        "reference": "IPHONE-12S"
+      }
+    }
+  }
+
+```
+
+| Webhook name | Trigger |
+|--------------|---------|
+| returneditem.missing     | Sent when a returned item is marked as missing by an operator |
+| returneditem.relocated   | Sent when a returned item is relocated to the retailer's warehouse |
+| returneditem.transiting  | Sent when a returned item is transitting |
+
+### Shipback
+
+```ruby
+# Example of JSON sent:
+  {
+    "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
+    "event": "shipback.registered",
+    "created_at": "2018-02-20 16:54:22 +0100",
+    "data": {
+      "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
+      "rma" : "123",
+      (...) # additionnal data for specific event
+    }
+  }
+
+```
+```php
+<?php
+  // Example of JSON sent:
+  {
+    "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
+    "event": "shipback.registered",
+    "created_at": "2018-02-20 16:54:22 +0100",
+    "data": {
+      "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
+      "rma" : "123",
+      (...) // additionnal data for specific event
+    }
+  }
+
+```
+
+| Webhook name | Trigger |
+|--------------|---------|
+| shipback.registered            | Sent when a shipback is registered (the customer has paid or validated is free return) and the customer can download its voucher and label |
+| shipback.paid            | cf shipback.registered (will be deleted soon) |
+| shipback.relocated       | Sent when all the returned item's of a shipback are relocated to the retailer's warehouse |
+| shipback.transiting      | Sent when all returned item's of a shipback are transiting |
+
+
+### Sponsoring
+
+```ruby
+# Example of JSON sent:
+  {
+    "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
+    "event": "sponsoring.created",
+    "created_at": "2018-02-20 16:54:22 +0100",
+    "data": {
+      "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
+      "percentage": "100",
+      "country_code": "FR",
+      "reason_code": "damaged",
+      "merchant_fee_min": 5,
+      "merchant_fee_max": 10,
+      "customer_fee_min": null,
+      "customer_fee_max": null
+    }
+  }
+
+```
+
+```php
+<?php
+  // Example of JSON sent:
+  {
+    "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
+    "event": "sponsoring.created",
+    "created_at": "2018-02-20 16:54:22 +0100",
+    "data": {
+      "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
+      "percentage": "100",
+      "country_code": "FR",
+      "reason_code": "damaged",
+      "merchant_fee_min": 5,
+      "merchant_fee_max": 10,
+      "customer_fee_min": null,
+      "customer_fee_max": null
+    }
+  }
+
+```
+
+| Webhook name | Trigger |
+|--------------|---------|
+| sponsoring.created       | Sent when a new sponsoring rule has been created |
+
+
+### Warehouse
+
+```ruby
+# Example of JSON sent:
+  {
+    "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
+    "event": "warehouse.created",
+    "created_at": "2018-02-20 16:54:22 +0100",
+    "data": {
+      "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
+      "reference": "APPLE01",
+      "name": "Apple store Paris",
+    }
+  }
+
+```
+
+```php
+<?php
+  // Example of JSON sent:
+  {
+    "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
+    "event": "warehouse.created",
+    "created_at": "2018-02-20 16:54:22 +0100",
+    "data": {
+      "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
+      "reference": "APPLE01",
+      "name": "Apple store Paris",
+    }
+  }
+
+```
+
+| Webhook name | Trigger |
+|--------------|---------|
+| warehouse.created        | Sent when a new warehouse is added to the company |
+
 
 ## Set the URL
 
@@ -118,8 +387,9 @@ The ShopRunBack's API send the webhooks on a public accessible HTTP or HTTPS end
 
 If you want to protect this endpoint, you can :
 
-* setup a basic authentication and provide the login and passoword in the URL (`http://<login>:<password>@host.com`)
+* setup a basic authentication and provide the login and password in the URL (`http://<login>:<password>@host.com`)
 * verify the value of a specific URL parameter and provide it in the webhook URL (`http://host.com?shoprunback=topsecret`)
+* Use the build-in HMAC signature without altering the URL (see below)
 
 You can set your Wehbook URL on the dashboard, in the [section Developers > Webhooks](https://dashboard.shoprunback.com/webhooks/edit).
 
@@ -127,7 +397,7 @@ You can set your Wehbook URL on the dashboard, in the [section Developers > Webh
 
 We include a signature in each webhooks sent by ShopRunBack in the `Shoprunback-Signature` header.
 
-### Define your secret
+### Define your secret
 
 You can change the secret (the default one is empty) on your dashboard: [section Developers > Webhooks](https://dashboard.shoprunback.com/webhooks/edit).
 
@@ -139,24 +409,30 @@ Use a random string with high entropy with, by example, the following command: `
   digest = OpenSSL::Digest.new('sha256')
   secret = "your secret" # empty string if not set
   payload = request.body.read
-  
+
+  # signature
+  hmac = OpenSSL::HMAC.hexdigest(digest, secret, payload)
+
   # verification
-  OpenSSL::HMAC.hexdigest(digest, secret, payload) == request.env['HTTP_SHOPRUNBACK_SIGNATURE']
+  hmac == request.env['HTTP_SHOPRUNBACK_SIGNATURE']
 ```
 
 ```php
 <?php
- 
+
   $secret = "your secret"; // empty string if not set
   $payload = @file_get_contents('php://input');
-  
+
+  // signature
+  $hmac = hash_hmac ('sha-256', $body , $secret)
+
   // verification
-  hash_hmac ('sha-256', $body , $secret) == $_SERVER['HTTP_STRIPE_SIGNATURE'];
+  $hmac == $_SERVER['HTTP_STRIPE_SIGNATURE'];
 
 ?>
 ```
 
-ShopRunBack generates signatures using a hash-based message authentication code (HMAC) with SHA-256. 
+ShopRunBack generates signatures using a hash-based message authentication code (HMAC) with SHA-256.
 
 To verify this signature:
 
