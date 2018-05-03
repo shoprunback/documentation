@@ -414,7 +414,9 @@ curl -X "GET" "https://dashboard.shoprunback.com/api/v1/orders?page=1" \
 
 This endpoint updates an existing order.
 
-Warning: if a return has already been finished (ie. the return label has been downloaded), you can't update the order.
+<aside class="warning">
+  If a return has already been finished (ie. the corresponding shipback has been registered), you can't update the order anymore.
+</aside>
 
 ### HTTP Request
 
@@ -554,3 +556,29 @@ curl -X "PUT" "https://dashboard.shoprunback.com/api/v1/orders/<order_id>" \
 ```
 
 
+## Delete an order
+
+An order can only be deleted if no corresponding shipback is attached. So you must delete it first.
+
+### HTTP Request
+
+`DELETE https://dashboard.shoprunback.com/api/v1/orders/:order_id`
+
+### Errors
+
+```json
+{
+  "errors": [
+    {
+      "code": "DEPENDENT_SHIPBACK",
+      "message": "dependent shipback found (fee4a476-13ff-422d-85df-4ef68fa0c8d7)"
+    }
+  ]
+}
+```
+
+If you are trying to delete an order with a dependent shipback, you will receive an error with a `400` HTTP CODE.
+
+You will also have an error message and an error code in the returned JSON.
+
+In this case, the error code will be `DEPENDENT_SHIPBACK`.
