@@ -582,3 +582,5 @@ If you are trying to delete an order with a dependent shipback, you will receive
 You will also have an error message and an error code in the returned JSON.
 
 In this case, the error code will be `DEPENDENT_SHIPBACK`.
+
+If the deletion is successful, you will receive a `200` HTTP CODE.

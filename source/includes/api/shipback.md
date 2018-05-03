@@ -147,3 +147,5 @@ If you are trying to delete an arlready registered shipback, you will receive an
 You will also have an error message and an error code in the returned JSON.
 
 In this case, the error code will be `SHIPBACK_REGISTERED`.
+
+If the deletion is successful, you will receive a `200` HTTP CODE.
