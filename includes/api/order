@@ -330,7 +330,9 @@ The ShopRunBack API will always returns this data without altering it.</p>
 
 <p>This endpoint updates an existing order.</p>
 
-<p>Warning: if a return has already been finished (ie. the return label has been downloaded), you can&rsquo;t update the order.</p>
+<aside class="warning">
+  If a return has already been finished (ie. the corresponding shipback has been registered), you can&rsquo;t update the order anymore.
+</aside>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -488,3 +490,26 @@ The ShopRunBack API will always returns this data without altering it.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<h2 id="delete-an-order">Delete an order</h2>
+
+<p>An order can only be deleted if no corresponding shipback is attached. So you must delete it first.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE https://dashboard.shoprunback.com/api/v1/orders/:order_id</code></p>
+
+<h3 id="errors">Errors</h3>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEPENDENT_SHIPBACK"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dependent shipback found (fee4a476-13ff-422d-85df-4ef68fa0c8d7)"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>If you are trying to delete an order with a dependent shipback, you will receive an error with a <code class="prettyprint">400</code> HTTP CODE.</p>
+
+<p>You will also have an error message and an error code in the returned JSON.</p>
+
+<p>In this case, the error code will be <code class="prettyprint">DEPENDENT_SHIPBACK</code>.</p>

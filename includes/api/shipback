@@ -113,3 +113,26 @@ curl -X <span class="s2">"POST"</span> <span class="s2">"https://dashboard.shopr
   ]
 }'</span>
 </code></pre>
+<h2 id="delete-a-shipback">Delete a shipback</h2>
+
+<p>An shipback can only be deleted if no yet registered (the customer has not completed the whole process).</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE https://dashboard.shoprunback.com/api/v1/shipbacks/:shipback_id</code></p>
+
+<h3 id="errors">Errors</h3>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHIPBACK_REGISTERED"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This shipback is already processing. You can't delete it."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>If you are trying to delete an arlready registered shipback, you will receive an error with a <code class="prettyprint">400</code> HTTP CODE.</p>
+
+<p>You will also have an error message and an error code in the returned JSON.</p>
+
+<p>In this case, the error code will be <code class="prettyprint">SHIPBACK_REGISTERED</code>.</p>
