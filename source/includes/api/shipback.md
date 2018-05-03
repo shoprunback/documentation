@@ -119,3 +119,31 @@ curl -X "POST" "https://dashboard.shoprunback.com/api/v1/shipbacks" \
   ]
 }'
 ```
+
+
+## Delete a shipback
+
+An shipback can only be deleted if no yet registered (the customer has not completed the whole process).
+
+### HTTP Request
+
+`DELETE https://dashboard.shoprunback.com/api/v1/shipbacks/:shipback_id`
+
+### Errors
+
+```json
+{
+  "errors": [
+    {
+      "code": "SHIPBACK_REGISTERED",
+      "message": "This shipback is already processing. You can't delete it."
+    }
+  ]
+}
+```
+
+If you are trying to delete an arlready registered shipback, you will receive an error with a `400` HTTP CODE.
+
+You will also have an error message and an error code in the returned JSON.
+
+In this case, the error code will be `SHIPBACK_REGISTERED`.
