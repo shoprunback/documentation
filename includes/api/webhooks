@@ -9,42 +9,17 @@
 <p><a href="https://dashboard.shoprunback.com/en/webhooks">Go to the webhooks dashboard</a>.</p>
 
 <h2 id="data-sent">Data sent</h2>
-<pre class="highlight ruby tab-ruby"><code>  <span class="c1"># Example of JSON sent:</span>
-  <span class="p">{</span>
-    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
-    <span class="s2">"event"</span><span class="p">:</span> <span class="s2">"shipback.relocated"</span><span class="p">,</span>
-    <span class="s2">"created_at"</span><span class="p">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
-    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">"id"</span><span class="o">=&gt;</span><span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
-      <span class="s2">"mode"</span><span class="o">=&gt;</span><span class="s2">"postal"</span><span class="p">,</span>
-      <span class="p">(.</span><span class="nf">.</span><span class="o">.</span><span class="p">)</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
-  <span class="c1">// Example of JSON sent:
-</span>  <span class="p">{</span>
-    <span class="s2">"id"</span><span class="o">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
-    <span class="s2">"event"</span><span class="o">:</span> <span class="s2">"shipback.relocated"</span><span class="p">,</span>
-    <span class="s2">"created_at"</span><span class="o">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
-    <span class="s2">"data"</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s2">"id"</span><span class="o">=&gt;</span><span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
-      <span class="s2">"mode"</span><span class="o">=&gt;</span><span class="s2">"postal"</span><span class="p">,</span>
-      <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="cp">?&gt;</span>
-</code></pre><pre class="highlight shell tab-shell"><code>  <span class="c"># Example of JSON sent:</span>
-  <span class="o">{</span>
-    <span class="s2">"id"</span>: <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span>,
-    <span class="s2">"event"</span>: <span class="s2">"shipback.relocated"</span>,
-    <span class="s2">"created_at"</span>: <span class="s2">"2018-02-20 16:54:22 +0100"</span>,
-    <span class="s2">"data"</span>: <span class="o">{</span>
-      <span class="s2">"id"</span><span class="o">=</span>&gt;<span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span>,
-      <span class="s2">"mode"</span><span class="o">=</span>&gt;<span class="s2">"postal"</span>,
-      <span class="o">(</span>...<span class="o">)</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-</code></pre>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">Example</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">JSON</span><span class="w"> </span><span class="err">sent</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shipback.relocated"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"postal"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p>All webhooks has the same caracteristics; this is a JSON Object with the attributes:</p>
 
 <ul>
@@ -61,30 +36,18 @@
 </aside></p>
 
 <h3 id="collaborator">Collaborator</h3>
-<pre class="highlight ruby tab-ruby"><code><span class="c1"># Example of JSON sent:</span>
-  <span class="p">{</span>
-    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
-    <span class="s2">"event"</span><span class="p">:</span> <span class="s2">"collaborator.invited"</span><span class="p">,</span>
-    <span class="s2">"created_at"</span><span class="p">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
-    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">"id"</span> <span class="p">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
-      <span class="s2">"email"</span> <span class="p">:</span> <span class="s2">"tim@apple.com"</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<pre class="highlight json tab-json"><code><span class="err">//</span><span class="w"> </span><span class="err">Example</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">JSON</span><span class="w"> </span><span class="err">sent</span><span class="p">:</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"collaborator.invited"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"tim@apple.com"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 
-</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
-  <span class="c1">// Example of JSON sent:
-</span>  <span class="p">{</span>
-    <span class="s2">"id"</span><span class="o">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
-    <span class="s2">"event"</span><span class="o">:</span> <span class="s2">"collaborator.invited"</span><span class="p">,</span>
-    <span class="s2">"created_at"</span><span class="o">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
-    <span class="s2">"data"</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s2">"id"</span> <span class="o">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
-      <span class="s2">"email"</span> <span class="o">:</span> <span class="s2">"tim@apple.com"</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-</code></pre>
+</span></code></pre>
 <table><thead>
 <tr>
 <th>Webhook name</th>
@@ -102,34 +65,20 @@
 </tbody></table>
 
 <h3 id="product">Product</h3>
-<pre class="highlight ruby tab-ruby"><code><span class="c1"># Example of JSON sent:</span>
-  <span class="p">{</span>
-    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
-    <span class="s2">"event"</span><span class="p">:</span> <span class="s2">"product.created"</span><span class="p">,</span>
-    <span class="s2">"created_at"</span><span class="p">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
-    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">"id"</span> <span class="p">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
-      <span class="s2">"label"</span> <span class="p">:</span> <span class="s2">"Iphone 12S - Blue"</span><span class="p">,</span>
-      <span class="s2">"reference"</span><span class="p">:</span> <span class="s2">"IPHONE-12S"</span><span class="p">,</span>
-      <span class="s2">"ean"</span><span class="p">:</span> <span class="s2">"1237492402485"</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<pre class="highlight json tab-json"><code><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Example</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">JSON</span><span class="w"> </span><span class="err">sent</span><span class="p">:</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product.created"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Iphone 12S - Blue"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IPHONE-12S"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ean"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1237492402485"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 
-</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
-  <span class="c1">// Example of JSON sent:
-</span>  <span class="p">{</span>
-    <span class="s2">"id"</span><span class="o">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
-    <span class="s2">"event"</span><span class="o">:</span> <span class="s2">"product.created"</span><span class="p">,</span>
-    <span class="s2">"created_at"</span><span class="o">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
-    <span class="s2">"data"</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s2">"id"</span> <span class="o">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
-      <span class="s2">"label"</span> <span class="o">:</span> <span class="s2">"Iphone 12S - Blue"</span><span class="p">,</span>
-      <span class="s2">"reference"</span><span class="o">:</span> <span class="s2">"IPHONE-12S"</span><span class="p">,</span>
-      <span class="s2">"ean"</span><span class="o">:</span> <span class="s2">"1237492402485"</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-</code></pre>
+</span></code></pre>
 <table><thead>
 <tr>
 <th>Webhook name</th>
@@ -143,34 +92,20 @@
 </tbody></table>
 
 <h3 id="relocation">Relocation</h3>
-<pre class="highlight ruby tab-ruby"><code><span class="c1"># Example of JSON sent:</span>
-  <span class="p">{</span>
-    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
-    <span class="s2">"event"</span><span class="p">:</span> <span class="s2">"relocation.created"</span><span class="p">,</span>
-    <span class="s2">"created_at"</span><span class="p">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
-    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">"id"</span> <span class="p">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
-      <span class="s2">"country_code"</span> <span class="p">:</span> <span class="s2">"FR"</span><span class="p">,</span>
-      <span class="s2">"reason_code"</span> <span class="p">:</span> <span class="s2">"damaged"</span><span class="p">,</span>
-      <span class="s2">"warehoused_id"</span> <span class="p">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c699"</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">Example</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">JSON</span><span class="w"> </span><span class="err">sent</span><span class="p">:</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"relocation.created"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"country_code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reason_code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"damaged"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"warehoused_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c699"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 
-</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
-  <span class="c1">// Example of JSON sent:
-</span>  <span class="p">{</span>
-    <span class="s2">"id"</span><span class="o">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
-    <span class="s2">"event"</span><span class="o">:</span> <span class="s2">"relocation.created"</span><span class="p">,</span>
-    <span class="s2">"created_at"</span><span class="o">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
-    <span class="s2">"data"</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s2">"id"</span> <span class="o">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
-      <span class="s2">"country_code"</span> <span class="o">:</span> <span class="s2">"FR"</span><span class="p">,</span>
-      <span class="s2">"reason_code"</span> <span class="o">:</span> <span class="s2">"damaged"</span><span class="p">,</span>
-      <span class="s2">"warehoused_id"</span> <span class="o">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c699"</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-</code></pre>
+</span></code></pre>
 <table><thead>
 <tr>
 <th>Webhook name</th>
@@ -184,42 +119,24 @@
 </tbody></table>
 
 <h3 id="returned-item">Returned Item</h3>
-<pre class="highlight ruby tab-ruby"><code><span class="c1"># Example of JSON sent:</span>
-  <span class="p">{</span>
-    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
-    <span class="s2">"event"</span><span class="p">:</span> <span class="s2">"returneditem.relocated"</span><span class="p">,</span>
-    <span class="s2">"created_at"</span><span class="p">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
-    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">"id"</span> <span class="p">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
-      <span class="s2">"reason_code"</span> <span class="p">:</span> <span class="s2">"damaged"</span><span class="p">,</span>
-      <span class="s2">"item"</span> <span class="p">:</span> <span class="p">{</span>
-        <span class="s2">"id"</span> <span class="p">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c600"</span><span class="p">,</span>
-        <span class="s2">"barcode"</span><span class="p">:</span> <span class="s2">"12149837489"</span><span class="p">,</span>
-        <span class="s2">"label"</span><span class="p">:</span> <span class="s2">"Iphone 12S - Blue"</span><span class="p">,</span>
-        <span class="s2">"reference"</span><span class="p">:</span> <span class="s2">"IPHONE-12S"</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">Example</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">JSON</span><span class="w"> </span><span class="err">sent</span><span class="p">:</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"returneditem.relocated"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reason_code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"damaged"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"item"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c600"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12149837489"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Iphone 12S - Blue"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IPHONE-12S"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 
-</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
-  <span class="c1">// Example of JSON sent:
-</span>  <span class="p">{</span>
-    <span class="s2">"id"</span><span class="o">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
-    <span class="s2">"event"</span><span class="o">:</span> <span class="s2">"returneditem.relocated"</span><span class="p">,</span>
-    <span class="s2">"created_at"</span><span class="o">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
-    <span class="s2">"data"</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s2">"id"</span> <span class="o">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
-      <span class="s2">"reason_code"</span> <span class="o">:</span> <span class="s2">"damaged"</span><span class="p">,</span>
-      <span class="s2">"item"</span> <span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"id"</span> <span class="o">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c600"</span><span class="p">,</span>
-        <span class="s2">"barcode"</span><span class="o">:</span> <span class="s2">"12149837489"</span><span class="p">,</span>
-        <span class="s2">"label"</span><span class="o">:</span> <span class="s2">"Iphone 12S - Blue"</span><span class="p">,</span>
-        <span class="s2">"reference"</span><span class="o">:</span> <span class="s2">"IPHONE-12S"</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-</code></pre>
+</span></code></pre>
 <table><thead>
 <tr>
 <th>Webhook name</th>
@@ -241,32 +158,39 @@
 </tbody></table>
 
 <h3 id="shipback">Shipback</h3>
-<pre class="highlight ruby tab-ruby"><code><span class="c1"># Example of JSON sent:</span>
-  <span class="p">{</span>
-    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
-    <span class="s2">"event"</span><span class="p">:</span> <span class="s2">"shipback.registered"</span><span class="p">,</span>
-    <span class="s2">"created_at"</span><span class="p">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
-    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">"id"</span> <span class="p">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
-      <span class="s2">"rma"</span> <span class="p">:</span> <span class="s2">"123"</span><span class="p">,</span>
-      <span class="p">(.</span><span class="nf">.</span><span class="o">.</span><span class="p">)</span> <span class="c1"># additionnal data for specific event</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<pre class="highlight json tab-json"><code><span class="w">
+  </span><span class="err">#</span><span class="w"> </span><span class="err">Example</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">JSON</span><span class="w"> </span><span class="err">sent</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">shipback.registered</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shipback.registered"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rma"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"registered_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-20 16:58:22 +0100"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"postal"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"weight_in_grams"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"computed_weight_in_grams"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"public_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://web.shoprunback.com/apple/1234"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">"price_cents"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"customer_price_cents"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 
-</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
-  <span class="c1">// Example of JSON sent:
-</span>  <span class="p">{</span>
-    <span class="s2">"id"</span><span class="o">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
-    <span class="s2">"event"</span><span class="o">:</span> <span class="s2">"shipback.registered"</span><span class="p">,</span>
-    <span class="s2">"created_at"</span><span class="o">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
-    <span class="s2">"data"</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s2">"id"</span> <span class="o">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
-      <span class="s2">"rma"</span> <span class="o">:</span> <span class="s2">"123"</span><span class="p">,</span>
-      <span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="c1">// additionnal data for specific event
-</span>    <span class="p">}</span>
-  <span class="p">}</span>
+  </span><span class="err">//</span><span class="w"> </span><span class="err">Example</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">JSON</span><span class="w"> </span><span class="err">sent</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">other</span><span class="w"> </span><span class="err">events</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shipback.registered"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rma"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 
-</code></pre>
+</span></code></pre>
 <table><thead>
 <tr>
 <th>Webhook name</th>
@@ -292,42 +216,24 @@
 </tbody></table>
 
 <h3 id="sponsoring">Sponsoring</h3>
-<pre class="highlight ruby tab-ruby"><code><span class="c1"># Example of JSON sent:</span>
-  <span class="p">{</span>
-    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
-    <span class="s2">"event"</span><span class="p">:</span> <span class="s2">"sponsoring.created"</span><span class="p">,</span>
-    <span class="s2">"created_at"</span><span class="p">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
-    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">"id"</span> <span class="p">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
-      <span class="s2">"percentage"</span><span class="p">:</span> <span class="s2">"100"</span><span class="p">,</span>
-      <span class="s2">"country_code"</span><span class="p">:</span> <span class="s2">"FR"</span><span class="p">,</span>
-      <span class="s2">"reason_code"</span><span class="p">:</span> <span class="s2">"damaged"</span><span class="p">,</span>
-      <span class="s2">"merchant_fee_min"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-      <span class="s2">"merchant_fee_max"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-      <span class="s2">"customer_fee_min"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
-      <span class="s2">"customer_fee_max"</span><span class="p">:</span> <span class="n">null</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<pre class="highlight json tab-json"><code><span class="err">//</span><span class="w"> </span><span class="err">Example</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">JSON</span><span class="w"> </span><span class="err">sent</span><span class="p">:</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sponsoring.created"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reason_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"damaged"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"merchant_fee_min"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"merchant_fee_max"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"customer_fee_min"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"customer_fee_max"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 
-</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
-  <span class="c1">// Example of JSON sent:
-</span>  <span class="p">{</span>
-    <span class="s2">"id"</span><span class="o">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
-    <span class="s2">"event"</span><span class="o">:</span> <span class="s2">"sponsoring.created"</span><span class="p">,</span>
-    <span class="s2">"created_at"</span><span class="o">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
-    <span class="s2">"data"</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s2">"id"</span> <span class="o">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
-      <span class="s2">"percentage"</span><span class="o">:</span> <span class="s2">"100"</span><span class="p">,</span>
-      <span class="s2">"country_code"</span><span class="o">:</span> <span class="s2">"FR"</span><span class="p">,</span>
-      <span class="s2">"reason_code"</span><span class="o">:</span> <span class="s2">"damaged"</span><span class="p">,</span>
-      <span class="s2">"merchant_fee_min"</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
-      <span class="s2">"merchant_fee_max"</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
-      <span class="s2">"customer_fee_min"</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
-      <span class="s2">"customer_fee_max"</span><span class="o">:</span> <span class="kc">null</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-</code></pre>
+</span></code></pre>
 <table><thead>
 <tr>
 <th>Webhook name</th>
@@ -341,32 +247,19 @@
 </tbody></table>
 
 <h3 id="warehouse">Warehouse</h3>
-<pre class="highlight ruby tab-ruby"><code><span class="c1"># Example of JSON sent:</span>
-  <span class="p">{</span>
-    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
-    <span class="s2">"event"</span><span class="p">:</span> <span class="s2">"warehouse.created"</span><span class="p">,</span>
-    <span class="s2">"created_at"</span><span class="p">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
-    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">"id"</span> <span class="p">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
-      <span class="s2">"reference"</span><span class="p">:</span> <span class="s2">"APPLE01"</span><span class="p">,</span>
-      <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Apple store Paris"</span><span class="p">,</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<pre class="highlight json tab-json"><code><span class="err">//</span><span class="w"> </span><span class="err">Example</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">JSON</span><span class="w"> </span><span class="err">sent</span><span class="p">:</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"warehouse.created"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APPLE01"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple store Paris"</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 
-</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
-  <span class="c1">// Example of JSON sent:
-</span>  <span class="p">{</span>
-    <span class="s2">"id"</span><span class="o">:</span> <span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span>
-    <span class="s2">"event"</span><span class="o">:</span> <span class="s2">"warehouse.created"</span><span class="p">,</span>
-    <span class="s2">"created_at"</span><span class="o">:</span> <span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span>
-    <span class="s2">"data"</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s2">"id"</span> <span class="o">:</span> <span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span>
-      <span class="s2">"reference"</span><span class="o">:</span> <span class="s2">"APPLE01"</span><span class="p">,</span>
-      <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"Apple store Paris"</span><span class="p">,</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-</code></pre>
+</span></code></pre>
 <table><thead>
 <tr>
 <th>Webhook name</th>
