@@ -154,7 +154,6 @@ All webhooks has the same caracteristics; this is a JSON Object with the attribu
       "computed_weight_in_grams": "1000",
       "public_url": "https://web.shoprunback.com/apple/1234",
       "metadata": {},
-      "label_url": "https://s3.amazonaws.com/srb-public/sandbox/label.pdf",
       "price_cents": "10000",
       "customer_price_cents": "10000"
     }
