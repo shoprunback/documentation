@@ -12,49 +12,19 @@ The server expect a 200 response (`HTTP OK`) when posting the webhook, otherwise
 ## Data sent
 
 
-```ruby
-  # Example of JSON sent:
+```json
+  // Example of JSON sent
   {
     "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
     "event": "shipback.relocated",
     "created_at": "2018-02-20 16:54:22 +0100",
     "data": {
-      "id"=>"fc8520bf-3ae0-46b1-8991-cacb6b03c698",
-      "mode"=>"postal",
-      (...)
+      "id": "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
+      "mode": "postal"
     }
   }
 ```
 
-```php
-<?php
-  // Example of JSON sent:
-  {
-    "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
-    "event": "shipback.relocated",
-    "created_at": "2018-02-20 16:54:22 +0100",
-    "data": {
-      "id"=>"fc8520bf-3ae0-46b1-8991-cacb6b03c698",
-      "mode"=>"postal",
-      (...)
-    }
-  }
-?>
-```
-
-```shell
-  # Example of JSON sent:
-  {
-    "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
-    "event": "shipback.relocated",
-    "created_at": "2018-02-20 16:54:22 +0100",
-    "data": {
-      "id"=>"fc8520bf-3ae0-46b1-8991-cacb6b03c698",
-      "mode"=>"postal",
-      (...)
-    }
-  }
-```
 
 All webhooks has the same caracteristics; this is a JSON Object with the attributes:
 
@@ -71,22 +41,8 @@ All webhooks has the same caracteristics; this is a JSON Object with the attribu
 
 ### Collaborator
 
-```ruby
-# Example of JSON sent:
-  {
-    "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
-    "event": "collaborator.invited",
-    "created_at": "2018-02-20 16:54:22 +0100",
-    "data": {
-      "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
-      "email" : "tim@apple.com"
-    }
-  }
-
-```
-```php
-<?php
-  // Example of JSON sent:
+```json
+// Example of JSON sent:
   {
     "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
     "event": "collaborator.invited",
@@ -106,24 +62,8 @@ All webhooks has the same caracteristics; this is a JSON Object with the attribu
 
 ### Product
 
-```ruby
-# Example of JSON sent:
-  {
-    "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
-    "event": "product.created",
-    "created_at": "2018-02-20 16:54:22 +0100",
-    "data": {
-      "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
-      "label" : "Iphone 12S - Blue",
-      "reference": "IPHONE-12S",
-      "ean": "1237492402485"
-    }
-  }
-
-```
-```php
-<?php
-  // Example of JSON sent:
+```json
+ // Example of JSON sent:
   {
     "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
     "event": "product.created",
@@ -144,24 +84,7 @@ All webhooks has the same caracteristics; this is a JSON Object with the attribu
 
 ### Relocation
 
-```ruby
-# Example of JSON sent:
-  {
-    "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
-    "event": "relocation.created",
-    "created_at": "2018-02-20 16:54:22 +0100",
-    "data": {
-      "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
-      "country_code" : "FR",
-      "reason_code" : "damaged",
-      "warehoused_id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c699"
-    }
-  }
-
-```
-
-```php
-<?php
+```json
   // Example of JSON sent:
   {
     "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
@@ -176,6 +99,7 @@ All webhooks has the same caracteristics; this is a JSON Object with the attribu
   }
 
 ```
+
 
 | Webhook name | Trigger |
 |--------------|---------|
@@ -184,28 +108,7 @@ All webhooks has the same caracteristics; this is a JSON Object with the attribu
 ### Returned Item
 
 
-```ruby
-# Example of JSON sent:
-  {
-    "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
-    "event": "returneditem.relocated",
-    "created_at": "2018-02-20 16:54:22 +0100",
-    "data": {
-      "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
-      "reason_code" : "damaged",
-      "item" : {
-        "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c600",
-        "barcode": "12149837489",
-        "label": "Iphone 12S - Blue",
-        "reference": "IPHONE-12S"
-      }
-    }
-  }
-
-```
-
-```php
-<?php
+```json
   // Example of JSON sent:
   {
     "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
@@ -224,6 +127,7 @@ All webhooks has the same caracteristics; this is a JSON Object with the attribu
   }
 
 ```
+
 
 | Webhook name | Trigger |
 |--------------|---------|
@@ -233,8 +137,9 @@ All webhooks has the same caracteristics; this is a JSON Object with the attribu
 
 ### Shipback
 
-```ruby
-# Example of JSON sent:
+```json
+
+  # Example of JSON sent for shipback.registered
   {
     "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
     "event": "shipback.registered",
@@ -242,14 +147,20 @@ All webhooks has the same caracteristics; this is a JSON Object with the attribu
     "data": {
       "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
       "rma" : "123",
-      (...) # additionnal data for specific event
+      "registered_at": "2018-02-20 16:58:22 +0100",
+      "mode": "postal",
+      "weight_in_grams": "1000",
+      "size": "S",
+      "computed_weight_in_grams": "1000",
+      "public_url": "https://web.shoprunback.com/apple/1234",
+      "metadata": {},
+      "label_url": "https://s3.amazonaws.com/srb-public/sandbox/label.pdf",
+      "price_cents": "10000",
+      "customer_price_cents": "10000"
     }
   }
 
-```
-```php
-<?php
-  // Example of JSON sent:
+  // Example of JSON sent for other events
   {
     "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
     "event": "shipback.registered",
@@ -257,7 +168,6 @@ All webhooks has the same caracteristics; this is a JSON Object with the attribu
     "data": {
       "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
       "rma" : "123",
-      (...) // additionnal data for specific event
     }
   }
 
@@ -273,8 +183,8 @@ All webhooks has the same caracteristics; this is a JSON Object with the attribu
 
 ### Sponsoring
 
-```ruby
-# Example of JSON sent:
+```json
+// Example of JSON sent:
   {
     "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
     "event": "sponsoring.created",
@@ -293,26 +203,6 @@ All webhooks has the same caracteristics; this is a JSON Object with the attribu
 
 ```
 
-```php
-<?php
-  // Example of JSON sent:
-  {
-    "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
-    "event": "sponsoring.created",
-    "created_at": "2018-02-20 16:54:22 +0100",
-    "data": {
-      "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
-      "percentage": "100",
-      "country_code": "FR",
-      "reason_code": "damaged",
-      "merchant_fee_min": 5,
-      "merchant_fee_max": 10,
-      "customer_fee_min": null,
-      "customer_fee_max": null
-    }
-  }
-
-```
 
 | Webhook name | Trigger |
 |--------------|---------|
@@ -321,8 +211,8 @@ All webhooks has the same caracteristics; this is a JSON Object with the attribu
 
 ### Warehouse
 
-```ruby
-# Example of JSON sent:
+```json
+// Example of JSON sent:
   {
     "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
     "event": "warehouse.created",
@@ -336,21 +226,6 @@ All webhooks has the same caracteristics; this is a JSON Object with the attribu
 
 ```
 
-```php
-<?php
-  // Example of JSON sent:
-  {
-    "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
-    "event": "warehouse.created",
-    "created_at": "2018-02-20 16:54:22 +0100",
-    "data": {
-      "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
-      "reference": "APPLE01",
-      "name": "Apple store Paris",
-    }
-  }
-
-```
 
 | Webhook name | Trigger |
 |--------------|---------|
