@@ -47,13 +47,13 @@ require_once 'path/to/lib/shoprunback-php/init.php';
 
 $restClient = \Shoprunback\RestClient::getClient();
 
-if (/* Are we on production environment? */) {
-  $restClient->useProductionEnvironment();
-} else {
-  $restClient->useSandboxEnvironment();
-}
+// Use the production environment
+$restClient->useProductionEnvironment();
+
+// Use the sandbox environment
+$restClient->useSandboxEnvironment();
 ```
 
-If you want to **use the production or sandbox environment**, you can use `useProductionEnvironment` and `useSandboxEnvironment`.
+To choose **which environment to work with**, you can use `useProductionEnvironment` or `useSandboxEnvironment`.
 
-It will set **https://dashboard.shoprunback.com** for the production environment and **https://sandbox.dashboard.shoprunback.com** for the sandbox environment.
+It will define **https://dashboard.shoprunback.com** or **https://sandbox.dashboard.shoprunback.com** as the base URL for all the API calls.
