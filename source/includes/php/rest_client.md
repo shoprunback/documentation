@@ -47,10 +47,8 @@ require_once 'path/to/lib/shoprunback-php/init.php';
 
 $restClient = \Shoprunback\RestClient::getClient();
 
-// Use the production environment
+// Use ONE of those functions to define your environment (don't use both at the same time)
 $restClient->useProductionEnvironment();
-
-// Use the sandbox environment
 $restClient->useSandboxEnvironment();
 ```
 
