@@ -95,6 +95,9 @@ require 'path/to/lib/shoprunback-php/init.php';
 // Set your token
 \Shoprunback\RestClient::getClient()->setToken('your_token');
 
+// Define the environment you want to use (Production or Sandbox)
+\Shoprunback\RestClient::getClient()->useProductionEnvironment();
+
 // Create an Address for the Customer
 $address = new \Shoprunback\Elements\Address();
 $address->country_code = 'US';
@@ -128,7 +131,7 @@ $order->ordered_at = '2017-02-03';
 $order->save();
 ```
 
-> The above command (except for PHP) returns the same JSON object with the id of the created order, customer and items:
+> The above command returns the same JSON object with the id of the created order, customer and items:
 
 ```json
 {
@@ -283,11 +286,14 @@ require 'path/to/lib/shoprunback-php/init.php';
 // Set your token
 \Shoprunback\RestClient::getClient()->setToken('your_token');
 
+// Define the environment you want to use (Production or Sandbox)
+\Shoprunback\RestClient::getClient()->useProductionEnvironment();
+
 // Get all your orders
 $orders = \Shoprunback\Elements\Order::all();
 ```
 
-> The above command (except for PHP) returns JSON structured like this:
+> The above command returns JSON structured like this:
 
 ```json
 {

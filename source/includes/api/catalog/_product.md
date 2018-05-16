@@ -44,6 +44,9 @@ require 'path/to/lib/shoprunback-php/init.php';
 // Set your token
 \Shoprunback\RestClient::getClient()->setToken('your_token');
 
+// Define the environment you want to use (Production or Sandbox)
+\Shoprunback\RestClient::getClient()->useProductionEnvironment();
+
 // Create a new Product
 $product = new \Shoprunback\Elements\Product();
 $product->label = 'Iphone 14S Blue';
@@ -57,7 +60,7 @@ $product->picture_url = 'https://s3.eu-central-1.amazonaws.com/shoprunback-dev/p
 $product->save();
 ```
 
-> The above command (except for PHP) returns the same JSON object with the id of the created product:
+> The above command returns the same JSON object with the id of the created product:
 
 ```json
 {
@@ -197,6 +200,9 @@ require 'path/to/lib/shoprunback-php/init.php';
 // Set your token
 \Shoprunback\RestClient::getClient()->setToken('your_token');
 
+// Define the environment you want to use (Production or Sandbox)
+\Shoprunback\RestClient::getClient()->useProductionEnvironment();
+
 // Create a Brand for your Product
 $brand = new \Shoprunback\Elements\Brand();
 $brand->name = 'Apple';
@@ -215,7 +221,7 @@ $product->picture_url = 'https://s3.eu-central-1.amazonaws.com/shoprunback-dev/p
 $product->save();
 ```
 
-> The above command (except for PHP) returns the same JSON object with the id of the created product:
+> The above command returns the same JSON object with the id of the created product:
 
 ```json
 {
@@ -235,9 +241,7 @@ $product->save();
 
 You can create your product directly with the brand object embedded.
 
-If 2 products have the same brand's `reference`, only one brand object is created.
-
-The image in not mandatory but the return experience of your customer will be better with it.
+The image in not mandatory but the return experience is better with it.
 
 
 ### HTTP Request
@@ -332,11 +336,14 @@ require 'path/to/lib/shoprunback-php/init.php';
 // Set your token
 \Shoprunback\RestClient::getClient()->setToken('your_token');
 
+// Define the environment you want to use (Production or Sandbox)
+\Shoprunback\RestClient::getClient()->useProductionEnvironment();
+
 // Get all your products
 $products = \Shoprunback\Elements\Product::all();
 ```
 
-> The above command (except for PHP) returns JSON structured like this:
+> The above command returns JSON structured like this:
 
 ```json
 {

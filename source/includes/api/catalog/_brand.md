@@ -35,6 +35,9 @@ require 'path/to/lib/shoprunback-php/init.php';
 // Set your token
 \Shoprunback\RestClient::getClient()->setToken('your_token');
 
+// Define the environment you want to use (Production or Sandbox)
+\Shoprunback\RestClient::getClient()->useProductionEnvironment();
+
 // Create a new blank Brand and add mandatory attributes
 $brand = new \Shoprunback\Elements\Brand();
 $brand->name = 'Apple';
@@ -44,7 +47,7 @@ $brand->reference = 'apple';
 $brand->save();
 ```
 
-> The above command (except for PHP) returns JSON structured like this:
+> The above command returns JSON structured like this:
 
 ```json
 {
@@ -100,11 +103,14 @@ require 'path/to/lib/shoprunback-php/init.php';
 // Set your token
 \Shoprunback\RestClient::getClient()->setToken('your_token');
 
+// Define the environment you want to use (Production or Sandbox)
+\Shoprunback\RestClient::getClient()->useProductionEnvironment();
+
 // Get all your brands
 $brands = \Shoprunback\Elements\Brand::all();
 ```
 
-> The above command (except for PHP) returns JSON structured like this:
+> The above command returns JSON structured like this:
 
 ```json
 [

@@ -1,6 +1,6 @@
 # Authentication
 
-> To authorize your queries, you must provide your company API Token in the HTTP Headers like this :
+> To authorize your queries, you must provide your company API Token in the HTTP Headers like this:
 
 ```ruby
 response = HTTParty.post(
@@ -26,6 +26,9 @@ require 'path/to/lib/shoprunback-php/init.php';
 
 // Set your token
 \Shoprunback\RestClient::getClient()->setToken('your_token');
+
+// Define the environment you want to use (Production or Sandbox)
+\Shoprunback\RestClient::getClient()->useProductionEnvironment();
 
 // Here your token is already set
 // You can check if your token is correct by loading your ShopRunBack account

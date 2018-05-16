@@ -118,6 +118,9 @@ require 'path/to/lib/shoprunback-php/init.php';
 // Set your token
 \Shoprunback\RestClient::getClient()->setToken('your_token');
 
+// Define the environment you want to use (Production or Sandbox)
+\Shoprunback\RestClient::getClient()->useProductionEnvironment();
+
 //--------------------------------------------------------------------------
 // To create a Shipback, we must first have an Order to link the Shipback to
 //--------------------------------------------------------------------------
