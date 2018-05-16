@@ -39,26 +39,21 @@ You can **set the token of a user** with `setToken()`. Most of the API calls nee
 
 ## Use production or sandbox environment
 
-> Use the production environment
+> Set environment
 
 ```php
 <?php
 require_once 'path/to/lib/shoprunback-php/init.php';
 
 $restClient = \Shoprunback\RestClient::getClient();
-$restClient->useProductionEnvironment();
-```
 
-> Use the sandbox environment
-
-```php
-<?php
-require_once 'path/to/lib/shoprunback-php/init.php';
-
-$restClient = \Shoprunback\RestClient::getClient();
-$restClient->useSandboxEnvironment();
+if (/* Are we on production environment? */) {
+  $restClient->useProductionEnvironment();
+} else {
+  $restClient->useSandboxEnvironment();
+}
 ```
 
 If you want to **use the production or sandbox environment**, you can use `useProductionEnvironment` and `useSandboxEnvironment`.
 
-It will set **https://dashboard.shoprunback.com** for the production environment and **https://sandbox.dashboard.shoprunback.com** for the sandbox.
+It will set **https://dashboard.shoprunback.com** for the production environment and **https://sandbox.dashboard.shoprunback.com** for the sandbox environment.
