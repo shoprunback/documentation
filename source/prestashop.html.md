@@ -11,8 +11,9 @@ toc_footers:
 includes:
   - prestashop/introduction
   - prestashop/versions
-  - prestashop/download
   - prestashop/install
+  - prestashop/configure
+  - prestashop/use
 
 search: false
 ---

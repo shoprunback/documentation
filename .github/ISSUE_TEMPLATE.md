@@ -1,9 +1,14 @@
-If this is a question or feature request, make sure to:
+# Abstract
 
-- [ ] The title starts with `Question:` or `Feature:`.
+Write here an summary of the feature request (less than 3 lines)
 
-If this is an bug report, not a question, make sure to:
+# Details
 
-- [ ] I'm not running Windows (which is unsupported), or if I am, I can confirm this issue appears on another platform, or Vagrant.
-- [ ] This issue appears in the latest `dev` branch.
-- [ ] I've included my browser and Ruby version in this issue.
+Write here all the details of the request. 
+You can provide images too.
+
+If you don't have details yet, leave blank and come back later to fill it.
+
+# Requester
+
+Write here for who this feature is for (which retailer, which customer, which employee, …)
