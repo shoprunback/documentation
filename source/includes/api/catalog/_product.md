@@ -100,7 +100,7 @@ picture_file_url | no | public URL to the product image (JPG or PNG), to avoid i
 picture_file_base64 | no | if your product's image is not hosted on the internet, you can provide it with a base64 version of it
 
 <aside class="success">
-If you only have one brand, you don't have to provide the brand_id.
+If you only have the default brand, you don't have to provide the brand_id.
 </aside>
 
 
