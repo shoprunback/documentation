@@ -5,18 +5,13 @@
 <p>Only an existing order can be returned. You have 2 possibilities, depending on your desired return flow :</p>
 
 <ul>
-<li>When a user request a return on your website, you create the corresponding order on the API and initiate the corresponding return</li>
-<li>You push the order on the API directly after is processing on your website and just the redirect the customer when he/she requests a return</li>
+<li>When a user request a return on your website, you create the corresponding order on the API and initiate the corresponding return.</li>
+<li>You push the order on the API directly after it is processed on your website and just redirect the customer when he/she requests a return.</li>
 </ul>
 
 <p>In both cases, you will have to create the order, sooner or later.</p>
 
 <h2 id="create-an-order">Create an order</h2>
-
-<p>An order has a <code class="prettyprint">order_number</code>, a customer and a list of items.</p>
-
-<p>If you want to add extra data on the order, you can freely use the <code class="prettyprint">metadata</code> attribute (a simple key/value store).
-The ShopRunBack API will always returns this data without altering it.</p>
 <pre class="highlight ruby tab-ruby"><code><span class="n">body</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"ordered_at"</span><span class="p">:</span> <span class="s2">"2017-02-03"</span><span class="p">,</span>
   <span class="s2">"order_number"</span><span class="p">:</span> <span class="s2">"4548-9854"</span><span class="p">,</span>
@@ -88,73 +83,46 @@ The ShopRunBack API will always returns this data without altering it.</p>
   }
 }'</span>
 </code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="c1">// Load the library
+</span><span class="k">require</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
 
-<span class="c1">// Get cURL resource
-</span><span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+<span class="c1">// Set your token
+</span><span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'your_token'</span><span class="p">);</span>
 
-<span class="c1">// Set url
-</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://dashboard.shoprunback.com/api/v1/orders'</span><span class="p">);</span>
+<span class="c1">// Define the environment you want to use (Production or Sandbox)
+</span><span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">useProductionEnvironment</span><span class="p">();</span>
 
-<span class="c1">// Set method
-</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_CUSTOMREQUEST</span><span class="p">,</span> <span class="s1">'POST'</span><span class="p">);</span>
+<span class="c1">// Create an Address for the Customer
+</span><span class="nv">$address</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Address</span><span class="p">();</span>
+<span class="nv">$address</span><span class="o">-&gt;</span><span class="na">country_code</span> <span class="o">=</span> <span class="s1">'US'</span><span class="p">;</span>
+<span class="nv">$address</span><span class="o">-&gt;</span><span class="na">line2</span> <span class="o">=</span> <span class="s1">'Building B'</span><span class="p">;</span>
+<span class="nv">$address</span><span class="o">-&gt;</span><span class="na">state</span> <span class="o">=</span> <span class="s1">'California'</span><span class="p">;</span>
+<span class="nv">$address</span><span class="o">-&gt;</span><span class="na">line1</span> <span class="o">=</span> <span class="s1">'One Infinite Loop'</span><span class="p">;</span>
+<span class="nv">$address</span><span class="o">-&gt;</span><span class="na">zipcode</span> <span class="o">=</span> <span class="s1">'95014'</span><span class="p">;</span>
+<span class="nv">$address</span><span class="o">-&gt;</span><span class="na">city</span> <span class="o">=</span> <span class="s1">'Cupertino'</span><span class="p">;</span>
 
-<span class="c1">// Set options
-</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="c1">// Create a Customer for the Order
+</span><span class="nv">$customer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Customer</span><span class="p">();</span>
+<span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">email</span> <span class="o">=</span> <span class="s1">'steve@apple.com'</span><span class="p">;</span>
+<span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">phone</span> <span class="o">=</span> <span class="s1">'555-878-456'</span><span class="p">;</span>
+<span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">first_name</span> <span class="o">=</span> <span class="s1">'Steve'</span><span class="p">;</span>
+<span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">last_name</span> <span class="o">=</span> <span class="s1">'Jobs'</span><span class="p">;</span>
+<span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">address</span> <span class="o">=</span> <span class="nv">$address</span><span class="p">;</span>
 
-<span class="c1">// Set headers
-</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="p">[</span>
-  <span class="s2">"Authorization: Token token=&lt;your token&gt;"</span><span class="p">,</span>
-  <span class="s2">"Content-Type: application/json; charset=utf-8"</span><span class="p">,</span>
- <span class="p">]</span>
-<span class="p">);</span>
-<span class="c1">// Create body
-</span><span class="nv">$json_array</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s2">"order_number"</span> <span class="o">=&gt;</span> <span class="s2">"4548-9854"</span><span class="p">,</span>
-            <span class="s2">"metadata"</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                <span class="s2">"foo"</span> <span class="o">=&gt;</span> <span class="s2">"bar"</span><span class="p">,</span>
-                <span class="s2">"bar"</span> <span class="o">=&gt;</span> <span class="s2">"foo"</span>
-            <span class="p">],</span>
-            <span class="s2">"customer"</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                <span class="s2">"email"</span> <span class="o">=&gt;</span> <span class="s2">"steve@apple.com"</span><span class="p">,</span>
-                <span class="s2">"phone"</span> <span class="o">=&gt;</span> <span class="s2">"555-878-456"</span><span class="p">,</span>
-                <span class="s2">"last_name"</span> <span class="o">=&gt;</span> <span class="s2">"Jobs"</span><span class="p">,</span>
-                <span class="s2">"first_name"</span> <span class="o">=&gt;</span> <span class="s2">"Steve"</span><span class="p">,</span>
-                <span class="s2">"address"</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                    <span class="s2">"country_code"</span> <span class="o">=&gt;</span> <span class="s2">"US"</span><span class="p">,</span>
-                    <span class="s2">"line2"</span> <span class="o">=&gt;</span> <span class="s2">"Building B"</span><span class="p">,</span>
-                    <span class="s2">"state"</span> <span class="o">=&gt;</span> <span class="s2">"California"</span><span class="p">,</span>
-                    <span class="s2">"line1"</span> <span class="o">=&gt;</span> <span class="s2">"One Infinite Loop"</span><span class="p">,</span>
-                    <span class="s2">"zipcode"</span> <span class="o">=&gt;</span> <span class="s2">"95014"</span><span class="p">,</span>
-                    <span class="s2">"city"</span> <span class="o">=&gt;</span> <span class="s2">"Cupertino"</span>
-                <span class="p">]</span>
-            <span class="p">],</span>
-            <span class="s2">"items"</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                <span class="p">[</span>
-                    <span class="s2">"product_id"</span> <span class="o">=&gt;</span> <span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span>
-                <span class="p">]</span>
-            <span class="p">],</span>
-            <span class="s2">"ordered_at"</span> <span class="o">=&gt;</span> <span class="s2">"2017-02-03"</span>
-        <span class="p">];</span>
-<span class="nv">$body</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$json_array</span><span class="p">);</span>
+<span class="c1">// Create an array of Items ordered by the Customer
+</span><span class="nv">$item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Item</span><span class="p">();</span>
+<span class="nv">$item</span><span class="o">-&gt;</span><span class="na">product_id</span> <span class="o">=</span> <span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">;</span>
+<span class="nv">$items</span> <span class="o">=</span> <span class="p">[</span><span class="nv">$item</span><span class="p">];</span>
 
-<span class="c1">// Set body
-</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_POST</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$body</span><span class="p">);</span>
+<span class="c1">// Create an Order
+</span><span class="nv">$order</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Order</span><span class="p">();</span>
+<span class="nv">$order</span><span class="o">-&gt;</span><span class="na">order_number</span> <span class="o">=</span> <span class="s1">'4548-9854'</span><span class="p">;</span>
+<span class="nv">$order</span><span class="o">-&gt;</span><span class="na">customer</span> <span class="o">=</span> <span class="nv">$customer</span><span class="p">;</span>
+<span class="nv">$order</span><span class="o">-&gt;</span><span class="na">items</span> <span class="o">=</span> <span class="nv">$items</span><span class="p">;</span>
+<span class="nv">$order</span><span class="o">-&gt;</span><span class="na">ordered_at</span> <span class="o">=</span> <span class="s1">'2017-02-03'</span><span class="p">;</span>
 
-<span class="c1">// Send the request &amp; save response to $resp
-</span><span class="nv">$resp</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
-
-<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$resp</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">die</span><span class="p">(</span><span class="s1">'Error: "'</span> <span class="o">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$ch</span><span class="p">)</span> <span class="o">.</span> <span class="s1">'" - Code: '</span> <span class="o">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$ch</span><span class="p">));</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="s2">"Response HTTP Status Code : "</span> <span class="o">.</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLINFO_HTTP_CODE</span><span class="p">);</span>
-  <span class="k">echo</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">Response HTTP Body : "</span> <span class="o">.</span> <span class="nv">$resp</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">// Close request to clear up some resources
-</span><span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
-
-<span class="cp">?&gt;</span>
+<span class="c1">// We save the Order
+</span><span class="nv">$order</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
 </code></pre>
 <blockquote>
 <p>The above command returns the same JSON object with the id of the created order, customer and items:</p>
@@ -210,6 +178,11 @@ The ShopRunBack API will always returns this data without altering it.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<p>An order has a <code class="prettyprint">order_number</code>, a customer and a list of items.</p>
+
+<p>If you want to add extra data on the order, you can freely use the <code class="prettyprint">metadata</code> attribute (a simple key/value store).
+The ShopRunBack API will always return this data without altering it.</p>
+
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">POST https://dashboard.shoprunback.com/api/v1/orders</code></p>
@@ -268,6 +241,18 @@ The ShopRunBack API will always returns this data without altering it.</p>
      -H <span class="s2">"Authorization: Token token=&lt;your_token&gt;"</span> <span class="se">\</span>
      -H <span class="s2">"Content-Type: application/json; charset=utf-8"</span> <span class="se">\</span>
 
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="c1">// Load the library
+</span><span class="k">require</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="c1">// Set your token
+</span><span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'your_token'</span><span class="p">);</span>
+
+<span class="c1">// Define the environment you want to use (Production or Sandbox)
+</span><span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">useProductionEnvironment</span><span class="p">();</span>
+
+<span class="c1">// Get all your orders
+</span><span class="nv">$orders</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Order</span><span class="o">::</span><span class="na">all</span><span class="p">();</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -324,170 +309,6 @@ The ShopRunBack API will always returns this data without altering it.</p>
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h2 id="update-an-order">Update an order</h2>
-
-<p>This endpoint updates an existing order.</p>
-
-<aside class="warning">
-  If a return has already been finished (ie. the corresponding shipback has been registered), you can&rsquo;t update the order anymore.
-</aside>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">PUT https://dashboard.shoprunback.com/api/v1/orders/:order_id</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ordered_at</td>
-<td>yes</td>
-<td>date of the order</td>
-</tr>
-<tr>
-<td>order_number</td>
-<td>yes</td>
-<td>the customer&rsquo;s order number</td>
-</tr>
-<tr>
-<td>customer</td>
-<td>yes</td>
-<td>customer object (see <a href="https://app.swaggerhub.com/apis/Shoprunback/SRB-APP">swaggerhub documentation</a> for details)</td>
-</tr>
-<tr>
-<td>items</td>
-<td>yes</td>
-<td>items&rsquo; array (see <a href="https://app.swaggerhub.com/apis/Shoprunback/SRB-APP">swaggerhub documentation</a> for details)</td>
-</tr>
-<tr>
-<td>metadata</td>
-<td>no</td>
-<td>Anything you want to add to the order, this data will always be returned and never modified.</td>
-</tr>
-</tbody></table>
-<pre class="highlight ruby tab-ruby"><code><span class="n">body</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">"ordered_at"</span><span class="p">:</span> <span class="s2">"2017-02-03"</span><span class="p">,</span>
-  <span class="s2">"order_number"</span><span class="p">:</span> <span class="s2">"4548-9854"</span><span class="p">,</span>
-  <span class="s2">"customer"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">"first_name"</span><span class="p">:</span> <span class="s2">"Steve"</span><span class="p">,</span>
-    <span class="s2">"last_name"</span><span class="p">:</span> <span class="s2">"Jobs"</span><span class="p">,</span>
-    <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"steve@apple.com"</span><span class="p">,</span>
-    <span class="s2">"phone"</span><span class="p">:</span> <span class="s2">"555-878-456"</span><span class="p">,</span>
-    <span class="s2">"address"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">"line1"</span><span class="p">:</span> <span class="s2">"One Infinite Loop"</span><span class="p">,</span>
-      <span class="s2">"line2"</span><span class="p">:</span> <span class="s2">"Building B"</span><span class="p">,</span>
-      <span class="s2">"zipcode"</span><span class="p">:</span> <span class="s2">"95014"</span><span class="p">,</span>
-      <span class="s2">"country_code"</span><span class="p">:</span> <span class="s2">"US"</span><span class="p">,</span>
-      <span class="s2">"city"</span><span class="p">:</span> <span class="s2">"Cupertino"</span><span class="p">,</span>
-      <span class="s2">"state"</span><span class="p">:</span> <span class="s2">"California"</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="s2">"items"</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="s2">"product_id"</span><span class="p">:</span> <span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">],</span>
-  <span class="s2">"metadata"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">"foo"</span><span class="p">:</span> <span class="s2">"bar"</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="no">HTTParty</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
-              <span class="s2">"https://dashboard.shoprunback.com/api/v1/orders/</span><span class="si">#{</span><span class="n">order_id</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
-              <span class="ss">body: </span><span class="n">body</span><span class="p">,</span>
-              <span class="ss">headers: </span><span class="p">{</span>
-                <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
-                <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Token token=</span><span class="si">#{</span><span class="n">your_token</span><span class="si">}</span><span class="s2">"</span>
-              <span class="p">}</span>
-            <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl -X <span class="s2">"PUT"</span> <span class="s2">"https://dashboard.shoprunback.com/api/v1/orders/&lt;order_id&gt;"</span> <span class="se">\</span>
-     -H <span class="s2">"Authorization: Token token=&lt;your_token&gt;"</span> <span class="se">\</span>
-     -H <span class="s2">"Content-Type: application/json; charset=utf-8"</span> <span class="se">\</span>
-     -d <span class="s1">$'{
-  "ordered_at": "2017-02-03",
-  "order_number": "4548-9854",
-  "customer": {
-    "first_name": "Steve",
-    "last_name": "Jobs",
-    "email": "steve@apple.com",
-    "phone": "555-878-456",
-    "address": {
-      "line1": "One Infinite Loop",
-      "line2": "Building B",
-      "zipcode": "95014",
-      "country_code": "US",
-      "city": "Cupertino",
-      "state": "California"
-    }
-  },
-  "items":
-  [
-    {
-      "product_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-      "product": {
-        "id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-        "label": "Iphone 14S Red",
-        "reference": "IPHONE 14S B",
-        "ean": "1258987561456",
-        "brand_id": "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-        "brand_name": "Apple",
-        "picture_url": "http://s3.amazonaws/assets/iphone_14s.jpg"
-      }
-    },
-  ],
-  "metadata": {
-    "foo": "bar"
-  }
-}'</span>
-</code></pre>
-<blockquote>
-<p>The above command returns the same JSON object with the updated order, customer or items:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"ordered_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-03"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"order_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4548-9854"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Steve"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jobs"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"steve@apple.com"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-878-456"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One Infinite Loop"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"line2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Building B"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"zipcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"95014"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cupertino"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"California"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Iphone 14S Red"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IPHONE 14S B"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ean"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1258987561456"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"brand_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f27f9d9-3b5c-4152-98b7-760f56967dea"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"brand_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"picture_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://s3.amazonaws/assets/iphone_14s.jpg"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"foo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h2 id="delete-an-order">Delete an order</h2>

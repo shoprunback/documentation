@@ -1,7 +1,7 @@
 <h1 id="authentication">Authentication</h1>
 
 <blockquote>
-<p>To authorize your queries, you must provide you company API Token in the HTTP Headers like this :</p>
+<p>To authorize your queries, you must provide your company API Token in the HTTP Headers like this:</p>
 </blockquote>
 <pre class="highlight ruby tab-ruby"><code><span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
               <span class="n">endpoint</span><span class="p">,</span>
@@ -15,38 +15,18 @@
   -H <span class="s2">"Authorization: Token token=&lt;your_token&gt;"</span>
 </code></pre><pre class="highlight php tab-php"><code>
 <span class="cp">&lt;?php</span>
-<span class="c1">// Get cURL resource
-</span><span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+<span class="c1">// Load the library
+</span><span class="k">require</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
 
-<span class="c1">// Set url
-</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="nx">endpoint</span><span class="p">);</span>
+<span class="c1">// Set your token
+</span><span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'your_token'</span><span class="p">);</span>
 
-<span class="c1">// Set method
-</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_CUSTOMREQUEST</span><span class="p">,</span> <span class="s1">'GET'</span><span class="p">);</span>
+<span class="c1">// Define the environment you want to use (Production or Sandbox)
+</span><span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">useProductionEnvironment</span><span class="p">();</span>
 
-<span class="c1">// Set options
-</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-
-<span class="c1">// Set headers
-</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="p">[</span>
-  <span class="s2">"Content-Type: application/json; charset=utf-8"</span><span class="p">,</span>
-  <span class="s2">"Authorization: Token token=&lt;your_token&gt;"</span><span class="p">,</span>
- <span class="p">]</span>
-<span class="p">);</span>
-
-<span class="c1">// Send the request &amp; save response to $resp
-</span><span class="nv">$resp</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
-
-<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$resp</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">die</span><span class="p">(</span><span class="s1">'Error: "'</span> <span class="o">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$ch</span><span class="p">)</span> <span class="o">.</span> <span class="s1">'" - Code: '</span> <span class="o">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$ch</span><span class="p">));</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="s2">"Response HTTP Status Code : "</span> <span class="o">.</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLINFO_HTTP_CODE</span><span class="p">);</span>
-  <span class="k">echo</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">Response HTTP Body : "</span> <span class="o">.</span> <span class="nv">$resp</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">// Close request to clear up some resources
-</span><span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
-<span class="cp">?&gt;</span>
+<span class="c1">// Here your token is already set
+// You can check if your token is correct by loading your ShopRunBack account
+</span><span class="nv">$account</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Account</span><span class="o">::</span><span class="na">getOwn</span><span class="p">();</span>
 </code></pre>
 <blockquote>
 <p>Replace <code class="prettyprint">your_token</code> with your API key.</p>

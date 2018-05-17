@@ -1,15 +1,6 @@
 <h1 id="return">Return</h1>
 
 <h2 id="create-the-order-and-the-return-sequentially">Create the order and the return sequentially</h2>
-
-<p>You can create the order and the corresponding shipback in 2 sequential API calls without parsing the first response by using your own references.</p>
-
-<p>First, create the order with an <em>order_number</em> and the items.
-You don&rsquo;t have to push all the items in the initial order if you already know which items are going to be returned, just push them and not the others. You must provide item references if you want to avoid the parsing of the response. An item reference should be unique per order.</p>
-
-<p>Second, create the corresponding shipback attached to your <em>order_number</em> by giving the <em>item_reference</em> and the reason of the return.</p>
-
-<p>If the customer details of the shipback are not provided, the same details of the order&rsquo;s customer are copied.</p>
 <pre class="highlight ruby tab-ruby"><code><span class="n">body</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"ordered_at"</span><span class="p">:</span> <span class="s2">"2017-06-12"</span><span class="p">,</span>
   <span class="s2">"order_number"</span><span class="p">:</span> <span class="s2">"1234567"</span><span class="p">,</span>
@@ -112,7 +103,80 @@ curl -X <span class="s2">"POST"</span> <span class="s2">"https://dashboard.shopr
     }
   ]
 }'</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="c1">// Load the library
+</span><span class="k">require</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="c1">// Set your token
+</span><span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'your_token'</span><span class="p">);</span>
+
+<span class="c1">// Define the environment you want to use (Production or Sandbox)
+</span><span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">useProductionEnvironment</span><span class="p">();</span>
+
+<span class="c1">//--------------------------------------------------------------------------
+// To create a Shipback, we must first have an Order to link the Shipback to
+//--------------------------------------------------------------------------
+</span>
+<span class="c1">// Create an Address for the Customer
+</span><span class="nv">$address</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Address</span><span class="p">();</span>
+<span class="nv">$address</span><span class="o">-&gt;</span><span class="na">country_code</span> <span class="o">=</span> <span class="s1">'US'</span><span class="p">;</span>
+<span class="nv">$address</span><span class="o">-&gt;</span><span class="na">line2</span> <span class="o">=</span> <span class="s1">'Building B'</span><span class="p">;</span>
+<span class="nv">$address</span><span class="o">-&gt;</span><span class="na">state</span> <span class="o">=</span> <span class="s1">'California'</span><span class="p">;</span>
+<span class="nv">$address</span><span class="o">-&gt;</span><span class="na">line1</span> <span class="o">=</span> <span class="s1">'One Infinite Loop'</span><span class="p">;</span>
+<span class="nv">$address</span><span class="o">-&gt;</span><span class="na">zipcode</span> <span class="o">=</span> <span class="s1">'95014'</span><span class="p">;</span>
+<span class="nv">$address</span><span class="o">-&gt;</span><span class="na">city</span> <span class="o">=</span> <span class="s1">'Cupertino'</span><span class="p">;</span>
+
+<span class="c1">// Create a Customer for the Order
+</span><span class="nv">$customer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Customer</span><span class="p">();</span>
+<span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">email</span> <span class="o">=</span> <span class="s1">'steve@apple.com'</span><span class="p">;</span>
+<span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">phone</span> <span class="o">=</span> <span class="s1">'555-878-456'</span><span class="p">;</span>
+<span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">first_name</span> <span class="o">=</span> <span class="s1">'Steve'</span><span class="p">;</span>
+<span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">last_name</span> <span class="o">=</span> <span class="s1">'Jobs'</span><span class="p">;</span>
+<span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">address</span> <span class="o">=</span> <span class="nv">$address</span><span class="p">;</span>
+
+<span class="c1">// Create an array of Items ordered by the Customer
+</span><span class="nv">$item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Item</span><span class="p">();</span>
+<span class="nv">$item</span><span class="o">-&gt;</span><span class="na">product_id</span> <span class="o">=</span> <span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">;</span>
+<span class="nv">$items</span> <span class="o">=</span> <span class="p">[</span><span class="nv">$item</span><span class="p">];</span>
+
+<span class="c1">// Create an Order
+</span><span class="nv">$order</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Order</span><span class="p">();</span>
+<span class="nv">$order</span><span class="o">-&gt;</span><span class="na">order_number</span> <span class="o">=</span> <span class="s1">'4548-9854'</span><span class="p">;</span>
+<span class="nv">$order</span><span class="o">-&gt;</span><span class="na">customer</span> <span class="o">=</span> <span class="nv">$customer</span><span class="p">;</span>
+<span class="nv">$order</span><span class="o">-&gt;</span><span class="na">items</span> <span class="o">=</span> <span class="nv">$items</span><span class="p">;</span>
+<span class="nv">$order</span><span class="o">-&gt;</span><span class="na">ordered_at</span> <span class="o">=</span> <span class="s1">'2017-02-03'</span><span class="p">;</span>
+
+<span class="c1">// We save the Order
+</span><span class="nv">$order</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+
+<span class="c1">//--------------------------------------------------------
+// Now that we have an Order, we can link a Shipback to it
+//--------------------------------------------------------
+</span>
+<span class="c1">// Create a Shipback and link the Order
+</span><span class="nv">$shipback</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Shipback</span><span class="p">();</span>
+<span class="nv">$shipback</span><span class="o">-&gt;</span><span class="na">order_id</span> <span class="o">=</span> <span class="nv">$order</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>
+
+  <span class="c1">// Optionnal: you can directly link the Items the Customer wants to return
+</span>  <span class="c1">// If you don't, the Customer will have to fill the return request's form to select them
+</span>  <span class="nv">$returnedItem</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\ReturnedItem</span><span class="p">();</span>
+  <span class="nv">$returnedItem</span><span class="o">-&gt;</span><span class="na">item_id</span> <span class="o">=</span> <span class="nv">$order</span><span class="o">-&gt;</span><span class="na">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span> <span class="c1">// It must be the ID of an Item from the Order
+</span>  <span class="nv">$returnedItem</span><span class="o">-&gt;</span><span class="na">reason_code</span> <span class="o">=</span> <span class="s1">'doesnt_fit'</span><span class="p">;</span>
+
+  <span class="nv">$shipback</span><span class="o">-&gt;</span><span class="na">items</span> <span class="o">=</span> <span class="p">[</span><span class="nv">$returnedItem</span><span class="p">];</span>
+
+<span class="c1">// We save the Shipback
+</span><span class="nv">$shipback</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
 </code></pre>
+<p>You can create the order and its corresponding shipback in 2 sequential API calls without parsing the first response by using your own references.</p>
+
+<p>First, create the order with an <em>order_number</em> and the items.
+You don&rsquo;t have to push all the items in the initial order if you already know which items are going to be returned, just push them and not the others. You must provide item references if you want to avoid the parsing of the response. An item reference should be unique per order.</p>
+
+<p>Second, create the corresponding shipback attached to your <em>order_number</em> by giving the item&rsquo;s <em>reference</em> and the reason of the return.</p>
+
+<p>If the customer details of the shipback are not provided, the order&rsquo;s customer is copied and used for the shipback.</p>
+
 <h2 id="delete-a-shipback">Delete a shipback</h2>
 
 <p>An shipback can only be deleted if no yet registered (the customer has not completed the whole process).</p>
