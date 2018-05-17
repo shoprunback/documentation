@@ -1,8 +1,5 @@
 ## Create a brand
 
-By default, once your retailer account is created and your company details entered, a default brand is created.
-But you can add your own brands if you have multiple brands in your catalog.
-
 ```ruby
 body = {
   name: "Apple",
@@ -32,49 +29,22 @@ curl -X "POST" "https://dashboard.shoprunback.com/api/v1/brands" \
 
 ```php
 <?php
-// Get cURL resource
-$ch = curl_init();
+// Load the library
+require 'path/to/lib/shoprunback-php/init.php';
 
-// Set url
-curl_setopt($ch, CURLOPT_URL, 'https://dashboard.shoprunback.com/api/v1/brands');
+// Set your token
+\Shoprunback\RestClient::getClient()->setToken('your_token');
 
-// Set method
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+// Define the environment you want to use (Production or Sandbox)
+\Shoprunback\RestClient::getClient()->useProductionEnvironment();
 
-// Set options
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+// Create a new blank Brand and add mandatory attributes
+$brand = new \Shoprunback\Elements\Brand();
+$brand->name = 'Apple';
+$brand->reference = 'apple';
 
-// Set headers
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-  "Authorization: Token token=<your token>",
-  "Content-Type: application/json; charset=utf-8",
- ]
-);
-// Create body
-$json_array = [
-            "name" => "Apple",
-            "reference" => "apple"
-        ];
-$body = json_encode($json_array);
-
-// Set body
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
-
-// Send the request & save response to $resp
-$resp = curl_exec($ch);
-
-if(!$resp) {
-  die('Error: "' . curl_error($ch) . '" - Code: ' . curl_errno($ch));
-} else {
-  echo "Response HTTP Status Code : " . curl_getinfo($ch, CURLINFO_HTTP_CODE);
-  echo "\nResponse HTTP Body : " . $resp;
-}
-
-// Close request to clear up some resources
-curl_close($ch);
-?>
-
+// Save the Brand
+$brand->save();
 ```
 
 > The above command returns JSON structured like this:
@@ -88,7 +58,10 @@ curl_close($ch);
 }
 ```
 
-This endpoint create a new brand.
+By default, once your **retailer account is created and your company details entered**, a **default Brand is created**.
+But you **can add your own Brands** if you have multiple Brands in your catalog.
+
+This endpoint creates a new Brand.
 
 ### HTTP Request
 
@@ -124,40 +97,17 @@ curl -X "GET" "https://dashboard.shoprunback.com/api/v1/brands" \
 
 ```php
 <?php
+// Load the library
+require 'path/to/lib/shoprunback-php/init.php';
 
-// Get cURL resource
-$ch = curl_init();
+// Set your token
+\Shoprunback\RestClient::getClient()->setToken('your_token');
 
-// Set url
-curl_setopt($ch, CURLOPT_URL, 'https://dashboard.shoprunback.com/api/v1/brands');
+// Define the environment you want to use (Production or Sandbox)
+\Shoprunback\RestClient::getClient()->useProductionEnvironment();
 
-// Set method
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-
-// Set options
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-// Set headers
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-  "Authorization: Token token=<your_token>",
- ]
-);
-
-// Send the request & save response to $resp
-$resp = curl_exec($ch);
-
-if(!$resp) {
-  die('Error: "' . curl_error($ch) . '" - Code: ' . curl_errno($ch));
-} else {
-  echo "Response HTTP Status Code : " . curl_getinfo($ch, CURLINFO_HTTP_CODE);
-  echo "\nResponse HTTP Body : " . $resp;
-}
-
-// Close request to clear up some resources
-curl_close($ch);
-
-?>
-
+// Get all your brands
+$brands = \Shoprunback\Elements\Brand::all();
 ```
 
 > The above command returns JSON structured like this:

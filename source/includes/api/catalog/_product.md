@@ -1,10 +1,6 @@
 
 ## Add your products
 
-Push all your products catalog with this endpoint.
-
-The image in not mandatory but the return experience of your customer will be better with it.
-
 ```ruby
 body = {
   "label": "Iphone 14S Blue",
@@ -42,60 +38,28 @@ curl -X "POST" "https://dashboard.shoprunback.com/api/v1/products" \
 
 ```php
 <?php
+// Load the library
+require 'path/to/lib/shoprunback-php/init.php';
 
-// Get cURL resource
-$ch = curl_init();
+// Set your token
+\Shoprunback\RestClient::getClient()->setToken('your_token');
 
-// Set url
-curl_setopt($ch, CURLOPT_URL, 'https://dashboard.shoprunback.com/api/v1/products');
+// Define the environment you want to use (Production or Sandbox)
+\Shoprunback\RestClient::getClient()->useProductionEnvironment();
 
-// Set method
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+// Create a new Product
+$product = new \Shoprunback\Elements\Product();
+$product->label = 'Iphone 14S Blue';
+$product->reference = 'IPHONE 14S B';
+$product->weight_grams = 200;
+$product->brand_id = '1f27f9d9-3b5c-4152-98b7-760f56967dea';
+$product->ean = '1258987561456';
+$product->picture_url = 'https://s3.eu-central-1.amazonaws.com/shoprunback-dev/products/484/7b4/f4-/pictures/medium.?1505912197';
 
-// Set options
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-// Set headers
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-  "Authorization: Token token=<your token>",
-  "Content-Type: application/json; charset=utf-8",
- ]
-);
-// Create body
-$json_array = [
-            "reference" => "IPHONE 14S B",
-            "id" => "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-            "picture_url" => "https://s3.eu-central-1.amazonaws.com/shoprunback-dev/products/484/7b4/f4-/pictures/medium.?1505912197",
-            "label" => "Iphone 14S Blue",
-            "weight_grams" => 200,
-            "brand" => [
-                "id" => "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-                "name" => "Apple",
-                "reference" => "apple"
-            ],
-            "ean" => "1258987561456"
-        ];
-$body = json_encode($json_array);
-
-// Set body
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
-
-// Send the request & save response to $resp
-$resp = curl_exec($ch);
-
-if(!$resp) {
-  die('Error: "' . curl_error($ch) . '" - Code: ' . curl_errno($ch));
-} else {
-  echo "Response HTTP Status Code : " . curl_getinfo($ch, CURLINFO_HTTP_CODE);
-  echo "\nResponse HTTP Body : " . $resp;
-}
-
-// Close request to clear up some resources
-curl_close($ch);
-
-?>
+// Save the Product
+$product->save();
 ```
+
 > The above command returns the same JSON object with the id of the created product:
 
 ```json
@@ -113,6 +77,10 @@ curl_close($ch);
   }
 }
 ```
+
+Push all your products' catalog with this endpoint.
+
+The image in not mandatory but the return experience of your customer will be better with it.
 
 
 ### HTTP Request
@@ -132,7 +100,7 @@ picture_file_url | no | public URL to the product image (JPG or PNG), to avoid i
 picture_file_base64 | no | if your product's image is not hosted on the internet, you can provide it with a base64 version of it
 
 <aside class="success">
-If you don't have more than one brand, you don't have to provide the brand_id.
+If you only have the default brand, you don't have to provide the brand_id.
 </aside>
 
 
@@ -184,12 +152,6 @@ If you don't have more than one brand, you don't have to provide the brand_id.
 
 ## Create a product with its brand
 
-You can create your product directly with the brand object embedded.
-
-If 2 products have the same brand's `reference`, only one brand object is created.
-
-The image in not mandatory but the return experience of your customer will be better with it.
-
 ```ruby
 body = {
   "label": "Iphone 14S Blue",
@@ -232,58 +194,31 @@ curl -X "POST" "https://dashboard.shoprunback.com/api/v1/products" \
 
 ```php
 <?php
+// Load the library
+require 'path/to/lib/shoprunback-php/init.php';
 
-// Get cURL resource
-$ch = curl_init();
+// Set your token
+\Shoprunback\RestClient::getClient()->setToken('your_token');
 
-// Set url
-curl_setopt($ch, CURLOPT_URL, 'http://localhost:3000/api/v1/products');
+// Define the environment you want to use (Production or Sandbox)
+\Shoprunback\RestClient::getClient()->useProductionEnvironment();
 
-// Set method
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+// Create a Brand for your Product
+$brand = new \Shoprunback\Elements\Brand();
+$brand->name = 'Apple';
+$brand->reference = 'apple';
 
-// Set options
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+// Create a new Product
+$product = new \Shoprunback\Elements\Product();
+$product->label = 'Iphone 14S Blue';
+$product->reference = 'IPHONE 14S B';
+$product->weight_grams = 200;
+$product->brand = $brand;
+$product->ean = '1258987561456';
+$product->picture_url = 'https://s3.eu-central-1.amazonaws.com/shoprunback-dev/products/484/7b4/f4-/pictures/medium.?1505912197';
 
-// Set headers
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-  "Authorization: Token token=<your token>",
-  "Content-Type: application/json; charset=utf-8",
- ]
-);
-// Create body
-$json_array = [
-            "reference" => "IPHONE 14S B",
-            "id" => "1f27f9d9-3b5c-4152-98b7-760f56967dea",
-            "picture_url" => "https://s3.eu-central-1.amazonaws.com/shoprunback-dev/products/484/7b4/f4-/pictures/medium.?1505912197",
-            "label" => "Iphone 14S Blue",
-            "brand" => [
-                "id" => "20d0be72-a191-4eb8-af22-9dd4c3e65fe8",
-                "name" => "Apple",
-                "reference" => "apple"
-            ],
-            "weight_grams" => 200,
-            "ean" => "1258987561456"
-        ];
-$body = json_encode($json_array);
-
-// Set body
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
-
-// Send the request & save response to $resp
-$resp = curl_exec($ch);
-
-if(!$resp) {
-  die('Error: "' . curl_error($ch) . '" - Code: ' . curl_errno($ch));
-} else {
-  echo "Response HTTP Status Code : " . curl_getinfo($ch, CURLINFO_HTTP_CODE);
-  echo "\nResponse HTTP Body : " . $resp;
-}
-
-// Close request to clear up some resources
-curl_close($ch);
-?>
+// Save the Product
+$product->save();
 ```
 
 > The above command returns the same JSON object with the id of the created product:
@@ -303,6 +238,10 @@ curl_close($ch);
   "picture_url": "https://s3.eu-central-1.amazonaws.com/shoprunback-dev/products/484/7b4/f4-/pictures/medium.?1505912197"
 }
 ```
+
+You can create your product directly with the brand object embedded.
+
+The image in not mandatory but the return experience is better with it.
 
 
 ### HTTP Request
@@ -391,39 +330,17 @@ curl -X "GET" "https://dashboard.shoprunback.com/api/v1/products?page=1" \
 
 ```php
 <?php
+// Load the library
+require 'path/to/lib/shoprunback-php/init.php';
 
-// Get cURL resource
-$ch = curl_init();
+// Set your token
+\Shoprunback\RestClient::getClient()->setToken('your_token');
 
-// Set url
-curl_setopt($ch, CURLOPT_URL, 'https://dashboard.shoprunback.com/api/v1/products?page=1');
+// Define the environment you want to use (Production or Sandbox)
+\Shoprunback\RestClient::getClient()->useProductionEnvironment();
 
-// Set method
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-
-// Set options
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-// Set headers
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-  "Authorization: Token token=<your token>",
- ]
-);
-
-
-// Send the request & save response to $resp
-$resp = curl_exec($ch);
-
-if(!$resp) {
-  die('Error: "' . curl_error($ch) . '" - Code: ' . curl_errno($ch));
-} else {
-  echo "Response HTTP Status Code : " . curl_getinfo($ch, CURLINFO_HTTP_CODE);
-  echo "\nResponse HTTP Body : " . $resp;
-}
-
-// Close request to clear up some resources
-curl_close($ch);
-?>
+// Get all your products
+$products = \Shoprunback\Elements\Product::all();
 ```
 
 > The above command returns JSON structured like this:
@@ -472,7 +389,7 @@ curl_close($ch);
 
 You can list all your products on ShopRunBack with this endpoint.
 
-The result is paginated, provide the `page` parameter to get a page (default is page 1).
+The result is paginated, provide the `page` parameter to get a specific page (default is page 1).
 
 ### HTTP Request
 

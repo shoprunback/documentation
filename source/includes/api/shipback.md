@@ -2,16 +2,6 @@
 
 ## Create the order and the return sequentially
 
-You can create the order and the corresponding shipback in 2 sequential API calls without parsing the first response by using your own references.
-
-First, create the order with an _order_number_ and the items.
-You don't have to push all the items in the initial order if you already know which items are going to be returned, just push them and not the others. You must provide item references if you want to avoid the parsing of the response. An item reference should be unique per order.
-
-Second, create the corresponding shipback attached to your _order_number_ by giving the _item_reference_ and the reason of the return.
-
-If the customer details of the shipback are not provided, the same details of the order's customer are copied.
-
-
 ```ruby
 body = {
   "ordered_at": "2017-06-12",
@@ -119,6 +109,82 @@ curl -X "POST" "https://dashboard.shoprunback.com/api/v1/shipbacks" \
   ]
 }'
 ```
+
+```php
+<?php
+// Load the library
+require 'path/to/lib/shoprunback-php/init.php';
+
+// Set your token
+\Shoprunback\RestClient::getClient()->setToken('your_token');
+
+// Define the environment you want to use (Production or Sandbox)
+\Shoprunback\RestClient::getClient()->useProductionEnvironment();
+
+//--------------------------------------------------------------------------
+// To create a Shipback, we must first have an Order to link the Shipback to
+//--------------------------------------------------------------------------
+
+// Create an Address for the Customer
+$address = new \Shoprunback\Elements\Address();
+$address->country_code = 'US';
+$address->line2 = 'Building B';
+$address->state = 'California';
+$address->line1 = 'One Infinite Loop';
+$address->zipcode = '95014';
+$address->city = 'Cupertino';
+
+// Create a Customer for the Order
+$customer = new \Shoprunback\Elements\Customer();
+$customer->email = 'steve@apple.com';
+$customer->phone = '555-878-456';
+$customer->first_name = 'Steve';
+$customer->last_name = 'Jobs';
+$customer->address = $address;
+
+// Create an array of Items ordered by the Customer
+$item = new \Shoprunback\Elements\Item();
+$item->product_id = '1f27f9d9-3b5c-4152-98b7-760f56967dea';
+$items = [$item];
+
+// Create an Order
+$order = new \Shoprunback\Elements\Order();
+$order->order_number = '4548-9854';
+$order->customer = $customer;
+$order->items = $items;
+$order->ordered_at = '2017-02-03';
+
+// We save the Order
+$order->save();
+
+//--------------------------------------------------------
+// Now that we have an Order, we can link a Shipback to it
+//--------------------------------------------------------
+
+// Create a Shipback and link the Order
+$shipback = new \Shoprunback\Elements\Shipback();
+$shipback->order_id = $order->id;
+
+  // Optionnal: you can directly link the Items the Customer wants to return
+  // If you don't, the Customer will have to fill the return request's form to select them
+  $returnedItem = new \Shoprunback\Elements\ReturnedItem();
+  $returnedItem->item_id = $order->items[0]->id; // It must be the ID of an Item from the Order
+  $returnedItem->reason_code = 'doesnt_fit';
+
+  $shipback->items = [$returnedItem];
+
+// We save the Shipback
+$shipback->save();
+```
+
+You can create the order and its corresponding shipback in 2 sequential API calls without parsing the first response by using your own references.
+
+First, create the order with an _order_number_ and the items.
+You don't have to push all the items in the initial order if you already know which items are going to be returned, just push them and not the others. You must provide item references if you want to avoid the parsing of the response. An item reference should be unique per order.
+
+Second, create the corresponding shipback attached to your _order_number_ by giving the item's _reference_ and the reason of the return.
+
+If the customer details of the shipback are not provided, the order's customer is copied and used for the shipback.
 
 
 ## Delete a shipback
