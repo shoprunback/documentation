@@ -7,10 +7,10 @@
 require_once 'path/to/lib/shoprunback-php/init.php';
 
 $restClient = \Shoprunback\RestClient::getClient();
-$restClient->setApiBaseUrl('https://dashboard.shoprunback.com');
+$restClient->useSandboxEnvironment();
 $restClient->setToken('yourApiToken');
 
-define('REST_CLIENT', $restClient);
+define('SRB_REST_CLIENT', $restClient);
 ```
 
 **Accepts: GET ; POST ; PUT ; DELETE**
@@ -23,8 +23,47 @@ It is a **Singleton**, so you need to use `getClient` to use it.
   Since it is a Singleton, it is highly recommended to <b>declare it in a variable or a constant</b> so you can use it everywhere
 </aside>
 
-You can **set a specific URL target** for the API calls with `setApiBaseUrl()`. This URL should be **https://dashboard.shoprunback.com** by default and **https://sandbox.dashboard.shoprunback.com** for the sandbox.
+## Set token
+
+> Set token
+
+```php
+<?php
+require_once 'path/to/lib/shoprunback-php/init.php';
+
+$restClient = \Shoprunback\RestClient::getClient();
+$restClient->setToken('yourApiToken');
+```
 
 You can **set the token of a user** with `setToken()`. Most of the API calls need you to be authentified to be done.
 
-You can also **set environment variables** called `SHOPRUNBACK_URL` and `SHOPRUNBACK_TOKEN` to automatically load them.
+## Use production or sandbox environment
+
+> Set environment
+
+```php
+<?php
+require_once 'path/to/lib/shoprunback-php/init.php';
+
+$restClient = \Shoprunback\RestClient::getClient();
+
+// Use ONE of those functions to define your environment (don't use both at the same time)
+$restClient->useProductionEnvironment();
+$restClient->useSandboxEnvironment();
+```
+
+To choose **which environment to work with**, you can use `useProductionEnvironment` or `useSandboxEnvironment`.
+
+It will define **https://dashboard.shoprunback.com** or **https://sandbox.dashboard.shoprunback.com** as the base URL for all the API calls.
+
+> Get the environments' URL
+
+```php
+<?php
+require_once 'path/to/lib/shoprunback-php/init.php';
+
+\Shoprunback\RestClient::getProductionUrl(); // Returns 'https://dashboard.shoprunback.com'
+\Shoprunback\RestClient::getSandboxUrl(); // Returns 'https://sandbox.dashboard.shoprunback.com'
+```
+
+If you want to **get the URL of the** production or sandbox **environment without changing the environment you are working with**, you can use `getProductionUrl` or `getSandboxUrl`.
