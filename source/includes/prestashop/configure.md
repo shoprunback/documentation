@@ -40,7 +40,7 @@ After configuring your account, we recommend you to directly synchronize all you
 
 There are 2 modes:
 
-- Sandbox: It is a **test** environment. The data on this environment is reset every monday.
-- Production: It is where your customers' return requests are made. **This is real data!**
+- **Sandbox**: It is a **test** environment. The data on this environment is **reset every monday**.
+- **Production**: It is where your customers' return requests are made. **This is real data!**
 
 ![Where to find ShopRunBack in the left menu](http:../../images/prestashop/ps_srb-configuration-environments.png)

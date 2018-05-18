@@ -14,6 +14,7 @@ includes:
   - prestashop/install
   - prestashop/configure
   - prestashop/use
+  - prestashop/problem
 
 search: false
 ---
