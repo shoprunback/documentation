@@ -1427,10 +1427,10 @@ $brand-&gt;remove();
 <span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
 
 <span class="nv">$restClient</span> <span class="o">=</span> <span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">();</span>
-<span class="nv">$restClient</span><span class="o">-&gt;</span><span class="na">setApiBaseUrl</span><span class="p">(</span><span class="s1">'https://dashboard.shoprunback.com'</span><span class="p">);</span>
+<span class="nv">$restClient</span><span class="o">-&gt;</span><span class="na">useSandboxEnvironment</span><span class="p">();</span>
 <span class="nv">$restClient</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
 
-<span class="nb">define</span><span class="p">(</span><span class="s1">'REST_CLIENT'</span><span class="p">,</span> <span class="nv">$restClient</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">'SRB_REST_CLIENT'</span><span class="p">,</span> <span class="nv">$restClient</span><span class="p">);</span>
 </code></pre>
 <p><strong>Accepts: GET ; POST ; PUT ; DELETE</strong></p>
 
@@ -1442,11 +1442,47 @@ $brand-&gt;remove();
   Since it is a Singleton, it is highly recommended to <b>declare it in a variable or a constant</b> so you can use it everywhere
 </aside>
 
-<p>You can <strong>set a specific URL target</strong> for the API calls with <code class="prettyprint">setApiBaseUrl()</code>. This URL should be <strong>https://dashboard.shoprunback.com</strong> by default and <strong>https://sandbox.dashboard.shoprunback.com</strong> for the sandbox.</p>
+<h2 id="set-token">Set token</h2>
 
+<blockquote>
+<p>Set token</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nv">$restClient</span> <span class="o">=</span> <span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">();</span>
+<span class="nv">$restClient</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+</code></pre>
 <p>You can <strong>set the token of a user</strong> with <code class="prettyprint">setToken()</code>. Most of the API calls need you to be authentified to be done.</p>
 
-<p>You can also <strong>set environment variables</strong> called <code class="prettyprint">SHOPRUNBACK_URL</code> and <code class="prettyprint">SHOPRUNBACK_TOKEN</code> to automatically load them.</p>
+<h2 id="use-production-or-sandbox-environment">Use production or sandbox environment</h2>
+
+<blockquote>
+<p>Set environment</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nv">$restClient</span> <span class="o">=</span> <span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">();</span>
+
+<span class="nv">$restClient</span><span class="o">-&gt;</span><span class="na">useProductionEnvironment</span><span class="p">();</span>
+<span class="c1">// OR
+</span><span class="nv">$restClient</span><span class="o">-&gt;</span><span class="na">useSandboxEnvironment</span><span class="p">();</span>
+</code></pre>
+<p>To choose <strong>which environment to work with</strong>, you can use <code class="prettyprint">useProductionEnvironment</code> or <code class="prettyprint">useSandboxEnvironment</code>.</p>
+
+<p>It will define <strong>https://dashboard.shoprunback.com</strong> or <strong>https://sandbox.dashboard.shoprunback.com</strong> as the base URL for all the API calls.</p>
+
+<blockquote>
+<p>Get the environments&rsquo; URL</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getProductionUrl</span><span class="p">();</span> <span class="c1">// Returns 'https://dashboard.shoprunback.com'
+</span><span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getSandboxUrl</span><span class="p">();</span> <span class="c1">// Returns 'https://sandbox.dashboard.shoprunback.com'
+</span></code></pre>
+<p>If you want to <strong>get the URL of the</strong> production or sandbox <strong>environment without changing the environment you are working with</strong>, you can use <code class="prettyprint">getProductionUrl</code> or <code class="prettyprint">getSandboxUrl</code>.</p>
 
           <h1 id="restresponse">RestResponse</h1>
 
