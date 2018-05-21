@@ -54,10 +54,10 @@ They then have a button to create a return request on the details of the order.
 
 ### 1.6 version
 
-![Order detail in front-office in PrestaShop 1.6.0.9](http:../../images/prestashop/ps1.6.0.9_order-detail-return-request.png)
+![Order detail in front-office in PrestaShop 1.6.0.9](../../images/prestashop/ps1.6.0.9_order-detail-return-request.png)
 
 ### 1.7 version
 
-![Order detail in front-office in PrestaShop 1.7.2.5](http:../../images/prestashop/ps1.7.2.5_order-detail-return-request.png)
+![Order detail in front-office in PrestaShop 1.7.2.5](../../images/prestashop/ps1.7.2.5_order-detail-return-request.png)
 
 This button redirects them to the ShopRunBack's form to fill their request.
