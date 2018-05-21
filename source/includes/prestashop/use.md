@@ -50,6 +50,8 @@ Any customer can create a return request once an order is at least `Shipped`.
 
 They then have a button to create a return request on the details of the order.
 
+(The screenshots show the default PrestaShop template)
+
 ### 1.6 version
 
 ![Order detail in front-office in PrestaShop 1.6.0.9](../../images/prestashop/ps1.6.0.9_order-detail-return-request.png)
@@ -59,15 +61,3 @@ They then have a button to create a return request on the details of the order.
 ![Order detail in front-office in PrestaShop 1.7.2.5](../../images/prestashop/ps1.7.2.5_order-detail-return-request.png)
 
 This button redirects them to the ShopRunBack's form to fill their request.
-
-## How can I know if anything went wrong?
-
-We log most of the module's actions on your log system.
-
-To access it, just go to your back-office, and, in the left menu, go to `Advanced parameters` > `Logs`.
-
-| 1.6 | 1.7 |
-|-|-|
-| ![Logs tab in left-menu in PrestaShop 1.6.0.9](../../images/prestashop/ps1.6.0.9_left-menu-logs.png) | ![Logs tab in left-menu in PrestaShop 1.7.2.5](../../images/prestashop/ps1.7.2.5_left-menu-logs.png) |
-
-All our logs have their message beginning with `[ShopRunBack]` so you can filter them easily.

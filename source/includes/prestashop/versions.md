@@ -1,4 +1,3 @@
-
 # Supported versions
 
 The module is compatible with all versions starting from `1.6.0.9`.
