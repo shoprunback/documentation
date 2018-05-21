@@ -1,0 +1,27 @@
+<h1 id="i-have-a-problem">I have a problem</h1>
+
+<h2 id="check-what-went-wrong">Check what went wrong</h2>
+
+<p>We log most of the module&rsquo;s actions on your log system.</p>
+
+<p>To access it, just go to your back-office, and, in the left menu, go to <code class="prettyprint">Advanced parameters</code> &gt; <code class="prettyprint">Logs</code>.</p>
+
+<table><thead>
+<tr>
+<th>1.6</th>
+<th>1.7</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><img src="/images/prestashop/ps1.6.0.9_left-menu-logs.png" alt="Logs tab in left-menu in PrestaShop 1.6.0.9" /></td>
+<td><img src="/images/prestashop/ps1.7.2.5_left-menu-logs.png" alt="Logs tab in left-menu in PrestaShop 1.7.2.5" /></td>
+</tr>
+</tbody></table>
+
+<p>All our logs have their message beginning with <code class="prettyprint">[ShopRunBack]</code> so you can filter them easily.</p>
+
+<h2 id="contact-the-developers">Contact the developers</h2>
+
+<p>If you meet a problem you cannot solve, please <strong>export the last logs</strong> on the configuration tab and <strong>send a mail to tech_at_shoprunback.com</strong></p>
+
+<p><img src="/images/prestashop/ps_srb-configuration-export-logs.png" alt="Export logs in the ShopRunBack's configuration tab" /></p>
