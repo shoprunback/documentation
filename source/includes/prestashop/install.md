@@ -61,4 +61,4 @@ Prestashop does caching for modules and sometimes the new version is not taken i
 
 To avoid this, before you upload the zip, make sure you have removed the current version of the module and disable cache and select `Recompile templates if the files have been updated` in the Performance section of the Advanced parameters
 
-![Prestashop performance section ](../../images/prestashop/ps1.7.2.5_performance.png)
+![Prestashop performance section ](images/prestashop/ps1.7.2.5_performance.png)
