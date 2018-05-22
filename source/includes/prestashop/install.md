@@ -53,3 +53,12 @@ Select the .zip you just downloaded.
 The module is now installed. You can now click on `Configure` to directly go to the module configuration page.
 
 ![After having installed a module in PrestaShop 1.7.2.5](../../images/prestashop/ps1.7.2.5_modules-module-uploaded.png)
+
+
+## Troubleshooting installation
+
+Prestashop does caching for modules and sometimes the new version is not taken in consideration and Prestashop will keep using the old version of the module.
+
+To avoid this, before you upload the zip, make sure you have removed the current version of the module and disable cache and select `Recompile templates if the files have been updated` in the Performance section of the Advanced parameters
+
+![Prestashop performance section ](../../images/prestashop/ps1.7.2.5_performance.png)
