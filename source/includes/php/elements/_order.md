@@ -39,6 +39,10 @@ $order->customer = new \Shoprunback\Elements\Customer();
 $order->items = [];
 $order->items[] = new \Shoprunback\Elements\Item();
 
+
+// Optional
+$order->metadata = ['foo' => 'bar'];
+
 // Now we can save the order!
 $order->save();
 ```

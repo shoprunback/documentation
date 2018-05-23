@@ -10,7 +10,7 @@ Depending on your use of the products provided by ShopRunBack, you can find the 
 
 Documentation of the API with Curl, PHP and Ruby examples: [click here](/api.html)
 
-## PHP Libray
+## PHP Library
 
 Documentation of our official PHP Library: [click here](/php.html)
 
