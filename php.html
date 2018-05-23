@@ -650,6 +650,10 @@ To know what attributes each Element has, please read the documentation about ou
 </span><span class="nv">$order</span><span class="o">-&gt;</span><span class="na">items</span> <span class="o">=</span> <span class="p">[];</span>
 <span class="nv">$order</span><span class="o">-&gt;</span><span class="na">items</span><span class="p">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\Item</span><span class="p">();</span>
 
+
+<span class="c1">// Optional
+</span><span class="nv">$order</span><span class="o">-&gt;</span><span class="na">metadata</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'foo'</span> <span class="o">=&gt;</span> <span class="s1">'bar'</span><span class="p">];</span>
+
 <span class="c1">// Now we can save the order!
 </span><span class="nv">$order</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
 </code></pre>
@@ -767,6 +771,7 @@ To know what attributes each Element has, please read the documentation about ou
 <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">width_mm</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
 <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">length_mm</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
 <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">height_mm</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">metadata</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'foo'</span> <span class="o">=&gt;</span> <span class="s1">'bar'</span><span class="p">];</span>
 
 <span class="c1">// For the picture, please use ONLY ONE of those two parameters, not both at the same time
 </span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">picture_file_base64</span> <span class="o">=</span> <span class="s1">'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQAAAAA3bvkkAAAAAnRSTlMAAHaTzTgAAAAKSURBVHgBY2AAAAACAAFzdQEYAAAAAElFTkSuQmCC'</span><span class="p">;</span>
@@ -915,6 +920,10 @@ You <b>need to have</b> at least <b>one Warehouse to create a Shipback</b>.
 // To create a shipback, you must have at least one Warehouse created on your account!
 // -----------------------------------------------------------------------------------
 </span>
+
+<span class="c1">// Optional
+</span><span class="nv">$shipback</span><span class="o">-&gt;</span><span class="na">metadata</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'foo'</span> <span class="o">=&gt;</span> <span class="s1">'bar'</span><span class="p">];</span>
+
 <span class="c1">// Now we can save the shipback!
 </span><span class="nv">$shipback</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
 </code></pre>
