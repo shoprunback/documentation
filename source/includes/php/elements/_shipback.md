@@ -48,6 +48,10 @@ $shipback->order_id = '1f27f9d9-3b5c-4152-98b7-760f56967deav';
 // To create a shipback, you must have at least one Warehouse created on your account!
 // -----------------------------------------------------------------------------------
 
+
+// Optional
+$shipback->metadata = ['foo' => 'bar'];
+
 // Now we can save the shipback!
 $shipback->save();
 ```

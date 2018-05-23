@@ -53,6 +53,7 @@ $product->ean = '1258987561456';
 $product->width_mm = 100;
 $product->length_mm = 100;
 $product->height_mm = 100;
+$product->metadata = ['foo' => 'bar'];
 
 // For the picture, please use ONLY ONE of those two parameters, not both at the same time
 $product->picture_file_base64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQAAAAA3bvkkAAAAAnRSTlMAAHaTzTgAAAAKSURBVHgBY2AAAAACAAFzdQEYAAAAAElFTkSuQmCC';
