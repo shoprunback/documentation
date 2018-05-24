@@ -67,3 +67,40 @@ require_once 'path/to/lib/shoprunback-php/init.php';
 ```
 
 If you want to **get the URL of the** production or sandbox **environment without changing the environment you are working with**, you can use `getProductionUrl` or `getSandboxUrl`.
+
+## Custom headers
+
+### Set custom headers
+
+> Set custom headers
+
+```php
+<?php
+require_once 'path/to/lib/shoprunback-php/init.php';
+
+\Shoprunback\RestClient::getClient()->setCustomHeaders([
+  'Custom-Field: Custom value',
+  'Another-Field: Another value'
+]);
+```
+
+If you need to add headers to your HTTP requests, you can add custom headers to your RestClient with `setCustomHeaders`.
+
+**Your custom headers must be an array**.
+
+<aside class="warning">
+  You cannot add headers for "Content-Type" or "Authorization".
+</aside>
+
+### Get your custom headers
+
+> Get your custom headers
+
+```php
+<?php
+require_once 'path/to/lib/shoprunback-php/init.php';
+
+\Shoprunback\RestClient::getClient()->getCustomHeaders();
+```
+
+You can get the custom headers you set with `getCustomHeaders`.
