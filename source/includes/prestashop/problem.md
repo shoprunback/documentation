@@ -12,7 +12,7 @@ To access it, just go to your back-office, and, in the left menu, go to `Advance
 
 All our logs have their message beginning with `[ShopRunBack]` so you can filter them easily.
 
-If you **do something that generates an error for ShopRunBack**, you will be **notified when returning to the ShopRunBack's page**.
+If you do something on your website **that generates an error for ShopRunBack**, you will be **notified when returning to the ShopRunBack's module page**.
 
 ![Notification on ShopRunBack's page](../../images/prestashop/ps_srb_tab_notif.png)
 
