@@ -89,7 +89,7 @@ If you need to add headers to your HTTP requests, you can add custom headers to 
 **Your custom headers must be an array**.
 
 <aside class="warning">
-  You cannot add headers for "Content-Type" or "Authorization".
+  You cannot modify the "Content-Type" and "Authorization" headers.
 </aside>
 
 ### Get your custom headers
