@@ -6,7 +6,7 @@ language_tabs:
 
 toc_footers:
   - <a href='http://dashboard.shoprunback.com'>Sign Up for a Developer Key</a>
-  - <a href='https://s3.amazonaws.com/srb-public/prestashop/shoprunback-prestashop.zip'>Download the module</a>
+  - <a href='https://github.com/shoprunback/prestashop-module/releases/latest'>Download the module</a>
 
 includes:
   - prestashop/introduction
