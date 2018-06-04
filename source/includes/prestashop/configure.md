@@ -24,13 +24,9 @@ Now, you can share your data with your ShopRunBack account!
 
 ## Synchronize your data!
 
-After configuring your account, we recommend you to directly synchronize all your brands, products and orders.
+To synchronize an element, click on its corresponding `Synchronize` button.
 
-![Synchronize all brands](../../images/prestashop/ps_srb-brands-sync-all.png)
-
-![Synchronize all products](../../images/prestashop/ps_srb-products-sync-all.png)
-
-![Synchronize all orders](../../images/prestashop/ps_srb-orders-sync-all.png)
+![Synchronize data](images/prestashop/ps_srb_product_sync.png)
 
 ## Environment
 
