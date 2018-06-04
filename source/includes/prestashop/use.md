@@ -1,6 +1,6 @@
 # Use the module
 
-## Synchronize your data
+## How to synchronize your data
 
 The ShopRunBack tab summarizes your returns, products, brands and orders, and allows you to synchronize them with ShopRunBack.
 
