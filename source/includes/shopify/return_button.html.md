@@ -3,9 +3,11 @@
 To enable returns for your customers, you need to modify you shop's theme.
 
 
+## Code
+
 * Go to your Store
 
-* Click on Online Store on the sidebar
+* Click on Online Store in the sidebar
 ￼
 * Click on Themes
 
@@ -40,8 +42,10 @@ To enable returns for your customers, you need to modify you shop's theme.
 ```
 
 
-* Find the `</table>` tag and insert the code on the right
+* Find the `</table>` tag and insert the code on the right under it
 
+
+## Localization
 
 * Our module is localized. Open the locales section
 
@@ -66,7 +70,6 @@ Your file should look like this : 
 ￼
  Do the same for every other language you are supporting.
 
-
-You’re all done, now your customers will be able to request a return directly in their order detail
+## Example
 
 ![return_order](images/shopify/return_order.png)
