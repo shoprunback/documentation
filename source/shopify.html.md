@@ -1,8 +1,8 @@
 ---
-title: ShopRunBack Documentation for the prestashop addon
+title: ShopRunBack Documentation for the shopify addon
 
 language_tabs:
-  - php: PHP
+  - html: HTML
 
 toc_footers:
   - <a href='http://dashboard.shoprunback.com'>Sign Up for a Developer Key</a>
@@ -10,6 +10,7 @@ toc_footers:
 
 includes:
   - shopify/introduction
+  - shopify/return_button
 
 search: false
 ---
