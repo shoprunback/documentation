@@ -21,6 +21,10 @@ We use it for all PHP based CMS modules.</p>
 
 <p>You can use this module if you have a Prestashop website: <a href="../../prestashop.html">click here</a></p>
 
+<h2 id="shopify-addon">Shopify Addon</h2>
+
+<p>You can use the official ShopRunback module for Shopify: <a href="../../shopify.html">click herer</a></p>
+
 <h2 id="documentation-in-progress">Documentation in progress</h2>
 
 <ul>
@@ -33,7 +37,6 @@ We use it for all PHP based CMS modules.</p>
 <ul>
 <li>Magento (1.0+) website: <a href="../../magento1.html">click here</a></li>
 <li>Magento (2.0+) website: <a href="../../magento2.html">click here</a></li>
-<li>Shopify website: <a href="../../shopify.html">click here</a></li>
 </ul>
 
 <p>For further details about ShopRunBack, please contact us at: support <em>at</em> shoprunback.com .</p>
