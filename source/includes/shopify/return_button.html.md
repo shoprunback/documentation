@@ -32,7 +32,7 @@ To enable returns for your customers, you need to modify you shop's theme.
 
 ```html
 <div class="shoprunback_return">
-  <span class="title">{{ 'customer.order.return.title' | t }}</span>
+  <h2>{{ 'customer.order.return.title' | t }}</h2>
   <span class="action">
     {{ 'customer.order.return.action' | t }}
     {% assign customer_url = order.customer_url| split: "/"  %}
