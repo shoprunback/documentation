@@ -1,5 +1,5 @@
 ---
-title: ShopRunBack Documentation for the shopify addon
+title: ShopRunBack Documentation for the shopify app
 
 language_tabs:
   - html: HTML

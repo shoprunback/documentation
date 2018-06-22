@@ -70,6 +70,6 @@ Your file should look like this : 
 ￼
  Do the same for every other language you are supporting.
 
-## Example
+## What it looks like
 
 ![return_order](images/shopify/return_order.png)
