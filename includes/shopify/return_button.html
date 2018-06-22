@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>ShopRunBack Documentation for the shopify app</title>
+    <title>API Documentation</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -195,45 +195,27 @@
   color: #f92672;
 }
     </style>
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all_nosearch.js"></script>
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="../../javascripts/all_nosearch.js"></script>
   </head>
 
-  <body class="shopify" data-languages="[&quot;html&quot;]">
+  <body class="includes includes_shopify includes_shopify_return_button" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar.png" alt="Navbar" />
+        <img src="../../images/navbar.png" alt="Navbar" />
       </span>
     </a>
     <div class="tocify-wrapper">
-      <img src="images/logo.png" alt="Logo" />
-        <div class="lang-selector">
-              <a href="#" data-language-name="html">HTML</a>
-        </div>
+      <img src="../../images/logo.png" alt="Logo" />
       <div id="toc">
       </div>
-        <ul class="toc-footer">
-            <li><a href='http://dashboard.shoprunback.com'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://shopify.shoprunback.com'>Install the app</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        
-          <p><a href="./">Go back to the main documentation</a></p>
-
-<h1 id="documentation-for-shopify">Documentation for Shopify</h1>
-
-<p>Shopify is not yet supported by ShopRunBack.</p>
-
-<p>You can <a href="http://eepurl.com/dqYnzv">subscribe to the waiting list</a> and get notified once available.</p>
-
-<p>Otherwise, you can integrate ShopRunBack yourself with ou REST API (<a href="api.html">see documentation</a>).</p>
-
-          <h1 id="return-button">Return button</h1>
+        <h1 id="return-button">Return button</h1>
 
 <p>To enable returns for your customers, you need to modify you shop&rsquo;s theme.</p>
 
@@ -246,13 +228,13 @@
 <li><p>Click on Themes</p></li>
 </ul>
 
-<p><img src="images/shopify/theme.png" alt="theme" /></p>
+<p><img src="../../images/shopify/theme.png" alt="theme" /></p>
 
 <ul>
 <li>Click on Actions &gt; Edit code</li>
 </ul>
 
-<p><img src="images/shopify/edit_code.png" alt="edit_code" />
+<p><img src="../../images/shopify/edit_code.png" alt="edit_code" />
 ￼</p>
 
 <ul>
@@ -260,14 +242,14 @@
 </ul>
 
 <p>￼
-<img src="images/shopify/customer_order.png" alt="customer_order" /></p>
+<img src="../../images/shopify/customer_order.png" alt="customer_order" /></p>
 
 <ul>
 <li>Then
 ￼</li>
 </ul>
 
-<p><img src="images/shopify/insert_code.png" alt="insert_code" /></p>
+<p><img src="../../images/shopify/insert_code.png" alt="insert_code" /></p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"shoprunback_return"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>{{ 'customer.order.return.title' | t }}<span class="nt">&lt;/h2&gt;</span>
   <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"action"</span><span class="nt">&gt;</span>
@@ -288,7 +270,7 @@
 </ul>
 
 <p>￼
-<img src="images/shopify/locales.png" alt="locales" /></p>
+<img src="../../images/shopify/locales.png" alt="locales" /></p>
 
 <p>Open the <code class="prettyprint">en.default.json</code> (or your own en.json file) file and find the <strong>order</strong> dictionary :</p>
 
@@ -302,20 +284,17 @@
 
 <p>Your file should look like this : </p>
 
-<p><img src="images/shopify/locale_en.png" alt="locale_en" /></p>
+<p><img src="../../images/shopify/locale_en.png" alt="locale_en" /></p>
 
 <p>￼
  Do the same for every other language you are supporting.</p>
 
 <h2 id="what-it-looks-like">What it looks like</h2>
 
-<p><img src="images/shopify/return_order.png" alt="return_order" /></p>
+<p><img src="../../images/shopify/return_order.png" alt="return_order" /></p>
 
       </div>
       <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="html">HTML</a>
-          </div>
       </div>
     </div>
   </body>
