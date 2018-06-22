@@ -21,6 +21,10 @@ We use it for all PHP based CMS modules.
 
 You can use this module if you have a Prestashop website: [click here](/prestashop.html)
 
+## Shopify Addon
+
+You can use the official ShopRunback module for Shopify: [click herer](/shopify.html)
+
 ## Documentation in progress
 
 * Retailer dashboard: [click here](/dashboard.html)
@@ -30,7 +34,6 @@ You can use this module if you have a Prestashop website: [click here](/prestash
 
 * Magento (1.0+) website: [click here](/magento1.html)
 * Magento (2.0+) website: [click here](/magento2.html)
-* Shopify website: [click here](/shopify.html)
 
 
 For further details about ShopRunBack, please contact us at: support _at_ shoprunback.com .
