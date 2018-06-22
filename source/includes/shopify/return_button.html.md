@@ -3,7 +3,7 @@
 To enable returns for your customers, you need to modify you shop's theme.
 
 
-## Code
+## Add the HTML code to your store
 
 * Go to your Store
 
@@ -45,7 +45,7 @@ To enable returns for your customers, you need to modify you shop's theme.
 * Find the `</table>` tag and insert the code on the right under it
 
 
-## Localization
+## Add the localization keys
 
 * Our module is localized. Open the locales section
 
