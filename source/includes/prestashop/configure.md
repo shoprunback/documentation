@@ -26,6 +26,10 @@ Now, you can share your data with your ShopRunBack account!
 
 To synchronize an element, click on its corresponding `Synchronize` button.
 
+<aside class="warning">
+  If you switch environment, change your API token or uninstall the module, all the return requests and synchronizations will be reset!
+</aside>
+
 ![Synchronize data](images/prestashop/ps_srb_product_sync.png)
 
 ## Environment
@@ -38,5 +42,9 @@ There are 2 modes:
 
 - **Sandbox**: It is a **test** environment. The data on this environment is **reset every monday**.
 - **Production**: It is where your customers' return requests are made. **This is real data!**
+
+<aside class="warning">
+  If you switch environment, change your API token or uninstall the module, all the return requests and synchronizations will be reset!
+</aside>
 
 ![Where to find ShopRunBack in the left menu](../../images/prestashop/ps_srb-configuration-environments.png)
