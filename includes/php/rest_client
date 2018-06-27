@@ -63,3 +63,38 @@
 </span><span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getSandboxUrl</span><span class="p">();</span> <span class="c1">// Returns 'https://sandbox.dashboard.shoprunback.com'
 </span></code></pre>
 <p>If you want to <strong>get the URL of the</strong> production or sandbox <strong>environment without changing the environment you are working with</strong>, you can use <code class="prettyprint">getProductionUrl</code> or <code class="prettyprint">getSandboxUrl</code>.</p>
+
+<h2 id="custom-headers">Custom headers</h2>
+
+<h3 id="set-custom-headers">Set custom headers</h3>
+
+<blockquote>
+<p>Set custom headers</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setCustomHeaders</span><span class="p">([</span>
+  <span class="s1">'Custom-Field: Custom value'</span><span class="p">,</span>
+  <span class="s1">'Another-Field: Another value'</span>
+<span class="p">]);</span>
+</code></pre>
+<p>If you need to add headers to your HTTP requests, you can add custom headers to your RestClient with <code class="prettyprint">setCustomHeaders</code>.</p>
+
+<p><strong>Your custom headers must be an array</strong>.</p>
+
+<aside class="warning">
+  You cannot modify the &ldquo;Content-Type&rdquo; and &ldquo;Authorization&rdquo; headers.
+</aside>
+
+<h3 id="get-your-custom-headers">Get your custom headers</h3>
+
+<blockquote>
+<p>Get your custom headers</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getCustomHeaders</span><span class="p">();</span>
+</code></pre>
+<p>You can get the custom headers you set with <code class="prettyprint">getCustomHeaders</code>.</p>
