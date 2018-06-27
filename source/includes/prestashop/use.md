@@ -17,7 +17,7 @@ For instance, some of your data is automatically synchronized after some actions
   - When you edit a product
   - When you delete a product
 - Order
-  - When you or a customer create a product
+  - When you or a customer create an order
   - When the status of an order changes
 - Return
   - When a return is modified on ShopRunBack
