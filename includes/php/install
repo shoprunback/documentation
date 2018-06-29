@@ -2,7 +2,7 @@
 <pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 <span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
 </code></pre>
-<p><a href="../../images/shoprunback-php/shoprunback-php.zip">Click here</a> to download the library.</p>
+<p><a href="https://github.com/shoprunback/shoprunback-php/releases/latest">Click here</a> to download the library.</p>
 
 <p>Then, unzip the .zip and move the folder into your project.</p>
 
