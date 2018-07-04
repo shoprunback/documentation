@@ -834,6 +834,16 @@ To know what attributes each Element has, please read the documentation about ou
 
 <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">delete</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
 </code></pre>
+<blockquote>
+<p>Delete a Product&rsquo;s image</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">deleteImage</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
+</code></pre>
 <table><thead>
 <tr>
 <th>Method</th>
@@ -858,6 +868,10 @@ To know what attributes each Element has, please read the documentation about ou
 </tr>
 <tr>
 <td><strong>Delete</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Delete (image)</strong></td>
 <td>Yes</td>
 </tr>
 </tbody></table>
