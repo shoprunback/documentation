@@ -174,6 +174,7 @@ All webhooks has the same caracteristics; this is a JSON Object with the attribu
 
 | Webhook name | Trigger |
 |--------------|---------|
+| shipback.created         | Sent when a shipback is created (via the API or via the web interface) |
 | shipback.registered            | Sent when a shipback is registered (the customer has paid or validated is free return) and the customer can download its voucher and label |
 | shipback.paid            | cf shipback.registered (will be deleted soon) |
 | shipback.relocated       | Sent when all the returned item's of a shipback are relocated to the retailer's warehouse |
