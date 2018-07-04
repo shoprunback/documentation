@@ -112,6 +112,17 @@ require_once 'path/to/lib/shoprunback-php/init.php';
 \Shoprunback\Elements\Product::delete('1f27f9d9-3b5c-4152-98b7-760f56967dea');
 ```
 
+> Delete a Product's image
+
+```php
+<?php
+require_once 'path/to/lib/shoprunback-php/init.php';
+
+\Shoprunback\RestClient::getClient()->setToken('yourApiToken');
+
+\Shoprunback\Elements\Product::deleteImage('1f27f9d9-3b5c-4152-98b7-760f56967dea');
+```
+
 Method | Enabled
 -|-
 **Get all (paginated)** | Yes
@@ -119,3 +130,4 @@ Method | Enabled
 **Create** | Yes
 **Update** | Yes
 **Delete** | Yes
+**Delete (image)** | Yes
