@@ -17,6 +17,10 @@ includes:
   - api/catalog/product
   - api/order
   - api/shipback
+  - api/custom_process/introduction
+  - api/custom_process/quotes
+  - api/custom_process/select_mode
+  - api/custom_process/label
   - api/webhooks
 
 resources:
