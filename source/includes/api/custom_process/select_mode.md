@@ -119,7 +119,7 @@ Update the shipback with the mode `dropoff` and the `dropoff_code` on the `api/v
 
 To select the pickup mode, you also have to provide a valid `pickup_datetime` and `pickup_duration`. These values are available in the `quotes` endpoint.
 
-Update the shipback withe the mode `pickup` and these 2 values on the `api/v1/shipbacks/:id` endpoint.
+Update the shipback with the mode `pickup` and these 2 values on the `api/v1/shipbacks/:id` endpoint.
 
 
 
