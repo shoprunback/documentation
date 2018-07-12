@@ -23,7 +23,7 @@ You can use this module if you have a Prestashop website: [click here](/prestash
 
 ## Shopify Addon
 
-You can use the official ShopRunback module for Shopify: [click herer](/shopify.html)
+You can use the official ShopRunback module for Shopify: [click here](/shopify.html)
 
 ## Documentation in progress
 
