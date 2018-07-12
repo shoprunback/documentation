@@ -11,5 +11,5 @@ To initiate a return, the link you have to provide to your customer is :
 You can find the order's ID in the order's details page, at the end of the URL.
 
 <aside class="warning">
-You must provide the return ID (created by Shopify automatically) not the order number.
+You must provide the order ID (created by Shopify automatically) not the order number.
 </aside>
