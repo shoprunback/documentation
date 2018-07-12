@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>ShopRunBack documentation</title>
+    <title>API Documentation</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -195,9 +195,9 @@
   color: #f92672;
 }
     </style>
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all.js"></script>
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="../../javascripts/all_nosearch.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102502582-10"></script>
     <script>
@@ -209,73 +209,36 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[]">
+  <body class="includes includes_shopify includes_shopify_return_link" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar.png" alt="Navbar" />
+        <img src="../../images/navbar.png" alt="Navbar" />
       </span>
     </a>
     <div class="tocify-wrapper">
-      <img src="images/logo.png" alt="Logo" />
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
+      <img src="../../images/logo.png" alt="Logo" />
       <div id="toc">
       </div>
-        <ul class="toc-footer">
-            <li><a href='http://dashboard.shoprunback.com'>Sign Up for a Developer Key</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        
-          <h1 id="documentation">Documentation</h1>
+        <h1 id="return-link">Return link</h1>
 
-<p>Welcome on the ShopRunBack&rsquo;s Documentation.</p>
+<p>If you don&rsquo;t want to add the return button to your website, you can also provide the return link directly to your customer (by email, live support, …).</p>
 
-<p>ShopRunBack is the inventor of the Return As A Service solution.</p>
+<h2 id="format-of-the-return-link">Format of the return link</h2>
 
-<p>Depending on your use of the products provided by ShopRunBack, you can find the appropriate documentation.</p>
+<p>To initiate a return, the link you have to provide to your customer is :</p>
 
-<h2 id="rest-api">REST API</h2>
+<p><code class="prettyprint">https://shopify.shoprunback.com/kkwbeauty.com/orders/1234567/return/</code> if your shop is <code class="prettyprint">https://kkwbeauty.com</code> and the order&rsquo;s identifier is <code class="prettyprint">1234567</code>.</p>
 
-<p>Documentation of the API with Curl, PHP and Ruby examples: <a href="api.html">click here</a></p>
+<p>You can find the order&rsquo;s ID in the order&rsquo;s details page, at the end of the URL.</p>
 
-<h2 id="php-library">PHP Library</h2>
-
-<p>Documentation of our official PHP Library: <a href="php.html">click here</a></p>
-
-<p>This library wraps the majority of our REST API endpoints.
-We use it for all PHP based CMS modules.</p>
-
-<h2 id="prestashop-module">Prestashop Module</h2>
-
-<p>You can use this module if you have a Prestashop website: <a href="prestashop.html">click here</a></p>
-
-<h2 id="shopify-addon">Shopify Addon</h2>
-
-<p>You can use the official ShopRunback module for Shopify: <a href="shopify.html">click here</a></p>
-
-<h2 id="documentation-in-progress">Documentation in progress</h2>
-
-<ul>
-<li>Retailer dashboard: <a href="dashboard.html">click here</a></li>
-<li>Mobile inventory application for retailers: <a href="inventory.html">click here</a></li>
-</ul>
-
-<h2 id="not-yet-supported">Not yet supported</h2>
-
-<ul>
-<li>Magento (1.0+) website: <a href="magento1.html">click here</a></li>
-<li>Magento (2.0+) website: <a href="magento2.html">click here</a></li>
-</ul>
-
-<p>For further details about ShopRunBack, please contact us at: support <em>at</em> shoprunback.com .</p>
-
-<p>For technical support, please contact us at: dev <em>at</em> shoprunback.com .</p>
+<aside class="warning">
+You must provide the return ID (created by Shopify automatically) not the order number.
+</aside>
 
       </div>
       <div class="dark-box">
