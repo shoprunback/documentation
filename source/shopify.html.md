@@ -11,6 +11,7 @@ toc_footers:
 includes:
   - shopify/introduction
   - shopify/return_button
+  - shopify/return_link
 
 search: false
 ---
