@@ -12,6 +12,7 @@ includes:
   - shopify/introduction
   - shopify/return_button
   - shopify/return_link
+  - shopify/not_connected
 
 search: false
 ---
