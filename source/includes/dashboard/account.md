@@ -10,7 +10,7 @@ Remplissez le formulaire et ajoutez le logo de votre entreprise. Le **logo sera 
 
 Vous pouvez **donner l'accès au dashboard à d'autres membres** de votre entreprise. Pour cela, il suffit d'**aller sur *Votre nom* > Mon équipe** et de remplir le formulaire.
 
-![Page des collaborators](../../images/dashboard/collaborators.png)
+![Page des collaborateurs](../../images/dashboard/collaborators.png)
 
 **N'importe quel membre** de l'équipe **peut inviter d'autres membres**.
 
