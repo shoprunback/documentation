@@ -2,11 +2,11 @@
 
 ## Mes produits
 
-Vous pouvez accèder à vos produits en allant sur la page **Catalogue**
+Vous pouvez accéder à vos produits en allant sur la page **Catalogue**
 
 ![Menu latéral](images/dashboard/sidebar.png)
 
-En arrivant sur la page **Mes produits**, vous pouvez voir une liste de tous vos produits. Vous pouvez chercher un produit spécifique via son libbélé, sa référence, ou par marque.
+En arrivant sur la page **Mes produits**, vous pouvez voir la liste de tous vos produits. Vous pouvez chercher un produit spécifique via son libbelé, sa référence, ou par marque.
 
 ### Créer un produit
 
@@ -25,11 +25,11 @@ On peut également ajouter une photo, ses dimensions ainsi que son EAN.
 
 ## Mes commandes
 
-En arrivant sur la page **Mes commandes**, vous pouvez voir une liste de toutes vos commandes, ainsi qu'un lien pour accèder facilement au retour correspondant. Vous pouvez également chercher via la date ou le numéro de commande, et le nom du client.
+En arrivant sur la page **Mes commandes**, vous pouvez voir la liste de toutes vos commandes, ainsi qu'un lien pour accèder facilement au retour correspondant. Vous pouvez également chercher via la date ou le numéro de commande ou le nom du client.
 
 ### Création de commande
 
-Afin de créer un retour, il est nécessaire d'avoir une commande associée. Dans cette commande il y aura des articles qui correspondent à vos produits ajoutés sur le dashboard.
+Pour pouvoir créer un retour, il faut d'abord avoir une commande à retourner. Une commande possède des articles qui correspondent aux produits ajoutés sur votre dashboard.
 
 Pour créer une commande, il vous suffit d'aller sur la page **Mes commandes** et cliquer sur le bouton **+ Nouvelle commande**.
 
@@ -44,7 +44,7 @@ Chaque client est unique à la commande, vous devrez donc renseigner le champ cl
 - L'email
 - L'adresse complète (adresse, code postal, ville, pays).
 
-Vous pouvez également renseigner d'autres champs tels que son nom de famille, numéro de téléphone, un complément d'adresse ou des tags (exemple: Pendant la période des soldes, vous pouvez ajouter le tag Soldes sur vos commandes pour les retrouver plus facilement).
+Vous pouvez également renseigner d'autres champs tels que son nom de famille, numéro de téléphone, complément d'adresse ou des tags (exemple: Pendant la période des soldes, vous pouvez ajouter le tag Soldes sur vos commandes pour les retrouver plus facilement).
 
 ![Ajouter commande](images/dashboard/add_order.png)
 
@@ -52,14 +52,14 @@ Une fois la commande créée, vous pouvez rajouter des articles.
 
 ![Ajouter article](images/dashboard/add_item.png)
 <aside class="warning">
-  Attention: Une fois qu'un article est commandé, vous ne pourrez plus supprimer le produit correspondant.
+  Attention: Une fois qu'un produit est commandé, vous ne pourrez plus le supprimer.
 </aside>
 
 
-À partir du moment où vous avez ajouté un article, un nouvelle action est possible : Créer le retour.
+À partir du moment où vous avez ajouté un article, une nouvelle action est possible : Créer le retour.
 
 ####TODO image avec traduction FR
-![Creer retour](images/dashboard/create_return.png)
+![Créer retour](images/dashboard/create_return.png)
 <aside class="warning">
   Attention: Une fois le retour créé, vous ne pourrez plus supprimer la commande.
 </aside>
@@ -67,7 +67,7 @@ Une fois la commande créée, vous pouvez rajouter des articles.
 
 ## Mes retours
 
-En arrivant sur la page, vous pouvez voir un résumé de tous vos retours crées sur ShopRunBack, vous avez la possibilité de les filtrer par état, ainsi que de chercher via le numéro de commande ou le mode.
+En arrivant sur la page, vous pouvez voir le résumé de tous vos retours crées sur ShopRunBack, vous avez la possibilité de les filtrer par état, ainsi que de chercher via le numéro de commande ou le mode.
 
 ### Le retour
 
@@ -75,7 +75,7 @@ Après avoir créé votre premier retour, vous serez redirigé vers sa page.
 
 Sur cette page, vous trouverez un lien à donner à votre client pour effectuer son retour.
 
-![Detail retour](images/dashboard/shipback_detail.png)
+![Détail retour](images/dashboard/shipback_detail.png)
 
 Toujours sur le retour, vous avez plusieurs onglets qui permettent de suivre le retour fait par votre client.
 
@@ -93,10 +93,10 @@ Les autres onglets vous permettent de voir plus d'informations sur votre retour,
 
 ![Actions retour](images/dashboard/shipback_actions.png)
 
-Vous avez également la possibilité de regénérer le bon de retour ou de l'archiver. (TODO explain what is archive)
+Vous avez également la possibilité de re-générer le bon de retour ou de l'archiver. (TODO explain what is archive)
 
 <aside class="warning">
-  Attention: Une fois le retour archivé, il n'est pas supprimé mais vous ne pourrez plus le modifier.
+  Attention: Une fois le retour archivé, vous pouvez toujours le consulter, mais pas le modifier.
 </aside>
 
 
@@ -110,7 +110,7 @@ La page est divisée en deux :
 
 ![Statistique graphique](images/dashboard/analytics_graph.png)
 
-- Des classements tels que les pays où vous avez le plus de retours, les moyens de retours les plus utilisés etc..
+- Des classements tels que les pays où vous avez le plus de retours, les moyens de retours les plus utilisés etc.
 
 ![Statistique classement](images/dashboard/analytics_tops.png)
 
