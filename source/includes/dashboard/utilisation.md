@@ -108,9 +108,9 @@ La page est divisée en deux :
 
 - Un graphique dynamique triable par période.
 
-![Statistique graphique](images/dashboard/analytics_graph.png)
+![Graphique de statistiques](images/dashboard/analytics_graph.png)
 
 - Des classements tels que les pays où vous avez le plus de retours, les moyens de retours les plus utilisés etc.
 
-![Statistique classement](images/dashboard/analytics_tops.png)
+![Classements des statistiques](images/dashboard/analytics_tops.png)
 
