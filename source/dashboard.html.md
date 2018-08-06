@@ -9,6 +9,7 @@ toc_footers:
 
 includes:
   - dashboard/introduction
+  - dashboard/account
   - dashboard/utilisation
   - dashboard/developers
 
