@@ -1,6 +1,6 @@
 # Fonctionnalités supplémentaires
 
-Certaines fonctionnalités du dashboard permettent d'ajouter encore plus de précision à votre processus de retour.
+Certaines fonctionnalités du dashboard permettent d'ajouter encore plus de précisions à votre processus de retour.
 
 ## Participation financière
 
