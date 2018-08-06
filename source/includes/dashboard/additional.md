@@ -3,16 +3,14 @@
 Certaines fonctionnalités du dashboard permettent d'ajouter encore plus de précision à votre processus de retour.
 
 
-## Partenariat financier
+## Participation financière
 
-Le partenariat financier vous permet de choisir quel montant vous souhaitez payer quand un de vos clients retourne un article, pour une zone géographieu (ou tous les pays) et un certain motif de retour (ou tous).
+La participation financière vous permet de choisir quel montant vous souhaitez payer quand un de vos clients retourne un article. Vous pouvez en créer pour une zone géographique (ou tous les pays) et un certain motif de retour (ou tous).
 
-
-![Nouveau sponsoring](images/dashboard/new_sponsoring.png)
-
+![Participation financière](images/dashboard/new_sponsoring.png)
 
 ## Relocalisation
 
-Les règles de relocalisation vous permettent de définir une règle pour une zone géographique (ou tous les pays) et un certain motif de retour (ou tous)
+Les règles de relocalisation sont des règles de tri logistique pour vos produits. Vous pouvez créer des règles pour une zone géographique (ou tous les pays) et un certain motif de retour (ou tous).
 
-![Nouvelle relocalisation](images/dashboard/new_relocation.png)
+![Relocalisation](images/dashboard/new_relocation.png)
