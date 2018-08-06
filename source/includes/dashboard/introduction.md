@@ -2,4 +2,4 @@
 
 # Dashboard
 
-(Redaction in progress)
+(en attente)
