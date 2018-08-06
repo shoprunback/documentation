@@ -11,6 +11,7 @@ includes:
   - dashboard/introduction
   - dashboard/account
   - dashboard/utilisation
+  - dashboard/additional
   - dashboard/developers
 
 search: false
