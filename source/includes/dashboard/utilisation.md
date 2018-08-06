@@ -58,7 +58,6 @@ Une fois la commande créée, vous pouvez rajouter des articles.
 
 À partir du moment où vous avez ajouté un article, une nouvelle action est possible : Créer le retour.
 
-####TODO image avec traduction FR
 ![Créer retour](images/dashboard/create_return.png)
 <aside class="warning">
   Attention: Une fois le retour créé, vous ne pourrez plus supprimer la commande.
@@ -87,9 +86,9 @@ L'onglet *Client* regroupe les informations que vous avez renseignées sur le cl
 
 L'onglet *Articles* regroupe les articles retournés par votre client avec leur motif de retour respectif.
 
-L'onglet *Notifications* vous permet de voir les notifications qui sont envoyées au client. Vous avez la possibilité de choisir quelle notification sera envoyée via vos paramètres de configuration (TODO lien vers configuration/notifications)
+L'onglet *Notifications* vous permet de voir les notifications qui sont envoyées au client. Vous avez la possibilité de choisir quelle notification sera envoyée via vos paramètres de configuration (**TODO** lien vers configuration/notifications)
 
-Les autres onglets vous permettent de voir plus d'informations sur votre retour, comme les modes de retours disponibles (Simulation d'itinéraires), l'historique des appels API (Logs appels API , voir TODO (lien)[apicalls]).
+Les autres onglets vous permettent de voir plus d'informations sur votre retour, comme les modes de retours disponibles (Simulation d'itinéraires), l'historique des appels API (Logs appels API , voir **TODO** (lien)[apicalls]).
 
 ![Actions retour](images/dashboard/shipback_actions.png)
 
