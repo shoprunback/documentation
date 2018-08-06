@@ -6,7 +6,7 @@ Vous pouvez accéder à vos produits en allant sur la page **Catalogue**
 
 ![Menu latéral](images/dashboard/sidebar.png)
 
-En arrivant sur la page **Mes produits**, vous pouvez voir la liste de tous vos produits. Vous pouvez trier cette liste via par libbelé, par référence, , par EAN, ou par marque.
+En arrivant sur la page **Mes produits**, vous pouvez voir la liste de tous vos produits. Vous pouvez filtrer cette liste par libbelé, par référence, par EAN, ou par marque.
 
 ### Créer un produit
 
@@ -25,7 +25,7 @@ On peut également ajouter une photo, ses dimensions ainsi que son EAN.
 
 ## Mes commandes
 
-En arrivant sur la page **Mes commandes**, vous pouvez voir la liste de toutes vos commandes, ainsi qu'un lien pour accèder facilement au retour correspondant. Vous pouvez également chercher via la date ou le numéro de commande ou le nom du client.
+En arrivant sur la page **Mes commandes**, vous pouvez voir la liste de toutes vos commandes, ainsi qu'un lien pour accèder facilement au retour correspondant. Vous pouvez également filtrer via la date, le numéro de commande ou le nom du client.
 
 ### Création de commande
 
@@ -44,28 +44,29 @@ Chaque client est unique à la commande, vous devrez donc renseigner le champ cl
 - L'email
 - L'adresse complète (adresse, code postal, ville, pays).
 
-Vous pouvez également renseigner d'autres champs tels que son nom de famille, numéro de téléphone, complément d'adresse ou des tags (exemple: Pendant la période des soldes, vous pouvez ajouter le tag Soldes sur vos commandes pour les retrouver plus facilement).
+Vous pouvez également renseigner d'autres champs tels que son nom de famille, numéro de téléphone, complément d'adresse ou des tags (exemple: Pendant la période des soldes, vous pouvez ajouter le tag `Soldes` sur vos commandes pour les retrouver plus facilement).
 
 ![Ajouter commande](images/dashboard/add_order.png)
 
 Une fois la commande créée, vous pouvez rajouter des articles.
 
 ![Ajouter article](images/dashboard/add_item.png)
+
 <aside class="warning">
   Attention: Une fois qu'un produit est commandé, vous ne pourrez plus le supprimer.
 </aside>
 
-
 À partir du moment où vous avez ajouté un article, une nouvelle action est possible : Créer le retour.
 
 ![Créer retour](images/dashboard/create_return.png)
+
 <aside class="warning">
   Attention: Une fois le retour créé, vous ne pourrez plus supprimer la commande.
 </aside>
 
 ## Mes retours
 
-En arrivant sur la page, vous pouvez voir le résumé de tous vos retours crées sur ShopRunBack, vous avez la possibilité de les filtrer par état, ainsi que de chercher via le numéro de commande ou le mode.
+En arrivant sur la page, vous pouvez voir le résumé de tous vos retours créés sur ShopRunBack, vous avez la possibilité de les filtrer par état, ainsi que de chercher via le numéro de commande ou le mode.
 
 ### Le retour
 
@@ -81,7 +82,7 @@ Toujours sur le retour, vous avez plusieurs onglets qui permettent de suivre le 
 - *Détails* vous permet de récupérer le bon de retour et le label une fois que le client a payé. Si le client ne les sauvegarde pas, vous pourrez toujours lui redonner les liens correspondants.
 - *Client* regroupe les informations que vous avez renseignées sur le client.
 - *Articles* regroupe les articles retournés par votre client avec leur motif de retour respectif.
-- *Notifications* vous permet de voir les notifications qui sont envoyées au client. Vous avez la possibilité de choisir quelle notification sera envoyée via vos paramètres de configuration (voir [Notifications](#notifications))
+- *Notifications* vous permet de voir les notifications qui sont envoyées au client. Vous avez la possibilité de choisir quelles notifications seront envoyées via vos paramètres de configuration (voir [Notifications](#notifications))
 
 Les autres onglets vous permettent de voir plus d'informations sur votre retour, comme les modes de retours disponibles (Simulation d'itinéraires), l'historique des appels API (Logs appels API , voir [API](#api)).
 
