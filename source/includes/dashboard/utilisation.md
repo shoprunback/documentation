@@ -6,7 +6,7 @@ Vous pouvez accéder à vos produits en allant sur la page **Catalogue**
 
 ![Menu latéral](images/dashboard/sidebar.png)
 
-En arrivant sur la page **Mes produits**, vous pouvez voir la liste de tous vos produits. Vous pouvez chercher un produit spécifique via son libbelé, sa référence, ou par marque.
+En arrivant sur la page **Mes produits**, vous pouvez voir la liste de tous vos produits. Vous pouvez trier cette liste via par libbelé, par référence, , par EAN, ou par marque.
 
 ### Créer un produit
 
@@ -63,7 +63,6 @@ Une fois la commande créée, vous pouvez rajouter des articles.
   Attention: Une fois le retour créé, vous ne pourrez plus supprimer la commande.
 </aside>
 
-
 ## Mes retours
 
 En arrivant sur la page, vous pouvez voir le résumé de tous vos retours crées sur ShopRunBack, vous avez la possibilité de les filtrer par état, ainsi que de chercher via le numéro de commande ou le mode.
@@ -76,17 +75,13 @@ Sur cette page, vous trouverez un lien à donner à votre client pour effectuer 
 
 ![Détail retour](images/dashboard/shipback_detail.png)
 
-Toujours sur le retour, vous avez plusieurs onglets qui permettent de suivre le retour fait par votre client.
+Toujours sur le retour, vous avez plusieurs onglets qui permettent de suivre le retour fait par votre client :
 
-Premièrement, *l'historique du retour*, avec les différents états du retour. Sur cette page vous trouverez également le lien partageable du retour.
-
-L'onglet *Détails* vous permet de récupérer le bon de retour et le label une fois que le client a payé. Si le client ne les sauvegarde pas, vous pourrez toujours lui redonner les liens correspondants.
-
-L'onglet *Client* regroupe les informations que vous avez renseignées sur le client.
-
-L'onglet *Articles* regroupe les articles retournés par votre client avec leur motif de retour respectif.
-
-L'onglet *Notifications* vous permet de voir les notifications qui sont envoyées au client. Vous avez la possibilité de choisir quelle notification sera envoyée via vos paramètres de configuration (**TODO** lien vers configuration/notifications)
+- *L'historique du retour*, avec les différents états du retour. Sur cette page vous trouverez également le lien partageable du retour.
+- *Détails* vous permet de récupérer le bon de retour et le label une fois que le client a payé. Si le client ne les sauvegarde pas, vous pourrez toujours lui redonner les liens correspondants.
+- *Client* regroupe les informations que vous avez renseignées sur le client.
+- *Articles* regroupe les articles retournés par votre client avec leur motif de retour respectif.
+- *Notifications* vous permet de voir les notifications qui sont envoyées au client. Vous avez la possibilité de choisir quelle notification sera envoyée via vos paramètres de configuration (**TODO** lien vers configuration/notifications)
 
 Les autres onglets vous permettent de voir plus d'informations sur votre retour, comme les modes de retours disponibles (Simulation d'itinéraires), l'historique des appels API (Logs appels API , voir **TODO** (lien)[apicalls]).
 
@@ -97,7 +92,6 @@ Vous avez également la possibilité de re-générer le bon de retour ou de l'ar
 <aside class="warning">
   Attention: Une fois le retour archivé, vous pouvez toujours le consulter, mais pas le modifier.
 </aside>
-
 
 ## Statistiques
 
