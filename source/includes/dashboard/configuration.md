@@ -1,56 +1,50 @@
-#Configuration du Dashboard
+# Configuration du Dashboard
 
-##Mes pays
+## Mes pays
 
 Pour gérer les retours à l'étranger nous avons besoin de connaître la liste des pays dans lesquels vous autorisez les retours.
 
 *Si vous cherchez la liste:
 Vous trouverez un menu déroulant "Configuration" situé sur la barre latérale gauche.
-![configuration](.../.../images/dashboard/home.png)
+
 Après avoir choisi l'option "Pays" vous trouverez la liste.
-![List_countries](.../.../images/dashboard/pays.png)
+
 *Si vous souhaitez **modifier la liste**:
-Vous devez vous rendre dans le menu déroulannt "Applications" en haut à droite et sélectionnez l'application "Sandbox" .
-![application](.../.../images/dashboard/applications.png)
+Vous devez vous rendre dans le menu déroulant "Applications" en haut à droite et sélectionnez l'application "Sandbox" .
+
 Maintenant dans le menu déroulant "Configurations" du menu latéral sélectionnez "Mes pays", exactement comme si vous cherchiez la liste.
-![choice_countries](.../.../images/dashboard/mypays.png)
+
 Puis cliquez sur "Modifier".
-![modify](.../.../images/dashboard/choose_pays.png)
-Et enfin faites votre sélection/désélection puis **validez la liste finale**.
 
+Et enfin faites votre sélection/désélection.
 
-##Motifs
+## Motifs
 *Pour acceder à la liste de vos motifs de retours, Vvus trouverez un menu déroulant "Configuration" situé sur la barre latérale gauche.
-![configuration](.../.../images/dashboard/home.png)
+
 Puis sélectionnez "Motifs" pour y trouver la liste.
-![reasons](.../.../images/dashboard/list_reason.png)
+
 *Pour modifier la liste de motifs, vous devez vous rendre dans le menu déroulannt "Applications" en haut à droite et sélectionnez l'application "Sandbox" .
-![application](.../.../images/dashboard/applications.png)
+
 Maintenant dans le menu déroulant "Configurations" du menu latéral sélectionnez "Motifs", exactement comme si vous cherchiez la liste.
-![reason](.../.../images/dashboard/modif_reason.png)
+
 Puis cliquez sur "Modifier".
-![reason](.../.../images/dashboard/change_reason.png)
-Et enfin faites votre sélection/désélection puis **validez la liste finale**.
 
+Et enfin faites votre sélection/désélection.
 
-##Mes entrepôts
+## Mes entrepôts
 
 *Veuillez sélectionner "Mes entrepôts" dans le menu latéral gauche. Vous aurez ainsi accès à la liste de vos entrepôts.
-![warehouses](.../.../images/dashboard/list_warehouse.png)
+
 *Pour en **créer** un sélectionner "Nouveau".
-*Pour en **modifier** un sélectionnez le et choissez l'option "Modifer"
-![warhouses](.../.../images/dashboard/modif_warehouse.png)
+*Pour en **modifier** un sélectionnez le et choissez l'option "Modifier"
+
 Et enfin faites vos modifications puis validez les changements.
 *Pour **chercher un entrepôt dans la liste** sélectionnez "Chercher" et remplissez le formulaire.
 
+## Mes produits
 
-##Mes produits
+*Pour accéder à la liste de vos produits, sélectionnez "Mes produits" dans le menu latéral gauche.
 
-*Pour acceder à la liste de vos produits, sélectionnez "Mes produits" dans le menu latéral gauche.
-![poducts](.../.../images/dashboard/list_product.png)
-*Pour créer un produit sélectionnez "Nouveau". Puis remplissez le formulaire sans oublier de validez.
-![new_poducts](.../.../images/dashboard/new_product.png)
+*Pour créer un produit sélectionnez "Nouveau". Puis remplissez le formulaire.
+
 *Pour chercher un produit dans la liste sélectionnez "Chercher" et remplissez le formulaire.
-![search_poducts](.../.../images/dashboard/search_product.png)
-
-
