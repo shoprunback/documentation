@@ -81,13 +81,13 @@ Toujours sur le retour, vous avez plusieurs onglets qui permettent de suivre le 
 - *Détails* vous permet de récupérer le bon de retour et le label une fois que le client a payé. Si le client ne les sauvegarde pas, vous pourrez toujours lui redonner les liens correspondants.
 - *Client* regroupe les informations que vous avez renseignées sur le client.
 - *Articles* regroupe les articles retournés par votre client avec leur motif de retour respectif.
-- *Notifications* vous permet de voir les notifications qui sont envoyées au client. Vous avez la possibilité de choisir quelle notification sera envoyée via vos paramètres de configuration (**TODO** lien vers configuration/notifications)
+- *Notifications* vous permet de voir les notifications qui sont envoyées au client. Vous avez la possibilité de choisir quelle notification sera envoyée via vos paramètres de configuration (voir [Notifications](#notifications))
 
-Les autres onglets vous permettent de voir plus d'informations sur votre retour, comme les modes de retours disponibles (Simulation d'itinéraires), l'historique des appels API (Logs appels API , voir **TODO** (lien)[apicalls]).
+Les autres onglets vous permettent de voir plus d'informations sur votre retour, comme les modes de retours disponibles (Simulation d'itinéraires), l'historique des appels API (Logs appels API , voir [API](#api)).
 
 ![Actions retour](images/dashboard/shipback_actions.png)
 
-Vous avez également la possibilité de re-générer le bon de retour ou de l'archiver. (TODO explain what is archive)
+Vous avez également la possibilité de re-générer le bon de retour ou de l'archiver.
 
 <aside class="warning">
   Attention: Une fois le retour archivé, vous pouvez toujours le consulter, mais pas le modifier.
