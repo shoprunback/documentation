@@ -4,7 +4,7 @@
 
 ## À quoi sert-il?
 
-Le Dashboard est l'une des applications Shoprunback. Il vous permet de gérer vos retours, commandes, produits et marques. Les statistiques affichées sur l'accueil vous permet de voir l'évolution de vos retours.
+Le Dashboard est l'une des applications ShopRunBack. Il vous permet de gérer vos retours, commandes, produits et marques. Les statistiques affichées sur l'accueil vous permet de voir l'évolution de vos retours.
 
 ## Inscription
 
