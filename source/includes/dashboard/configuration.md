@@ -2,114 +2,99 @@
 
 ## Mes pays
 
-Pour gérer les retours à l'étranger nous avons besoin de connaître les pays dans lesquels vous autorisez la vente.
+Pour gérer les retours à l'étranger nous avons besoin de connaître les pays dans lesquels vous êtes actifs.
 
 Vous pouvez **consulter** la liste en sélectionnant **Configuration** situé sur la barre latérale gauche.
 
-![barre latérale](images/configuration/sidebar/menu_configuration.png)
+![Onglet catalogue](images/dashboard/configuration_sidebar.png)
 
-Une fois dans **Configuration > Pays**, vous trouverez la liste ainsi qu'une carte du monde qui vous permet de visualiser les zones de ventes autorisées, ces dernières sont représentées en jaune.
-![page pays](images/configuration/country/country_page.png)
+Par défaut vous serez rediriger vers la page des pays.
+
+Une fois dans **Configuration > Pays**, vous trouverez la liste ainsi qu'une carte du monde qui vous permet de visualiser vos zones d'activités.
+
+![Liste des pays](images/dashboard/countries_index.png)
 
 ### Modifier
 
-Vous pouvez **modifier la liste** en allant dans le menu de gauche pour sélectionner **Modifier**.
+Vous pouvez **modifier la liste** en allant dans le menu de gauche pour sélectionner **Modifier les pays**.
 
 Vous y trouverez une large sélection de pays triés par continent. Il ne vous reste plus qu'à cocher ou décocher pour mettre à jour votre liste.
 
-![liste à modifier](images/configuration/country/country_update.png)
-
 ## Motifs
 
-Pour chaque retour il vous sera demandé de signaler le raison du renvoi du produit.
+Pour chaque retour il vous sera demandé de signaler la raison du renvoi du produit.
 
-Pour accéder à la liste de vos motifs de retours, sélectionnez **Configuration** situé sur la barre latérale gauche.
+Pour accéder à la liste de vos motifs de retours, sélectionnez **Configuration** situé sur la barre latérale gauche, puis cliquer sur **Mes motifs de retour**. Comme pour les pays, vous pourrez voir la liste des motifs de retours sélectionnés.
 
-![barre_latérale](images/configuration/sidebar/menu_configuration.png)
+### Modifier
 
-Une fois dans **Configuration > Motifs** pour y trouver la liste.
+Pour **modifier** la liste de motifs que vous avez actuellement vous devez sélectionnez **Modifier les motifs** sur le menu à gauche.
+![Liste des motifs de retour](images/dashboard/reasons_index.png)
 
-### Modifier 
+Aujourd'hui sur ShopRunBack, huit motifs sont proposés :
 
-Pour **modifier** la liste de motifs que vous avez actuellement vous devez sélectionnez **Modifer** sur le menu à gauche.
-![menu de gauche](images/configuration/reason/reason_page.png)
+- Mauvaise taille (Le produit n'est pas à la bonne taille (plus petit ou plus grand que prévu))
+- Qualité (La qualité du produit est insuffisante)
+- Endommagé (La produit est endommagé)
+- Mauvais choix (J'ai commandé et reçu le mauvais produit)
+- Incorrect (Ce n'est pas le produit que j'ai commandé)
+- Retard (Le produit a été reçu trop tard)
+- Changement d'avis (J'ai changé d'avis depuis la commande)
+- Autre (Autre)
 
 Vous pouvez choisir de cocher ou de décocher les motifs de la liste proposée.
 
-![choix](images/configuration/reason/reason_update.png)
-
 ## Mes entrepôts
 
-Si vous avez des entrepôts dans les regions où des retours peuvent être effectués, il peut être intéressant de les enregistrer sur Shoprunback si vous souhaitez récupérer vos produits non usagés pour les revendre.
+Afin de vous renvoyer les retours effectués par vos clients, nous avons besoin de connaitre l'addresse de votre ou vos entrepôt(s).
 
-Si vous sélectionnez **Mes entrepôts** dans le menu latéral gauche, vous aurez ainsi accès à la liste de vos entrepôts. 
+Si vous sélectionnez **Mes entrepôts** dans le menu latéral gauche, vous aurez ainsi accès à la liste de vos entrepôts.
 
-![barre_latérale](images/configuration/sidebar/entrepots.png)
+![Onglet entrepôt](images/dashboard/warehouse_sidebar.png)
 
 ### Créer un entrepôt
 
-Pour en **créer** un sélectionnez **+ Nouvel entrepôt** dans le menu de gauche.
+Pour en **créer** un, sélectionnez **+ Nouvel entrepôt** dans le menu de gauche, puis remplissez le formulaire.
 
-![liste entrepôts](images/configuration/warehouse/warehouse_page.png)
-
-Vous pourrez alors remplir le formulaire. 
-
-![formulaire](images/configuration/warehouse/warehouse_new.png)
-
-Ce formulaire contient des champs obligatoires, s'ils ne sont pas remplis vous ne pourrez pas valider. Les autres champs facultatifs sont à remplir pour plus de précision.
 
 ### Modifier un entrepôt
 
-Pour en **modifier** un sélectionnez le et choisissez l'option **Modifier l'entrepôt**.
+Pour en **modifier** un, sélectionnez le et choisissez l'option **Modifier l'entrepôt**.
 
-![menu de gauche](images/configuration/warehouse/warehouse_page.png)
+![menu de gauche](images/dashboard/warehouse_show.png)
 
-Vous pourrez alors modifier le nom de l'entrepôt et/ou sa référence.
-
-![formulaire](images/configuration/warehouse/warehouse_update.png)
-
-### Chercher un entrepôt
-
-Pour **chercher un entrepôt dans la liste** sélectionnez **Chercher** et remplissez le formulaire.
-
-![formulaire](images/configuration/warehouse/warehouse_search.png)
-
-Il faut remplir le plus de champs possibles pour une recherche affinée.
+Vous pourrez alors modifier le nom de l'entrepôt et/ou sa référence, mais pas son adresse.
 
 ## Mon catalogue
 
-Le catalogue regroupe l'ensemble de vos prouduits de l'ensemble de vos marques.
+Le catalogue regroupe l'ensemble de vos produits de l'ensemble de vos marques.
 
 Pour **accéder à la liste de vos produits**, sélectionnez **Catalogue** dans la barre latérale gauche.
 
-![barre_latérale](images/configuration/sidebar/catalogue.png)
+![Onglet catalogue](images/dashboard/catalogue_sidebar.png)
 
-Vous pouvez accéder à la liste de vos produits (Catalogue > produits) ainsi qu'à la liste de vos marques (Catalogue > marque).
-![menu de gauche](images/configuration/catalog/catalog_page.png)
+Par défault, vous serez redirigé vers la liste de vos produits, vous pouvez également voir la liste de vos marques.
 
-### Créer un produit ou une marque
 
-Pour **créer un produit** ou **créer une marque** sélectionnez **+ Nouveau produit** ou **+ Nouvelle marque**. 
-Puis remplissez le formulaire.
-![formulaire](images/configuration/catalog/catalog_new.png)
+### Mes produits
 
-Ce formulaire contient des champs obligatoires, s'ils ne sont pas remplis vous ne pourrez pas valider. Les autres champs facultatifs sont à remplir pour plus de précision.
+En arrivant sur la page **Mes produits**, vous pouvez voir la liste de tous vos produits. Vous pouvez filtrer cette liste par libbelé, par référence, par EAN, ou par marque.
 
-### Modifier un produit ou une marque
+![Liste des produits](images/dashboard/product_index.png)
 
-Pour **modifier** un produit/marque sélectionnez le/la et choisissez l'option **+ Modifier produit/marque**.
-![menu de gauche](images/configuration/catalog/product.png)
+#### Créer un produit
 
-Vous pourrez alors modifier en remplissant ce formulaire.
+Pour **créer un produit**, sélectionnez **+ Nouveau produit**, puis remplissez le formulaire.
 
-![formulaire](images/configuration/catalog/catalog_update.png)
 
-Ce formulaire contient des champs obligatoires, s'ils ne sont pas remplis vous ne pourrez pas valider. 
+#### Modifier un produit
 
-### Chercher un produit
+Pour **modifier** un produit, sélectionnez le/la et choisissez l'option **Modifier le produit**.
 
-Pour **chercher un produit** dans le catalogue sélectionnez **Chercher** et remplissez le formulaire.
+![Éditer un produit](images/dashboard/product_edit.png)
 
-![formulaire](images/configuration/catalog/catalog_search.png)
 
-Il faut remplir le plus de champs possibles pour une recherche affinée.
+### Mes marques
+
+Comme pour les produits, les marques font partie de votre catalogue. Vous pouvez en créer, les modifier et les filtrer.
+
