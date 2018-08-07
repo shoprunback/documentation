@@ -1,12 +1,17 @@
-[Go back to the main documentation](./)
+### [Go back to the main documentation](./)
 
 # Dashboard
 
 ## À quoi sert-il?
-Le tableau de bord est une **application Shoprunback** qui permet à votre entreprise de s'occuper des retours. Les informations sur vos marques, vos commandes, vos produits et bien d'autres contenus dans le Dashboard permet de voir l'évolution de vos retours et de gérer les retours de vos produits .   
+
+Le Dashboard est l'une des applications Shoprunback. Ilvous permet de gérer vos retours, commandes, produits et marques. Les statistiques affichées sur l'accueil vous permet de voir l'évolution de vos retours.
 
 ## Inscription
-Pour vous inscrire, rendez vous sur le [site du Dashboard](https://dashboard.shoprunback.com/fr) et remplissez le formulaire suivant.
 
-## Le Single Sign On (SSO)
-Shoprunbak possède un système de SSO, c'est-à-dire qu'une fois le compte créé ou la connexion effectuée vous avez accès à toutes les applications Shoprunback.
+Pour vous inscrire, rendez-vous sur le [site du Dashboard](https://dashboard.shoprunback.com/fr) et remplissez le formulaire.
+
+## Un seul compte : plusieurs applis !
+
+ShopRunBack possède un système d'[authentification unique](https://fr.wikipedia.org/wiki/Authentification_unique) (SSO), c'est-à-dire qu'une fois le compte créé, il est utilisé dans toutes les applications ShopRunBack. Pas besoin d'en créer d'autres !
+
+Exemple de SSO connu : si vous avez un compte Google, c'est ce même compte qui est utilisé quand vous allez sur YouTube, Gmail, Google Drive et les autres applications Google.
