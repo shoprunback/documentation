@@ -21,7 +21,7 @@ Vous y trouverez une large sélection de pays triés par continent. Il ne vous r
 
 ## Motifs
 
-Pour chaque retour il vous sera demandé de signaler le motif.
+Pour chaque retour il vous sera demandé de signaler le raison du renvoi du produit.
 
 Pour accéder à la liste de vos motifs de retours, sélectionnez **Configuration** situé sur la barre latérale gauche.
 
@@ -31,7 +31,7 @@ Une fois dans **Configuration > Motifs** pour y trouver la liste.
 
 ### Modifier 
 
-Pour **modifier** la liste de motifs que vous avez actuellement vous pouvez sélectionnez **Modifer** sur le menu à gauche.
+Pour **modifier** la liste de motifs que vous avez actuellement vous devez sélectionnez **Modifer** sur le menu à gauche.
 ![menu de gauche](images/configuration/reason/reason_page.png)
 
 Vous pouvez choisir de cocher ou de décocher les motifs de la liste proposée.
