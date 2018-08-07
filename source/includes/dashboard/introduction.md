@@ -10,3 +10,8 @@ Pour vous inscrire, rendez vous sur le [site du Dashboard](https://dashboard.sho
 
 ## Le Single Sign On (SSO)
 Shoprunbak possède un système de SSO, c'est-à-dire qu'une fois le compte créé ou la connexion effectuée vous avez accès à toutes les applications Shoprunback.
+Cette méthode a pour but:
+
+- simplifier la gestion de mots de passe à l'utilisateur 
+- améliorer la gestion des données personnelles détenues par les différents services en ligne, en les coordonnant
+- renforcer la définition et la mise en œuvre de politiques de sécurité.
