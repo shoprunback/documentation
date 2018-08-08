@@ -6,11 +6,11 @@ Pour gérer les retours à l'étranger nous avons besoin de connaître les pays 
 
 Vous pouvez **consulter** la liste en sélectionnant **Configuration** situé sur la barre latérale gauche.
 
-![Onglet catalogue](images/dashboard/configuration_sidebar.png)
+![Onglet confirguation](images/dashboard/configuration_sidebar.png)
 
 Par défaut vous serez rediriger vers la page des pays.
 
-Une fois dans **Configuration > Pays**, vous trouverez la liste ainsi qu'une carte du monde qui vous permet de visualiser vos zones d'activités.
+Une fois dans **Configuration > Pays**, vous trouverez la liste de vos pays ainsi qu'une carte du monde qui vous permet de visualiser vos zones d'activités.
 
 ![Liste des pays](images/dashboard/countries_index.png)
 
@@ -24,17 +24,17 @@ Vous y trouverez une large sélection de pays triés par continent.
 
 Pour chaque produit retourné, votre client devra signaler la raison du renvoi du produit.
 
-Pour accéder à la liste de vos motifs de retours, sélectionnez **Configuration** situé sur la barre latérale gauche, puis cliquer sur **Mes motifs de retour**. Comme pour les pays, vous pourrez voir la liste des motifs de retours sélectionnés.
+Pour accéder à la liste de vos motifs de retours, sélectionnez **Configuration** situé sur la barre latérale gauche, puis cliquez sur **Mes motifs de retour**. Comme pour les pays, vous pouvez voir la liste des motifs de retours sélectionnés.
 
 ### Modifier
 
-Pour **modifier** la liste de motifs que vous avez actuellement vous devez sélectionnez **Modifier les motifs** sur le menu à gauche.
+Pour **modifier** la liste de motifs que vous avez actuellement, sélectionnez **Modifier les motifs** sur le menu à gauche.
 
 ![Edition des motifs de retour](images/dashboard/reasons_edit.png)
 
 ## Mes entrepôts
 
-Afin de vous renvoyer les retours effectués par vos clients, nous avons besoin de connaitre l'adresse de votre ou vos entrepôt(s).
+Afin de vous renvoyer les retours effectués par vos clients, nous avons besoin de connaitre l'adresse de votre entrepôt.
 
 Si vous sélectionnez **Mes entrepôts** dans le menu latéral gauche, vous aurez ainsi accès à la liste de vos entrepôts.
 
@@ -58,7 +58,7 @@ Le catalogue regroupe l'ensemble de vos produits de l'ensemble de vos marques.
 
 Pour **accéder à la liste de vos produits**, sélectionnez **Catalogue** dans la barre latérale gauche.
 
-![Onglet catalogue](images/dashboard/catalogue_sidebar.png)
+![Onglet catalogue](images/dashboard/catalog_sidebar.png)
 
 Par défault, vous serez redirigé vers la liste de vos produits, vous pouvez également voir la liste de vos marques.
 
