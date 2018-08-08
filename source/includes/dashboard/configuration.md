@@ -74,7 +74,7 @@ Voir [Utilisation](#produits).
 
 #### Modifier un produit
 
-Pour **modifier** un produit, sélectionnez le/la et choisissez l'option **Modifier le produit**.
+Pour **modifier** un produit, sélectionnez le puis choisissez l'option **Modifier le produit**.
 
 ![Éditer un produit](images/dashboard/product_edit.png)
 
