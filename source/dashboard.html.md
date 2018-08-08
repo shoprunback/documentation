@@ -10,7 +10,6 @@ toc_footers:
 includes:
   - dashboard/introduction
   - dashboard/utilisation
-  - dashboard/developers
 
 search: false
 ---
