@@ -1,6 +1,6 @@
 # Comment utiliser le Dashboard ShopRunBack
 
-## Mes produits
+## Produits
 
 Vous pouvez accéder à vos produits en allant sur la page **Catalogue**
 
@@ -23,7 +23,7 @@ On peut également ajouter une photo, ses dimensions ainsi que son EAN.
 
 ![Ajouter produit](images/dashboard/add_product.png)
 
-## Mes commandes
+## Commandes
 
 En arrivant sur la page **Mes commandes**, vous pouvez voir la liste de toutes vos commandes, ainsi qu'un lien pour accèder facilement au retour correspondant. Vous pouvez également filtrer via la date, le numéro de commande ou le nom du client.
 
@@ -64,7 +64,7 @@ Une fois la commande créée, vous pouvez rajouter des articles.
   Attention: Une fois le retour créé, vous ne pourrez plus supprimer la commande.
 </aside>
 
-## Mes retours
+## Retours
 
 En arrivant sur la page, vous pouvez voir le résumé de tous vos retours créés sur ShopRunBack, vous avez la possibilité de les filtrer par état, ainsi que de chercher via le numéro de commande ou le mode.
 
