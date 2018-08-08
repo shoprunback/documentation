@@ -10,7 +10,7 @@ Le Dashboard est l'une des applications ShopRunBack. Il vous permet de gérer vo
 
 Pour vous inscrire, rendez-vous sur le [site du Dashboard](https://dashboard.shoprunback.com/fr) et remplissez le formulaire.
 
-## Un seul compte : plusieurs applis !
+## Un seul compte : plusieurs applications !
 
 ShopRunBack possède un système d'[authentification unique](https://fr.wikipedia.org/wiki/Authentification_unique) (SSO), c'est-à-dire qu'une fois le compte créé, il est utilisé dans toutes les applications ShopRunBack. Pas besoin d'en créer d'autres !
 
