@@ -6,9 +6,9 @@ Pour gérer les retours à l'étranger nous avons besoin de connaître les pays 
 
 Vous pouvez **consulter** la liste en sélectionnant **Configuration** situé sur la barre latérale gauche.
 
-![Onglet confirguation](images/dashboard/configuration_sidebar.png)
+![Onglet configuration](images/dashboard/configuration_sidebar.png)
 
-Par défaut vous serez rediriger vers la page des pays.
+Par défaut vous serez redirigé vers la page des pays.
 
 Une fois dans **Configuration > Pays**, vous trouverez la liste de vos pays ainsi qu'une carte du monde qui vous permet de visualiser vos zones d'activités.
 
@@ -60,7 +60,7 @@ Pour **accéder à la liste de vos produits**, sélectionnez **Catalogue** dans 
 
 ![Onglet catalogue](images/dashboard/catalog_sidebar.png)
 
-Par défault, vous serez redirigé vers la liste de vos produits, vous pouvez également voir la liste de vos marques.
+Par défault, vous serez redirigé vers la liste de vos produits.
 
 ### Mes produits
 
@@ -70,14 +70,25 @@ Afin de faire des retours sur ShopRunBack, vous devez ajouter vos produits sur v
 
 #### Créer un produit
 
-Voir [Utilisation](#produits).
+La première étape est d'ajouter votre catalogue de produits sur le dashboard. Vous pouvez le faire en allant sur la page **Mes produits** et en cliquant sur le bouton **+ Nouveau produit**.
+
+Chaque produit est défini par 4 attributs obligatoires :
+
+- Une marque
+- Un libellé
+- Une référence
+- Le poids (en grammes)
+
+On peut également ajouter une photo, ses dimensions ainsi que son EAN.
+
+![Ajouter produit](images/dashboard/add_product.png)
 
 #### Modifier un produit
 
-Pour **modifier** un produit, sélectionnez le puis choisissez l'option **Modifier le produit**.
+Pour **modifier** un produit, sélectionnez-le puis choisissez l'option **Modifier le produit**.
 
 ![Éditer un produit](images/dashboard/product_edit.png)
 
 ### Mes marques
 
-Comme pour les produits, les marques font partie de votre catalogue. Vous pouvez en créer, les modifier et les filtrer.
+Si vous avez plusieurs marques, vous pouvez, comme pour les produits, en créer, les modifier et les filtrer.
