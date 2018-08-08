@@ -9,7 +9,6 @@ includes:
   - dashboard/account
   - dashboard/configuration
   - dashboard/utilisation
-  - dashboard/additional
   - dashboard/developers
 
 search: false
