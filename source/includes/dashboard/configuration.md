@@ -28,9 +28,9 @@ Pour accéder à la liste de vos motifs de retours, sélectionnez **Configuratio
 
 ### Modifier
 
-Pour **modifier** la liste de motifs que vous avez actuellement, sélectionnez **Modifier les motifs** sur le menu à gauche.
+Pour **modifier** la liste de motifs que vous avez actuellement, sélectionnez **Modifier les motifs** dans le menu de gauche.
 
-![Edition des motifs de retour](images/dashboard/reasons_edit.png)
+![Modifier les motifs de retour](images/dashboard/reasons_edit.png)
 
 ## Mes entrepôts
 
@@ -87,7 +87,7 @@ On peut également ajouter une photo, ses dimensions ainsi que son EAN.
 
 Pour **modifier** un produit, sélectionnez-le puis choisissez l'option **Modifier le produit**.
 
-![Éditer un produit](images/dashboard/product_edit.png)
+![Modifier un produit](images/dashboard/product_edit.png)
 
 ### Mes marques
 
