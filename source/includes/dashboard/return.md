@@ -36,7 +36,7 @@ Vous avez la possibilité d'en ajouter plus d'une.
 
 ### Relocalisation
 
-Si vous posséder plusieurs entrepôts, ShopRunBack vous laisse définir des règles de tri logistique.
+Si vous posséder plusieurs entrepôts, ShopRunBack vous laisse définir des [règles de tri logistique](#la-relocalisation).
 
 [Créer une règle de relocalisation](https://dashboard/shoprunback.com/fr/relocations/new)
 
