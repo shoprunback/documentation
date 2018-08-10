@@ -24,7 +24,7 @@ Celle-ci nous indique qui est le client et quels articles il a acheté.
 
 ShopRunBack est présent dans de nombreux pays. Par conséquent, nous avons besoin de connaître vos pays de destination.
 
-[Ajouter mes pays de destination](https://dashboard.shoprunback.com/configuration/countries/edit)
+[Ajouter mes pays de destination](https://dashboard.shoprunback.com/fr/configuration/countries/edit)
 
 ### Entrepôt(s)
 
@@ -62,7 +62,7 @@ En plus du dashboard, ShopRunBack vous fournit une interface de retour pour vos 
 
 En fonction de votre secteur d'activité, les raisons pour lesquelles vous recevez des retours peuvent différer. Nous avons besoin de les connaitre, car au moment du retour, votre client doit indiquer pourquoi il souhaite renvoyer ses [articles](#catalogue).
 
-[Sélectionner mes motifs de retour](https://dashboard.shoprunback.com/configuration/reasons)
+[Sélectionner mes motifs de retour](https://dashboard.shoprunback.com/fr/configuration/reasons)
 
 ### Les modes de retour
 
