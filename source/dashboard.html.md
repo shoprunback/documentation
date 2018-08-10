@@ -8,7 +8,6 @@ includes:
   - dashboard/overview
   - dashboard/return
   - dashboard/company
-  - dashboard/details
 
 search: false
 ---
