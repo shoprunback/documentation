@@ -12,7 +12,6 @@ Il y a 2 types de membres dans votre équipe :
 
   - Modification du [catalogue](#catalogue), des [commandes](#commandes), et des retours.
   - Création d'[entrepôt](#entrep-t-s).
-  - Modification de l'URL de réception des [webhooks](#jai-des-d-veloppeurs-dans-mon-quipe).
   - Édition des informations de votre entreprise.
   - Sélection des [notifications de suivi](#notifications).
   - Ajout d'autres collaborateurs.
@@ -24,7 +23,7 @@ Il y a 2 types de membres dans votre équipe :
 
 ## J'ai des développeurs dans mon équipe
 
-ShopRunBack vous fournit une [API](#https://dashboard.shoprunback.com/fr/tokens) qui vous permet d'intégrer notre solution directement chez vous pour automatiser vos [retours](#gestion-des-retours).
+ShopRunBack vous fournit une [API](https://dashboard.shoprunback.com/fr/tokens) qui vous permet d'intégrer notre solution directement chez vous pour automatiser vos [retours](#gestion-des-retours).
 Toutes les fonctionnalités du dashboard sont disponibles via l'API.
 
 Pour plus d'informations, veuillez vous référer à la [documentation](https://shoprunback.github.io/documentation/api.html)
