@@ -87,9 +87,8 @@ Grâce au sponsoring, vous pouvez établir des règles en fonction du [pays](#pa
 Avec le sponsoring, vous pouvez créer ce genre de scénarios :
 
 - **Vous voulez que votre client ne paye pas le retour** : Vous mettez que vous payez 100% du retour.
-- **Vous ne voulez payer que si le retour coûte plus de 8€** : Vous mettez que le client doit payer au maximum 8€. Le reste sera automatiquement à vos frais.
 - **Vous voulez que le client paye 5€ pour son retour** : Vous mettez que vous payez 100% du retour et que le client doit payer au minimum 5€. Le reste sera automatiquement à vos frais.
-- **Vous voulez que le client paye le retour mais vous participez à hauteur de 8€** : Vous mettez que vous payez 100% du retour et que vous devez payez au minimum 8€.
+- **Vous voulez que le client paye le retour mais vous participez à hauteur de 8€** : Vous mettez que vous payez 100% du retour et que vous devez payez au maximum 8€.
 - **Vous voulez payer 50% du retour, mais pas plus de 6€50** : Vous mettez que vous payez 50% du retour et que vous ne payerez que 6€50 maximum.
 - **Vous voulez payer 50% du retour, que le client ne paye que 10€ et que vous voulez payez au maximum 10€** : Vous mettez que vous payez 50% du retour, que vous devez payer au maximum 10€ et que le client doit payer au maximum 10€. Si le retour s'avère coûter plus que la somme des maximums (20€), vous devrez payer le montant restant (si le retour coûte 25€, vous devrez payer 15€).
 
