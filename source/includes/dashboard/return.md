@@ -99,7 +99,7 @@ Activez les notifications de suivi pour tenir vos clients informés sur l'avance
 
 ### Statuts
 
-Les retours passent par plusieurs statuts pour arriver à destination. Vous pouvez trier vos retours avec ces statuts.
+Les retours passent par plusieurs statuts pour arriver à destination. Vous pouvez trier vos retours par statut.
 
 [Voir ma liste de retours](https://dashboard.shoprunback.com/fr/shipbacks)
 
