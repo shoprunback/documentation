@@ -38,7 +38,7 @@ Vous avez la possibilité d'en ajouter plusieurs.
 
 Si vous possédez plusieurs [entrepôts](#entrep-t-s), ShopRunBack vous laisse définir des règles de tri logistique.
 
-Grâce à la relocalisation, vous pouvez définir des règles auxquelles les produits retournés seront soumis. Ces règles peuvent dépendre du pays du client, de la raison du retour, ou des deux.
+Grâce à la relocalisation, vous pouvez définir des règles auxquelles les produits retournés seront soumis. Ces règles peuvent dépendre du [pays](#pays-de-vente) du client, de la [raison](#motifs) du retour, ou des deux.
 
 Ces règles vous permettent de vous adapter aux différentes politiques de retour dans les [pays](#pays-de-vente) où vous vendez.
 
@@ -60,7 +60,7 @@ En plus du dashboard, ShopRunBack vous fournit une interface de retour pour vos 
 
 ### Motifs
 
-En fonction de votre secteur d'activité, les raisons pour lesquelles vous recevez des retours peuvent différer. Nous avons besoin de les connaitre, car au moment du retour, votre client doit indiquer pourquoi il souhaite renvoyer ses [articles](#catalogue).
+En fonction de votre secteur d'activité, les raisons pour lesquelles vous recevez des retours peuvent différer. Nous avons besoin de les connaitre car au moment du retour, votre client doit indiquer pourquoi il souhaite renvoyer ses [articles](#catalogue).
 
 [Sélectionner mes motifs de retour](https://dashboard.shoprunback.com/fr/configuration/reasons)
 
@@ -69,6 +69,8 @@ En fonction de votre secteur d'activité, les raisons pour lesquelles vous recev
 Selon le pays et la disponibilité, vos clients peuvent choisir jusqu'à 3 moyens de transport pour leur retour.
 
 ![Modes de transport](images/dashboard/modes.png)
+
+Dans certains pays, ShopRunBack vous propose des options premiums comme l'enlèvement à domicile.
 
 ## Sponsoring
 
