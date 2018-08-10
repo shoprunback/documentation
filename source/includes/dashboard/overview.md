@@ -1,6 +1,6 @@
 ### [Retour à la page d'accueil](./)
 
-# Documentation utilisateur
+# Présentation
 
 Le [dashboard](https://dashboard.shoprunback.com/fr) vous permet d'utiliser et configurer votre compte ShopRunBack.
 
