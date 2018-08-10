@@ -25,10 +25,10 @@ You can use this module if you have a Prestashop website: [click here](/prestash
 
 You can use the official ShopRunback module for Shopify: [click here](/shopify.html)
 
-## Documentation in progress
+## Documentation
 
 * Retailer dashboard: [click here](/dashboard.html)
-* Mobile inventory application for retailers: [click here](/inventory.html)
+* Mobile inventory application for retailers (in progress): [click here](/inventory.html)
 
 ## Not yet supported
 
