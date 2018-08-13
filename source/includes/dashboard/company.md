@@ -6,7 +6,7 @@ Le dashboard est un outil collaboratif. Vous pouvez ajouter les membres de votre
 
 Le créateur du compte entreprise en devient son unique propriétaire. Ce statut vous permet de gérer les membres de votre équipe et leurs accès.
 
-Les collaborateurs invités ont, par défaut, le rôle de simple collaborateur. Vous pouvez étendre leurs droits en leur attribuant le rôle de manager.
+Les utilisateurs invités ont, par défaut, le rôle de simple collaborateur. Vous pouvez étendre leurs droits en leur attribuant le rôle de manager.
 
 Droits du collaborateur :
 

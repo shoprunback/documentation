@@ -2,17 +2,16 @@
 
 ## Catalogue
 
-Le catalogue regroupe tous vos produits et marques.
+Le [catalogue](https://dashboard.shoprunback.com/products) regroupe tous vos produits et marques.
 
-Pour qu'un produit puisse être retourné, celui-ci **doit être présent** dans votre catalogue pour que nous puissions identifier les articles qu'a commandé votre client.
-
-[Accéder à mon catalogue](https://dashboard.shoprunback.com/products)
+Pour qu'un produit puisse être retourné, celui-ci **doit être présent** dans votre catalogue pour que nous puissions identifier les articles que votre client souhaite renvoyer.
+Afin de générer une meilleure expérience pour votre client et pour faciliter le tri et le renvoi des articles, il est important de spécifier toutes les informations de vos produits.
 
 ## Commandes
 
 Pour créer un retour, il faut d'abord créer la [commande](https://dashboard.shoprunback.com/orders) à retourner.
 
-C'est lors de la création de la commande que sera indiqué qui est le client et quels articles il a acheté. Vous devez lister tous les articles de la commande, car il voudra potentiellement tous les retourner.
+Lors de la création de la commande, vous renseignez les informations sur votre client (numéro de commande, contact et adresse) ainsi que la liste **complète** des [produits](#catalogue) qu'il a acheté.
 
 ## Logistique
 
@@ -22,7 +21,7 @@ ShopRunBack est présent dans de nombreux pays. Par conséquent, il faut que vou
 
 ### Entrepôts
 
-Pour vous livrer vos retours, nous avons besoin de savoir où se trouve votre [entrepôt](https://dashboard.shoprunback.com/warehouses). Vous pouvez aussi renseigner l'adresse de votre magasin.
+Pour livrer vos retours, nous avons besoin de savoir où vous stockez votre inventaire. Cette [adresse](https://dashboard.shoprunback.com/warehouses) peut correspondre à un entrepôt, un magasin, ou même votre siège social.
 
 Vous avez la possibilité d'ajouter plusieurs adresses.
 
@@ -32,7 +31,7 @@ Si vous possédez plusieurs [entrepôts](#entrep-ts), ShopRunBack vous laisse d�
 
 Ces règles vous permettent de vous adapter aux différentes politiques de retour dans les [pays](#pays-de-vente) où vous vendez.
 
-Par exemple, si vous possédez un entrepôt en Angleterre, vous pouvez décider de renvoyer les articles de ce pays vers celui-ci. Cela diminuera vos coûts logistiques, qui à terme vous permettra de fournir de meilleurs prix à vos clients.
+Par exemple, si vous possédez deux entrepôts en Angleterre, vous pouvez décider de renvoyer les articles endommagés vers l'un, et le reste vers l'autre. Cela diminuera vos coûts logistiques, qui à terme vous permettra de fournir de meilleurs prix à vos clients.
 
 ![Exemple de relocalisation](images/dashboard/relocations.png)
 
@@ -48,7 +47,7 @@ En plus du dashboard, ShopRunBack vous fournit une interface de retour pour vos 
 
 ### Motifs
 
-En fonction de votre secteur d'activité, les raisons pour lesquelles vous recevez des retours peuvent différer. En sélectionnant les [motifs de retour](https://dashboard.shoprunback.com/configuration/reasons) qui vous intéressent le plus, vous pourrez faciliter votre [politique de relocalisation](#relocalisation).
+En fonction de votre secteur d'activité, les raisons pour lesquelles vous recevez des retours peuvent différer. En sélectionnant les [motifs de retour](https://dashboard.shoprunback.com/configuration/reasons) qui vous intéressent, vous pourrez ajouter plus de précision à votre politique retour, comme par exemple [rembourser les retours](#sponsoring) qui ont le motif *endommagé*.
 
 ## Sponsoring
 
@@ -70,7 +69,11 @@ Le sponsoring vous permet de répondre à ces scénarios :
 
 Activez les notifications de suivi pour tenir vos clients informés sur l'avancement de leur retour par e-mail. Vous pouvez de la même façon notifier vos [managers](#collaboration) à chaque fois qu'un retour est enregistré.
 
-![E-mail de notification](images/dashboard/notification-customer.png)
+Exemple de notification :
+
+|Client|Manager|
+|:---:|:---:|
+|![E-mail de notification client](images/dashboard/notification-customer.png)|![E-mail de notification manager](images/dashboard/notification-retailer.png)|
 
 ### Statuts
 
