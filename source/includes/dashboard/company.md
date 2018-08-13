@@ -14,7 +14,6 @@ Droits du collaborateur :
 - Création d'[entrepôt](#entrep-ts).
 - Édition des informations de votre entreprise.
 - Sélection des [notifications de suivi](#notifications).
-- Ajout d'autres collaborateurs.
 
 Droits supplémentaires du manager :
 
@@ -23,6 +22,7 @@ Droits supplémentaires du manager :
   - [Raisons de retour acceptées](#motifs)
   - [Sponsorings](#sponsoring)
   - [Règles de relocalisations](#relocalisation).
+  - Ajout d'autres collaborateurs.
 
 ## Mon équipe possède des développeurs
 
