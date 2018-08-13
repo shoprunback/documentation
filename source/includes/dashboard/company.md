@@ -4,7 +4,7 @@
 
 Le dashboard est un outil collaboratif. Vous pouvez ajouter les membres de votre équipe pour qu'ils puissent vous aider à [gérer vos retours](#gestion-des-retours).
 
-Le créateur du compte entreprise en devient son unique propriétaire. Ce statut vous permet de gérer les membres de votre équipe et leurs accès.
+Le créateur du compte entreprise en devient son unique propriétaire. Ce role vous permet de gérer les membres de votre équipe et leurs accès.
 
 Les utilisateurs invités ont, par défaut, le rôle de simple collaborateur. Vous pouvez étendre leurs droits en leur attribuant le rôle de manager.
 
