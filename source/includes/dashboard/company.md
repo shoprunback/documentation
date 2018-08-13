@@ -11,7 +11,7 @@ Les utilisateurs invités ont, par défaut, le rôle de simple collaborateur. Vo
 Droits du collaborateur :
 
 - Modification du [catalogue](#catalogue), des [commandes](#commandes), et des retours.
-- Création d'[entrepôt](#entrep-ts).
+- Création d'[entrepôt](#relocalisation).
 - Édition des informations de votre entreprise.
 - Sélection des [notifications de suivi](#notifications).
 

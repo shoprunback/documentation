@@ -23,7 +23,7 @@ ShopRunBack est présent dans de nombreux pays. Par conséquent, il faut que vou
 
 Pour vous renvoyer vos colis, nous avons besoin de savoir où vous stockez votre inventaire. Cette [adresse](https://dashboard.shoprunback.com/warehouses) peut correspondre à un entrepôt, un magasin, ou autre.
 
-Si vous possédez plusieurs [entrepôts](#entrep-ts), ShopRunBack vous laisse définir des [règles de tri](https://dashboard.shoprunback.com/relocations) auxquelles les produits retournés seront soumis. Ces règles peuvent dépendre du [pays](#pays) du client, de la [raison](#motifs) du retour, ou des deux.
+Si vous possédez plusieurs entrepôts, ShopRunBack vous laisse définir des [règles de tri](https://dashboard.shoprunback.com/relocations) auxquelles les produits retournés seront soumis. Ces règles peuvent dépendre du [pays](#pays) du client, de la [raison](#motifs) du retour, ou des deux.
 
 Ces règles vous permettent de vous adapter aux différentes politiques de retour dans les [pays](#pays) où vous vendez.
 
