@@ -10,7 +10,7 @@ Les utilisateurs invités ont, par défaut, le rôle de simple collaborateur. Vo
 
 Droits du collaborateur :
 
-- Modification du [catalogue](#catalogue), des [commandes](#commandes), et des retours.
+- Modification du [catalogue](#catalogue), des [commandes](#commandes), et des [retours](#la-demande-de-retour).
 - Création d'[entrepôt](#relocalisation).
 
 Droits supplémentaires du manager :
