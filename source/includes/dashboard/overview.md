@@ -6,6 +6,4 @@ Le [dashboard](https://dashboard.shoprunback.com) vous permet d'utiliser et conf
 
 ![Vue d'ensemble du dashboard](images/dashboard/overview.png)
 
-Avec des fonctionnalités telles que la [relocalisation des colis](#relocalisation) et le [partage des frais de renvoi](#sponsoring), vous pourrez optimiser [vos retours clients](#gestion-des-retours) et améliorer l'expérience post-achat de votre site e-commerce.
-
-[Créez votre compte ShopRunBack](https://dashboard.shoprunback.com/users/sign_up)
+La solution ShopRunBack vous permet de gérer vos retours sans vous préocupper des contrats transporteurs. Créez et ajustez votre politique de retour avec des fonctionnalités exclusives telles que la [relocalisation des colis](#relocalisation) et le [partage des frais de renvoi](#sponsoring).

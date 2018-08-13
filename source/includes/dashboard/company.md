@@ -18,11 +18,11 @@ Droits du collaborateur :
 Droits supplémentaires du manager :
 
 - Modification des configurations :
-  - [Pays de vente](#pays-de-vente)
+  - [Pays de vente](#pays)
   - [Raisons de retour acceptées](#motifs)
   - [Sponsorings](#sponsoring)
   - [Règles de relocalisations](#relocalisation).
-  - Ajout d'autres collaborateurs.
+- Ajout d'autres collaborateurs.
 
 ## Mon équipe possède des développeurs
 
