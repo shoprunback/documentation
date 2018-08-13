@@ -43,7 +43,7 @@ En plus du dashboard, ShopRunBack vous fournit une interface de retour pour vos 
 
 ### Motifs
 
-En fonction de votre secteur d'activité, les raisons pour lesquelles vous recevez des retours peuvent différer. En sélectionnant les [motifs de retour](https://dashboard.shoprunback.com/configuration/reasons) qui vous intéressent, vous pourrez ajouter plus de précision à votre politique retour, comme par exemple faire des [retours gratuits](#sponsoring) pour le motif *endommagé*.
+En fonction de votre secteur d'activité, les raisons pour lesquelles vous recevez des retours peuvent différer. En sélectionnant les [motifs de retour](https://dashboard.shoprunback.com/configuration/reasons) qui vous intéressent, vous pourrez ajouter plus de précision à votre politique retour, comme par exemple offrir des [retours gratuits](#sponsoring) pour le motif *endommagé*.
 
 ## Sponsoring
 
