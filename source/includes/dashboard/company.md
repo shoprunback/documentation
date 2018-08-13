@@ -12,8 +12,6 @@ Droits du collaborateur :
 
 - Modification du [catalogue](#catalogue), des [commandes](#commandes), et des retours.
 - Création d'[entrepôt](#relocalisation).
-- Édition des informations de votre entreprise.
-- Sélection des [notifications de suivi](#notifications).
 
 Droits supplémentaires du manager :
 

@@ -5,7 +5,7 @@
 Le [catalogue](https://dashboard.shoprunback.com/products) regroupe tous vos produits et marques.
 
 Pour qu'un produit puisse être retourné, celui-ci **doit être présent** dans votre catalogue pour votre client puisse facilement identifier les articles qu'il souhaite renvoyer.
-Afin de générer une meilleure expérience pour votre client et pour faciliter le tri et le renvoi des articles, il est important de spécifier le maximum d'informations sur vos produits .
+Afin de générer une meilleure expérience pour votre client et pour faciliter le tri et le renvoi des articles, il est important de spécifier le maximum d'informations sur vos produits.
 
 ## Commandes
 
