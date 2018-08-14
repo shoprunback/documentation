@@ -4,7 +4,7 @@
 
 Le [catalogue](https://dashboard.shoprunback.com/products) regroupe tous vos produits et marques.
 
-Pour qu'un produit puisse être retourné, celui-ci **doit être présent** dans votre catalogue pour votre client puisse facilement identifier les articles qu'il souhaite renvoyer.
+Pour qu'un produit puisse être retourné, celui-ci **doit être présent** dans votre catalogue pour que votre client puisse facilement identifier les articles qu'il souhaite renvoyer.
 Afin de générer une meilleure expérience pour votre client et pour faciliter le tri et le renvoi des articles, il est important de spécifier le maximum d'informations sur vos produits.
 
 ## Commandes
@@ -17,7 +17,7 @@ Lors de la création de la commande, vous renseignez les informations sur votre 
 
 ### Pays
 
-ShopRunBack est présent dans de nombreux pays. Par conséquent, il faut que vous indiquiez vos [pays où les retours sont possibles](https://dashboard.shoprunback.com/configuration/countries) afin d'optimiser la logistique de vos retours.
+ShopRunBack est présent dans de nombreux pays. Par conséquent, il faut que vous indiquiez [quels pays sont éligibles au retour](https://dashboard.shoprunback.com/configuration/countries) afin d'optimiser la logistique de vos retours.
 
 ### Relocalisation
 
@@ -43,7 +43,7 @@ En plus du dashboard, ShopRunBack vous fournit une interface de retour pour vos 
 
 ### Motifs de retour
 
-En fonction du type de vos produits commercialisés, les raisons pour lesquelles vous recevez des retours peuvent différer. En sélectionnant les [motifs de retour](https://dashboard.shoprunback.com/configuration/reasons) qui vous correspondent, vous ajoutez plus de précision à votre politique retour, comme par exemple refuser les retours qui ont pour motif ``Changement d'avis``.
+En fonction du type de produit que vous commercialisez, les raisons pour lesquelles vous recevez des retours peuvent différer. En sélectionnant les [motifs de retour](https://dashboard.shoprunback.com/configuration/reasons) qui vous correspondent, vous ajoutez plus de précision à votre politique retour, comme par exemple refuser les retours qui ont pour motif ``Changement d'avis``.
 
 ## Sponsoring
 
@@ -68,25 +68,28 @@ Le système de notifications vous permet d'envoyer des e-mails quand un retour e
 
 Il y a deux types de destinataires :
 
-- Vos clients : Ils recevront un email à l'enregistrement du retour, sa mise en transit et sa redistribution.
+- Vos clients : Ils recevront un e-mail à l'enregistrement du retour, sa mise en transit et sa redistribution.
+
 ![E-mail de notification client](images/dashboard/notification-customer.png)
-- Les [managers](#collaboration) de votre équipe : Ils recevront un email à chaque enregistrement d'un nouveau retour.
+
+- Les [managers](#collaboration) de votre équipe : Ils recevront un e-mail à chaque enregistrement d'un nouveau retour.
+
 ![E-mail de notification manager](images/dashboard/notification-retailer.png)
 
 ### Statuts
 
-Les [retours](https://dashboard.shoprunback.com/shipbacks) ont des statuts correspondant à leur états d'avancement logistique. Ce statut est mis à jour plusieurs fois durant leur acheminement jusqu'à votre [entrepôt](#relocalisation).
+Les [retours](https://dashboard.shoprunback.com/shipbacks) ont des statuts correspondant à leur état d'avancement logistique. Ce statut est mis à jour plusieurs fois durant leur acheminement jusqu'à votre [entrepôt](#relocalisation).
 
 Tous les retours passent par ces statuts :
 
-- Créé : Vous avez créé le retour.
-- Enregistrement : Votre client a visité au moins une fois l'interface de retour.
-- Enregistré : Votre client a validé sa demande de retour.
-- Livraison : Le retour est en cours de livraison vers notre entrepôt.
-- Livré : Le retour a été reçu dans notre entrepôt.
-- Identifié : Le retour a été vérifié par nos partenaires.
-- Relocalisation : Le retour est en cours de livraison vers votre entrepôt.
-- Relocalisé : Le retour a été reçu dans votre entrepôt.
+- **Créé** : Vous avez créé le retour.
+- **Enregistrement** : Votre client a visité au moins une fois l'interface de retour.
+- **Enregistré** : Votre client a validé sa demande de retour.
+- **Livraison** : Le retour est en cours de livraison vers notre centre de traitement.
+- **Livré** : Le retour a été reçu dans notre centre de traitement.
+- **Identifié** : Le retour a été vérifié par nos partenaires.
+- **Relocalisation** : Le retour est en cours de livraison vers votre [entrepôt](#relocalisation).
+- **Relocalisé** : Le retour a été reçu dans votre [entrepôt](#relocalisation).
 
 Vous pouvez suivre l'évolution de chaque retour via un visuel affichant leur état d'avancement.
 

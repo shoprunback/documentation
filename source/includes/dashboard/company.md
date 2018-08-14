@@ -4,23 +4,24 @@
 
 Le dashboard est un outil collaboratif. Vous pouvez ajouter les membres de votre équipe pour qu'ils puissent vous aider à [gérer vos retours](#gestion-des-retours).
 
-Le créateur du compte entreprise en devient son unique propriétaire. Ce role vous permet de gérer les membres de votre équipe et leurs accès.
+Le créateur du compte entreprise en devient son unique propriétaire. Ce rôle vous permet de gérer les membres de votre équipe et leurs accès.
 
 Les utilisateurs invités ont, par défaut, le rôle de simple collaborateur. Vous pouvez étendre leurs droits en leur attribuant le rôle de manager.
 
 Droits du collaborateur :
 
-- Modification du [catalogue](#catalogue), des [commandes](#commandes), et des [retours](#la-demande-de-retour).
-- Création d'[entrepôt](#relocalisation).
+- Modification du [catalogue](#catalogue)
+- Création des [commandes](#commandes) et des [retours](#la-demande-de-retour)
+- Création d'[entrepôts](#relocalisation)
 
 Droits supplémentaires du manager :
 
 - Modification des configurations :
-  - [Pays de vente](#pays)
-  - [Raisons de retour acceptées](#motifs-de-retour)
+  - [Pays éligibles au retour](#pays)
+  - [Motifs de retour acceptés](#motifs-de-retour)
   - [Sponsorings](#sponsoring)
-  - [Règles de relocalisations](#relocalisation).
-- Ajout d'autres collaborateurs.
+  - [Règles de relocalisation](#relocalisation)
+- Ajout d'autres collaborateurs
 
 ## Mon équipe possède des développeurs
 
