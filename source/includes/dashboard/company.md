@@ -17,7 +17,7 @@ Droits supplémentaires du manager :
 
 - Modification des configurations :
   - [Pays de vente](#pays)
-  - [Raisons de retour acceptées](#motifs)
+  - [Raisons de retour acceptées](#motifs-de-retour)
   - [Sponsorings](#sponsoring)
   - [Règles de relocalisations](#relocalisation).
 - Ajout d'autres collaborateurs.
