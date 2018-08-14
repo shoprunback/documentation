@@ -92,8 +92,8 @@ Vous pouvez suivre l'évolution de chaque retour via un visuel affichant leur é
 
 ![Historique du retour](images/dashboard/timeline.png)
 
-## Tableau de bord
+## Rapport visuel des données
 
-Le [tableau de bord](https://dashboard.shoprunback.com) vous permet d'analyser et comprendre vos problématiques retour. Avec le graphique, vous pouvez voir l'évolution du nombre de commandes renvoyées, avec la possibilité de trier par période et par pays. Les classements vous montrent plus précisément quels pays, modes de retour et produits sont les plus utilisés.
+Le [rapport visuel](https://dashboard.shoprunback.com) vous permet d'analyser et comprendre vos problématiques retour. Avec le graphique, vous pouvez voir l'évolution du nombre de commandes renvoyées, avec la possibilité de trier par période et par pays. Les classements vous montrent plus précisément quels pays, modes de retour et produits sont les plus utilisés.
 
 ![Exemple de graphique](images/dashboard/graph.png)
