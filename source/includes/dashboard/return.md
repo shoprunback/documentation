@@ -17,7 +17,7 @@ Lors de la création de la commande, vous renseignez les informations sur votre 
 
 ### Pays
 
-ShopRunBack est présent dans de nombreux pays. Par conséquent, il faut que vous indiquiez vos [pays où les retour sont possibles](https://dashboard.shoprunback.com/configuration/countries) afin d'optimiser la logistique de vos retours.
+ShopRunBack est présent dans de nombreux pays. Par conséquent, il faut que vous indiquiez vos [pays où les retours sont possibles](https://dashboard.shoprunback.com/configuration/countries) afin d'optimiser la logistique de vos retours.
 
 ### Relocalisation
 
