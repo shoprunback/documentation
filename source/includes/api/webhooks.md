@@ -159,6 +159,27 @@ All webhooks has the same caracteristics; this is a JSON Object with the attribu
     }
   }
 
+  # Example of JSON sent for shipback.labelled
+  {
+    "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
+    "event": "shipback.labelled",
+    "created_at": "2018-02-20 16:54:22 +0100",
+    "data": {
+      "id" : "fc8520bf-3ae0-46b1-8991-cacb6b03c698",
+      "rma" : "123",
+      "registered_at": "2018-02-20 16:58:22 +0100",
+      "mode": "postal",
+      "weight_in_grams": "1000",
+      "size": "S",
+      "computed_weight_in_grams": "1000",
+      "public_url": "https://web.shoprunback.com/apple/1234",
+      "metadata": {},
+      "price_cents": "10000",
+      "customer_price_cents": "10000",
+      "label_url" : "http://cdn.com/label/1234.pdf"
+    }
+  }
+
   // Example of JSON sent for other events
   {
     "id": "00082f23-9b8c-4515-b1cd-527d56a1bef3",
@@ -177,6 +198,7 @@ All webhooks has the same caracteristics; this is a JSON Object with the attribu
 | shipback.created         | Sent when a shipback is created (via the API or via the web interface) |
 | shipback.registered            | Sent when a shipback is registered (the customer has paid or validated is free return) and the customer can download its voucher and label |
 | shipback.paid            | cf shipback.registered (will be deleted soon) |
+| shipback.labelled            | Sent when the label is available |
 | shipback.relocated       | Sent when all the returned item's of a shipback are relocated to the retailer's warehouse |
 | shipback.transiting      | Sent when all returned item's of a shipback are transiting |
 
