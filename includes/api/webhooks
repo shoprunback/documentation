@@ -179,6 +179,27 @@
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 
+  </span><span class="err">#</span><span class="w"> </span><span class="err">Example</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">JSON</span><span class="w"> </span><span class="err">sent</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">shipback.labelled</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shipback.labelled"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-20 16:54:22 +0100"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"fc8520bf-3ae0-46b1-8991-cacb6b03c698"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rma"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"registered_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-20 16:58:22 +0100"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"postal"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"weight_in_grams"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"computed_weight_in_grams"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"public_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://web.shoprunback.com/apple/1234"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">"price_cents"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"customer_price_cents"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label_url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cdn.com/label/1234.pdf"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+
   </span><span class="err">//</span><span class="w"> </span><span class="err">Example</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">JSON</span><span class="w"> </span><span class="err">sent</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">other</span><span class="w"> </span><span class="err">events</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00082f23-9b8c-4515-b1cd-527d56a1bef3"</span><span class="p">,</span><span class="w">
@@ -208,6 +229,10 @@
 <tr>
 <td>shipback.paid</td>
 <td>cf shipback.registered (will be deleted soon)</td>
+</tr>
+<tr>
+<td>shipback.labelled</td>
+<td>Sent when the label is available</td>
 </tr>
 <tr>
 <td>shipback.relocated</td>
