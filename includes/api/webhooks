@@ -235,6 +235,10 @@
 <td>Sent when the label is available</td>
 </tr>
 <tr>
+<td>shipback.identified</td>
+<td>Sent when the incoming parcel has been open and all returned items have been identified with a unique barcode or marked has missing (not returned)</td>
+</tr>
+<tr>
 <td>shipback.relocated</td>
 <td>Sent when all the returned item&rsquo;s of a shipback are relocated to the retailer&rsquo;s warehouse</td>
 </tr>
