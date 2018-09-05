@@ -199,6 +199,7 @@ All webhooks has the same caracteristics; this is a JSON Object with the attribu
 | shipback.registered            | Sent when a shipback is registered (the customer has paid or validated is free return) and the customer can download its voucher and label |
 | shipback.paid            | cf shipback.registered (will be deleted soon) |
 | shipback.labelled            | Sent when the label is available |
+| shipback.identified      | Sent when the incoming parcel has been open and all returned items have been identified with a unique barcode or marked has missing (not returned) |
 | shipback.relocated       | Sent when all the returned item's of a shipback are relocated to the retailer's warehouse |
 | shipback.transiting      | Sent when all returned item's of a shipback are transiting |
 
