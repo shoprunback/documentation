@@ -95,3 +95,67 @@ The computation takes some time (from 30 to 90s) to compute the 3 quotes. You ca
 You can also query the quote of the mode you want to follow directly the computation of this mode only : `/api/v1/shipbacks/:id/quotes/postal` for the postal mode.
 
 
+### Clear the quotes
+
+```ruby
+HTTParty.post(
+              "https://dashboard.shoprunback.com/api/v1/shipbacks/00082f23-9b8c-4515-b1cd-527d56a1bef3/quotes/clear",
+              body: body,
+              headers: {
+                'Content-Type' => 'application/json',
+                'Authorization' => "Token token=#{your_token}"
+              }
+            )
+
+```
+
+
+```shell
+curl -X "POST" "https://dashboard.shoprunback.com/api/v1/shipbacks/00082f23-9b8c-4515-b1cd-527d56a1bef3/quotes/clear" \
+     -H "Authorization: Token token=<your_token>" \
+     -H "Content-Type: application/json; charset=utf-8"
+```
+
+```php
+<?php
+  //The ShopRunBack library doesn't provide, at the moment, a dedicated method for that
+
+// get cURL resource
+$ch = curl_init();
+
+// set url
+curl_setopt($ch, CURLOPT_URL, 'https://dashboard.shoprunback.com/api/v1/shipbacks/00082f23-9b8c-4515-b1cd-527d56a1bef3/quotes/clear');
+
+// set method
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+
+// return the transfer as a string
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+// set headers
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+  'Authorization: Token token=your_token',
+]);
+
+// send the request and save response to $response
+$response = curl_exec($ch);
+
+// stop if fails
+if (!$response) {
+  die('Error: "' . curl_error($ch) . '" - Code: ' . curl_errno($ch));
+}
+
+echo 'HTTP Status Code: ' . curl_getinfo($ch, CURLINFO_HTTP_CODE) . PHP_EOL;
+echo 'Response Body: ' . $response . PHP_EOL;
+
+// close curl resource to free up system resources
+curl_close($ch);
+
+
+
+```
+
+
+If you have updated the shipback or simply want to retrigger the quotes computation, you have to clear them by calling the dedicated endpoint.
+
+
