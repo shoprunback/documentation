@@ -196,13 +196,15 @@ All webhooks has the same caracteristics; this is a JSON Object with the attribu
 | Webhook name | Trigger |
 |--------------|---------|
 | shipback.created         | Sent when a shipback is created (via the API or via the web interface) |
+| shipback.registering            | Sent when a customer has visited the return link |
 | shipback.registered            | Sent when a shipback is registered (the customer has paid or validated is free return) and the customer can download its voucher and label |
-| shipback.paid            | cf shipback.registered (will be deleted soon) |
 | shipback.labelled            | Sent when the label is available |
+| shipback.delivering            | Sent when the shipback is transiting between the customer's location and our warehouse |
+| shipback.delivered            | Sent when the shipback is delivered to our warehouse |
 | shipback.identified      | Sent when the incoming parcel has been open and all returned items have been identified with a unique barcode or marked has missing (not returned) |
+| shipback.relocating       | Sent when the shipback is transitting from our warehouse to the retailer's warehouse |
 | shipback.relocated       | Sent when all the returned item's of a shipback are relocated to the retailer's warehouse |
-| shipback.transiting      | Sent when all returned item's of a shipback are transiting |
-
+| shipback.failed       | Sent when something went wront with this shipback |
 
 ### Sponsoring
 
