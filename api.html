@@ -1837,28 +1837,40 @@ For that reason, several calls made to the API will provide the response <b>asyn
 <td>Sent when a shipback is created (via the API or via the web interface)</td>
 </tr>
 <tr>
-<td>shipback.registered</td>
-<td>Sent when a shipback is registered (the customer has paid or validated is free return) and the customer can download its voucher and label</td>
+<td>shipback.registering</td>
+<td>Sent when a customer has visited the return link</td>
 </tr>
 <tr>
-<td>shipback.paid</td>
-<td>cf shipback.registered (will be deleted soon)</td>
+<td>shipback.registered</td>
+<td>Sent when a shipback is registered (the customer has paid or validated is free return) and the customer can download its voucher and label</td>
 </tr>
 <tr>
 <td>shipback.labelled</td>
 <td>Sent when the label is available</td>
 </tr>
 <tr>
+<td>shipback.delivering</td>
+<td>Sent when the shipback is transiting between the customer&rsquo;s location and our warehouse</td>
+</tr>
+<tr>
+<td>shipback.delivered</td>
+<td>Sent when the shipback is delivered to our warehouse</td>
+</tr>
+<tr>
 <td>shipback.identified</td>
 <td>Sent when the incoming parcel has been open and all returned items have been identified with a unique barcode or marked has missing (not returned)</td>
+</tr>
+<tr>
+<td>shipback.relocating</td>
+<td>Sent when the shipback is transitting from our warehouse to the retailer&rsquo;s warehouse</td>
 </tr>
 <tr>
 <td>shipback.relocated</td>
 <td>Sent when all the returned item&rsquo;s of a shipback are relocated to the retailer&rsquo;s warehouse</td>
 </tr>
 <tr>
-<td>shipback.transiting</td>
-<td>Sent when all returned item&rsquo;s of a shipback are transiting</td>
+<td>shipback.failed</td>
+<td>Sent when something went wront with this shipback</td>
 </tr>
 </tbody></table>
 
