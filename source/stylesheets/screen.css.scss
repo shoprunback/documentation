@@ -35,6 +35,44 @@ html, body {
   -webkit-text-size-adjust: none; /* Never autoresize text */
 }
 
+.shared-toc {
+  border-bottom: 1px dashed #666;
+  padding-bottom: 20px;
+
+  .tocify-item>a {
+    color: $nav-text;
+    text-decoration: none;
+  }
+}
+
+.products {
+  list-style-type: none;
+
+  .product {
+    width: 45%;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+
+    a {
+      padding: 20px;
+      display: block;
+      box-shadow: 0 1px 5px 0 rgba(0,0,0,.07), 0 7px 17px 0 rgba(0,0,0,.1);
+      background-color: white;
+
+      &:hover {
+        box-shadow: 0 1px 5px 0 rgba(0,0,0,.12), 0 7px 25px 0 rgba(0,0,0,.15);
+      }
+    }
+
+    img {
+      width: 80%;
+      display: block;
+      margin: auto;
+    }
+  }
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // TABLE OF CONTENTS
 ////////////////////////////////////////////////////////////////////////////////
@@ -632,4 +670,54 @@ html, body {
 
 .highlight, .highlight .w {
   background-color: $code-bg;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Remove the Right Hand Panel
+////////////////////////////////////////////////////////////////////////////////
+// These are the style overides for when the user wants to place code samples
+// in-line with the contents of the document
+
+body.no-code {
+  .dark-box {
+  display: none;
+  }
+
+  %left-col {
+  margin-right: 0;
+  }
+
+  #slateWrapper .tocify-wrapper .lang-selector {
+  display: block;
+  }
+
+  #slateWrapper .page-wrapper .lang-selector {
+  display: none;
+  }
+
+  #slateWrapper .content>h1, #slateWrapper .content>h2, #slateWrapper .content>h3, #slateWrapper .content>h4, #slateWrapper .content>h5, #slateWrapper .content>h6,
+  #slateWrapper .content>p, #slateWrapper .content>table, #slateWrapper .content>ul, #slateWrapper .content>ol, #slateWrapper .content>aside, #slateWrapper .content>dl {
+  margin-right: auto;
+  }
+
+  #slateWrapper .content pre, #slateWrapper .content blockquote {
+  margin: 0;
+  width: 100%;
+  float: none;
+  clear: right;
+  max-height: none;
+  }
+
+  body {
+  font-size: 16px;
+  }
+
+  %right-col {
+  width: auto;
+  float: none;
+  }
+
+  %right-col + %left-col {
+  margin-top: $main-padding;
+  }
 }
