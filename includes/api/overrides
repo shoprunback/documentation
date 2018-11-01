@@ -1,0 +1,14 @@
+<h1 id="overrides">Overrides</h1>
+
+<h2 id="relocation">Relocation</h2>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pickup"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"overrides"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"relocation_warehouse_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E002"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>The ShopRunBack&rsquo;s dashboard gives you the possibility to define your rules of relocation based on the reason of the return and the country of your customer.</p>
+
+<p>If the rules engine does not fit your desires, you can override the warehouse of relocation of the entire shipback while creating (or updating) the shipback on the API by providing the warehouse ID or reference.</p>
