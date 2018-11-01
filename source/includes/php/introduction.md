@@ -1,5 +1,3 @@
-[Go back to the main documentation](./)
-
 # PHP Library
 
 Welcome to the ShopRunBack public PHP library.

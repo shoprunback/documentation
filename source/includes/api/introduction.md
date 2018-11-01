@@ -1,5 +1,3 @@
-[Go back to the main documentation](./)
-
 # ShopRunBack API Documentation
 
 Welcome on the ShopRunBack public API documentation.

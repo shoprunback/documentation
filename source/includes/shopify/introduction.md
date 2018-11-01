@@ -1,5 +1,3 @@
-[Go back to the main documentation](./)
-
 # Documentation for Shopify
 
 ShopRunBack provides an official addon for Shopify users.

@@ -1,5 +1,3 @@
-[Go back to the main documentation](./)
-
 # Inventory App for retailers
 
 The inventory app is a mobile app (iOS and Android) to manage your warehouse's incoming inventory.

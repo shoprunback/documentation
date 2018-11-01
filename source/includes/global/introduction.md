@@ -1,40 +1,52 @@
 # Documentation
 
-Welcome on the ShopRunBack's Documentation.
+## Introduction
 
-ShopRunBack is the inventor of the Return As A Service solution.
+Welcome to ShopRunBack! Find all the documentation on our Return as a Service solution and start delegating all your customer's returns today.
 
-Depending on your use of the products provided by ShopRunBack, you can find the appropriate documentation.
+## Choose your solution…
 
-## REST API
+<ul class="products">
+  <li class="product">
+    <a href="/shopify.html">
+      <img src='/images/logos/shopify.png' title="Shopify" />
+    </a>
+  </li>
+  <li class="product">
+    <a href="/prestashop.html">
+      <img src='/images/logos/prestashop.png' title="Prestashop" />
+    </a>
+  </li>
+  <li class="product">
+    <a href="/magento1.html">
+      <img src='/images/logos/magento1.png' title="Magento 1" />
+    </a>
+  </li>
+  <li class="product">
+    <a href="/magento2.html">
+      <img src='/images/logos/magento2.png' title="Magento 2" />
+    </a>
+  </li>
+  <li class="product">
+    <a href="/php.html">
+      <img src='/images/logos/php.png' title="PHP" />
+    </a>
+  </li>
+</ul>
 
-Documentation of the API with Curl, PHP and Ruby examples: [click here](/api.html)
+## Other solutions
 
-## PHP Library
+If you use another solution not yet integrated by ShopRunBack or a custom solution, you can integrate the ShopRunBack's platform directly with the public API:
 
-Documentation of our official PHP Library: [click here](/php.html)
+<ul class="products">
+  <li class="product">
+    <a href="/api.html">
+      <img src='/images/logos/api.png' title="API" />
+    </a>
+  </li>
+</ul>
 
-This library wraps the majority of our REST API endpoints.
-We use it for all PHP based CMS modules.
-
-## Prestashop Module
-
-You can use this module if you have a Prestashop website: [click here](/prestashop.html)
-
-## Shopify Addon
-
-You can use the official ShopRunback module for Shopify: [click here](/shopify.html)
-
-## Documentation in progress
-
-* Retailer dashboard: [click here](/dashboard.html)
-* Mobile inventory application for retailers: [click here](/inventory.html)
-
-## Not yet supported
-
-* Magento (1.0+) website: [click here](/magento1.html)
-* Magento (2.0+) website: [click here](/magento2.html)
-
+## Need help?
 
 For further details about ShopRunBack, please contact us at: support _at_ shoprunback.com .
 

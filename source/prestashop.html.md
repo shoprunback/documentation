@@ -1,9 +1,6 @@
 ---
 title: ShopRunBack Documentation for the prestashop addon
 
-language_tabs:
-  - php: PHP
-
 toc_footers:
   - <a href='http://dashboard.shoprunback.com'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/shoprunback/prestashop-module/releases/latest'>Download the module</a>

@@ -1,5 +1,3 @@
-[Go back to the main documentation](./)
-
 # Documentation for Magento 1.0
 
 Magento 1.0 is not yet supported by ShopRunBack.
