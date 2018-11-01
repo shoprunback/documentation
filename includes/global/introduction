@@ -8,27 +8,27 @@
 
 <ul class="products">
   <li class="product">
-    <a href="/shopify.html">
+    <a href="./shopify.html">
       <img src='/images/logos/shopify.png' title="Shopify" />
     </a>
   </li>
   <li class="product">
-    <a href="/prestashop.html">
+    <a href="./prestashop.html">
       <img src='/images/logos/prestashop.png' title="Prestashop" />
     </a>
   </li>
   <li class="product">
-    <a href="/magento1.html">
+    <a href="./magento1.html">
       <img src='/images/logos/magento1.png' title="Magento 1" />
     </a>
   </li>
   <li class="product">
-    <a href="/magento2.html">
+    <a href="./magento2.html">
       <img src='/images/logos/magento2.png' title="Magento 2" />
     </a>
   </li>
   <li class="product">
-    <a href="/php.html">
+    <a href="./php.html">
       <img src='/images/logos/php.png' title="PHP" />
     </a>
   </li>
@@ -40,7 +40,7 @@
 
 <ul class="products">
   <li class="product">
-    <a href="/api.html">
+    <a href="./api.html">
       <img src='/images/logos/api.png' title="API" />
     </a>
   </li>
