@@ -176,7 +176,8 @@ All webhooks has the same caracteristics; this is a JSON Object with the attribu
       "metadata": {},
       "price_cents": "10000",
       "customer_price_cents": "10000",
-      "label_url" : "http://cdn.com/label/1234.pdf"
+      "label_url" : "http://cdn.com/label/1234.pdf",
+      "tracking_number": "123456-tracking"
     }
   }
 
