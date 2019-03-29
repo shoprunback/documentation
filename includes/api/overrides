@@ -1,7 +1,8 @@
 <h1 id="overrides">Overrides</h1>
 
 <h2 id="relocation">Relocation</h2>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">endpoint</span><span class="w"> </span><span class="err">api/v</span><span class="mi">1</span><span class="err">/shipbacks</span><span class="w">
+</span><span class="p">{</span><span class="w">
   </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pickup"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"overrides"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -14,7 +15,8 @@
 <p>If the rules engine does not fit your desires, you can override the warehouse of relocation of the entire shipback while creating (or updating) the shipback on the API by providing the warehouse ID or reference.</p>
 
 <h2 id="price-paid-by-the-customer">Price paid by the customer</h2>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">endpoint</span><span class="w"> </span><span class="err">api/v</span><span class="mi">1</span><span class="err">/shipbacks</span><span class="w">
+</span><span class="p">{</span><span class="w">
   </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pickup"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"overrides"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
