@@ -3,6 +3,7 @@
 ## Relocation
 
 ```json
+# POST on the endpoint api/v1/shipbacks
 {
   "mode": "pickup",
   "order_id": "1234567",
@@ -19,6 +20,7 @@ If the rules engine does not fit your desires, you can override the warehouse of
 ## Price paid by the customer
 
 ```json
+# POST on the endpoint api/v1/shipbacks
 {
   "mode": "pickup",
   "order_id": "1234567",
