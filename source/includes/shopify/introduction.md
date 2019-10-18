@@ -2,7 +2,7 @@
 
 ShopRunBack provides an official addon for Shopify users.
 
-You can connect your shop to ShopRunBack by visiting this link: [https://shopify.shoprunback.com](https://shopify.shoprunback.com).
+You can connect your shop to ShopRunBack by visiting this link: [https://modulespf.shoprunback.com](https://modulespf.shoprunback.com).
 
 Once there, enter the URL of your own shop and accepts all the requested rights of the addon.
 

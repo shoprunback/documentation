@@ -36,7 +36,7 @@ To enable returns for your customers, you need to modify you shop's theme.
   <span class="action">
     {{ 'customer.order.return.action' | t }}
     {% assign customer_url = order.customer_url| split: "/"  %}
-    <a style="font-weight: bold;" href="https://shopify.shoprunback.com/{{shop.domain}}/orders/{{order.id}}/return/">{{ 'customer.order.return.button' | t }}</a>
+    <a style="font-weight: bold;" href="https://modulespf.shoprunback.com/{{shop.domain}}/orders/{{order.id}}/return/">{{ 'customer.order.return.button' | t }}</a>
   </span>
 </div>
 ```
