@@ -6,7 +6,7 @@ If you don't want to add the return button to your website, you can also provide
 
 To initiate a return, the link you have to provide to your customer is :
 
-`https://shopify.shoprunback.com/kkwbeauty.com/orders/1234567/return/` if your shop is `https://kkwbeauty.com` and the order's identifier is `1234567`.
+`https://modulespf.shoprunback.com/kkwbeauty.com/orders/1234567/return/` if your shop is `https://kkwbeauty.com` and the order's identifier is `1234567`.
 
 You can find the order's ID in the order's details page, at the end of the URL.
 

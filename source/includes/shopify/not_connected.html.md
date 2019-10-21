@@ -10,7 +10,7 @@ If the order exists in your shop and the email address is the same used while or
 
 The address is the same for all your customers, and follow this template:
 
-`https://shopify.shoprunback.com/kkwbeauty.com/return` if your shop is `https://kkwbeauty.com`.
+`https://modulespf.shoprunback.com/kkwbeauty.com/return` if your shop is `https://kkwbeauty.com`.
 
 The interface is the following:
 
