@@ -13,12 +13,15 @@
 <p>4/ Get the label</p>
 
 <aside class="notice">
-ShopRunBack is directly connected to the system of multiple carriers with variable response time.
-For that reason, several calls made to the API will provide the response <b>asynchronously</b>.
+ShopRunBack is directly connected to the system of multiple carriers with
+variable response times. For that reason, several calls made to the API will
+provide the response <b>asynchronously</b>.
 </aside>
 
 <aside class="warning">
-  You can only generate the label by yourself for mode you sponsor entirely (sponsoring = 100%). Otherwise your customer has to pay for the remaining part and it can only be done on our website.
+You can only generate the label by yourself for mode you sponsor entirely
+  (sponsoring = 100%). Otherwise your customer has to pay for the remaining part
+  and it can only be done on our website.
 </aside>
 
 <h2 id="1-create-the-shipback">1. Create the shipback</h2>

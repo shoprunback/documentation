@@ -1351,12 +1351,15 @@ You don&rsquo;t have to push all the items in the initial order if you already k
 <p>4/ Get the label</p>
 
 <aside class="notice">
-ShopRunBack is directly connected to the system of multiple carriers with variable response time.
-For that reason, several calls made to the API will provide the response <b>asynchronously</b>.
+ShopRunBack is directly connected to the system of multiple carriers with
+variable response times. For that reason, several calls made to the API will
+provide the response <b>asynchronously</b>.
 </aside>
 
 <aside class="warning">
-  You can only generate the label by yourself for mode you sponsor entirely (sponsoring = 100%). Otherwise your customer has to pay for the remaining part and it can only be done on our website.
+You can only generate the label by yourself for mode you sponsor entirely
+  (sponsoring = 100%). Otherwise your customer has to pay for the remaining part
+  and it can only be done on our website.
 </aside>
 
 <h2 id="1-create-the-shipback">1. Create the shipback</h2>
@@ -1604,41 +1607,58 @@ For that reason, several calls made to the API will provide the response <b>asyn
 <p>Update the shipback with the mode <code class="prettyprint">pickup</code> and these 2 values on the <code class="prettyprint">api/v1/shipbacks/:id</code> endpoint.</p>
 
           <h2 id="4-get-the-label">4. Get the label</h2>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"bank_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"free"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>To validate the selected mode and get the label, you have to update the shipbacks on the <code class="prettyprint">api/v1/shipbacks/:id</code> endpoint with the <code class="prettyprint">bank_token</code> set to <code class="prettyprint">free</code>.</p>
-
+<pre class="highlight shell tab-shell"><code><span class="c"># cURL example:</span>
+curl -H <span class="s2">"Authorization: Token token=&lt;your_token&gt;"</span>
+     -X POST
+     <span class="s1">'https://dashboard.shoprunback.com/api/v1/shipbacks/:id/free'</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="c1"># Ruby example</span>
+<span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+    <span class="s1">'https://dashboard.shoprunback.com/api/v1/shipbacks/#{shipback_id}/free'</span><span class="p">,</span>
+    <span class="ss">headers: </span><span class="p">{</span>
+        <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+        <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Token token=</span><span class="si">#{</span><span class="n">your_token</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</code></pre>
 <aside class="notice">
-  You can only generate the label for modes free of charge for your customer, otherwise your customer has to be redirected to our website.
+  You can only generate the label for modes free of charge for your customer,
+  otherwise your customer has to be redirected to our website.
 </aside>
 
-<p>Once the <code class="prettyprint">bank_token</code> provided, the voucher and the label are being generated, you can get the corresponding label by polling the <code class="prettyprint">api/v1/shipbacks/:id</code> endpoint.</p>
+<p>To validate the selected mode and get the label, payment information needs to be
+added to the shipback. In the case of a custom return process, where customer
+payment isn&rsquo;t supported, we need to skip the payment phase by POSTing on the
+<code class="prettyprint">api/v1/shipbacks/:id/free</code> endpoint.</p>
 
-<p>The label generation is dependent of the carriers response time, you can expect up to 1 minute of waiting to get the label.</p>
+<p>Once the call has been successfully performed, the voucher and the label are
+being generated, you can get the corresponding label by polling the
+<code class="prettyprint">api/v1/shipbacks/:id</code> endpoint.</p>
+
+<p>The label generation is dependent of the carriers response time, you can expect
+up to 1 minute of waiting to get the label.</p>
 
           <h1 id="overrides">Overrides</h1>
 
 <h2 id="relocation">Relocation</h2>
-<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">endpoint</span><span class="w"> </span><span class="err">api/v</span><span class="mi">1</span><span class="err">/shipbacks</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">endpoint</span><span class="w"> </span><span class="err">api/v</span><span class="mi">1</span><span class="err">/shipbacks/</span><span class="p">:</span><span class="err">id</span><span class="w">
 </span><span class="p">{</span><span class="w">
   </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pickup"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"overrides"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"relocation_warehouse_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E002"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>The ShopRunBack&rsquo;s dashboard gives you the possibility to define your rules of relocation based on the reason of the return and the country of your customer.</p>
+<p>The ShopRunBack&rsquo;s dashboard gives you the possibility to define your rules of
+relocation based on the reason of the return and the country of your customer.</p>
 
-<p>If the rules engine does not fit your desires, you can override the warehouse of relocation of the entire shipback while creating (or updating) the shipback on the API by providing the warehouse ID or reference.</p>
+<p>If the rules engine does not fit your desires, you can override the warehouse of
+relocation of the entire shipback while creating (or updating) the shipback on
+the API by providing the warehouse ID or reference.</p>
 
 <h2 id="price-paid-by-the-customer">Price paid by the customer</h2>
-<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">endpoint</span><span class="w"> </span><span class="err">api/v</span><span class="mi">1</span><span class="err">/shipbacks</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">endpoint</span><span class="w"> </span><span class="err">api/v</span><span class="mi">1</span><span class="err">/shipbacks/</span><span class="p">:</span><span class="err">id</span><span class="w">
 </span><span class="p">{</span><span class="w">
   </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pickup"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"overrides"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"dropoff_customer_price_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w">
     </span><span class="s2">"postal_customer_price_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span><span class="w">
@@ -1646,11 +1666,43 @@ For that reason, several calls made to the API will provide the response <b>asyn
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>You can change the price displayed and paid by the customer on the web return process depending on rules in your own system.
-If the amount paid is higher than the normal price of the service, the difference will be refunded to you.</p>
+<p>You can change the price displayed and paid by the customer on the web return
+process depending on rules in your own system. If the amount paid is higher than
+the normal price of the service, the difference will be refunded to you.</p>
 
-<p>These overrides are only for returns which are not free for the customer, if you want to create you policy for free return, please use the Smart Rules system.</p>
+<p>These overrides are only for returns which are not free for the customer, if you
+want to create you policy for free return, please use the Smart Rules system.</p>
 
+<h2 id="try-at-home">Try at Home</h2>
+<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">endpoint</span><span class="w"> </span><span class="err">api/v</span><span class="mi">1</span><span class="err">/shipbacks/</span><span class="p">:</span><span class="err">id</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"overrides"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"try_at_home"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>ShopRunBack provides a <em>Try at Home</em> feature which makes certain returns free
+when they are within a specified period of time after the initial order. At the
+time of writing, this feature needs to be enabled in your company configuration
+by ShopRunBack&rsquo;s support.</p>
+
+<p>Shipbacks leveraging this feature needs to be flagged as <em>Try at Home</em> returns.
+This is accomplished by setting the <code class="prettyprint">try_at_home</code> override to <code class="prettyprint">true</code>, POSTing
+the following json data on the shipback&rsquo;s endpoint:</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># cURL example:</span>
+curl -H <span class="s2">"Authorization: Token token=&lt;your_token&gt;"</span>
+     -X POST -d <span class="s1">'{"overrides": {"try_at_home": true}}'</span>
+     <span class="s1">'https://dashboard.shoprunback.com/api/v1/shipbacks/:id'</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="c1"># Ruby example</span>
+<span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+    <span class="s1">'https://dashboard.shoprunback.com/api/v1/shipbacks/#{shipback_id}'</span>
+    <span class="ss">body: </span><span class="p">{</span> <span class="ss">overrides: </span><span class="p">{</span> <span class="ss">try_at_home: </span><span class="kp">true</span> <span class="p">}</span> <span class="p">},</span>
+    <span class="ss">headers: </span><span class="p">{</span>
+        <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+        <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Token token=</span><span class="si">#{</span><span class="n">your_token</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</code></pre>
           <h1 id="webhooks">Webhooks</h1>
 
 <p>Every event on ShopRunBack can trigger a webhook.</p>
