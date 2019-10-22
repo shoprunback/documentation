@@ -49,4 +49,3 @@ ShopRunBack expects for the API key to be included in all API requests to the se
 <aside class="notice">
 Your API Key is private and linked to your own account. Do not share it with anybody.
 </aside>
-
