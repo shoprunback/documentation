@@ -202,8 +202,8 @@ Parameter | Required | Description
 --------- | ----------- | --------------
 **ordered_at** | yes | date of the order
 **order_number** | yes | the customer's order number
-**customer** | yes | customer information (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
-**items** | yes | Array of items (see [swaggerhub documentation](https://app.swaggerhub.com/apis/Shoprunback/SRB-APP) for details)
+**customer** | yes | customer information (see [swaggerhub documentation](http://api-portal.shoprunback.com) for details)
+**items** | yes | Array of items (see [swaggerhub documentation](http://api-portal.shoprunback.com) for details)
 metadata | no | Anything you want to add to the order, this data will always be returned and never modified.
 
 
