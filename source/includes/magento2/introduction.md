@@ -1,7 +1,9 @@
-# Documentation for Magento 2.0
+# Introduction
 
-Magento 2.0 is not yet supported by ShopRunBack.
+Welcome to the documentation for the ShopRunBack module for Magento2.
+This module will help you to manage your returns with ShopRunBack while staying on your own website.
 
-You can [subscribe to the waiting list](http://eepurl.com/dqYjK5) and get notified once available.
+If you have any question, please send an email to: tech_at_shoprunback.com
 
-Otherwise, you can integrate ShopRunBack yourself with ou REST API ([see documentation](/api.html)).
+# Support Version
+The module is compatible with all versions starting from 2.0

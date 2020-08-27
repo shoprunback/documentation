@@ -10,8 +10,13 @@ toc_footers:
 
 includes:
   - magento2/introduction
+  - magento2/install
+  - magento2/configuration
+  - magento2/environment
+  - magento2/use
+  - magento2/uninstall.md
 
-search: false
+search: true
 ---
 
 

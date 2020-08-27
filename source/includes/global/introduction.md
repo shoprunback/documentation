@@ -27,11 +27,7 @@ Welcome to ShopRunBack! Find all the documentation on our Return as a Service so
       <img src='/images/logos/magento2.png' title="Magento 2" />
     </a>
   </li>
-  <li class="product">
-    <a href="./php.html">
-      <img src='/images/logos/php.png' title="PHP" />
-    </a>
-  </li>
+  
 </ul>
 
 ## Other solutions
@@ -42,6 +38,11 @@ If you use another solution not yet integrated by ShopRunBack or a custom soluti
   <li class="product">
     <a href="./api.html">
       <img src='/images/logos/api.png' title="API" />
+    </a>
+  </li>
+  <li class="product">
+    <a href="./php.html">
+      <img src='/images/logos/php.png' title="PHP" />
     </a>
   </li>
 </ul>
