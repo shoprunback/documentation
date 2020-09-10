@@ -1,0 +1,36 @@
+<h1 id="installing-the-module">Installing the Module</h1>
+
+<h2 id="1-create-your-own-shoprunback-account">1. Create your own ShopRunBack account</h2>
+
+<p>First of all, you must create your own ShopRunBack account here. <a href="https://sso.shoprunback.com/en/users/sign_up">here</a></p>
+
+<p>For your store configuration, please contact your account manager who will guide you through the process </p>
+
+<h2 id="2-how-to-get-the-module">2. How to get the Module</h2>
+
+<p>Contact the ShopRunBack Team to get the source code of the module or you can download from <a href="https://github.com/shoprunback/magento2-module/releases/tag/v1.0">here</a></p>
+
+<p>First, you should copy it’s code to the required directory (project_name/app/code):
+The left panel shows here the basic listing of the file with a module. The right panel — Magento 2 codebase.. </p>
+
+<p>Basically, the Install folder content should be copied to the app/code/ directory</p>
+
+<p><img src="https://belvg.com/blog/wp-content/uploads/2016/08/%5EAAB2CD8364D709EABAC56F6D46C334E233134F1A7072C1CD0A%5Epimgpsh_fullsize_distr.png" alt="image" /></p>
+
+<h2 id="3-install-command-line">3. Install Command line</h2>
+
+<p>Magento CLI provides a large number of useful console commands to manage the store. And you can get the list of these commands by running: php bin/magento. But now we need to use only one:</p>
+
+<p>php bin/magento setup:upgrade</p>
+
+<h3 id="for-local-development">FOR LOCAL DEVELOPMENT</h3>
+
+<p>Copy module code to to the required directory: (app/code/ ) and run following command </p>
+
+<p>php -dmemory_limit=20G bin/magento setup:upgrade</p>
+
+<p>php -dmemory_limit=20G bin/magento setup:di:compile</p>
+
+<p>php -dmemory_limit=20G bin/magento setup:static-content:deploy -f</p>
+
+<p>php bin/magento cache:flush &amp;&amp; php bin/magento cache:clean (For clean catch)</p>

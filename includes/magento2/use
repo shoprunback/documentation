@@ -1,0 +1,26 @@
+<h1 id="use-the-module">Use the Module</h1>
+
+<h2 id="how-do-my-customers-create-a-return-request">How do my customers create a return request?</h2>
+
+<p>Any customer can create a return request once an order is at least Shipped and invoiced. Then, they have a button to create a return request on the details of the order. </p>
+
+<p>(The screenshot shows the magento order status is complete)</p>
+
+<p><img src="/images/magento2/statusorder.png" alt="image" /></p>
+
+<p>To make a return , first you need to go to the login page and login with your account.</p>
+
+<p><img src="/images/magento2/login.png" alt="image" /></p>
+
+<p>Then, you can start to purchase a product. After completing the  order go to your return page (/shoprunback/shipback/index). 
+Once you have completed your purchase, the order status is pending and the return button is not available so you cannot return the product until the admin submit invoice and shipment.</p>
+
+<p><img src="/images/magento2/return-pending.png" alt="image" /></p>
+
+<p>Once the admin is done submitting the invoice and shipment, the “Return Order” button will be available.</p>
+
+<p><img src="/images/magento2/return-complete.png" alt="image" /></p>
+
+<p>To see the list of return, click on button Return Order then it will create an shipment and redirect to ShopRunBack return path. After completing your return on the shoprunback platform the Return Date and Return Status will update.</p>
+
+<p><img src="/images/magento2/return.png" alt="image" /></p>

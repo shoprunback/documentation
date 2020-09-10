@@ -209,12 +209,12 @@ The ShopRunBack API will always return this data without altering it.</p>
 <tr>
 <td><strong>customer</strong></td>
 <td>yes</td>
-<td>customer information (see <a href="https://app.swaggerhub.com/apis/Shoprunback/SRB-APP">swaggerhub documentation</a> for details)</td>
+<td>customer information (see <a href="http://api-portal.shoprunback.com">swaggerhub documentation</a> for details)</td>
 </tr>
 <tr>
 <td><strong>items</strong></td>
 <td>yes</td>
-<td>Array of items (see <a href="https://app.swaggerhub.com/apis/Shoprunback/SRB-APP">swaggerhub documentation</a> for details)</td>
+<td>Array of items (see <a href="http://api-portal.shoprunback.com">swaggerhub documentation</a> for details)</td>
 </tr>
 <tr>
 <td>metadata</td>

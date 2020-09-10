@@ -1,0 +1,21 @@
+<h1 id="configuration">Configuration</h1>
+
+<p>After installing the module successfully you will see an icon menu named SHOPRUNBACK. </p>
+
+<p>Click on it and click on the configuration menu.</p>
+
+<p><img src="/images/magento2/config.png" alt="image" /></p>
+
+<p>paste your token and click on save button . done</p>
+
+<p><img src="/images/magento2/config2.png" alt="image" /></p>
+
+<h1 id="synchronize-your-data">Synchronize your data</h1>
+
+<aside class="warning">
+If you switch the environment, change your API token or uninstall the module, all the return requests and synchronizations will be reset!
+</aside>
+
+<p>To synchronize an element, click on its corresponding Synchronize button.</p>
+
+<p><img src="/images/magento2/syncdata.png" alt="image" /></p>

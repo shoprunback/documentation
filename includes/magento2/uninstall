@@ -1,0 +1,4 @@
+<h1 id="uninstall-the-module">Uninstall the Module</h1>
+
+<p>To remove the module just remove the code file from your project directory. Goto  to the app/code/ directory
+<img src="/images/magento2/uninstall.png" alt="image" /></p>
