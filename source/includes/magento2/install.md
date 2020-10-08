@@ -6,19 +6,23 @@
 
 	For your store configuration, please contact your account manager who will guide you through the process 
 
-## 2. How to get the Module
+## 2. Download ShopRunBack public PHP library
+	[Click here](https://github.com/shoprunback/shoprunback-php/releases/latest) to download the library. 
+	Then, unzip the .zip and move the folder into your project directory **magento_root/lib/**
+
+## 3. How to get the Module
 
 	Contact the ShopRunBack Team to get the source code of the module or you can download from [here](https://github.com/shoprunback/magento2-module/releases/tag/v1.0)
 
 First, you should copy it’s code to the required directory (project_name/app/code):
 The left panel shows here the basic listing of the file with a module. The right panel — Magento 2 codebase.. 
 
-Basically, the Install folder content should be copied to the app/code/ directory
+Basically, the Install folder content should be copied to the **app/code/** directory
 
 
 ![image](https://belvg.com/blog/wp-content/uploads/2016/08/%5EAAB2CD8364D709EABAC56F6D46C334E233134F1A7072C1CD0A%5Epimgpsh_fullsize_distr.png)
 
-## 3. Install Command line
+## 4. Install Command line
 
 Magento CLI provides a large number of useful console commands to manage the store. And you can get the list of these commands by running: php bin/magento. But now we need to use only one:
 
