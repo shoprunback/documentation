@@ -24,3 +24,27 @@ HERE IS THE STEP BY STEP GUIDE TO UNINSTALL
 **Step 7:** Run the following command 
 
 ``` php bin/magento setup:upgrade ```
+
+# Enable or Disable your Module
+<aside class="warning">
+	NOTE: If you dont want to uninstall the module you can disable the module and enable back when you want to use it
+</aside>
+
+
+***Step 1:*** Enter the following in the command line:
+
+***For Enable:*** 
+
+```bin/magento module:enable --clear-static-content SRB_Shoprunback```
+
+***For Disable:***
+
+```bin/magento module:disable --clear-static-content SRB_Shoprunback```
+
+```bin/magento setup:upgrade```
+
+```bin/magento cache:clean```
+
+***Step 2:*** Check that the component is enabled/disabled:
+
+```bin/magento module:status Module_name```
