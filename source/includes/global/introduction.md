@@ -17,11 +17,11 @@ Welcome to ShopRunBack! Find all the documentation on our Return as a Service so
       <img src='/images/logos/prestashop.png' title="Prestashop" />
     </a>
   </li>
-  <li class="product">
+  <!--<li class="product">
     <a href="./magento1.html">
       <img src='/images/logos/magento1.png' title="Magento 1" />
     </a>
-  </li>
+  </li>-->
   <li class="product">
     <a href="./magento2.html">
       <img src='/images/logos/magento2.png' title="Magento 2" />
