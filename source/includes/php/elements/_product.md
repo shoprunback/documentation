@@ -68,12 +68,6 @@ $sparepart->reference = 'SparePart-reference';
 
 $product->spare_parts[] =  $sparepart;
 
-$sparepart2 = new \Shoprunback\Elements\SparePart();
-$sparepart2->name = 'spare part test';
-$sparepart2->reference = 'SparePart-reference2';
-
-$product->spare_parts[] =  $sparepart2;
-
 // Now you can save the product
 $product->save();
 ```
