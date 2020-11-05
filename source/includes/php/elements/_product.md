@@ -59,6 +59,14 @@ $product->metadata = ['foo' => 'bar'];
 $product->picture_file_base64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQAAAAA3bvkkAAAAAnRSTlMAAHaTzTgAAAAKSURBVHgBY2AAAAACAAFzdQEYAAAAAElFTkSuQmCC';
 $product->picture_file_url = 'http://shoprunback.com/wp-content/themes/shoprunback/images/logo-menu.png';
 
+// For Sparepart
+$product->spare_parts =[];
+
+$sparepart = new \Shoprunback\Elements\SparePart();
+$sparepart->name = 'spare part test';
+$sparepart->reference = 'SparePart-reference';
+
+$product->spare_parts[] =  $sparepart;
 
 // Now you can save the product
 $product->save();
@@ -98,6 +106,7 @@ require_once 'path/to/lib/shoprunback-php/init.php';
 
 $product = \Shoprunback\Elements\Product::retrieve('1f27f9d9-3b5c-4152-98b7-760f56967dea');
 $product->label = 'New label';
+
 $product->save();
 ```
 
@@ -121,6 +130,28 @@ require_once 'path/to/lib/shoprunback-php/init.php';
 \Shoprunback\RestClient::getClient()->setToken('yourApiToken');
 
 \Shoprunback\Elements\Product::deleteImage('1f27f9d9-3b5c-4152-98b7-760f56967dea');
+```
+
+> Add SparePart to Exists Product
+
+```php
+<?php
+require_once 'path/to/lib/shoprunback-php/init.php';
+
+\Shoprunback\RestClient::getClient()->setToken('yourApiToken');
+
+$product = \Shoprunback\Elements\Product::retrieve('1f27f9d9-3b5c-4152-98b7-760f56967dea');
+
+// For Sparepart
+$product->spare_parts =[];
+
+$sparepart = new \Shoprunback\Elements\SparePart();
+$sparepart->name = 'spare part test';
+$sparepart->reference = 'SparePart-reference';
+
+$product->spare_parts[] =  $sparepart;
+
+$product->save();
 ```
 
 Method | Enabled
