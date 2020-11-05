@@ -20,6 +20,7 @@ includes:
   - php/elements/item
   - php/elements/order
   - php/elements/product
+  - php/elements/sparepart
   - php/elements/returned_item
   - php/elements/shipback
   - php/elements/warehouse
