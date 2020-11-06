@@ -792,6 +792,14 @@ To know what attributes each Element has, please read the documentation about ou
 </span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">picture_file_base64</span> <span class="o">=</span> <span class="s1">'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQAAAAA3bvkkAAAAAnRSTlMAAHaTzTgAAAAKSURBVHgBY2AAAAACAAFzdQEYAAAAAElFTkSuQmCC'</span><span class="p">;</span>
 <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">picture_file_url</span> <span class="o">=</span> <span class="s1">'http://shoprunback.com/wp-content/themes/shoprunback/images/logo-menu.png'</span><span class="p">;</span>
 
+<span class="c1">// For Sparepart
+</span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">spare_parts</span> <span class="o">=</span><span class="p">[];</span>
+
+<span class="nv">$sparepart</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\SparePart</span><span class="p">();</span>
+<span class="nv">$sparepart</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s1">'spare part test'</span><span class="p">;</span>
+<span class="nv">$sparepart</span><span class="o">-&gt;</span><span class="na">reference</span> <span class="o">=</span> <span class="s1">'SparePart-reference'</span><span class="p">;</span>
+
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">spare_parts</span><span class="p">[]</span> <span class="o">=</span>  <span class="nv">$sparepart</span><span class="p">;</span>
 
 <span class="c1">// Now you can save the product
 </span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
@@ -828,6 +836,7 @@ To know what attributes each Element has, please read the documentation about ou
 
 <span class="nv">$product</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
 <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">label</span> <span class="o">=</span> <span class="s1">'New label'</span><span class="p">;</span>
+
 <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
 </code></pre>
 <blockquote>
@@ -849,6 +858,27 @@ To know what attributes each Element has, please read the documentation about ou
 <span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
 
 <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">deleteImage</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Add SparePart to Exists Product</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$product</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\Product</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
+
+<span class="c1">// For Sparepart
+</span><span class="nv">$product</span><span class="o">-&gt;</span><span class="na">spare_parts</span> <span class="o">=</span><span class="p">[];</span>
+
+<span class="nv">$sparepart</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\SparePart</span><span class="p">();</span>
+<span class="nv">$sparepart</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s1">'spare part test'</span><span class="p">;</span>
+<span class="nv">$sparepart</span><span class="o">-&gt;</span><span class="na">reference</span> <span class="o">=</span> <span class="s1">'SparePart-reference'</span><span class="p">;</span>
+
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">spare_parts</span><span class="p">[]</span> <span class="o">=</span>  <span class="nv">$sparepart</span><span class="p">;</span>
+
+<span class="nv">$product</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
 </code></pre>
 <table><thead>
 <tr>
@@ -878,6 +908,111 @@ To know what attributes each Element has, please read the documentation about ou
 </tr>
 <tr>
 <td><strong>Delete (image)</strong></td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+
+          <h2 id="sparepart">SparePart</h2>
+
+<blockquote>
+<p>Initialize</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$sparepart</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\SparePart</span><span class="p">();</span>
+
+</code></pre>
+<blockquote>
+<p>Create a SparePart</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$sparepart</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Shoprunback\Elements\SparePart</span><span class="p">();</span>
+
+<span class="c1">// Mandatory to create a new sparepart
+</span><span class="nv">$sparepart</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s1">'My Part'</span><span class="p">;</span>
+<span class="nv">$sparepart</span><span class="o">-&gt;</span><span class="na">reference</span> <span class="o">=</span> <span class="s1">'my-spare-sparepart'</span><span class="p">;</span>
+<span class="nv">$sparepart</span><span class="o">-&gt;</span><span class="na">description</span> <span class="o">=</span> <span class="s1">'A longer description for your spare part'</span><span class="p">;</span>
+<span class="nv">$sparepart</span><span class="o">-&gt;</span><span class="na">picture_url</span> <span class="o">=</span> <span class="s1">'string'</span><span class="p">;</span> 
+<span class="nv">$sparepart</span><span class="o">-&gt;</span><span class="na">metadata</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'foo'</span> <span class="o">=&gt;</span> <span class="s1">'bar'</span><span class="p">];</span>
+
+<span class="c1">// Now you can save the sparepart
+</span><span class="nv">$sparepart</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+</code></pre>
+<!-- #### API Methods -->
+
+<blockquote>
+<p>Get all SpareParts (Not Available)</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$sparepart</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\SparePart</span><span class="o">::</span><span class="na">all</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>Get one SparePart</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$sparepart</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\SparePart</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Update a SparePart</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nv">$sparepart</span> <span class="o">=</span> <span class="nx">\Shoprunback\Elements\SparePart</span><span class="o">::</span><span class="na">retrieve</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
+<span class="nv">$sparepart</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s1">'New Name'</span><span class="p">;</span>
+<span class="nv">$sparepart</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>Delete a SparePart</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'path/to/lib/shoprunback-php/init.php'</span><span class="p">;</span>
+
+<span class="nx">\Shoprunback\RestClient</span><span class="o">::</span><span class="na">getClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">'yourApiToken'</span><span class="p">);</span>
+
+<span class="nx">\Shoprunback\Elements\SparePart</span><span class="o">::</span><span class="na">delete</span><span class="p">(</span><span class="s1">'1f27f9d9-3b5c-4152-98b7-760f56967dea'</span><span class="p">);</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Enabled</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Get all (paginated)</strong></td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Get one</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Create</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Update</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Delete</strong></td>
 <td>Yes</td>
 </tr>
 </tbody></table>
