@@ -13,19 +13,6 @@
 <p>For instance, some of your data is automatically synchronized after some actions:</p>
 
 <ul>
-<li>Product
-
-<ul>
-<li>When you create a product</li>
-<li>When you edit a product</li>
-<li>When you delete a product</li>
-</ul></li>
-<li>Order
-
-<ul>
-<li>When you or a customer create an order</li>
-<li>When the status of an order changes</li>
-</ul></li>
 <li>Return
 
 <ul>

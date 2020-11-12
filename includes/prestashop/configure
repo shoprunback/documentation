@@ -22,11 +22,11 @@
 
 <p>Go to <code class="prettyprint">Configuration</code>.</p>
 
-<p><img src="/images/prestashop/ps_srb-returns-goto-configuration.png" alt="Go to the configuration tab in the ShopRunBack module" /></p>
+<p><img src="/images/prestashop/no-return.png" alt="Go to the configuration tab in the ShopRunBack module" /></p>
 
 <p>Paste your token in the <code class="prettyprint">API Token</code> field and save your configuration.</p>
 
-<p><img src="/images/prestashop/ps_srb-configuration-save-token.png" alt="Save the ShopRunBack token" /></p>
+<p><img src="/images/prestashop/config-token.png" alt="Save the ShopRunBack token" /></p>
 
 <p>Now, you can share your data with your ShopRunBack account!</p>
 
@@ -38,7 +38,7 @@
   If you switch environment, change your API token or uninstall the module, all the return requests and synchronizations will be reset!
 </aside>
 
-<p><img src="/images/prestashop/ps_srb_product_sync.png" alt="Synchronize data" /></p>
+<p><img src="/images/prestashop/return.png" alt="Synchronize data" /></p>
 
 <h2 id="environment">Environment</h2>
 
@@ -57,4 +57,4 @@
   If you switch environment, change your API token or uninstall the module, all the return requests and synchronizations will be reset!
 </aside>
 
-<p><img src="/images/prestashop/ps_srb-configuration-environments.png" alt="Where to find ShopRunBack in the left menu" /></p>
+<p><img src="/images/prestashop/config-token-and-env.png" alt="Where to find ShopRunBack in the left menu" /></p>
