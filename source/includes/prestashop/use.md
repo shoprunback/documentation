@@ -12,13 +12,6 @@ You must always have your data synchronized with ShopRunBack to avoid any discre
 
 For instance, some of your data is automatically synchronized after some actions:
 
-- Product
-  - When you create a product
-  - When you edit a product
-  - When you delete a product
-- Order
-  - When you or a customer create an order
-  - When the status of an order changes
 - Return
   - When a return is modified on ShopRunBack
 

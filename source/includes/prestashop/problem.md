@@ -14,7 +14,7 @@ All our logs have their message beginning with `[ShopRunBack]` so you can filter
 
 If you do something on your website **that generates an error for ShopRunBack**, you will be **notified when returning to the ShopRunBack's module page**.
 
-![Notification on ShopRunBack's page](images/prestashop/ps_srb_tab_notif.png)
+![Notification on ShopRunBack's page](images/prestashop/notification.png)
 
 When a notification occurs, **it also creates a log**. So **if you mark it as read**, you **can still find it in your logs**.
 
@@ -22,4 +22,4 @@ When a notification occurs, **it also creates a log**. So **if you mark it as re
 
 If you meet a problem you cannot solve, please **export the last logs** on the configuration tab and **send a mail to tech_at_shoprunback.com**
 
-![Export logs in the ShopRunBack's configuration tab](../../images/prestashop/ps_srb-configuration-export-logs.png)
+![Export logs in the ShopRunBack's configuration tab](../../images/prestashop/export-logs.png)

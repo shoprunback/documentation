@@ -14,11 +14,11 @@ Click on the `ShopRunBack` tab in the left menu.
 
 Go to `Configuration`.
 
-![Go to the configuration tab in the ShopRunBack module](../../images/prestashop/ps_srb-returns-goto-configuration.png)
+![Go to the configuration tab in the ShopRunBack module](../../images/prestashop/no-return.png)
 
 Paste your token in the `API Token` field and save your configuration.
 
-![Save the ShopRunBack token](../../images/prestashop/ps_srb-configuration-save-token.png)
+![Save the ShopRunBack token](../../images/prestashop/config-token.png)
 
 Now, you can share your data with your ShopRunBack account!
 
@@ -30,7 +30,7 @@ To synchronize an element, click on its corresponding `Synchronize` button.
   If you switch environment, change your API token or uninstall the module, all the return requests and synchronizations will be reset!
 </aside>
 
-![Synchronize data](images/prestashop/ps_srb_product_sync.png)
+![Synchronize data](images/prestashop/return.png)
 
 ## Environment
 
@@ -47,4 +47,4 @@ There are 2 modes:
   If you switch environment, change your API token or uninstall the module, all the return requests and synchronizations will be reset!
 </aside>
 
-![Where to find ShopRunBack in the left menu](../../images/prestashop/ps_srb-configuration-environments.png)
+![Where to find ShopRunBack in the left menu](../../images/prestashop/config-token-and-env.png)
