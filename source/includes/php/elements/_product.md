@@ -154,6 +154,29 @@ $product->spare_parts[] =  $sparepart;
 $product->save();
 ```
 
+>Create a bulk of spare parts associated to a product
+
+```php
+<?php
+require_once 'path/to/lib/shoprunback-php/init.php';
+
+\Shoprunback\RestClient::getClient()->setToken('yourApiToken');
+
+$product = \Shoprunback\Elements\Product::retrieve('1f27f9d9-3b5c-4152-98b7-760f56967dea');
+
+$product->bulk = [];
+
+$sparpart = new \Shoprunback\Elements\SparePart();
+$sparpart->reference = "part-ref-test-ok";
+$sparpart->name = "A user friendly spare part name";
+$sparpart->description = "A longer description for your spare part";
+
+$product->bulk[] = $sparpart;
+
+$product->save();
+```
+
+
 Method | Enabled
 -|-
 **Get all (paginated)** | Yes
