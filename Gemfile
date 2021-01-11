@@ -7,4 +7,4 @@ gem 'middleman-autoprefixer', '~> 2.7.0'
 gem "middleman-sprockets", "~> 4.1.0"
 gem 'middleman-deploy', '~> 2.0.0.pre.alpha'
 gem 'rouge', '~> 2.0.5'
-gem 'redcarpet', '~> 3.4.0'
+gem 'redcarpet', '~> 3.5.1'
